@@ -8,13 +8,13 @@ public class FPSInput : MonoBehaviour {
 
 	public float speed = 25.0f;
 	public float gravity = -9.8f;
-    private Inventory inventory;
+    //private Inventory inventory;
     private CharacterController _charController;
 
 	// Use this for initialization
 	void Start () {
 		_charController = GetComponent<CharacterController> ();
-        inventory = GetComponent<Inventory>();
+        //inventory = GetComponent<Inventory>();
     }
 	
 	// Update is called once per frame

@@ -8,18 +8,30 @@ public class SwitchController : MonoBehaviour {
 
 	private Inventory inventory;
 
+    private GameObject door;
+
 	private bool atSwitch = false;
+
+    public int numBatteriesRequired;
+
+    public double xOffset;
+
+    public double yOffset;
+
+    public double zOffset;
 
 	void Start () {
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
+        door = GameObject.Find("Door");
     }
 	
 	// Update is called once per frame
 	void Update () {
 		if (atSwitch) {
-			if (Input.GetKeyDown (KeyCode.E) && inventory.itemCount() == 3)
+			if (Input.GetKeyDown (KeyCode.E) && inventory.itemCount() >= 1)
             {
-                useAllBatteries();
+                useBattery();
+                door.GetComponent<DoorController>().StartCoroutine("openDoor");
             }
 		}
 	}
@@ -31,18 +43,12 @@ public class SwitchController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		atSwitch = false;
-	}
+    }
 
-    void useAllBatteries()
+    void useBattery()
     {
-        GameObject battery1 = inventory.getFirstItem();
-        battery1.transform.position = new Vector3(9.7f, 2.7f, 23.5f);
-        battery1.SetActive(true);
-        GameObject battery2 = inventory.getFirstItem();
-        battery2.transform.position = new Vector3(9.0f, 2.7f, 23.5f);
-        battery2.SetActive(true);
-        GameObject battery3 = inventory.getFirstItem();
-        battery3.transform.position = new Vector3(8.3f, 2.7f, 23.5f);
-        battery3.SetActive(true);
+        GameObject battery = inventory.getFirstItem();
+        battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
+        battery.SetActive(true);
     }
 }

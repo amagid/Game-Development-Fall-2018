@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Comment for Git Testing, feel free to delete.
+
 public class SwitchController : MonoBehaviour {
 
 	private Inventory inventory;

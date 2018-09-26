@@ -1,5 +1,5 @@
 # Contributing Guidelines
-### Last Updated: 9/13/18 @ 3:21 PM
+### Last Updated: 9/26/18 @ 2:43 PM
 Hey, everyone! Since we've got a lot of people on this team, we need to work especially hard to make sure our Git repo stays organized. In that spirit, here are some important guidelines for contributing to our Git repository.
 
 **Note: This file may be updated from time to time. If and when that happens, everyone will be notified via discord. If you're ever wondering whether or not the file has been updated, check the "Last Updated" label up at the top.**

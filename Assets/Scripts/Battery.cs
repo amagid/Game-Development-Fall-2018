@@ -6,6 +6,8 @@ public class Battery : MonoBehaviour {
 
     private int power_index;
 
+    private bool isPickedUp;
+
     private bool isEmpty;
 
     private bool inUse;
@@ -13,7 +15,9 @@ public class Battery : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         power_index = 100;
+        isPickedUp = false;
         isEmpty = false;
+        inUse = false;
 	}
 	
 	// Update is called once per frame
@@ -29,9 +33,12 @@ public class Battery : MonoBehaviour {
     }
 
     public IEnumerator useBattery() {
-        while (!isEmpty && inUse) {
+        inUse = true;
+        while (!isEmpty && isPickedUp) {
             power_index--;
             yield return new WaitForSeconds(1f);
         }
     }
+
+
 }

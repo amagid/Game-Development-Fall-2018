@@ -22,6 +22,7 @@ public class SwitchController : MonoBehaviour {
 
 	void Start () {
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
+		// make this abstract for all doors
         door = GameObject.Find("Door");
     }
 	

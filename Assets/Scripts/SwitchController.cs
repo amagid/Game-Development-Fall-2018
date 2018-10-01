@@ -23,6 +23,7 @@ public class SwitchController : MonoBehaviour {
 
 	void Start () {
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
+        door = GameObject.Find("Door");
     }
 	
 	// Update is called once per frame

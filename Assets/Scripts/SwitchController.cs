@@ -8,6 +8,7 @@ public class SwitchController : MonoBehaviour {
 
 	private Inventory inventory;
 
+	[SerializeField]
     private GameObject door;
 
 	private bool atSwitch = false;

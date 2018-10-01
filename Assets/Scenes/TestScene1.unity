@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4469cd23d4d82f44946c55c9fb1b076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAxisDirection: 0
 --- !u!65 &207688735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1241,6 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051e5321dd87eb4ab18f837f189a8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 2078052040}
   numBatteriesRequired: 1
   xOffset: 0.3
   yOffset: 0
@@ -1698,6 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051e5321dd87eb4ab18f837f189a8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 207688733}
   numBatteriesRequired: 1
   xOffset: 0
   yOffset: 0
@@ -2024,6 +2027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051e5321dd87eb4ab18f837f189a8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 207688733}
   numBatteriesRequired: 1
   xOffset: 0
   yOffset: 0
@@ -2058,6 +2062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4469cd23d4d82f44946c55c9fb1b076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAxisDirection: 2
 --- !u!65 &2078052042
 BoxCollider:
   m_ObjectHideFlags: 0

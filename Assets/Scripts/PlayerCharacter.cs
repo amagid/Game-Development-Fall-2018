@@ -32,7 +32,7 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	void OnGUI() {
-        Debug.Log(Screen.height);
+        //Debug.Log(Screen.height);
 		GUI.Label (new Rect (Screen.width - 160, Screen.height - 850, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, Screen.height - 830, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
 		GUI.Label (new Rect (Screen.width - 160, Screen.height - 810, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
@@ -47,6 +47,10 @@ public class PlayerCharacter : MonoBehaviour {
             {
                 other.gameObject.SetActive(false);
             }
+        } else if (other.gameObject.CompareTag("note"))
+        {
+            Debug.Log(other.gameObject.GetComponent<NoteController>().GetContent());
+            other.gameObject.SetActive(false);
         }
     }
 

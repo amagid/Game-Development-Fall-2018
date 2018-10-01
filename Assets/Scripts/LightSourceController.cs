@@ -26,7 +26,13 @@ public class LightSourceController : MonoBehaviour {
 				pointLight.SetActive (true);
 				playersScript.reducePower ();
 				playersScript.gainSanity ();
-			}
+			} else
+            {
+                if (pointLight.activeInHierarchy)
+                {
+                    pointLight.SetActive(false);
+                }
+            }
 		}
 	}
 
@@ -37,6 +43,10 @@ public class LightSourceController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
 		atLight = false;
+        if (pointLight.activeInHierarchy)
+        {
+            pointLight.SetActive(false);
+        }
 	}
 
 }

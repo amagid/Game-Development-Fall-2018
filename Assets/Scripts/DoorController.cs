@@ -8,10 +8,6 @@ public class DoorController : MonoBehaviour {
     private Vector3 closePos;
     private Vector3 openPos;
 
-    // Use this for initialization
-    void Start () {
-        this.closePos = transform.position;
-        this.openPos = new Vector3(closePos.x - 6f, closePos.y, closePos.z);
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField]
 	private DoorAxes doorAxisDirection;

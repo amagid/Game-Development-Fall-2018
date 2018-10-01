@@ -25,9 +25,11 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		sanity--;
-		if (sanity < 0) {
-			endGame ();
+		if (inventory.itemCount () == 0) {
+			sanity--;
+			if (sanity < 0) {
+				endGame ();
+			}
 		}
 	}
 

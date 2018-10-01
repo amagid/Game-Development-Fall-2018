@@ -12,7 +12,28 @@ public class DoorController : MonoBehaviour {
     void Start () {
         this.closePos = transform.position;
         this.openPos = new Vector3(closePos.x - 6f, closePos.y, closePos.z);
-        //isOpen = false;
+	private enum DoorAxes {X, Y, Z};
+	[SerializeField]
+	private DoorAxes doorAxisDirection;
+
+	private float CLOSE_FACTOR = 6f;
+
+    // Use this for initialization
+    void Start () {
+        this.closePos = transform.position;
+		Vector3 openPos = new Vector3 (closePos.x, closePos.y, closePos.z);
+		switch (doorAxisDirection) {
+		case DoorAxes.X:
+			openPos.x -= CLOSE_FACTOR;
+			break;
+		case DoorAxes.Y:
+			openPos.y -= CLOSE_FACTOR;
+			break;
+		case DoorAxes.Z:
+			openPos.z -= CLOSE_FACTOR;
+			break;
+		}
+		this.openPos = openPos;
 	}
 	
 	// Update is called once per frame

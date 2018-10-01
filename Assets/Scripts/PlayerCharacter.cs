@@ -32,10 +32,9 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	void OnGUI() {
-        Debug.Log(Screen.height);
-		GUI.Label (new Rect (Screen.width - 160, Screen.height - 850, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
-		GUI.Label (new Rect (Screen.width - 160, Screen.height - 830, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
-		GUI.Label (new Rect (Screen.width - 160, Screen.height - 810, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
+		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
+		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
+		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
 	}
 
     //test for picking up batteries and use them for Test Scene One

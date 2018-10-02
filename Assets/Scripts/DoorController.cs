@@ -11,6 +11,8 @@ public class DoorController : MonoBehaviour {
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField]
 	private DoorAxes doorAxisDirection;
+	[SerializeField]
+	private bool isElevatorDoor = false;
 
 	private float CLOSE_FACTOR = 6f;
 
@@ -30,6 +32,9 @@ public class DoorController : MonoBehaviour {
 			break;
 		}
 		this.openPos = openPos;
+		if (isElevatorDoor) {
+			openDoor ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -54,7 +59,6 @@ public class DoorController : MonoBehaviour {
     }
 
 
-    /* can add this in later if needed
     public IEnumerator closeDoor()
     {
         for(float t = 0f; t < 1; t += Time.deltaTime / 2f) {
@@ -63,5 +67,4 @@ public class DoorController : MonoBehaviour {
         }
         //isOpen = false;
     }
-    */
 }

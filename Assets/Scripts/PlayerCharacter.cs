@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour {
 	private GUIStyle style1 = new GUIStyle();
@@ -33,11 +34,21 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 	}
 
+	[SerializeField]
+	private Text batteryText;
+	[SerializeField]
+	private Text powerText;
+	[SerializeField]
+	private Text sanityText;
+
 	void OnGUI() {
         //Debug.Log(Screen.height);
-		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
-		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
-		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
+		//GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
+		batteryText.text = "Batteries: " + inventory.itemCount();
+		powerText.text = "Power: " + power / (MAX_POWER / 100);
+		sanityText.text = "Sanity: " + sanity / (MAX_SANITY / 100);
+//		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
+//		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
 	}
 
     //test for picking up batteries and use them for Test Scene One

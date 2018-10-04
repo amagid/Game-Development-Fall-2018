@@ -8,12 +8,9 @@ public class SwitchController : MonoBehaviour {
 
 	private Inventory inventory;
 
-	[SerializeField]
-    private GameObject door;
+	[SerializeField] private GameObject door;
 
 	private bool atSwitch = false;
-
-    public int numBatteriesRequired;
 
     public double xOffset;
 
@@ -28,10 +25,11 @@ public class SwitchController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (atSwitch) {
-			if (Input.GetKeyDown (KeyCode.E) && inventory.itemCount() >= 1)
+            if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1)
             {
-                useBattery();
-                door.GetComponent<DoorController>().StartCoroutine("openDoor");
+                if (useBattery()) {
+                    door.GetComponent<DoorController>().StartCoroutine("openDoor");
+                }
             }
 		}
 	}
@@ -45,10 +43,17 @@ public class SwitchController : MonoBehaviour {
 		atSwitch = false;
     }
 
-    void useBattery()
+    bool useBattery()
     {
         GameObject battery = inventory.getFirstItem();
         battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
         battery.SetActive(true);
+        if (battery.GetComponent<Battery>().isEmpty())
+        {
+            Debug.Log("Battery is empty!");
+            return false;
+        }
+        battery.GetComponent<Battery>().StartCoroutine("useBattery");
+        return true;
     }
 }

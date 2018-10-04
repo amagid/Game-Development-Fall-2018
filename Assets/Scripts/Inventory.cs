@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
-    private ArrayList items;
+	private List<GameObject> items;
 
 	// Use this for initialization
 	void Start () {
-		items = new ArrayList ();
+		items = new List<GameObject> ();
 	}
 	
 	// Update is called once per frame
@@ -54,9 +54,13 @@ public class Inventory : MonoBehaviour {
     //test method for test scene 1 ONLY
     public GameObject getFirstItem()
     {
+		sortDescending ();
         GameObject gameObj = (GameObject)(items[0]);
         removeItem(gameObj);
         return gameObj;
     }
 
+	public void sortDescending(){
+		items.Sort ((x, y) => y.GetComponent<Battery>().getPowerIndex().CompareTo(x.GetComponent<Battery>().getPowerIndex()));
+	}
 }

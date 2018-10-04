@@ -20,6 +20,9 @@ public class Inventory : MonoBehaviour {
         return items.Count;
     }
 
+    //****************************************
+    //need to sort the batteries from largest power_index to lowest!!!!!!!!!!!!!!!!!!!!!!
+
     public bool addItem(GameObject item) {
 		Debug.Log ("Item added: " + item.name);
         items.Add(item);

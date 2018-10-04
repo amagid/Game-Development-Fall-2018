@@ -7,8 +7,11 @@ public class DoorController : MonoBehaviour {
     //private bool isOpen;
     private Vector3 closePos;
     private Vector3 openPos;
+
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField] private DoorAxes doorAxisDirection;
+	[SerializeField] private bool isElevatorDoor = false;
+
 	private float CLOSE_FACTOR = 6f;
 
     // Use this for initialization
@@ -27,6 +30,9 @@ public class DoorController : MonoBehaviour {
 			break;
 		}
 		this.openPos = openPos;
+		if (isElevatorDoor) {
+            StartCoroutine("openDoor");
+		}
 	}
 	
 	// Update is called once per frame
@@ -41,24 +47,25 @@ public class DoorController : MonoBehaviour {
             transform.position = Vector3.Lerp(closePos, openPos, t);
             yield return null;
         }
-        yield return new WaitForSeconds(3f);
-        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+        if (!isElevatorDoor)
         {
-            transform.position = Vector3.Lerp(openPos, closePos, t);
-            yield return null;
+            yield return new WaitForSeconds(3f);
+            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+            {
+                transform.position = Vector3.Lerp(openPos, closePos, t);
+                yield return null;
+            }
         }
         //isOpen = true;
     }
 
 
-    /* can add this in later if needed
     public IEnumerator closeDoor()
     {
-        for(float t = 0f; t < 1; t += Time.deltaTime / 2f) {
+        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+        {
             transform.position = Vector3.Lerp(openPos, closePos, t);
             yield return null;
         }
-        //isOpen = false;
     }
-    */
 }

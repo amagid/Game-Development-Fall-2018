@@ -28,4 +28,10 @@ public interface PoweredOperation {
     /// <returns>True if device was active LAST TICK, False if not.</returns>
     bool isActive();
 
+    /// <summary>
+    /// Gets the PowerConsumer attached to this device. PowerConsumers must be added as Components through the Unity editor and configured there.
+    /// </summary>
+    /// <returns>The PowerConsumer attached to this device.</returns>
+    PowerConsumer getPowerConsumer();
+
 }

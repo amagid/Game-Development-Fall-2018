@@ -7,8 +7,9 @@ using TMPro;
 public class PlayerCharacter : MonoBehaviour {
 	private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
-	private const int MAX_SANITY = 1000;
-	private int sanity;
+	private const float MAX_SANITY = 100f;
+    private const float SANITY_DECREASE_RATE = 0.05f;
+	private float sanity;
 	private bool losingSanity;
     private bool inElevator;
     private PowerSource internalBattery;
@@ -33,26 +34,24 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!this.internalPowerConsumer.powerDevice())
+        if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
         {
             endGame();
         }
 
 		if (losingSanity && !inElevator) {
-			sanity--;
-			if (sanity < 0) {
-				endGame ();
-			}
+			sanity -= SANITY_DECREASE_RATE;
 		}
+        losingSanity = true;
 	}
 
-    /*
+    
 	void OnGUI() {
 		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
-		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
+		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
 	}
-    */
+    
     
 
     //test for picking up batteries and use them for Test Scene One
@@ -100,13 +99,12 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 	}
 
-	public void gainSanity(){
-		if (this.sanity < MAX_SANITY - 3) {
-			this.sanity += 5;
-		} else {
+	public void gainSanity(float amount){
+		this.sanity += amount;
+		if (this.sanity > MAX_SANITY) {
 			this.sanity = MAX_SANITY;
 		}
-
+        this.losingSanity = false;
 	}
 
 	public void endGame(){
@@ -117,8 +115,8 @@ public class PlayerCharacter : MonoBehaviour {
         return this.inventory;
     }
 
-    public int GetSanity() {
-        return sanity / (MAX_SANITY / 100);
+    public float getSanity() {
+        return sanity;
     }
 
     public PowerSource getPowerSource() {

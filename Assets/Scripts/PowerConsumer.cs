@@ -4,7 +4,7 @@ using UnityEngine;
 
 //TODO: Update this class to handle requiring and using multiple PowerSources (like the Elevator Control Panel).
 //TODO: Consider updating this class to handle gradient Power consumption (increase/decrease rate over time).
-public class PowerConsumer {
+public class PowerConsumer : MonoBehaviour {
 
     [SerializeField] private int consumptionRate;
     [SerializeField] private PowerSource currentPowerSource;

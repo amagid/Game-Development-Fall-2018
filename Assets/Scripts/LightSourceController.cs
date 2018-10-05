@@ -5,10 +5,10 @@ using UnityEngine;
 public class LightSourceController : MonoBehaviour, PoweredOperation {
 	private GameObject Player;
 	private PlayerCharacter playersScript;
-    private PowerConsumer powerConsumer;
 	bool atLight;
 	GameObject pointLight;
     private bool deviceActive;
+    private PowerConsumer powerConsumer;
 
 
 	void Start () {
@@ -20,13 +20,13 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 		pointLight.transform.position = gameObject.transform.position;
 		pointLight.SetActive (false);
         deviceActive = false;
-        this.powerConsumer = new PowerConsumer(1, null);
+        this.powerConsumer = this.getPowerConsumer();
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-        // Activate/Operate/Deactivate device based on PowerConsumer state
+        // Activate/Operate/Deactivate device based on powerConsumer state
         bool deviceIsPowered = this.powerConsumer.powerDevice();
         if (deviceIsPowered && !this.isActive())
         {
@@ -92,6 +92,16 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     public bool isActive()
     {
         return deviceActive;
+    }
+
+    public PowerConsumer getPowerConsumer()
+    {
+        PowerConsumer pc = this.gameObject.GetComponent<PowerConsumer>();
+        if (pc == null)
+        {
+            throw new NoPowerConsumerException("LightSourceControllers must always have PowerConsumers! Please attach a PowerConsumer component in the Unity editor.");
+        }
+        return pc;
     }
 
 	void OnTriggerStay (Collider other) {

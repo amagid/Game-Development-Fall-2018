@@ -6,7 +6,7 @@ using UnityEngine;
 //TODO: Consider updating this class to handle gradient Power consumption (increase/decrease rate over time).
 public class PowerConsumer : MonoBehaviour {
 
-    [SerializeField] private int consumptionRate;
+    [SerializeField] private float consumptionRate;
     [SerializeField] private PowerSource currentPowerSource;
 
     /// <summary>
@@ -14,7 +14,7 @@ public class PowerConsumer : MonoBehaviour {
     /// </summary>
     /// <param name="consumptionRate">The amount of Power per game tick that this PowerConsumer consumes</param>
     /// <param name="initialPowerSource">The initial PowerSource that will be used by this PowerConsumer</param>
-    public PowerConsumer(int consumptionRate, PowerSource initialPowerSource)
+    public PowerConsumer(float consumptionRate, PowerSource initialPowerSource)
     {
         this.consumptionRate = consumptionRate;
         this.currentPowerSource = initialPowerSource;
@@ -24,7 +24,7 @@ public class PowerConsumer : MonoBehaviour {
     /// Constructor 2. Sets consumption rate only
     /// </summary>
     /// <param name="consumptionRate">The amount of Power per game tick that this PowerConsumer consumes</param>
-    public PowerConsumer(int consumptionRate)
+    public PowerConsumer(float consumptionRate)
     {
         this.consumptionRate = consumptionRate;
         this.currentPowerSource = null;
@@ -35,7 +35,7 @@ public class PowerConsumer : MonoBehaviour {
     /// </summary>
     public PowerConsumer()
     {
-        this.consumptionRate = 1;
+        this.consumptionRate = 0.1f;
         this.currentPowerSource = null;
     }
 
@@ -62,7 +62,7 @@ public class PowerConsumer : MonoBehaviour {
     /// Gets the current consumption rate of this PowerConsumer
     /// </summary>
     /// <returns>The current consumption rate of this PowerConsumer</returns>
-    public int getConsumptionRate()
+    public float getConsumptionRate()
     {
         return this.consumptionRate;
     }

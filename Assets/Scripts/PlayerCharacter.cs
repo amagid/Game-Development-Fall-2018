@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour {
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
     private const float SANITY_DECREASE_RATE = 0.05f;
+    private const float ELEVATOR_SANITY_RATE = 0.1f;
 	private float sanity;
 	private bool losingSanity;
     private bool inElevator;
@@ -41,7 +42,10 @@ public class PlayerCharacter : MonoBehaviour {
 
 		if (losingSanity && !inElevator) {
 			sanity -= SANITY_DECREASE_RATE;
-		}
+		} else if (inElevator)
+        {
+            this.gainSanity(ELEVATOR_SANITY_RATE);
+        }
         losingSanity = true;
 	}
 

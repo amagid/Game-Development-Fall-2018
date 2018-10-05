@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSourceController : MonoBehaviour {
+public class LightSourceController : MonoBehaviour, PoweredOperation {
 	private GameObject Player;
 	private PlayerCharacter playersScript;
     private PowerConsumer powerConsumer;
 	bool atLight;
 	GameObject pointLight;
+    private bool deviceActive;
 
 
 	void Start () {
@@ -18,15 +19,22 @@ public class LightSourceController : MonoBehaviour {
 		lightComp.intensity = 5;
 		pointLight.transform.position = gameObject.transform.position;
 		pointLight.SetActive (false);
+        deviceActive = false;
         this.powerConsumer = new PowerConsumer(1, null);
 	}
 
 	// Update is called once per frame
 	void Update () {
-        if (this.powerConsumer.powerDevice())
+
+        // Activate/Operate/Deactivate device based on PowerConsumer state
+        bool deviceIsPowered = this.powerConsumer.powerDevice();
+        if (deviceIsPowered && !this.isActive())
+        {
+            this.activate();
+        } else if (deviceIsPowered && this.isActive())
         {
             this.operate();
-        } else
+        } else if (!deviceIsPowered && this.isActive())
         {
             this.deactivate();
         }
@@ -58,21 +66,32 @@ public class LightSourceController : MonoBehaviour {
         }
 	}
 
-    private void operate()
+    public void activate()
     {
         pointLight.SetActive(true);
+        this.deviceActive = true;
+    }
+
+    public void operate()
+    {
         if (atLight)
         {
             playersScript.gainSanity();
         }
     }
 
-    private void deactivate()
+    public void deactivate()
     {
         if (pointLight.activeInHierarchy)
         {
             pointLight.SetActive(false);
         }
+        deviceActive = false;
+    }
+
+    public bool isActive()
+    {
+        return deviceActive;
     }
 
 	void OnTriggerStay (Collider other) {

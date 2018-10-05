@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSourceController : MonoBehaviour {
+public class LightSourceController : MonoBehaviour, PoweredOperation {
 	private GameObject Player;
 	private PlayerCharacter playersScript;
+    private PowerConsumer powerConsumer;
 	bool atLight;
 	GameObject pointLight;
+    private bool deviceActive;
 
 
 	void Start () {
@@ -17,24 +19,80 @@ public class LightSourceController : MonoBehaviour {
 		lightComp.intensity = 5;
 		pointLight.transform.position = gameObject.transform.position;
 		pointLight.SetActive (false);
+        deviceActive = false;
+        this.powerConsumer = new PowerConsumer(1, null);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (atLight) {
-			if (Input.GetKey (KeyCode.E)){
-				pointLight.SetActive (true);
-				playersScript.reducePower ();
-				playersScript.gainSanity ();
-			} else
+
+        // Activate/Operate/Deactivate device based on PowerConsumer state
+        bool deviceIsPowered = this.powerConsumer.powerDevice();
+        if (deviceIsPowered && !this.isActive())
+        {
+            this.activate();
+        } else if (deviceIsPowered && this.isActive())
+        {
+            this.operate();
+        } else if (!deviceIsPowered && this.isActive())
+        {
+            this.deactivate();
+        }
+
+        // TODO: Move all powering code like this to central location such as PlayerCharacter script
+        if (atLight)
+        {
+            if (Input.GetKey(KeyCode.E))
             {
-                if (pointLight.activeInHierarchy)
+                if (!this.powerConsumer.hasPowerSource())
                 {
-                    pointLight.SetActive(false);
+                    this.powerConsumer.attachPowerSource(playersScript.getPowerSource());
                 }
             }
-		}
+            else
+            {
+                if (this.powerConsumer.hasPowerSource())
+                {
+                    this.powerConsumer.removePowerSource();
+                }
+            }
+        }
+        else
+        {
+            if (this.powerConsumer.hasPowerSource())
+            {
+                this.powerConsumer.removePowerSource();
+            }
+        }
 	}
+
+    public void activate()
+    {
+        pointLight.SetActive(true);
+        this.deviceActive = true;
+    }
+
+    public void operate()
+    {
+        if (atLight)
+        {
+            playersScript.gainSanity();
+        }
+    }
+
+    public void deactivate()
+    {
+        if (pointLight.activeInHierarchy)
+        {
+            pointLight.SetActive(false);
+        }
+        deviceActive = false;
+    }
+
+    public bool isActive()
+    {
+        return deviceActive;
+    }
 
 	void OnTriggerStay (Collider other) {
 		if (other.name == "Player")
@@ -42,11 +100,8 @@ public class LightSourceController : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider other) {
-		atLight = false;
-        if (pointLight.activeInHierarchy)
-        {
-            pointLight.SetActive(false);
-        }
+        if (other.name == "Player")
+    		atLight = false;
 	}
 
 }

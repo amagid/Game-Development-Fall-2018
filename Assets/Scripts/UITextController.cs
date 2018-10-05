@@ -29,7 +29,7 @@ public class UITextController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         this.sanityValue = player.GetComponent<PlayerCharacter>().GetSanity();
-        this.powerValue = player.GetComponent<PlayerCharacter>().GetPower();
+        this.powerValue = player.GetComponent<PlayerCharacter>().getPower();
         this.batteryAmount = player.GetComponent<PlayerCharacter>().GetInventory()
             .itemCount();
         this.sanityText.text = "Sanity: " + sanityValue; 

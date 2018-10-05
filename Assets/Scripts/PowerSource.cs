@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PowerSource {
 
-    [SerializeField] private int maxPower;
-    [SerializeField] private int startingPower;
-    private int currentPower;
+    [SerializeField] private float maxPower;
+    [SerializeField] private float startingPower;
+    private float currentPower;
 
-    public PowerSource(int maxPower, int startingPower)
+    public PowerSource(float maxPower, float startingPower)
     {
         this.maxPower = maxPower;
         this.startingPower = startingPower;
@@ -26,7 +26,7 @@ public class PowerSource {
     /// </summary>
     /// <param name="amount">The amount of Power to transfer</param>
     /// <returns>True if succeeded, False if failed</returns>
-    public bool takePower(int amount)
+    public bool takePower(float amount)
     {
         if (currentPower >= amount)
         {
@@ -44,7 +44,7 @@ public class PowerSource {
     /// </summary>
     /// <param name="amount">The amount of Power to transfer</param>
     /// <returns>True if succeeded, False if failed</returns>
-    public bool givePower(int amount)
+    public bool givePower(float amount)
     {
         if (currentPower + amount > maxPower)
         {
@@ -60,7 +60,7 @@ public class PowerSource {
     /// Gets this PowerSource's current Power level
     /// </summary>
     /// <returns>The PowerSource's current Power level</returns>
-    public int getPowerLevel()
+    public float getPowerLevel()
     {
         return currentPower;
     }
@@ -69,7 +69,7 @@ public class PowerSource {
     /// Gets this PowerSource's Power capacity
     /// </summary>
     /// <returns>The PowerSource's Power capacity</returns>
-    public int getMaxPower()
+    public float getMaxPower()
     {
         return maxPower;
     }
@@ -100,7 +100,7 @@ public class PowerSource {
     /// <param name="receiver">The PowerSource to give Power to</param>
     /// <param name="amount">The amount of Power to attempt to transfer</param>
     /// <returns>True if succeeded, False if failed.</returns>
-    public static bool transferPower(PowerSource sender, PowerSource receiver, int amount)
+    public static bool transferPower(PowerSource sender, PowerSource receiver, float amount)
     {
         if (sender.getPowerLevel() >= amount && receiver.getPowerLevel() + amount <= receiver.getPowerLevel())
         {

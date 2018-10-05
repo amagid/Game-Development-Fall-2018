@@ -35,5 +35,13 @@ sysinfo.txt
 *.apk
 *.unitypackage
 ProjectSettings/ProjectVersion.txt
+<<<<<<< HEAD
 ProjectSettings/ProjectVersion.txt
 Assets/Plugins.meta
+=======
+
+# GitHub Plugin
+Assets/Plugins/**
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectVersion.txt
+>>>>>>> master

@@ -8,6 +8,7 @@ TagManager:
   - Switch
   - note
   - zone_collider
+  - power_source
   layers:
   - Default
   - TransparentFX

@@ -7,40 +7,56 @@ using TMPro;
 public class PlayerCharacter : MonoBehaviour {
 	private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
-	private const int MAX_POWER = 300;
-	private int power;
-	private const int MAX_SANITY = 1000;
-	private int sanity;
-	private bool losingPower; 
+	private const float MAX_SANITY = 100f;
+    private const float SANITY_DECREASE_RATE = 0.05f;
+    private const float ELEVATOR_SANITY_RATE = 0.1f;
+	private float sanity;
 	private bool losingSanity;
     private bool inElevator;
+    private PowerSource internalBattery;
+    private PowerConsumer internalPowerConsumer;
 
     void Start () {
 		style1.fontSize = 25;
 		style1.normal.textColor = Color.green;
         inventory = GetComponent<Inventory>();
-		power = MAX_POWER;
 		sanity = MAX_SANITY;
-		losingPower = false;
 		losingSanity = true;
-        inElevator = false; ;
+        inElevator = false;
+
+        internalBattery = new PowerSource(300f, 100f);
+        this.internalPowerConsumer = this.gameObject.GetComponent<PowerConsumer>();
+        if (this.internalPowerConsumer == null)
+        {
+            throw new NoPowerConsumerException("Player must have a PowerConsumer! Please add a PowerConsumer component to the Player in the Unity editor.");
+        }
+        this.internalPowerConsumer.attachPowerSource(this.internalBattery);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (inventory.itemCount () == 0 & losingSanity && !inElevator && false) {
-			sanity--;
-			if (sanity < 0) {
-				endGame ();
-			}
-		}
+        if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
+        {
+            endGame();
+        }
+
+		if (losingSanity && !inElevator && inventory.itemCount() == 0) {
+			sanity -= SANITY_DECREASE_RATE;
+		} else if (inElevator)
+        {
+            this.gainSanity(ELEVATOR_SANITY_RATE);
+        }
+        losingSanity = true;
 	}
 
+    
 	void OnGUI() {
-		GUI.Label (new Rect (Screen.width * 0.85f, Screen.height * 0.01f, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
-		GUI.Label (new Rect (Screen.width * 0.85f, Screen.height * 0.01f + 30, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
-		GUI.Label (new Rect (Screen.width * 0.85f, Screen.height * 0.01f + 60, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
+		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
+		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
+		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
 	}
+    
+    
 
     //test for picking up batteries and use them for Test Scene One
     void OnTriggerEnter(Collider other)
@@ -77,32 +93,38 @@ public class PlayerCharacter : MonoBehaviour {
         }
     }
 
-	public int getPower(){
-		return this.power;
+	public float getPower(){
+		return internalBattery.getPowerLevel();
 	}
 
-	public void reducePower(){
-		this.power--;
-		if(power < 0){
-			endGame ();
+	public void reducePower() {
+        if (!internalBattery.takePower(1)) {
+            endGame();
 		}
 	}
 
-	public void gainSanity(){
-		if (this.sanity < MAX_SANITY - 3) {
-			this.sanity += 5;
-		} else {
+	public void gainSanity(float amount){
+		this.sanity += amount;
+		if (this.sanity > MAX_SANITY) {
 			this.sanity = MAX_SANITY;
 		}
-
-	}
-
-
-	public void stopReducingPower(){
-		losingPower = false;
+        this.losingSanity = false;
 	}
 
 	public void endGame(){
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene(0);
 	}
+
+    public Inventory GetInventory() {
+        return this.inventory;
+    }
+
+    public float getSanity() {
+        return sanity;
+    }
+
+    public PowerSource getPowerSource() {
+        return internalBattery;
+    }
+
 }

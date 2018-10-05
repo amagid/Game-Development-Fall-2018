@@ -1,1 +1,17 @@
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.9f1
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+m_EditorVersion: 2018.2.9f1
+=======
+m_EditorVersion: 2018.2.11f1
+>>>>>>> 0f5b980011ac4163c12d666a7b272b91b4c3f164
+=======
+m_EditorVersion: 2018.2.11f1
+>>>>>>> 0f5b980011ac4163c12d666a7b272b91b4c3f164
+=======
+m_EditorVersion: 2018.2.11f1
+>>>>>>> 0f5b980011ac4163c12d666a7b272b91b4c3f164
+>>>>>>> master

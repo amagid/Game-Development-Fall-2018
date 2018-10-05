@@ -28,7 +28,7 @@ public class UITextController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.sanityValue = player.GetComponent<PlayerCharacter>().GetSanity();
+        this.sanityValue = Mathf.RoundToInt(player.GetComponent<PlayerCharacter>().getSanity());
         this.powerValue = Mathf.RoundToInt(player.GetComponent<PlayerCharacter>().getPower());
         this.batteryAmount = player.GetComponent<PlayerCharacter>().GetInventory()
             .itemCount();

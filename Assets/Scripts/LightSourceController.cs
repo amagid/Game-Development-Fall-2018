@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSourceController : MonoBehaviour, PoweredOperation {
+    [SerializeField] float sanityIncreaseRate;
 	private GameObject Player;
 	private PlayerCharacter playersScript;
 	bool atLight;
 	GameObject pointLight;
     private bool deviceActive;
     private PowerConsumer powerConsumer;
-
 
 	void Start () {
 		Player = GameObject.Find ("Player");
@@ -76,7 +76,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     {
         if (atLight)
         {
-            playersScript.gainSanity();
+            playersScript.gainSanity(this.sanityIncreaseRate);
         }
     }
 

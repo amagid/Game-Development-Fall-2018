@@ -1793,6 +1793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff5850a4635e454c8fd72c7c04bbfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanityIncreaseRate: 3
 --- !u!136 &912066130
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2626,6 +2627,7 @@ GameObject:
   - component: {fileID: 1248575539}
   - component: {fileID: 1248575536}
   - component: {fileID: 1248575537}
+  - component: {fileID: 1248575541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2770,6 +2772,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a6d0c7513d6034b8922dd8f734317c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1248575541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248575531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumptionRate: 0.01
 --- !u!4 &1310362849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2,
@@ -2987,6 +3001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff5850a4635e454c8fd72c7c04bbfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanityIncreaseRate: 0.1
 --- !u!136 &1516347547
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3371,6 +3386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff5850a4635e454c8fd72c7c04bbfee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanityIncreaseRate: 2
 --- !u!136 &1617786184
 CapsuleCollider:
   m_ObjectHideFlags: 0

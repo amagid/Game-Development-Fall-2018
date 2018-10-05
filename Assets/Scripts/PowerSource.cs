@@ -13,10 +13,11 @@ public class PowerSource {
         this.maxPower = maxPower;
         this.startingPower = startingPower;
         this.currentPower = this.startingPower;
+        Debug.Log(maxPower);
     }
 
 	// Use this for initialization
-	void Start () {
+    void Start () {
         currentPower = startingPower;
 	}
     

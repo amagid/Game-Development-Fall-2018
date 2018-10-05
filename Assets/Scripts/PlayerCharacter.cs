@@ -7,29 +7,26 @@ using TMPro;
 public class PlayerCharacter : MonoBehaviour {
 	private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
-	private const int MAX_POWER = 300;
-	private int power;
 	private const int MAX_SANITY = 1000;
 	private int sanity;
-	private bool losingPower; 
 	private bool losingSanity;
     private bool inElevator;
+    private PowerSource internalBattery;
 
     void Start () {
+        internalBattery = new PowerSource(300, 100);
 		style1.fontSize = 25;
 		style1.normal.textColor = Color.green;
         inventory = GetComponent<Inventory>();
-		power = MAX_POWER;
 		sanity = MAX_SANITY;
-		losingPower = false;
 		losingSanity = true;
-        inElevator = false; ;
+        inElevator = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (inventory.itemCount () == 0 & losingSanity && !inElevator && false) {
-			sanity--;
+		if (losingSanity && !inElevator) {
+			//sanity--;
 			if (sanity < 0) {
 				endGame ();
 			}
@@ -39,10 +36,10 @@ public class PlayerCharacter : MonoBehaviour {
     /*
 	void OnGUI() {
 		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
-		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + power / (MAX_POWER/100)), style1);
+		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + internalBattery.getPowerLevel()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
-	}*/
-
+	}
+    */
     //test for picking up batteries and use them for Test Scene One
     void OnTriggerEnter(Collider other)
     {
@@ -79,13 +76,12 @@ public class PlayerCharacter : MonoBehaviour {
     }
 
 	public int getPower(){
-		return this.power;
+		return internalBattery.getPowerLevel();
 	}
 
-	public void reducePower(){
-		this.power--;
-		if(power < 0){
-			endGame ();
+	public void reducePower() {
+        if (!internalBattery.takePower(1)) {
+            endGame();
 		}
 	}
 
@@ -98,13 +94,8 @@ public class PlayerCharacter : MonoBehaviour {
 
 	}
 
-
-	public void stopReducingPower(){
-		losingPower = false;
-	}
-
 	public void endGame(){
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene(0);
 	}
 
     public Inventory GetInventory() {
@@ -115,8 +106,8 @@ public class PlayerCharacter : MonoBehaviour {
         return sanity / (MAX_SANITY / 100);
     }
 
-    public int GetPower() {
-        return power / (MAX_POWER / 100);
+    public PowerSource getPowerSource() {
+        return internalBattery;
     }
 
 }

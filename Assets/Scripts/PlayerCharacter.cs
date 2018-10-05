@@ -12,25 +12,34 @@ public class PlayerCharacter : MonoBehaviour {
 	private bool losingSanity;
     private bool inElevator;
     private PowerSource internalBattery;
+    private PowerConsumer internalPowerConsumer;
 
     void Start () {
-        internalBattery = new PowerSource(300f, 100f);
 		style1.fontSize = 25;
 		style1.normal.textColor = Color.green;
         inventory = GetComponent<Inventory>();
 		sanity = MAX_SANITY;
 		losingSanity = true;
         inElevator = false;
+
+        internalBattery = new PowerSource(300f, 100f);
+        this.internalPowerConsumer = this.gameObject.GetComponent<PowerConsumer>();
+        if (this.internalPowerConsumer == null)
+        {
+            throw new NoPowerConsumerException("Player must have a PowerConsumer! Please add a PowerConsumer component to the Player in the Unity editor.");
+        }
+        this.internalPowerConsumer.attachPowerSource(this.internalBattery);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (internalBattery.isEmpty())
+        if (!this.internalPowerConsumer.powerDevice())
         {
             endGame();
         }
+
 		if (losingSanity && !inElevator) {
-			//sanity--;
+			sanity--;
 			if (sanity < 0) {
 				endGame ();
 			}

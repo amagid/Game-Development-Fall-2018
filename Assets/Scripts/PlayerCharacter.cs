@@ -25,6 +25,10 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (internalBattery.isEmpty())
+        {
+            endGame();
+        }
 		if (losingSanity && !inElevator) {
 			//sanity--;
 			if (sanity < 0) {
@@ -33,13 +37,13 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 	}
 
-    /*
+    
 	void OnGUI() {
 		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + internalBattery.getPowerLevel()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + sanity / (MAX_SANITY/100)), style1);	
 	}
-    */
+    
     //test for picking up batteries and use them for Test Scene One
     void OnTriggerEnter(Collider other)
     {

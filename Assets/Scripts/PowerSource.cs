@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerSource: MonoBehaviour {
+public class PowerSource {
 
     [SerializeField] private int maxPower;
     [SerializeField] private int startingPower;

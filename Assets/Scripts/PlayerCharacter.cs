@@ -49,6 +49,10 @@ public class PlayerCharacter : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftShift))
         {
             sanity += personalLightSanityRate;
+            if (sanity > MAX_SANITY)
+            {
+                sanity = MAX_SANITY;
+            }
             this.internalBattery.takePower(personalLightPowerRate);
             this.personalLight.enabled = true;
             losingSanity = false;

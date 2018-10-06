@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SanityBarUI : MonoBehaviour {
+public class BarUI : MonoBehaviour {
 
     [SerializeField] private Image powerBar;
-    [SerializeField]private Image sanityBar;
+    [SerializeField] private Image sanityBar;
+    [SerializeField] private Color lowColor;
+    [SerializeField] private Color fullColor;
+    private Color lerpedColor;
+    private float lerpSpeed;
     private float maxSanity = 100f;
     private float maxPower = 0f;
     private float sanity;
@@ -17,6 +21,8 @@ public class SanityBarUI : MonoBehaviour {
     void Start()
     {
         playerChar = GameObject.FindWithTag("Player").GetComponent<PlayerCharacter>();
+        lowColor = Color.red;
+        fullColor = Color.green;
     }
 
     // Update is called once per frame
@@ -32,6 +38,8 @@ public class SanityBarUI : MonoBehaviour {
             sanity = playerChar.getSanity();
             sanityBar.fillAmount = sanity / maxSanity;
             powerBar.fillAmount = power / maxPower;
+            sanityBar.color = Color.Lerp(Color.red, Color.green, sanityBar.fillAmount);
+            powerBar.color = Color.Lerp(Color.red, Color.green, powerBar.fillAmount);
         }
     }
 

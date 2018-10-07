@@ -40,7 +40,7 @@ public class PlayerCharacter : MonoBehaviour {
             endGame();
         }
 
-		if (losingSanity && !inElevator) {
+		if (losingSanity && !inElevator && inventory.itemCount() == 0) {
 			sanity -= SANITY_DECREASE_RATE;
 		} else if (inElevator)
         {

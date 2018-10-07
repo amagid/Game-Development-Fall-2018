@@ -39,7 +39,7 @@ public class BarUI : MonoBehaviour {
             sanityBar.fillAmount = sanity / maxSanity;
             powerBar.fillAmount = power / maxPower;
             sanityBar.color = Color.Lerp(Color.red, Color.green, sanityBar.fillAmount);
-            powerBar.color = Color.Lerp(Color.red, Color.green, powerBar.fillAmount);
+            powerBar.color = Color.Lerp(Color.red, Color.green, powerBar.fillAmount);   
         }
     }
 

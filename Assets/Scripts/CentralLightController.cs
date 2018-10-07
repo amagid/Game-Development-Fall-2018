@@ -20,6 +20,14 @@ public class CentralLightController : MonoBehaviour {
 
     private GameObject batteryOnSwitch = null;
 
+	public GameObject getBatteryOnSwitch(){
+		return this.batteryOnSwitch;
+	}
+
+	public void setBatteryOnSwitch(GameObject batteryOnSwitch){
+		this.batteryOnSwitch = batteryOnSwitch;
+	}
+
     void Start()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
@@ -64,6 +72,7 @@ public class CentralLightController : MonoBehaviour {
             return;
         }
         central_lights.SetActive(true);
+		battery.GetComponent<Battery> ().setCentralLightController (this);
         battery.GetComponent<Battery>().StartCoroutine("useBattery");
     }
 

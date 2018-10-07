@@ -13,6 +13,10 @@ public class DoorController : MonoBehaviour {
 	[SerializeField] private bool isElevatorDoor = false;
 
 	private float CLOSE_FACTOR = 6f;
+	private bool isSlowDoor = true;
+	public void setIsSlowDoor(bool isSlowDoor){
+		this.isSlowDoor = isSlowDoor;
+	}
 
     // Use this for initialization
     void Start () {
@@ -47,15 +51,16 @@ public class DoorController : MonoBehaviour {
             transform.position = Vector3.Lerp(closePos, openPos, t);
             yield return null;
         }
-        if (!isElevatorDoor)
-        {
-            yield return new WaitForSeconds(3f);
-            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
-            {
-                transform.position = Vector3.Lerp(openPos, closePos, t);
-                yield return null;
-            }
-        }
+		if (!isElevatorDoor && isSlowDoor) {
+			Debug.Log ("SLOWING DOWN!");
+			yield return new WaitForSeconds (3f);
+			for (float t = 0f; t < 1; t += Time.deltaTime / 2f) {
+				transform.position = Vector3.Lerp (openPos, closePos, t);
+				yield return null;
+			}
+		} else if (!isSlowDoor) {
+			transform.position = closePos;
+		}
         //isOpen = true;
     }
 

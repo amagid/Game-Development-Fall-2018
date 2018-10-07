@@ -6,7 +6,7 @@ public class LowSanityEffects : MonoBehaviour {
 
     [SerializeField] private GameObject player;
 
-    [SerializeField] private GameObject camera_light;
+    [SerializeField] private Light camera_light;
 
     private float sanity;
 
@@ -18,10 +18,18 @@ public class LowSanityEffects : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         sanity = player.GetComponent<PlayerCharacter>().getSanity();
-
+        float magnitude = 0f;
         //sanity checks to see which effects will take place
-        if(sanity < 70f) {
-            StartCoroutine(Shake(1f, 0.01f));
+        if(sanity < 60f) {
+            StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.001f));
+        }
+        if(sanity < 40f) {
+            changeSightRange(-(Time.deltaTime));
+            changeSightIntensity(-(Time.deltaTime));
+            changeSightAngle(-(Time.deltaTime));
+        }
+        if(sanity < 20f) {
+            changeSightColor(Color.red);
         }
     }
 
@@ -38,20 +46,31 @@ public class LowSanityEffects : MonoBehaviour {
         }
     }
 
-    //decrease range of sight
-    public void decreaseSightRange(float difference) {
-
+    //change range of sight
+    //default range is 10
+    public void changeSightRange(float difference) {
+        camera_light.range += difference;
     }
 
-    //decrease the angle of sight
-    public void decreaseSightAngle(float difference) {
+    //change intensity of light
+    //default value is 3.0
+    public void changeSightIntensity(float difference) {
+        camera_light.intensity += difference;
+    }
 
+    //change the angle of sight
+    //default sightangle is 70
+    public void changeSightAngle(float difference) {
+        camera_light.spotAngle += difference;
     }
 
     //change player's self emitting light's color
     public void changeSightColor(Color color) {
-
+        //see if changing the color gradually would work.
+        //Color.Lerp wouldn't work.
+        camera_light.color = color;
     }
+
     //player will be able to solve a level easier if his sanity level is high
 
     //cubes appearing in random places

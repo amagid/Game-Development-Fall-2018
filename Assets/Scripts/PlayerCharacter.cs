@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerCharacter : MonoBehaviour {
-	private GUIStyle style1 = new GUIStyle();
+    [SerializeField] private float personalLightSanityRate;
+    [SerializeField] private float personalLightPowerRate;
+    private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
     private const float SANITY_DECREASE_RATE = 0.05f;
     private const float ELEVATOR_SANITY_RATE = 0.1f;
+
 	private float sanity;
 	private bool losingSanity;
     private bool inElevator;
     private PowerSource internalBattery;
     private PowerConsumer internalPowerConsumer;
+    private Light personalLight;
 
     void Start () {
 		style1.fontSize = 25;
@@ -31,6 +35,8 @@ public class PlayerCharacter : MonoBehaviour {
             throw new NoPowerConsumerException("Player must have a PowerConsumer! Please add a PowerConsumer component to the Player in the Unity editor.");
         }
         this.internalPowerConsumer.attachPowerSource(this.internalBattery);
+
+        this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
     }
 	
 	// Update is called once per frame
@@ -40,7 +46,22 @@ public class PlayerCharacter : MonoBehaviour {
             endGame();
         }
 
-		if (losingSanity && !inElevator && inventory.itemCount() == 0) {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            sanity += personalLightSanityRate;
+            if (sanity > MAX_SANITY)
+            {
+                sanity = MAX_SANITY;
+            }
+            this.internalBattery.takePower(personalLightPowerRate);
+            this.personalLight.enabled = true;
+            losingSanity = false;
+        } else
+        {
+            this.personalLight.enabled = false;
+        }
+
+		if (losingSanity && !inElevator) {
 			sanity -= SANITY_DECREASE_RATE;
 		} else if (inElevator)
         {

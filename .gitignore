@@ -35,6 +35,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 ProjectSettings/ProjectVersion.txt
+Assets/Plugins.meta
 
 # GitHub Plugin
 Assets/Plugins/**

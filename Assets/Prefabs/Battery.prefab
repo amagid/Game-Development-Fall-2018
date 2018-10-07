@@ -69,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1881495476296506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.78, y: -4.6099973, z: -18.37}
-  m_LocalScale: {x: 0.4, y: 1.3, z: 0.4}
+  m_LocalPosition: {x: 24.15, y: -4.6099973, z: -19.81}
+  m_LocalScale: {x: 0.39999998, y: 1.3, z: 0.39999998}
   m_Children:
   - {fileID: 4811460260174578}
   - {fileID: 4922215429009514}
@@ -155,7 +155,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 0.22779655, a: 1}
-  m_Intensity: 5.01
+  m_Intensity: 3
   m_Range: 3.48
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b327725d71749e7bf4dacee0c90cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  max_power: 100
   power_index: 100
-  isPickedUp: 0
   inUse: 0
 --- !u!135 &135587621913579566
 SphereCollider:

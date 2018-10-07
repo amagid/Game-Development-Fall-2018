@@ -6,6 +6,8 @@ public class CentralLightController : MonoBehaviour {
 
     private Inventory inventory;
 
+    //Turn this into an array of lights.
+
     [SerializeField] private GameObject central_lights;
 
     private bool atSwitch = false;

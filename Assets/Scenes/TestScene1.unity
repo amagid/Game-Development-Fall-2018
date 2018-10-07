@@ -2448,9 +2448,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.9622642, g: 0.9021752, b: 0.5855287, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 3
   m_Range: 10
-  m_SpotAngle: 66
+  m_SpotAngle: 70
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -2879,6 +2879,7 @@ GameObject:
   - component: {fileID: 1248575539}
   - component: {fileID: 1248575536}
   - component: {fileID: 1248575537}
+  - component: {fileID: 1248575542}
   - component: {fileID: 1248575541}
   m_Layer: 0
   m_Name: Player
@@ -3024,6 +3025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a6d0c7513d6034b8922dd8f734317c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personalLightSanityRate: 0
+  personalLightPowerRate: 0
 --- !u!114 &1248575541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,6 +3039,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumptionRate: 0.01
+--- !u!114 &1248575542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248575531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4f91f9fa55f4c6f8f01da7a1948aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1248575531}
+  camera_light: {fileID: 1134062038}
 --- !u!4 &1310362849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2,

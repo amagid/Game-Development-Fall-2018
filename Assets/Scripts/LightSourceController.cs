@@ -53,7 +53,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
             {
                 if (this.powerConsumer.hasPowerSource())
                 {
-                    this.powerConsumer.removePowerSource();
+                //    this.powerConsumer.removePowerSource();
                 }
             }
         }
@@ -61,7 +61,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
         {
             if (this.powerConsumer.hasPowerSource())
             {
-                this.powerConsumer.removePowerSource();
+                //this.powerConsumer.removePowerSource();
             }
         }
 	}

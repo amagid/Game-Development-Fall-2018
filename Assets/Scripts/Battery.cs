@@ -10,6 +10,43 @@ public class Battery : MonoBehaviour {
 
     public bool inUse;
 
+	private DoorController doorController;
+	private SwitchController switchController;
+	private CentralLightController centralLightController;
+
+	public bool isInUse(){
+		return this.inUse;
+	}
+
+	public void setIsInUse(bool inUse){
+		this.inUse = inUse;
+	}
+
+	public void setSwitchController(SwitchController switchController){
+		this.switchController = switchController;
+	}
+
+	public SwitchController getSwitchController(){
+		return this.switchController;
+	}
+
+	public void setCentralLightController(CentralLightController centralLightController){
+		this.centralLightController = centralLightController;
+	}
+
+	public CentralLightController getCentralLightController(){
+		return this.centralLightController;
+	}
+
+	// used for determining which door it is opening
+	public void setDoorController(DoorController doorController){
+		this.doorController = doorController;
+	}
+
+	public DoorController getDoorController(){
+		return this.doorController;
+	}
+
 	// Use this for initialization
 	void Start () {
         inUse = false;
@@ -30,7 +67,7 @@ public class Battery : MonoBehaviour {
     }
 
     public IEnumerator useBattery() {
-        inUse = true;
+		setIsInUse (true);
         while (!isEmpty())
         {
             //battery will be empty in 5 seconds
@@ -41,7 +78,13 @@ public class Battery : MonoBehaviour {
         this.gameObject.GetComponent<Renderer>().material.color = Color.red;
         this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
         this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
-    }
+		setIsInUse (false);
+		if (switchController != null) {
+			switchController.setBattery (null);
+		} else {
+			centralLightController.setBatteryOnSwitch (null);
+		}
+	}
 
     public IEnumerator chargeBattery()
     {

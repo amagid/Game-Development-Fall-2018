@@ -84,6 +84,24 @@ public class PlayerCharacter : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("battery"))
         {
+			Battery battery = other.gameObject.GetComponent<Battery> ();
+			if (battery.isInUse ()) {
+				Debug.Log ("Player took battery too early");
+				//				Debug.Log(battery.getDoorController ().gameObject.name);
+				DoorController doorController = battery.getDoorController ();
+				if (doorController != null) {
+					doorController.setIsSlowDoor (false);
+					battery.getSwitchController ().setBattery (null);
+					battery.setDoorController (null);
+				} else {
+					Debug.Log ("TURNING OFF THE LIGHTS!!!");
+					CentralLightController centralLightController = battery.getCentralLightController ();
+					centralLightController.StartCoroutine ("turnOffLights");
+					centralLightController.setBatteryOnSwitch (null);
+					battery.setCentralLightController (null);
+				}
+				battery.setIsInUse (false);
+			}
             if (inventory.addItem(other.gameObject))
             {
                 other.gameObject.SetActive(false);

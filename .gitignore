@@ -41,5 +41,10 @@ Assets/Plugins.meta
 Assets/Plugins/**
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/ProjectVersion.txt
+<<<<<<< HEAD
 ProjectSettings/ProjectVersion.txt
 Assets/Plugins.meta
+=======
+Assets/Plugins.meta
+ProjectSettings/ProjectVersion.txt
+>>>>>>> master

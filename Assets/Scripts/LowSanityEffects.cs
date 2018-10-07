@@ -7,6 +7,7 @@ public class LowSanityEffects : MonoBehaviour {
     [SerializeField] private GameObject player;
 
     [SerializeField] private Light camera_light;
+	[SerializeField] private GameObject colorHaze;
 
     private float sanity;
 
@@ -28,9 +29,12 @@ public class LowSanityEffects : MonoBehaviour {
             changeSightIntensity(-(Time.deltaTime));
             changeSightAngle(-(Time.deltaTime));
         }
-        if(sanity < 20f) {
-            changeSightColor(Color.red);
-        }
+		if (sanity < 10f) {
+			colorHaze.SetActive (true);
+			//changeSightColor(Color.red);
+		} else {
+			colorHaze.SetActive (false);
+		}
     }
 
     //camera shaking when sanity is lower than 70
@@ -69,6 +73,7 @@ public class LowSanityEffects : MonoBehaviour {
         //see if changing the color gradually would work.
         //Color.Lerp wouldn't work.
         camera_light.color = color;
+
     }
 
     //player will be able to solve a level easier if his sanity level is high

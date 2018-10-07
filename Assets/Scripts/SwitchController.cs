@@ -18,6 +18,13 @@ public class SwitchController : MonoBehaviour {
 
     public double zOffset;
 
+	// the battery that is attached to the switch
+	private Battery battery = null;
+
+	public void setBattery(Battery battery){
+		this.battery = battery;
+	}
+
 	void Start () {
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
     }
@@ -25,12 +32,17 @@ public class SwitchController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (atSwitch) {
-            if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1)
-            {
-                if (useBattery()) {
-                    door.GetComponent<DoorController>().StartCoroutine("openDoor");
-                }
-            }
+			if (battery != null) {
+				Debug.Log (battery.name + " " + battery.getPowerIndex());
+			}
+			if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1 && battery == null)
+			{
+				if (useBattery()) {
+					DoorController doorController = door.GetComponent<DoorController> ();
+					this.battery.setDoorController (doorController);
+					doorController.StartCoroutine("openDoor");
+				}
+			}
 		}
 	}
 
@@ -45,15 +57,19 @@ public class SwitchController : MonoBehaviour {
 
     bool useBattery()
     {
-        GameObject battery = inventory.getFirstItem();
-        battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
-        battery.SetActive(true);
-        if (battery.GetComponent<Battery>().isEmpty())
-        {
-            Debug.Log("Battery is empty!");
-            return false;
-        }
-        battery.GetComponent<Battery>().StartCoroutine("useBattery");
-        return true;
+		GameObject batteryGO = inventory.getFirstItem();
+		Debug.Log ("BATTERY NAME: " + batteryGO.name);
+		batteryGO.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
+		batteryGO.SetActive(true);
+		if (batteryGO.GetComponent<Battery>().isEmpty())
+		{
+			Debug.Log("Battery is empty!");
+			return false;
+		}
+		this.battery = batteryGO.GetComponent<Battery>();
+		this.battery.setSwitchController (this);
+		door.GetComponent<DoorController> ().setIsSlowDoor (true);
+		this.battery.StartCoroutine("useBattery");
+		return true;
     }
 }

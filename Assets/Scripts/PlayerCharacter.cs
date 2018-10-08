@@ -9,7 +9,10 @@ public class PlayerCharacter : MonoBehaviour {
     [SerializeField] private float personalLightPowerRate;
     [SerializeField] private float starting_power;
     [SerializeField] private GameObject central_lighting;
+    [SerializeField] private float powerSiphonRate;
     private GUIStyle style1 = new GUIStyle();
+    private GUIStyle style2 = new GUIStyle();
+    private GUIStyle style3 = new GUIStyle();
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
     private const float SANITY_DECREASE_RATE = 0.05f;
@@ -21,10 +24,21 @@ public class PlayerCharacter : MonoBehaviour {
     private PowerSource internalBattery;
     private PowerConsumer internalPowerConsumer;
     private Light personalLight;
+    private GameObject seenObject;
+    private PowerConsumer currentConsumer;
+    private PowerSource currentSource;
 
     void Start () {
 		style1.fontSize = 25;
 		style1.normal.textColor = Color.green;
+
+        style2.fontSize = 25;
+        style2.normal.textColor = Color.white;
+
+        style3.fontSize = 16;
+        style3.normal.textColor = Color.white;
+        style3.alignment = TextAnchor.UpperCenter;
+
         inventory = GetComponent<Inventory>();
 		sanity = MAX_SANITY;
 		losingSanity = true;
@@ -75,17 +89,126 @@ public class PlayerCharacter : MonoBehaviour {
         {
             this.gainSanity(ELEVATOR_SANITY_RATE);
         }
+
+
+        // Raycast to find powerable objects
+        RaycastHit hit;
+
+        // Cast Ray in current direction of Camera
+        Transform cameraPos = this.GetComponentInChildren<Camera>().transform;
+
+        // If our RayCast hits an object
+        if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, 2.5f))
+        {
+            Debug.Log("Hit: " + hit.collider.gameObject.name);
+            this.seenObject = hit.collider.gameObject;
+
+            // If the left mouse button is being pressed, attempt to power the hit device
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Debug.Log("Powering Device");
+                // Get the device's PowerConsumer, if any
+                PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
+
+                // If the PowerConsumer exists, check if it's the same one we were on last tick.
+                if (pc != null)
+                {
+                    Debug.Log("PowerConsumer Found");
+                    // If the PowerConsumer is different from the one we were on, switch to powering the new one.
+                    if (pc != this.currentConsumer)
+                    {
+                        Debug.Log("New Power Consumer");
+                        if (this.currentConsumer != null)
+                        {
+                            Debug.Log("Removing Old Consumer");
+                            this.currentConsumer.removePowerSource();
+                        }
+                        pc.attachPowerSource(this.internalBattery);
+                        this.currentConsumer = pc;
+                    }
+                    // If the PowerConsumer did not exist, then we looked away so we need to disconnect from our previous PowerConsumer
+                }
+                else
+                {
+                    Debug.Log("Null Power Consumer");
+                    if (this.currentConsumer != null)
+                    {
+                        this.currentConsumer.removePowerSource();
+                    }
+                    this.currentConsumer = null;
+                }
+                // If we're not pressing LMB, stop powering the device.
+            }
+            else if (this.currentConsumer != null)
+            {
+                this.currentConsumer.removePowerSource();
+                this.currentConsumer = null;
+            }
+
+            //If the right mouse button is being pressed, attempt to siphon power from the hit device.
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                // If we have a power source from last tick, siphon some of its power.
+                if (this.currentSource != null)
+                {
+                    PowerSource.transferPower(this.currentSource, this.internalBattery, this.powerSiphonRate);
+                }
+                // Get the PowerConsumer of the object we're looking at, if any.
+                PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
+                // If there is a PowerConsumer on this object, check if its PowerSource is the same one from last tick.
+                if (pc != null)
+                {
+                    PowerSource ps = pc.getPowerSource();
+                    // If the PowerSource is different from last tick, reassign our current power source.
+                    // This includes the case of a null PowerSource - in that case, we will stop siphoning power, as expected.
+                    if (ps != this.currentSource)
+                    {
+                        this.currentSource = ps;
+                    }
+                    // If the PowerConsumer was null, then there is no source to siphon power from, so make sure we don't keep siphoning from the last PowerSource.
+                }
+                else
+                {
+                    this.currentSource = null;
+                }
+                // If we're no longer pressing RMB, stop siphoning power.
+            }
+            else
+            {
+                this.currentSource = null;
+            }
+            // If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
+        }
+        else
+        {
+            this.seenObject = null;
+            if (this.currentConsumer != null)
+            {
+                this.currentConsumer.removePowerSource();
+            }
+            this.currentSource = null;
+        }
+
+
         losingSanity = true;
 	}
 
-    
-	void OnGUI() {
+
+    void OnGUI()
+    {
+        
 		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
-	}
-    
-    
+        
+        GUI.Label(new Rect(Screen.width / 2 - 13, Screen.height / 2 - 13, 26, 26), "+", style2);
+        if (this.seenObject != null)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 30, 200, 60), this.seenObject.name, style3);
+        }
+    }
+
+
 
     //test for picking up batteries and use them for Test Scene One
     void OnTriggerEnter(Collider other)

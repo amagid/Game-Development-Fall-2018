@@ -3069,6 +3069,7 @@ MonoBehaviour:
   personalLightPowerRate: 0.01
   starting_power: 150
   central_lighting: {fileID: 1370861057}
+  powerSiphonRate: 0.1
 --- !u!114 &1248575541
 MonoBehaviour:
   m_ObjectHideFlags: 0

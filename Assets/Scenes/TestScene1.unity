@@ -3028,6 +3028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personalLightSanityRate: 0
   personalLightPowerRate: 0
+  central_lighting: {fileID: 1370861057}
 --- !u!114 &1248575541
 MonoBehaviour:
   m_ObjectHideFlags: 0

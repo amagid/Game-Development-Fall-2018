@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerCharacter : MonoBehaviour {
     [SerializeField] private float personalLightSanityRate;
     [SerializeField] private float personalLightPowerRate;
+    [SerializeField] private float starting_power;
     [SerializeField] private GameObject central_lighting;
     private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
@@ -29,7 +30,7 @@ public class PlayerCharacter : MonoBehaviour {
 		losingSanity = true;
         inElevator = false;
 
-        internalBattery = new PowerSource(300f, 100f);
+        internalBattery = new PowerSource(300f, starting_power);
         this.internalPowerConsumer = this.gameObject.GetComponent<PowerConsumer>();
         if (this.internalPowerConsumer == null)
         {

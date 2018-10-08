@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerCharacter : MonoBehaviour {
     [SerializeField] private float personalLightSanityRate;
     [SerializeField] private float personalLightPowerRate;
+    [SerializeField] private GameObject central_lighting;
     private GUIStyle style1 = new GUIStyle();
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
@@ -59,6 +60,12 @@ public class PlayerCharacter : MonoBehaviour {
         } else
         {
             this.personalLight.enabled = false;
+        }
+
+        //added a check if the central lighting in ON, player would not lose sanity
+        if(central_lighting.activeSelf)
+        {
+            losingSanity = false;
         }
 
 		if (losingSanity && !inElevator) {

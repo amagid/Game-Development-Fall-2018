@@ -2960,8 +2960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a6d0c7513d6034b8922dd8f734317c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalLightSanityRate: 0
-  personalLightPowerRate: 0
+  personalLightSanityRate: 0.025
+  personalLightPowerRate: 0.01
   central_lighting: {fileID: 1370861057}
 --- !u!114 &1248575541
 MonoBehaviour:

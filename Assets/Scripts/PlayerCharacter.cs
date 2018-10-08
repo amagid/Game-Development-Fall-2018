@@ -158,7 +158,7 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	public void endGame(){
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene("GameOver");
 	}
 
     public Inventory GetInventory() {

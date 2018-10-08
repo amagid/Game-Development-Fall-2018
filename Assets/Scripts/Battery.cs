@@ -54,12 +54,28 @@ public class Battery : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(isEmpty())
+        {
+            this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
+            this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
+        }
+        else if (isFull())
+        {
+            this.gameObject.GetComponent<Renderer>().material.color = Color.green;
+            this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.green;
+            this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
+        }
 	}
 
     public bool isEmpty()
     {
         return power_index <= 0;
+    }
+
+    public bool isFull()
+    {
+        return power_index >= 100;
     }
 
     public int getPowerIndex() {
@@ -74,10 +90,11 @@ public class Battery : MonoBehaviour {
             power_index -= 5;
             yield return new WaitForSeconds(0.2f);
         }
-        Debug.Log(power_index);
+        /*
         this.gameObject.GetComponent<Renderer>().material.color = Color.red;
         this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
         this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
+        */
 		setIsInUse (false);
 		if (switchController != null) {
 			switchController.setBattery (null);
@@ -94,10 +111,10 @@ public class Battery : MonoBehaviour {
             yield return new WaitForSeconds(1f);
             power_index = max_power;
         }
+        /*
         this.gameObject.GetComponent<Renderer>().material.color = Color.green;
         this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.green;
         this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
+        */
     }
-
-
 }

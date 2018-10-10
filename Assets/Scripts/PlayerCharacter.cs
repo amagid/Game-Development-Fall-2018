@@ -151,7 +151,8 @@ public class PlayerCharacter : MonoBehaviour {
                 // If we have a power source from last tick, siphon some of its power.
                 if (this.currentSource != null)
                 {
-                    PowerSource.transferPower(this.currentSource, this.internalBattery, this.powerSiphonRate);
+                    bool result = PowerSource.transferPower(this.currentSource, this.internalBattery, this.powerSiphonRate);
+                    Debug.Log("Result: " + result);
                 }
                 // Get the PowerConsumer of the object we're looking at, if any.
                 PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();

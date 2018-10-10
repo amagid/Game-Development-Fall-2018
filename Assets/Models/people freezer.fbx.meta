@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: 9df34242c9dfccb40a11d1a75c30669f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: group
+    100002: group1
+    100004: group2
+    100006: group3
+    100008: group4
+    100010: group5
+    100012: pasted__pCube1
+    100014: pasted__pCylinder1
+    100016: pCube1
+    100018: pCube2
+    100020: pCube3
+    100022: pCylinder2
+    100024: pCylinder2 1
+    100026: pCylinder4
+    100028: pCylinder5
+    100030: pCylinder6
+    100032: //RootNode
+    100034: pTorus10
+    100036: pTorus2
+    100038: pTorus3
+    100040: pTorus4
+    100042: pTorus5
+    100044: pTorus6
+    100046: pTorus7
+    100048: pTorus8
+    100050: pTorus9
+    100052: transform1
+    100054: transform10
+    100056: transform11
+    100058: transform12
+    100060: transform13
+    100062: transform14
+    100064: transform15
+    100066: transform2
+    100068: transform3
+    100070: transform4
+    100072: transform5
+    100074: transform6
+    100076: transform7
+    100078: transform8
+    100080: transform9
+    400000: group
+    400002: group1
+    400004: group2
+    400006: group3
+    400008: group4
+    400010: group5
+    400012: pasted__pCube1
+    400014: pasted__pCylinder1
+    400016: pCube1
+    400018: pCube2
+    400020: pCube3
+    400022: pCylinder2
+    400024: pCylinder2 1
+    400026: pCylinder4
+    400028: pCylinder5
+    400030: pCylinder6
+    400032: //RootNode
+    400034: pTorus10
+    400036: pTorus2
+    400038: pTorus3
+    400040: pTorus4
+    400042: pTorus5
+    400044: pTorus6
+    400046: pTorus7
+    400048: pTorus8
+    400050: pTorus9
+    400052: transform1
+    400054: transform10
+    400056: transform11
+    400058: transform12
+    400060: transform13
+    400062: transform14
+    400064: transform15
+    400066: transform2
+    400068: transform3
+    400070: transform4
+    400072: transform5
+    400074: transform6
+    400076: transform7
+    400078: transform8
+    400080: transform9
+    2100000: lambert1
+    2100002: blinn5
+    2100004: nuts
+    2100006: Tubes
+    2100008: base
+    2300000: group3
+    2300002: group5
+    2300004: pasted__pCube1
+    2300006: pasted__pCylinder1
+    2300008: pCylinder2
+    2300010: pTorus3
+    3300000: group3
+    3300002: group5
+    3300004: pasted__pCube1
+    3300006: pasted__pCylinder1
+    3300008: pCylinder2
+    3300010: pTorus3
+    4300000: pasted__pCube1
+    4300002: pasted__pCylinder1
+    4300004: pTorus3
+    4300006: pCylinder2
+    4300008: group3
+    4300010: group5
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tubes
+    second: {fileID: 2100000, guid: b3d3cb4aff7b575448475e00ac5dea16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base
+    second: {fileID: 2100000, guid: 23d2672b5e67e14418afd601989cb060, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn5
+    second: {fileID: 2100000, guid: b34e55c8dd85bd7488471017504ada1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: b3d3cb4aff7b575448475e00ac5dea16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nuts
+    second: {fileID: 2100000, guid: b3d3cb4aff7b575448475e00ac5dea16, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

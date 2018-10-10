@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PowerSource {
 
-    [SerializeField] private float maxPower;
-    [SerializeField] private float startingPower;
+    private float maxPower;
+    private float startingPower;
     private float currentPower;
 
     public PowerSource(float maxPower, float startingPower)

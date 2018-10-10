@@ -8,6 +8,7 @@ public class PowerConsumer : MonoBehaviour {
 
     [SerializeField] private float consumptionRate;
     [SerializeField] private PowerSource currentPowerSource;
+    private bool powerSourceExtractable = true;
 
     /// <summary>
     /// Constructor 1. Sets consumption rate and initial power source
@@ -100,9 +101,15 @@ public class PowerConsumer : MonoBehaviour {
     /// <returns>The current PowerSource formerly attached to this PowerConsumer. Null if no PowerSource was attached.</returns>
     public PowerSource removePowerSource()
     {
-        PowerSource oldSource = this.currentPowerSource;
-        this.currentPowerSource = null;
-        return oldSource;
+        if (this.powerSourceExtractable)
+        {
+            PowerSource oldSource = this.currentPowerSource;
+            this.currentPowerSource = null;
+            return oldSource;
+        } else
+        {
+            return null;
+        }
     }
 
     /// <summary>
@@ -129,8 +136,23 @@ public class PowerConsumer : MonoBehaviour {
     /// <returns>The old PowerSource, if any. Null if no PowerSource was attached.</returns>
     public PowerSource replacePowerSource(PowerSource source)
     {
-        PowerSource oldSource = this.currentPowerSource;
-        this.currentPowerSource = source;
-        return oldSource;
+        if (this.powerSourceExtractable)
+        {
+            PowerSource oldSource = this.currentPowerSource;
+            this.currentPowerSource = source;
+            return oldSource;
+        } else
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// Sets whether or not the PowerSource used by this device can be extracted by the player
+    /// </summary>
+    /// <param name="extractable">Whether or not the PowerSource can be extracted</param>
+    public void setPowerSourceExtractable(bool extractable)
+    {
+        this.powerSourceExtractable = extractable;
     }
 }

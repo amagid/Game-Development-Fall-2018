@@ -103,7 +103,7 @@ public class PowerSource {
     /// <returns>True if succeeded, False if failed.</returns>
     public static bool transferPower(PowerSource sender, PowerSource receiver, float amount)
     {
-        if (sender.getPowerLevel() >= amount && receiver.getPowerLevel() + amount <= receiver.getPowerLevel())
+        if (sender.getPowerLevel() >= amount && receiver.getPowerLevel() + amount <= receiver.getMaxPower())
         {
             sender.takePower(amount);
             receiver.givePower(amount);

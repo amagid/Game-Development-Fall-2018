@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 518a1c9f71e511546ac0c750eb08b8e9
+guid: 0e564388fc9785448a12b2efc277cd27
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -241,7 +241,27 @@ ModelImporter:
     3300002: pCube2
     4300000: pasted__pasted__pasted__pSphere1
     4300002: pCube2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandard1
+    second: {fileID: 2100000, guid: 8917bb07988fb6f4e9b441c00baf2410, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandard2
+    second: {fileID: 2100000, guid: 6322ad604ef387c45a96c991ac58e5e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 8242759c42fcb8d49b4db672a883fac8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_stopper
+    second: {fileID: 2100000, guid: 2486dbe2a4fc62347b115f0b69f1cabe, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

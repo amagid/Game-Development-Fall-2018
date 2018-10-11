@@ -233,10 +233,12 @@ public class PlayerCharacter : MonoBehaviour {
             {
                 other.gameObject.SetActive(false);
             }
-        } else if (other.gameObject.CompareTag("note"))
+        } 
+		else if (other.gameObject.CompareTag("note"))
         {
+			//TODO: add note to player's inventory??
             Debug.Log(other.gameObject.GetComponent<NoteController>().GetContent());
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("zone_collider"))
         {

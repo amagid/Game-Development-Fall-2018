@@ -8,6 +8,7 @@ public class PowerConsumer : MonoBehaviour {
 
     [SerializeField] private float consumptionRate;
     [SerializeField] private PowerSource currentPowerSource;
+    [SerializeField] private float activationThreshold = 0; // Minimum Power to activate device
     private bool powerSourceExtractable = true;
 
     /// <summary>
@@ -47,7 +48,7 @@ public class PowerConsumer : MonoBehaviour {
     /// <returns>True if the PowerConsumer has enough Power to activate, False if not.</returns>
     public bool powerDevice()
     {
-        return this.currentPowerSource != null && this.currentPowerSource.takePower(this.consumptionRate);
+        return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
     }
 
     /// <summary>
@@ -56,7 +57,7 @@ public class PowerConsumer : MonoBehaviour {
     /// <returns>True if the PowerConsumer COULD THEORETICALLY activate, False if not.</returns>
     public bool canPowerDevice()
     {
-        return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.consumptionRate;
+        return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.getPowerLevel() >= this.consumptionRate;
     }
 
     /// <summary>
@@ -66,6 +67,15 @@ public class PowerConsumer : MonoBehaviour {
     public float getConsumptionRate()
     {
         return this.consumptionRate;
+    }
+
+    /// <summary>
+    /// Gets the current activation threshold of this PowerConsumer
+    /// </summary>
+    /// <returns>The current activation threshold of this PowerConsumer</returns>
+    public float getActivationThreshold()
+    {
+        return this.activationThreshold;
     }
 
     /// <summary>

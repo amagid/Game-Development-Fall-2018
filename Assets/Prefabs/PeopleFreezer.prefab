@@ -1491,6 +1491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumptionRate: 0
+  activationThreshold: 10
 --- !u!114 &114874960426283068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1516,4 +1517,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f211590001729e4ca77ea29f878274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoRegenRate: 0.05
+  autoRegenRate: 0.005

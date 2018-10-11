@@ -94,8 +94,8 @@ public class LowSanityEffects : MonoBehaviour {
 
     //generate the number of cubes appearing
     public void generateRandomCubes(int number) {
-        for (int i = 0; i < number; i++)
-        {
+		int count = 0;
+		while (count < number){
             //x ranges from -24 to 24 in Zone 1 and 2 (excluding elevator and Zone 3)
             float x = Random.Range(-24f, 24f);
             //-1f ensures the cube was invisible when instantiated
@@ -115,6 +115,7 @@ public class LowSanityEffects : MonoBehaviour {
 				cube.transform.eulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
 				//make the cube emerge from the ground
 				StartCoroutine (cubeTransform (cube, new Vector3 (x, y + 3f, z), 1f));
+				count++;
 			}
         }
     }

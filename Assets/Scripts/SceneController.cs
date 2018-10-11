@@ -6,8 +6,6 @@ public class SceneController : MonoBehaviour {
 
     [SerializeField] private GameObject elevator_light;
     [SerializeField] private GameObject elevator_door;
-    private float minFlickerSpeed  = 0.1f;
-    private float maxFlickerSpeed  = 1.0f;
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
     public bool lvl1_complete = false;

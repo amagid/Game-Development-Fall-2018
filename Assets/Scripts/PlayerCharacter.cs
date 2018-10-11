@@ -27,6 +27,7 @@ public class PlayerCharacter : MonoBehaviour {
     private GameObject seenObject;
     private PowerConsumer currentConsumer;
     private PowerSource currentSource;
+    private string cursorMessage;
 
     void Start () {
 		style1.fontSize = 25;
@@ -101,26 +102,25 @@ public class PlayerCharacter : MonoBehaviour {
         if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, 2.5f))
         {
             Debug.Log("Hit: " + hit.collider.gameObject.name);
-            this.seenObject = hit.collider.gameObject;
+            if (this.seenObject != hit.collider.gameObject)
+            {
+                this.updateSeenObject(hit.collider.gameObject);
+            }
 
             // If the left mouse button is being pressed, attempt to power the hit device
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                Debug.Log("Powering Device");
                 // Get the device's PowerConsumer, if any
                 PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
 
                 // If the PowerConsumer exists, check if it's the same one we were on last tick.
                 if (pc != null)
                 {
-                    Debug.Log("PowerConsumer Found");
                     // If the PowerConsumer is different from the one we were on, switch to powering the new one.
                     if (pc != this.currentConsumer)
                     {
-                        Debug.Log("New Power Consumer");
                         if (this.currentConsumer != null)
                         {
-                            Debug.Log("Removing Old Consumer");
                             this.currentConsumer.removePowerSource();
                         }
                         pc.attachPowerSource(this.internalBattery);
@@ -130,7 +130,6 @@ public class PlayerCharacter : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Null Power Consumer");
                     if (this.currentConsumer != null)
                     {
                         this.currentConsumer.removePowerSource();
@@ -152,7 +151,6 @@ public class PlayerCharacter : MonoBehaviour {
                 if (this.currentSource != null)
                 {
                     bool result = PowerSource.transferPower(this.currentSource, this.internalBattery, this.powerSiphonRate);
-                    Debug.Log("Result: " + result);
                 }
                 // Get the PowerConsumer of the object we're looking at, if any.
                 PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
@@ -182,7 +180,7 @@ public class PlayerCharacter : MonoBehaviour {
         }
         else
         {
-            this.seenObject = null;
+            this.updateSeenObject(null);
             if (this.currentConsumer != null)
             {
                 this.currentConsumer.removePowerSource();
@@ -203,10 +201,7 @@ public class PlayerCharacter : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
         
         GUI.Label(new Rect(Screen.width / 2 - 13, Screen.height / 2 - 13, 26, 26), "+", style2);
-        if (this.seenObject != null)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 30, 200, 60), this.seenObject.name, style3);
-        }
+        GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 10, 200, 60), this.cursorMessage, style3);
     }
 
 
@@ -296,6 +291,31 @@ public class PlayerCharacter : MonoBehaviour {
 
     public PowerSource getPowerSource() {
         return internalBattery;
+    }
+
+    private void updateSeenObject(GameObject obj)
+    {
+        this.seenObject = obj;
+        if (obj != null)
+        {
+            this.cursorMessage = obj.name;
+            PowerConsumer pc = obj.GetComponent<PowerConsumer>();
+            if (pc != null)
+            {
+                this.cursorMessage += "\nLMB - Give Power ";
+                if (pc.getPowerSource() != null)
+                {
+                    this.cursorMessage += "\nRMB - Siphon Power";
+                }
+            }
+            if (obj.CompareTag("battery") || obj.CompareTag("note"))
+            {
+                this.cursorMessage += "\nE - Pick Up";
+            }
+        } else
+        {
+            this.cursorMessage = "";
+        }
     }
 
 }

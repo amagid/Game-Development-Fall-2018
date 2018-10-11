@@ -14,28 +14,25 @@ public class SceneController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        if (lvl1_complete == false)
-        {
-            //light flicker
-            if (Random.value > 0.9)
-            {
-                if (elevator_light.active == true)
-                {
-                    elevator_light.active = false;
-                }
-                else
-                {
-                    elevator_light.active = true;
-                }
-            }
-        }
-        else {
+        if(lvl1_complete) {
             elevator_light.SetActive(false);
+        }
+        //light flicker
+        if (Random.value > 0.9)
+        {
+            if (elevator_light.active == true)
+            {
+                elevator_light.active = false;
+            }
+            else
+            {
+                elevator_light.active = true;
+            }
         }
     }
 

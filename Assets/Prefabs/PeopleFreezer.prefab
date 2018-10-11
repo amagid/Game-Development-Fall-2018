@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consumptionRate: 0
-  activationThreshold: 10
+  activationThreshold: 5
 --- !u!114 &114874960426283068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1504,8 +1504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extractable: 0
-  capacity: 20
-  initialPower: 20
+  capacity: 10
+  initialPower: 5
 --- !u!114 &114936288589045340
 MonoBehaviour:
   m_ObjectHideFlags: 1

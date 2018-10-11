@@ -50,7 +50,7 @@ public class ChargingStation : MonoBehaviour
             GameObject battery = inventory.getFirstItem();
             battery.transform.position = transform.position - new Vector3(1f, 0f, 0f) + new Vector3((float)(i * xOffset), 0f, (float)(zOffset));
             battery.SetActive(true);
-            if (battery.GetComponent<Battery>().isEmpty())
+			if (battery.GetComponent<Battery>().getPowerSource().isEmpty())
             {
                 battery.GetComponent<Battery>().StartCoroutine("chargeBattery");
             }

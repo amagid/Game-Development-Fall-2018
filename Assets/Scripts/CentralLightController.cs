@@ -43,7 +43,7 @@ public class CentralLightController : MonoBehaviour {
                 turnOnLights();
             }
         }
-        if (batteryOnSwitch != null && batteryOnSwitch.GetComponent<Battery>().isEmpty())
+		if (batteryOnSwitch != null && batteryOnSwitch.GetComponent<Battery>().getPowerSource().isEmpty())
         {
             turnOffLights();
         }
@@ -66,7 +66,7 @@ public class CentralLightController : MonoBehaviour {
         batteryOnSwitch = battery;
         battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
         battery.SetActive(true);
-        if (battery.GetComponent<Battery>().isEmpty())
+		if (battery.GetComponent<Battery>().getPowerSource().isEmpty())
         {
             Debug.Log("Battery is empty!");
             return;

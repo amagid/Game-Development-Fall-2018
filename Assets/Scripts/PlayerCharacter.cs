@@ -249,6 +249,9 @@ public class PlayerCharacter : MonoBehaviour {
             }
         }
     }
+		
+
+
 
     void OnTriggerExit(Collider other)
     {

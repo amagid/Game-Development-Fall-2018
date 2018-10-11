@@ -5,14 +5,18 @@ using UnityEngine;
 public class Battery : MonoBehaviour {
 
     public int max_power = 100;
-
     public int power_index = 100;
-
     public bool inUse;
-
 	private DoorController doorController;
 	private SwitchController switchController;
 	private CentralLightController centralLightController;
+	private PowerSource powerSource;
+
+	// Use this for initialization
+	void Start () {
+		inUse = false;
+		powerSource = new PowerSource (max_power, power_index);
+	}
 
 	public bool isInUse(){
 		return this.inUse;
@@ -47,55 +51,32 @@ public class Battery : MonoBehaviour {
 		return this.doorController;
 	}
 
-	// Use this for initialization
-	void Start () {
-        inUse = false;
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
-        if(isEmpty())
+		if(powerSource.isEmpty())
         {
             this.gameObject.GetComponent<Renderer>().material.color = Color.red;
             this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
             this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
         }
-        else if (isFull())
+		else if (powerSource.isFull())
         {
             this.gameObject.GetComponent<Renderer>().material.color = Color.green;
             this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.green;
             this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
         }
 	}
-
-    public bool isEmpty()
-    {
-        return power_index <= 0;
-    }
-
-    public bool isFull()
-    {
-        return power_index >= 100;
-    }
-
-    public int getPowerIndex() {
-        return this.power_index;
-    }
-
+		
     public IEnumerator useBattery() {
-		setIsInUse (true);
-        while (!isEmpty())
-        {
-            //battery will be empty in 5 seconds
-            power_index -= 5;
-            yield return new WaitForSeconds(0.2f);
-        }
-        /*
-        this.gameObject.GetComponent<Renderer>().material.color = Color.red;
-        this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
-        this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
-        */
-		setIsInUse (false);
+		this.inUse = true;//setIsInUse (true);
+		while (powerSource.takePower(5))
+		{
+			yield return new WaitForSeconds(0.2f);
+		}
+
+		this.inUse = false;//setIsInUse (false);
 		if (switchController != null) {
 			switchController.setBattery (null);
 		} else {
@@ -105,16 +86,29 @@ public class Battery : MonoBehaviour {
 
     public IEnumerator chargeBattery()
     {
-        inUse = false;
-        while(power_index <= max_power)
+        this.inUse = false;
+        // Note: While block bellow used to look like this not entirley sure this is the correct changse 
+		/*while(power_index <= max_power)
         {
             yield return new WaitForSeconds(1f);
             power_index = max_power;
-        }
+        }*/
+
+		while(powerSource.getPowerLevel() <= powerSource.getMaxPower())
+		{
+			yield return new WaitForSeconds(1f);
+			//powerSource.givePower (powerSource.getMaxPower() - powerSource.getPowerLevel()); // power_index = max_power;
+			power_index = max_power;
+		}
+
         /*
         this.gameObject.GetComponent<Renderer>().material.color = Color.green;
         this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.green;
         this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
         */
     }
+
+	public PowerSource getPowerSource(){
+		return powerSource; 
+	}
 }

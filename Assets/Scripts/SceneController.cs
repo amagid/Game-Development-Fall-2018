@@ -56,7 +56,7 @@ public class SceneController : MonoBehaviour {
             elevator_outside_lights.SetActive(true);
             Vector3 initPos = elevator_outside_lights.transform.position;
             float x = elevator_outside_lights.transform.position.x;
-            float y = elevator_outside_lights.transform.position.y + 10f;
+            float y = elevator_outside_lights.transform.position.y - 20f;
             float z = elevator_outside_lights.transform.position.z;
             Vector3 finalPos = new Vector3(x, y, z);
             for (float t = 0f; t < 1; t += Time.deltaTime / 1f)

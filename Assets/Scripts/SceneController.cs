@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_door;
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
+    [SerializeField] private GameObject elevator_outside_lights;
     public bool lvl1_complete = false;
 
 
@@ -18,27 +19,55 @@ public class SceneController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //light flicker
-        if (Random.value > 0.9)
+        if (lvl1_complete == false)
         {
-            if (elevator_light.active == true)
+            //light flicker
+            if (Random.value > 0.9)
             {
-                elevator_light.active = false;
+                if (elevator_light.active == true)
+                {
+                    elevator_light.active = false;
+                }
+                else
+                {
+                    elevator_light.active = true;
+                }
             }
-            else
-            {
-                elevator_light.active = true;
-            }
+        }
+        else {
+            elevator_light.SetActive(false);
         }
     }
 
     public IEnumerator loadLevel2()
     {
-        yield return new WaitForSeconds(6f);
+        elevator_light.SetActive(false);
+        yield return new WaitForSeconds(4f);
         level1.SetActive(false);
         level2.SetActive(true);
-        lvl1_complete = false;
-        yield return new WaitForSeconds(3f);
+        StartCoroutine("elevatorMovingAnimation");
+        yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
+    }
+
+    public IEnumerator elevatorMovingAnimation() {
+        for (int i = 0; i < 3; i++)
+        {
+            elevator_outside_lights.SetActive(true);
+            Vector3 initPos = elevator_outside_lights.transform.position;
+            float x = elevator_outside_lights.transform.position.x;
+            float y = elevator_outside_lights.transform.position.y + 10f;
+            float z = elevator_outside_lights.transform.position.z;
+            Vector3 finalPos = new Vector3(x, y, z);
+            for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
+            {
+                elevator_outside_lights.transform.position = Vector3.Lerp(initPos, finalPos, t);
+                yield return null;
+            }
+            //moving the lights back to init position after it finished moving up
+            elevator_outside_lights.transform.position = initPos;
+            elevator_outside_lights.SetActive(false);
+            yield return new WaitForSeconds(0.7f);
+        }
     }
 }

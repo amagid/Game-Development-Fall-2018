@@ -128,12 +128,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: b3d3cb4aff7b575448475e00ac5dea16, type: 2}
+    second: {fileID: 2100000, guid: 23d2672b5e67e14418afd601989cb060, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: nuts
-    second: {fileID: 2100000, guid: b3d3cb4aff7b575448475e00ac5dea16, type: 2}
+    second: {fileID: 2100000, guid: 23d2672b5e67e14418afd601989cb060, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

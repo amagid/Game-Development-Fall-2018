@@ -96,19 +96,26 @@ public class LowSanityEffects : MonoBehaviour {
     public void generateRandomCubes(int number) {
         for (int i = 0; i < number; i++)
         {
-            GameObject cube = Instantiate(cube_prefab) as GameObject;
-            current_cubes.Add(cube);
-            cube.transform.parent = level_one.transform;
             //x ranges from -24 to 24 in Zone 1 and 2 (excluding elevator and Zone 3)
             float x = Random.Range(-24f, 24f);
             //-1f ensures the cube was invisible when instantiated
             float y = -1f;
             //z ranges from 24 to -24
             float z = Random.Range(-24f, 24f);
-            cube.transform.position = new Vector3(x, y, z);
-            cube.transform.eulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
-            //make the cube emerge from the ground
-            StartCoroutine(cubeTransform(cube, new Vector3(x, y + 3f, z), 1f));
+			Vector3 proposedCubePosition = new Vector3(x, y, z);
+			float sphereRadius = 2f;
+			int layerMask = ~(1 << 9);
+			// check to see that there is no other object that collides with the where the cube will be placed
+			if (!Physics.CheckSphere(proposedCubePosition, sphereRadius, layerMask)) {
+				// create cube
+				GameObject cube = Instantiate(cube_prefab) as GameObject;
+				current_cubes.Add(cube);
+				cube.transform.parent = level_one.transform;
+				cube.transform.position = proposedCubePosition;
+				cube.transform.eulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
+				//make the cube emerge from the ground
+				StartCoroutine (cubeTransform (cube, new Vector3 (x, y + 3f, z), 1f));
+			}
         }
     }
 

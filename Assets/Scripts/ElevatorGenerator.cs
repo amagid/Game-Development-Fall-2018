@@ -32,6 +32,7 @@ public class ElevatorGenerator : MonoBehaviour {
             {
                 useBattery();
                 elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
+                scene_controller.GetComponent<SceneController>().lvl1_complete = true;
                 scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel2");
             }
         }

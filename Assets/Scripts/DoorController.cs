@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour {
+public class DoorController : MonoBehaviour, DirectOperation {
 
     //private bool isOpen;
     private Vector3 closePos;
@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour {
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField] private DoorAxes doorAxisDirection;
 	[SerializeField] private bool isElevatorDoor = false;
+    private bool active = false;
 
 	private float CLOSE_FACTOR = 6f;
 	private bool isSlowDoor = true;
@@ -44,7 +45,7 @@ public class DoorController : MonoBehaviour {
 		
 	}
 
-    public IEnumerator openDoor()
+    private IEnumerator openDoor()
     {
         for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
         {
@@ -65,12 +66,31 @@ public class DoorController : MonoBehaviour {
     }
 
 
-    public IEnumerator closeDoor()
+    private IEnumerator closeDoor()
     {
         for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
         {
             transform.position = Vector3.Lerp(openPos, closePos, t);
             yield return null;
         }
+    }
+
+    public void activate()
+    {
+        this.active = true;
+        StartCoroutine(this.openDoor());
+    }
+
+    public void operate() {}
+
+    public void deactivate()
+    {
+        this.active = false;
+        StartCoroutine(this.closeDoor());
+    }
+
+    public bool isActive()
+    {
+        return this.active;
     }
 }

@@ -67,9 +67,6 @@ public class Battery : MonoBehaviour {
         }
 	}
 
-
-
-
     public IEnumerator chargeBattery()
     {
         this.inUse = false;

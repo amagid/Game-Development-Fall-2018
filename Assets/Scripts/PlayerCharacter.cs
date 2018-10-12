@@ -218,6 +218,7 @@ public class PlayerCharacter : MonoBehaviour {
                             GameObject battery = GameObject.Instantiate(this.batteryPrefab);
                             battery.GetComponent<Battery>().max_power = (int) oldPC.getMaxPower();
                             battery.GetComponent<Battery>().power_index = (int) oldPC.getPowerLevel();
+                            battery.GetComponent<Battery>().setPowerSource(new PowerSource(oldPC.getMaxPower(), oldPC.getPowerLevel()));
                             this.inventory.addItem(battery);
                             battery.SetActive(false);
                             this.waitForEKeyUp = true;

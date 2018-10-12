@@ -10,6 +10,7 @@ public class PlayerCharacter : MonoBehaviour {
     [SerializeField] private float starting_power;
     [SerializeField] private GameObject central_lighting;
     [SerializeField] private float powerSiphonRate;
+    [SerializeField] private Camera camera;
     private GUIStyle style1 = new GUIStyle();
     private GUIStyle style2 = new GUIStyle();
     private GUIStyle style3 = new GUIStyle();
@@ -21,6 +22,8 @@ public class PlayerCharacter : MonoBehaviour {
 	private float sanity;
 	private bool losingSanity;
     private bool inElevator;
+    private bool isCrouching;
+    private bool hasPressedCrouch;
     private PowerSource internalBattery;
     private PowerConsumer internalPowerConsumer;
     private Light personalLight;
@@ -44,7 +47,8 @@ public class PlayerCharacter : MonoBehaviour {
 		sanity = MAX_SANITY;
 		losingSanity = true;
         inElevator = false;
-
+        isCrouching = false;
+        hasPressedCrouch = false;
         internalBattery = new PowerSource(300f, starting_power);
         this.internalPowerConsumer = this.gameObject.GetComponent<PowerConsumer>();
         if (this.internalPowerConsumer == null)
@@ -76,6 +80,25 @@ public class PlayerCharacter : MonoBehaviour {
         } else
         {
             this.personalLight.enabled = false;
+        }
+
+        //the crouch function
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            //if crouching
+            if (isCrouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2f, transform.localScale.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y * 2f, transform.position.z);
+                isCrouching = false;
+            }
+            //if standing
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2f, transform.localScale.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y / 2f, transform.position.z);
+                isCrouching = true;
+            }
         }
 
         //added a check if the central lighting in ON, player would not lose sanity
@@ -244,7 +267,6 @@ public class PlayerCharacter : MonoBehaviour {
         {
             if (other.gameObject.name == "ElevatorCollider")
             {
-                Debug.Log("Player at Elevator");
                 inElevator = true;
             }
         }

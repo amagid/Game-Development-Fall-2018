@@ -50,9 +50,7 @@ public class Battery : MonoBehaviour {
 	public DoorController getDoorController(){
 		return this.doorController;
 	}
-
-
-	
+		
 	// Update is called once per frame
 	void Update () {
 		if(powerSource.isEmpty())
@@ -68,21 +66,9 @@ public class Battery : MonoBehaviour {
             this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
         }
 	}
-		
-    public IEnumerator useBattery() {
-		this.inUse = true;//setIsInUse (true);
-		while (powerSource.takePower(5))
-		{
-			yield return new WaitForSeconds(0.2f);
-		}
 
-		this.inUse = false;//setIsInUse (false);
-		if (switchController != null) {
-			switchController.setBattery (null);
-		} else {
-			centralLightController.setBatteryOnSwitch (null);
-		}
-	}
+
+
 
     public IEnumerator chargeBattery()
     {
@@ -112,3 +98,5 @@ public class Battery : MonoBehaviour {
 		return powerSource; 
 	}
 }
+
+

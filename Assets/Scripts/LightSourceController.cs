@@ -12,6 +12,10 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     private PowerConsumer powerConsumer;
 
 	void Start () {
+		PoweredOperation test = this.GetComponent<PoweredOperation>();
+		if (test != null){
+			Debug.Log ("Found it");
+		}
 		Player = GameObject.Find ("Player");
 		playersScript = (PlayerCharacter) Player.GetComponent(typeof(PlayerCharacter));
 		pointLight = new GameObject("The Light");

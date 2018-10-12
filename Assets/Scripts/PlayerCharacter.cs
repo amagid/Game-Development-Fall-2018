@@ -101,7 +101,6 @@ public class PlayerCharacter : MonoBehaviour {
         // If our RayCast hits an object
         if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, 2.5f))
         {
-            Debug.Log("Hit: " + hit.collider.gameObject.name);
             if (this.seenObject != hit.collider.gameObject)
             {
                 this.updateSeenObject(hit.collider.gameObject);
@@ -209,8 +208,8 @@ public class PlayerCharacter : MonoBehaviour {
     //test for picking up batteries and use them for Test Scene One
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("battery"))
-        {
+		if (other.gameObject.CompareTag("battery"))
+		{
 			Battery battery = other.gameObject.GetComponent<Battery> ();
 			if (battery.isInUse ()) {
 				Debug.Log ("Player took battery too early");
@@ -229,11 +228,11 @@ public class PlayerCharacter : MonoBehaviour {
 				}
 				battery.setIsInUse (false);
 			}
-            if (inventory.addItem(other.gameObject))
-            {
-                other.gameObject.SetActive(false);
-            }
-        } 
+			if (inventory.addItem(other.gameObject))
+			{
+				other.gameObject.SetActive(false);
+			}
+		} 
 		else if (other.gameObject.CompareTag("note"))
         {
 			//TODO: add note to player's inventory??

@@ -272,13 +272,6 @@ public class PlayerCharacter : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
-
-
 
     void OnTriggerExit(Collider other)
     {

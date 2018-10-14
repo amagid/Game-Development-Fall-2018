@@ -8922,7 +8922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumptionRate: 0.1
+  consumptionRate: 0.5
   activationThreshold: 0
 --- !u!1 &2061910514
 GameObject:

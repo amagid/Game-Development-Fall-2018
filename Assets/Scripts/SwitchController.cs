@@ -33,7 +33,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 
 	// Update is called once per frame
 	void Update () {
-
 		// sets the battery in the switc
 		if (atSwitch) {
 			if (battery != null) {
@@ -57,7 +56,7 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 			this.operate();
 		} else if (!deviceIsPowered && this.isActive())
 		{
-			battery.setIsInUse (false); //NOTE: temporary battery is in use will be deleted soon
+			//battery.setIsInUse (false); //NOTE: temporary battery is in use will be deleted soon
 			this.deactivate();
 		}
 	}
@@ -113,7 +112,9 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 	/// Perform deactivation work for this device upon losing sufficient Power
 	/// </summary>
 	public void deactivate(){
-		this.active = true;
+		Debug.Log ("HELLO");
+
+		this.active = false;
 		deviceController.deactivate ();
 	}
 		

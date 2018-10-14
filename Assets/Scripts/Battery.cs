@@ -53,6 +53,7 @@ public class Battery : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (this.powerSource.getPowerLevel ());
 		if(powerSource.isEmpty())
         {
             this.gameObject.GetComponent<Renderer>().material.color = Color.red;

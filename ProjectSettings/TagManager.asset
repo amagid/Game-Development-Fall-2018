@@ -9,6 +9,7 @@ TagManager:
   - note
   - zone_collider
   - power_source
+  - ceiling
   layers:
   - Default
   - TransparentFX

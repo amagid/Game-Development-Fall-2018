@@ -17,7 +17,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 		pointLight = new GameObject("The Light");
 		Light lightComp = pointLight.AddComponent<Light>();
 		lightComp.intensity = 5;
-		pointLight.transform.position = gameObject.transform.position;
+		pointLight.transform.position = gameObject.transform.position + new Vector3(0.8f, 0.8f);
 		pointLight.SetActive (false);
         deviceActive = false;
         this.powerConsumer = this.getPowerConsumer();

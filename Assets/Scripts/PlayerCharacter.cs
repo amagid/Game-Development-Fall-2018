@@ -93,7 +93,7 @@ public class PlayerCharacter : MonoBehaviour {
                 isCrouching = false;
             }
             //if standing
-            else
+            else if (!isCrouching)
             {
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2f, transform.localScale.z);
                 transform.position = new Vector3(transform.position.x, transform.position.y / 2f, transform.position.z);
@@ -270,6 +270,12 @@ public class PlayerCharacter : MonoBehaviour {
                 inElevator = true;
             }
         }
+
+        // If we enter a crouch only zone, set canStandUp to false
+        if (other.gameObject.CompareTag("crouch_only"))
+        {
+            this.canStandUp = false;
+        }
     }
 
 
@@ -281,6 +287,12 @@ public class PlayerCharacter : MonoBehaviour {
             {
                 inElevator = false;
             }
+        }
+
+        // If we enter a crouch only zone, set canStandUp to false
+        if (other.gameObject.CompareTag("crouch_only"))
+        {
+            this.canStandUp = true;
         }
     }
 

@@ -10,6 +10,7 @@ TagManager:
   - zone_collider
   - power_source
   - ceiling
+  - crouch_only
   layers:
   - Default
   - TransparentFX

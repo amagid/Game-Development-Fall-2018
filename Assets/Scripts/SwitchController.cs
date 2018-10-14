@@ -19,6 +19,9 @@ public class SwitchController : MonoBehaviour {
 
     public double zOffset;
 
+    private GameObject GreenLights;
+    private GameObject RedLights;
+
 	// the battery that is attached to the switch
 	private Battery battery = null;
 	private PowerConsumer powerConsumer; 
@@ -26,6 +29,16 @@ public class SwitchController : MonoBehaviour {
 	void Start () {
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
 		this.powerConsumer = this.getPowerConsumer();
+        Transform gl = this.gameObject.transform.Find("GreenLights");
+        Transform rl = this.gameObject.transform.Find("RedLights");
+        if (gl != null)
+        {
+            this.GreenLights = gl.gameObject;
+        }
+        if (rl != null)
+        {
+            this.RedLights = rl.gameObject;
+        }
     }
 	
 	// Update is called once per frame
@@ -40,10 +53,38 @@ public class SwitchController : MonoBehaviour {
 					DoorController doorController = door.GetComponent<DoorController> ();
 					this.battery.setDoorController (doorController);
 					doorController.StartCoroutine("openDoor");
-				}
+                    this.activate();
+                } else
+                {
+                    this.deactivate();
+                }
 			}
 		}
 	}
+
+    public void activate()
+    {
+        if (this.GreenLights != null && !this.GreenLights.activeInHierarchy)
+        {
+            this.GreenLights.SetActive(true);
+        }
+        if (this.RedLights != null && this.RedLights.activeInHierarchy)
+        {
+            this.RedLights.SetActive(false);
+        }
+    }
+
+    public void deactivate()
+    {
+        if (this.GreenLights != null && this.GreenLights.activeInHierarchy)
+        {
+            this.GreenLights.SetActive(false);
+        }
+        if (this.RedLights != null && !this.RedLights.activeInHierarchy)
+        {
+            this.RedLights.SetActive(true);
+        }
+    }
 
 	public void setBattery(Battery battery){ // power consumer attach power source
 		this.battery = battery;

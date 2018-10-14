@@ -20,7 +20,10 @@ public class CentralLightController : MonoBehaviour {
 
     private GameObject batteryOnSwitch = null;
 
-	public GameObject getBatteryOnSwitch(){
+    private GameObject GreenLights;
+    private GameObject RedLights;
+
+    public GameObject getBatteryOnSwitch(){
 		return this.batteryOnSwitch;
 	}
 
@@ -31,6 +34,16 @@ public class CentralLightController : MonoBehaviour {
     void Start()
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        Transform gl = this.gameObject.transform.Find("GreenLights");
+        Transform rl = this.gameObject.transform.Find("RedLights");
+        if (gl != null)
+        {
+            this.GreenLights = gl.gameObject;
+        }
+        if (rl != null)
+        {
+            this.RedLights = rl.gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -74,10 +87,26 @@ public class CentralLightController : MonoBehaviour {
         central_lights.SetActive(true);
 		battery.GetComponent<Battery> ().setCentralLightController (this);
         battery.GetComponent<Battery>().StartCoroutine("useBattery");
+        if (this.GreenLights != null && !this.GreenLights.activeInHierarchy)
+        {
+            this.GreenLights.SetActive(true);
+        }
+        if (this.RedLights != null && this.RedLights.activeInHierarchy)
+        {
+            this.RedLights.SetActive(false);
+        }
     }
 
     void turnOffLights()
     {
         central_lights.SetActive(false);
+        if (this.GreenLights != null && this.GreenLights.activeInHierarchy)
+        {
+            this.GreenLights.SetActive(false);
+        }
+        if (this.RedLights != null && !this.RedLights.activeInHierarchy)
+        {
+            this.RedLights.SetActive(true);
+        }
     }
 }

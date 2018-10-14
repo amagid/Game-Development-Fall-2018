@@ -97,7 +97,7 @@ public class Battery : MonoBehaviour {
 		while(powerSource.getPowerLevel() <= powerSource.getMaxPower())
 		{
 			yield return new WaitForSeconds(1f);
-			//powerSource.givePower (powerSource.getMaxPower() - powerSource.getPowerLevel()); // power_index = max_power;
+			powerSource.givePower (powerSource.getMaxPower() - powerSource.getPowerLevel()); // power_index = max_power;
 			power_index = max_power;
 		}
 

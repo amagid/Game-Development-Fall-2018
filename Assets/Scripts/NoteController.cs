@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteController : MonoBehaviour {
-    [SerializeField] string content;
+	[SerializeField] Sprite image;
+	// the Content child object of ScrollView
+	[SerializeField] GameObject content;
+	// the DisplayData object of OnGameGUI
 	[SerializeField] GameObject displayContent;
+	// the player game object
 	[SerializeField] GameObject player;
+	// the SecondaryCamera game object
 	[SerializeField] GameObject secondaryCameraGO;
 
 	private bool atNote = false;
 
-    public string GetContent()
-    {
-        return this.content;
-    }
-
 	void Start(){
 		displayContent.SetActive (false);
 		secondaryCameraGO.SetActive (false);
+		Image img = content.GetComponent<Image> ();
+		img.sprite = image;
 	}
 
 	void Update(){
@@ -25,6 +28,8 @@ public class NoteController : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.E)){
 				// display panel here w/ note
 				freezeGame();
+				Image img = content.GetComponent<Image> ();
+				img.sprite = image;
 				displayContent.SetActive (true);
 				atNote = false;
 			}
@@ -53,8 +58,11 @@ public class NoteController : MonoBehaviour {
 	}
 
 	void OnTriggerStay (Collider other) {
-		if (other.name == "Player")
+		if (other.name == "Player") {
 			atNote = true;
+			Debug.Log ("pLAYER DETECTED");
+		}
+		
 	}
 
 	void OnTriggerExit(Collider other) {

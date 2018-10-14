@@ -23,7 +23,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private bool losingSanity;
     private bool inElevator;
     private bool isCrouching;
-    private bool hasPressedCrouch;
+    private bool canStandUp;
     private PowerSource internalBattery;
     private PowerConsumer internalPowerConsumer;
     private Light personalLight;
@@ -48,7 +48,7 @@ public class PlayerCharacter : MonoBehaviour {
 		losingSanity = true;
         inElevator = false;
         isCrouching = false;
-        hasPressedCrouch = false;
+        canStandUp = true;
         internalBattery = new PowerSource(300f, starting_power);
         this.internalPowerConsumer = this.gameObject.GetComponent<PowerConsumer>();
         if (this.internalPowerConsumer == null)
@@ -86,7 +86,7 @@ public class PlayerCharacter : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.C))
         {
             //if crouching
-            if (isCrouching)
+            if (isCrouching && canStandUp)
             {
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2f, transform.localScale.z);
                 transform.position = new Vector3(transform.position.x, transform.position.y * 2f, transform.position.z);
@@ -271,7 +271,12 @@ public class PlayerCharacter : MonoBehaviour {
             }
         }
     }
-		
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
 
 
 

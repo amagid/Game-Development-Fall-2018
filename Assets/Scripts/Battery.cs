@@ -68,9 +68,6 @@ public class Battery : MonoBehaviour {
         }
 	}
 
-
-
-
     public IEnumerator chargeBattery()
     {
         this.inUse = false;
@@ -98,6 +95,11 @@ public class Battery : MonoBehaviour {
 	public PowerSource getPowerSource(){
 		return powerSource; 
 	}
+
+    public void setPowerSource(PowerSource ps)
+    {
+        this.powerSource = ps;
+    }
 }
 
 

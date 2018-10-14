@@ -165,4 +165,12 @@ public class PowerConsumer : MonoBehaviour {
     {
         this.powerSourceExtractable = extractable;
     }
+
+    /// <summary>
+    /// Gets whether or not the PowerSource used by this device can be extracted by the player
+    /// </summary>
+    public bool isPowerSourceExtractable()
+    {
+        return this.powerSourceExtractable;
+    }
 }

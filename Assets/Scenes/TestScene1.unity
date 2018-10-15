@@ -4135,6 +4135,12 @@ Prefab:
       propertyPath: activationThreshold
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114992887805707822, guid: 4ad0997aae1b9c8478f37b363f870165,
+        type: 2}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: f9265e55fb3b1054eb5b499a0a0e3c6f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ad0997aae1b9c8478f37b363f870165, type: 2}
   m_IsPrefabAsset: 0
@@ -15919,7 +15925,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073346621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.13, y: -3.151, z: -38.97}
+  m_LocalPosition: {x: 40.149, y: -5.421, z: -46.338}
   m_LocalScale: {x: 0.25, y: 0.049999997, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1233943989}

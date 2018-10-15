@@ -123,7 +123,7 @@ public class PlayerCharacter : MonoBehaviour {
         Transform cameraPos = this.GetComponentInChildren<Camera>().transform;
 
         // If we've let go of the LMB or gone too far from the device, disconnect from the device we're powering
-        if (this.currentConsumer != null && (!Input.GetKey(KeyCode.Mouse0) || Vector3.Distance(this.currentConsumer.transform.position, this.transform.position) > this.interactionRange))
+        if (this.currentConsumer != null && (!Input.GetKey(KeyCode.Mouse0) || Vector3.Distance(this.currentConsumer.transform.position, this.transform.position) > this.interactionRange * 1.5f))
         {
             this.currentConsumer.removePowerSource();
             this.currentConsumer = null;

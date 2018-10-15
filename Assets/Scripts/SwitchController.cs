@@ -90,6 +90,11 @@ public class SwitchController : MonoBehaviour {
 		this.battery = battery;
 	}
 
+    public Battery getBattery()
+    {
+        return this.battery;
+    }
+
 	void OnTriggerStay (Collider other) {
 		if (other.name == "Player")
 			atSwitch = true;

@@ -337,7 +337,7 @@ public class PlayerCharacter : MonoBehaviour {
         {
             this.cursorMessage = obj.name;
             PowerConsumer pc = obj.GetComponent<PowerConsumer>();
-            if (pc != null)
+            if (pc != null && !obj.CompareTag("Switch"))
             {
                 this.cursorMessage += "\nLMB - Give Power ";
                 if (pc.getPowerSource() != null)
@@ -348,6 +348,17 @@ public class PlayerCharacter : MonoBehaviour {
             if (obj.CompareTag("battery") || obj.CompareTag("note"))
             {
                 this.cursorMessage += "\nE - Pick Up";
+            }
+            if (obj.CompareTag("Switch"))
+            {
+                if (pc != null && obj.GetComponent<SwitchController>().getBattery() == null)
+                {
+                    this.cursorMessage += "\nNeeds Battery";
+                    if (this.inventory.itemCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
+                    {
+                        this.cursorMessage += "\nE - Attach Battery";
+                    }
+                }
             }
         } else
         {

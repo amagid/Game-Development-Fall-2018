@@ -11,6 +11,7 @@ public class PlayerCharacter : MonoBehaviour {
     [SerializeField] private GameObject central_lighting;
     [SerializeField] private float powerSiphonRate;
     [SerializeField] private Camera camera;
+    [SerializeField] private float interactionRange = 2.5f;
     private GUIStyle style1 = new GUIStyle();
     private GUIStyle style2 = new GUIStyle();
     private GUIStyle style3 = new GUIStyle();
@@ -121,17 +122,23 @@ public class PlayerCharacter : MonoBehaviour {
         // Cast Ray in current direction of Camera
         Transform cameraPos = this.GetComponentInChildren<Camera>().transform;
 
-        // If our RayCast hits an object
-        if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, 2.5f))
+        // If we've let go of the LMB or gone too far from the device, disconnect from the device we're powering
+        if (this.currentConsumer != null && (!Input.GetKey(KeyCode.Mouse0) || Vector3.Distance(this.currentConsumer.transform.position, this.transform.position) > this.interactionRange))
         {
-            Debug.Log("Hit: " + hit.collider.gameObject.name);
+            this.currentConsumer.removePowerSource();
+            this.currentConsumer = null;
+        }
+
+        // If our RayCast hits an object
+        if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, this.interactionRange))
+        {
             if (this.seenObject != hit.collider.gameObject)
             {
                 this.updateSeenObject(hit.collider.gameObject);
             }
 
             // If the left mouse button is being pressed, attempt to power the hit device
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) && this.currentConsumer == null)
             {
                 // Get the device's PowerConsumer, if any
                 PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
@@ -139,32 +146,14 @@ public class PlayerCharacter : MonoBehaviour {
                 // If the PowerConsumer exists, check if it's the same one we were on last tick.
                 if (pc != null)
                 {
-                    // If the PowerConsumer is different from the one we were on, switch to powering the new one.
-                    if (pc != this.currentConsumer)
+                    if (pc.attachPowerSource(this.internalBattery))
                     {
-                        if (this.currentConsumer != null)
-                        {
-                            this.currentConsumer.removePowerSource();
-                        }
-                        pc.attachPowerSource(this.internalBattery);
                         this.currentConsumer = pc;
                     }
                     // If the PowerConsumer did not exist, then we looked away so we need to disconnect from our previous PowerConsumer
                 }
-                else
-                {
-                    if (this.currentConsumer != null)
-                    {
-                        this.currentConsumer.removePowerSource();
-                    }
-                    this.currentConsumer = null;
-                }
-                // If we're not pressing LMB, stop powering the device.
-            }
-            else if (this.currentConsumer != null)
-            {
-                this.currentConsumer.removePowerSource();
-                this.currentConsumer = null;
+                // If we get too far away, stop powering device
+                // TODO: Figure out why 2 * interactionRange is needed - we get a blinking effect without it.
             }
 
             //If the right mouse button is being pressed, attempt to siphon power from the hit device.
@@ -204,10 +193,6 @@ public class PlayerCharacter : MonoBehaviour {
         else
         {
             this.updateSeenObject(null);
-            if (this.currentConsumer != null)
-            {
-                this.currentConsumer.removePowerSource();
-            }
             this.currentSource = null;
         }
 
@@ -339,8 +324,18 @@ public class PlayerCharacter : MonoBehaviour {
             PowerConsumer pc = obj.GetComponent<PowerConsumer>();
             if (pc != null && !obj.CompareTag("Switch"))
             {
-                this.cursorMessage += "\nLMB - Give Power ";
-                if (pc.getPowerSource() != null)
+                if (pc.isOneTimeActivation())
+                {
+                    this.cursorMessage += "\nRequires " + pc.getActivationThreshold() + " Power to Activate";
+                } else if (pc.getConsumptionRate() > 0)
+                {
+                    this.cursorMessage += "\nRequires " + (pc.getConsumptionRate() * 60f).ToString("F2") + " Power/Second";
+                }
+                if (pc.getConsumptionRate() > 0 || (pc.isOneTimeActivation() && pc.getActivationThreshold() > 0))
+                {
+                    this.cursorMessage += "\nLMB - Give Power ";
+                }
+                if (pc.getPowerSource() != null && pc.getPowerSource() != this.internalBattery)
                 {
                     this.cursorMessage += "\nRMB - Siphon Power";
                 }
@@ -351,7 +346,7 @@ public class PlayerCharacter : MonoBehaviour {
             }
             if (obj.CompareTag("Switch"))
             {
-                if (pc != null && obj.GetComponent<SwitchController>().getBattery() == null)
+                if (pc != null && ((obj.GetComponent<SwitchController>() != null && obj.GetComponent<SwitchController>().getBattery() == null) || (obj.GetComponent<CentralLightController>() != null && obj.GetComponent<CentralLightController>().getBatteryOnSwitch() == null)))
                 {
                     this.cursorMessage += "\nNeeds Battery";
                     if (this.inventory.itemCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)

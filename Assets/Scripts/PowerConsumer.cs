@@ -9,6 +9,7 @@ public class PowerConsumer : MonoBehaviour {
     [SerializeField] private float consumptionRate;
     [SerializeField] private PowerSource currentPowerSource;
     [SerializeField] private float activationThreshold = 0; // Minimum Power to activate device
+    [SerializeField] private bool oneTimeActivation = false;
     private bool powerSourceExtractable = true;
 
     /// <summary>
@@ -48,7 +49,12 @@ public class PowerConsumer : MonoBehaviour {
     /// <returns>True if the PowerConsumer has enough Power to activate, False if not.</returns>
     public bool powerDevice()
     {
-        return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
+        if (this.oneTimeActivation)
+        {
+            return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.activationThreshold) && this.removePowerSource() != null;
+        } else {
+            return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
+        }
     }
 
     /// <summary>
@@ -85,6 +91,15 @@ public class PowerConsumer : MonoBehaviour {
     public PowerSource getPowerSource()
     {
         return this.currentPowerSource;
+    }
+
+    /// <summary>
+    /// Checks whether or not this PowerConsumer is set up for one time activation, or if it consumes continuously.
+    /// </summary>
+    /// <returns>True if this PowerConsumer is set up for one time activation, False if it consumes continuously.</returns>
+    public bool isOneTimeActivation()
+    {
+        return this.oneTimeActivation;
     }
 
     /// <summary>

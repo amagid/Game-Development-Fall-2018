@@ -8402,6 +8402,7 @@ MonoBehaviour:
   central_lighting: {fileID: 1370861057}
   powerSiphonRate: 0.1
   camera: {fileID: 1681190367}
+  interactionRange: 5
 --- !u!114 &1248575541
 MonoBehaviour:
   m_ObjectHideFlags: 0

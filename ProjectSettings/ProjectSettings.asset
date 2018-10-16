@@ -648,9 +648,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 02481453-8d1c-4593-aeeb-da7b338cabc3
+  cloudProjectId: b92a72c9-9fc1-4e4c-a5dc-465b414a4e94
   projectName: Game Development Fall 2018
-  organizationId: game-development-fall-2018
+  organizationId: cwt26
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

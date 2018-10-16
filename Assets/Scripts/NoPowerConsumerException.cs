@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class NoPowerConsumerException : MissingComponentException
 {
@@ -8,6 +9,8 @@ public class NoPowerConsumerException : MissingComponentException
         : base(message)
     {
         Debug.LogError(message);
-        UnityEditor.EditorApplication.isPlaying = false;
+		#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+		#endif
     }
 }

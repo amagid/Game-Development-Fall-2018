@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     void Update()
     {
 
-        if (playerInventory.getFirstItem() != null)
+        if (playerInventory.getFirstBattery() != null)
         {
             item1UI.SetActive(true);
         

@@ -47,7 +47,7 @@ public class SwitchController : MonoBehaviour {
 			if (battery != null) {
 				Debug.Log (battery.name + " " + battery.getPowerSource().getPowerLevel());
 			}
-			if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1 && battery == null)
+			if (Input.GetKeyDown(KeyCode.E) && inventory.batteryCount() >= 1 && battery == null)
 			{
 				if (useBattery()) { // NOTE: power consumer power device
 					DoorController doorController = door.GetComponent<DoorController> ();
@@ -106,7 +106,7 @@ public class SwitchController : MonoBehaviour {
 
     bool useBattery()
     {
-		GameObject batteryGO = inventory.getFirstItem();
+		GameObject batteryGO = inventory.getFirstBattery();
 		Debug.Log ("BATTERY NAME: " + batteryGO.name);
 		batteryGO.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
 		batteryGO.SetActive(true);

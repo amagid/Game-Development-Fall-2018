@@ -204,7 +204,7 @@ public class PlayerCharacter : MonoBehaviour {
     void OnGUI()
     {
         
-		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
+		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.batteryCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
         
@@ -237,10 +237,8 @@ public class PlayerCharacter : MonoBehaviour {
 				}
 				battery.setIsInUse (false);
 			}
-            if (inventory.addItem(other.gameObject))
-            {
-                other.gameObject.SetActive(false);
-            }
+            inventory.addItem(other.gameObject);
+            other.gameObject.SetActive(false);
         } 
 		else if (other.gameObject.CompareTag("note"))
         {
@@ -349,7 +347,7 @@ public class PlayerCharacter : MonoBehaviour {
                 if (pc != null && ((obj.GetComponent<SwitchController>() != null && obj.GetComponent<SwitchController>().getBattery() == null) || (obj.GetComponent<CentralLightController>() != null && obj.GetComponent<CentralLightController>().getBatteryOnSwitch() == null)))
                 {
                     this.cursorMessage += "\nNeeds Battery";
-                    if (this.inventory.itemCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
+                    if (this.inventory.batteryCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
                     {
                         this.cursorMessage += "\nE - Attach Battery";
                     }

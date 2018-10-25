@@ -28,7 +28,7 @@ public class ElevatorGenerator : MonoBehaviour {
     {
         if (atSwitch)
         {
-            if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 3)
+            if (Input.GetKeyDown(KeyCode.E) && inventory.batteryCount() >= 3)
             {
                 useBattery();
                 elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
@@ -53,7 +53,7 @@ public class ElevatorGenerator : MonoBehaviour {
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject battery = inventory.getFirstItem();
+            GameObject battery = inventory.getFirstBattery();
             battery.transform.position = transform.position - new Vector3(0f,0f,1f) + new Vector3((float)xOffset, 0f, (float)(i * zOffset));
             battery.SetActive(true);
 			if (battery.GetComponent<Battery>().getPowerSource().isEmpty())

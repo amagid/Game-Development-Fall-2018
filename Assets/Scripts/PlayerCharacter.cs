@@ -108,12 +108,6 @@ public class PlayerCharacter : MonoBehaviour {
             losingSanity = false;
         }
 
-		if (losingSanity && !inElevator) {
-			sanity -= SANITY_DECREASE_RATE;
-		} else if (inElevator)
-        {
-            this.gainSanity(ELEVATOR_SANITY_RATE);
-        }
 
 
         // Raycast to find powerable objects
@@ -198,7 +192,21 @@ public class PlayerCharacter : MonoBehaviour {
 
 
         losingSanity = true;
-	}
+        //Debug.Log("Update time :" + Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        //Debug.Log("FixedUpdate time :" + Time.deltaTime);
+        if (losingSanity && !inElevator)
+        {
+            sanity -= SANITY_DECREASE_RATE;
+        }
+        else if (inElevator)
+        {
+            this.gainSanity(ELEVATOR_SANITY_RATE);
+        }
+    }
 
 
     void OnGUI()

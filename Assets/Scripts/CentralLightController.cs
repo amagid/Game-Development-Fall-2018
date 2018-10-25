@@ -51,7 +51,7 @@ public class CentralLightController : MonoBehaviour {
     {
         if (atSwitch)
         {
-            if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1 && batteryOnSwitch == null)
+            if (Input.GetKeyDown(KeyCode.E) && inventory.batteryCount() >= 1 && batteryOnSwitch == null)
             {
                 turnOnLights();
             }
@@ -75,7 +75,7 @@ public class CentralLightController : MonoBehaviour {
 
     void turnOnLights()
     {
-        GameObject battery = inventory.getFirstItem();
+        GameObject battery = inventory.getFirstBattery();
         batteryOnSwitch = battery;
         battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
         battery.SetActive(true);

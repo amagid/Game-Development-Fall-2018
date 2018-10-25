@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerCharacter : MonoBehaviour {
-    [SerializeField] private float personalLightSanityRate;
     [SerializeField] private float personalLightPowerRate;
     [SerializeField] private float starting_power;
     [SerializeField] private GameObject central_lighting;
@@ -17,8 +16,9 @@ public class PlayerCharacter : MonoBehaviour {
     private GUIStyle style3 = new GUIStyle();
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
-    private const float SANITY_DECREASE_RATE = 0.5f;
-    private const float ELEVATOR_SANITY_RATE = 1f;
+    [SerializeField] private float personalLightSanityRate = 0.02f;
+    private const float SANITY_DECREASE_RATE = 0.05f;
+    private const float ELEVATOR_SANITY_RATE = 0.1f;
 
 	private float sanity;
 	private bool losingSanity;
@@ -59,7 +59,7 @@ public class PlayerCharacter : MonoBehaviour {
         this.internalPowerConsumer.attachPowerSource(this.internalBattery);
 
         this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
-        InvokeRepeating("sanityChange", 1f, 0.5f);
+        InvokeRepeating("sanityChange", 1f, 0.1f);
     }
 
     //invoke repeat method for general dark area decrease, elevator increase and personal light increase

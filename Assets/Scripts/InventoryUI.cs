@@ -32,7 +32,10 @@ public class InventoryUI : MonoBehaviour
         }
 
 
-        item1UI.SetActive(playerInventory.containItem("Key1"));
+        item1UI.SetActive(playerInventory.containItem("Battery(1)"));
+        if (playerInventory.containItem("Battery(1)")) {
+            Debug.Log("abcde");
+        }
         item1UI.SetActive(!item1UI.activeInHierarchy);
 
 

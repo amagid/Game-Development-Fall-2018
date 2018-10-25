@@ -17,8 +17,8 @@ public class PlayerCharacter : MonoBehaviour {
     private GUIStyle style3 = new GUIStyle();
     private Inventory inventory;
 	private const float MAX_SANITY = 100f;
-    private const float SANITY_DECREASE_RATE = 0.05f;
-    private const float ELEVATOR_SANITY_RATE = 0.1f;
+    private const float SANITY_DECREASE_RATE = 0.5f;
+    private const float ELEVATOR_SANITY_RATE = 1f;
 
 	private float sanity;
 	private bool losingSanity;
@@ -59,10 +59,30 @@ public class PlayerCharacter : MonoBehaviour {
         this.internalPowerConsumer.attachPowerSource(this.internalBattery);
 
         this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
+        InvokeRepeating("sanityChange", 1f, 0.5f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    //invoke repeat method for general dark area decrease, elevator increase and personal light increase
+    void sanityChange() {
+        if(this.personalLight.enabled) {
+            sanity += personalLightSanityRate;
+            if (sanity > MAX_SANITY)
+            {
+                sanity = MAX_SANITY;
+            }
+        }
+        else if (losingSanity && !inElevator)
+        {
+            sanity -= SANITY_DECREASE_RATE;
+        }
+        else if (inElevator)
+        {
+            this.gainSanity(ELEVATOR_SANITY_RATE);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
         {
             endGame();
@@ -70,11 +90,6 @@ public class PlayerCharacter : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            sanity += personalLightSanityRate;
-            if (sanity > MAX_SANITY)
-            {
-                sanity = MAX_SANITY;
-            }
             this.internalBattery.takePower(personalLightPowerRate);
             this.personalLight.enabled = true;
             losingSanity = false;
@@ -195,6 +210,7 @@ public class PlayerCharacter : MonoBehaviour {
         //Debug.Log("Update time :" + Time.deltaTime);
     }
 
+    /*
     private void FixedUpdate()
     {
         //Debug.Log("FixedUpdate time :" + Time.deltaTime);
@@ -207,6 +223,7 @@ public class PlayerCharacter : MonoBehaviour {
             this.gainSanity(ELEVATOR_SANITY_RATE);
         }
     }
+    */
 
 
     void OnGUI()

@@ -44,8 +44,19 @@ public class Inventory : MonoBehaviour {
         itemList.Remove (item);
 	}
 
+    public bool hasItem() {
+        return itemList.Count > 0;
+    }
+
+    public bool hasBattery() {
+        return batteryList.Count > 0;
+    }
+
     //check if the itemList contains a specific item
 	public bool containItem(string itemName) {
+        if(! (hasItem())) {
+            return false;
+        }
 		foreach (GameObject obj in itemList) {
 			if (obj.name == itemName) {
 				return true;
@@ -53,19 +64,6 @@ public class Inventory : MonoBehaviour {
 		}
 		return false;
 	}
-
-    //check if the batteryList contains battery
-    public bool containBattery()
-    {
-        foreach (GameObject obj in batteryList)
-        {
-            if (obj.CompareTag("battery"))
-            {
-                return true;
-            }
-        }
-        return false; 
-    }
 
     //retrieve the item in the itemList by name
     public GameObject getItem(string itemName)

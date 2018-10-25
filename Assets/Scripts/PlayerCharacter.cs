@@ -64,6 +64,7 @@ public class PlayerCharacter : MonoBehaviour {
 
     //invoke repeat method for general dark area decrease, elevator increase and personal light increase
     void sanityChange() {
+        Debug.Log(sanity);
         if(this.personalLight.enabled) {
             sanity += personalLightSanityRate;
             if (sanity > MAX_SANITY)

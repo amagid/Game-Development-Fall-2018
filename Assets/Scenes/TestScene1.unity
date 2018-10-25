@@ -5093,7 +5093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &621889716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9908,7 +9908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1233943989
 Transform:
   m_ObjectHideFlags: 0
@@ -10582,7 +10582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a6d0c7513d6034b8922dd8f734317c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalLightSanityRate: 0.025
+  personalLightSanityRate: 0.2
   personalLightPowerRate: 0.01
   starting_power: 150
   central_lighting: {fileID: 1370861057}
@@ -13201,12 +13201,12 @@ GameObject:
   - component: {fileID: 1634738380}
   - component: {fileID: 1639422546}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: LevelFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1634738380
 Transform:
   m_ObjectHideFlags: 0

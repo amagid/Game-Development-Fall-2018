@@ -31,22 +31,36 @@ public class MachineController : MonoBehaviour {
 
     public IEnumerator activate()
     {
-        for (float t = 0f; t < 1; t += Time.deltaTime / 1.5f)
+        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
         {
-            if(light.range < 25f)
+            if(light.range < 30f)
             {
-                //light.intensity += 1f;
-                light.range += 1f;
+                light.intensity += 0.5f;
+                light.range += 0.2f;
             }
+            else
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
         }
-        yield return new WaitForSeconds(1.5f);
-        for (float t = 0f; t < 1; t += Time.deltaTime / 1.5f)
+        yield return new WaitForSeconds(1.0f);
+
+        //add an indicator that the machine has been built
+        player.GetComponent<PlayerCharacter>().pauseSanityLoss();
+
+        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
         {
-            if (light.range > 5f)
+            if (light.range > 8f)
             {
-                //light intenstiy -= 1f;
-                light.range -= 1f;
+                light.intensity -= 0.5f;
+                light.range -= 0.2f;
             }
+            else
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
         }
     }
 

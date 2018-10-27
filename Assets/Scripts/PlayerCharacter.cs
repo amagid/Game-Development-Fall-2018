@@ -64,7 +64,6 @@ public class PlayerCharacter : MonoBehaviour {
 
     //invoke repeat method for general dark area decrease, elevator increase and personal light increase
     void sanityChange() {
-        //Debug.Log(sanity);
         if(this.personalLight.enabled) {
             sanity += personalLightSanityRate;
             if (sanity > MAX_SANITY)
@@ -106,7 +105,7 @@ public class PlayerCharacter : MonoBehaviour {
             if (isCrouching && canStandUp)
             {
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2f, transform.localScale.z);
-                transform.position = new Vector3(transform.position.x, transform.position.y * 2f, transform.position.z);
+                //transform.position = new Vector3(transform.position.x, transform.position.y * 2f, transform.position.z);
                 isCrouching = false;
             }
             //if standing
@@ -208,23 +207,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 
         losingSanity = true;
-        //Debug.Log("Update time :" + Time.deltaTime);
     }
-
-    /*
-    private void FixedUpdate()
-    {
-        //Debug.Log("FixedUpdate time :" + Time.deltaTime);
-        if (losingSanity && !inElevator)
-        {
-            sanity -= SANITY_DECREASE_RATE;
-        }
-        else if (inElevator)
-        {
-            this.gainSanity(ELEVATOR_SANITY_RATE);
-        }
-    }
-    */
 
 
     void OnGUI()
@@ -337,6 +320,11 @@ public class PlayerCharacter : MonoBehaviour {
 
     public PowerSource getPowerSource() {
         return internalBattery;
+    }
+
+    public void pauseSanityLoss()
+    {
+        this.losingSanity = false;
     }
 
     private void updateSeenObject(GameObject obj)

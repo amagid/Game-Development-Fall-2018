@@ -19,6 +19,12 @@ public class Inventory : MonoBehaviour {
 	void Update () {
 	}
 
+    //return the number of items the player currently have
+    public int itemCount()
+    {
+        return itemList.Count;
+    }
+
     //return the number of batteries the player currently have
     public int batteryCount()
     {
@@ -93,12 +99,8 @@ public class Inventory : MonoBehaviour {
 			//.getPowerIndex().CompareTo(x.GetComponent<Battery>().getPowerIndex()));
 	}
 
-    //clear out all battery and items
+    //clear out all items
     public void clearItems() {
-        while (batteryList.Count > 0)
-        {
-            batteryList.RemoveAt(0);
-        }
         while (itemList.Count > 0)
         {
             itemList.RemoveAt(0);
@@ -107,6 +109,9 @@ public class Inventory : MonoBehaviour {
 
     //clear out all batteries
     public void clearBatteries() {
-
+        while (batteryList.Count > 0)
+        {
+            batteryList.RemoveAt(0);
+        }
     }
 }

@@ -32,6 +32,9 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < numBatteries; i++){
             imgs[i].color = UnityEngine.Color.green;
         }
+        for (int i = numBatteries; i < 8; i++) {
+            imgs[i].color = UnityEngine.Color.red;
+        }
   
 
     }

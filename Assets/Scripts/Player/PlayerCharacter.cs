@@ -29,7 +29,6 @@ public class PlayerCharacter : MonoBehaviour {
     private PowerConsumer currentConsumer;
     private PowerSource currentSource;
     private string cursorMessage;
-    private bool waitForEKeyUp = false;
 
     void Start () {
 		style1.fontSize = 25;
@@ -178,12 +177,18 @@ public class PlayerCharacter : MonoBehaviour {
                 this.currentSource = null;
             }
             
+
+
+
+
+
+
+
+
+
             //If the E key is being pressed, try to add a battery to the seen device.
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                // If we have a power source from last tick, siphon some of its power.
-                if (!this.waitForEKeyUp)
-                {
                     // Get the PowerConsumer of the object we're looking at, if any.
                     PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
                     // If there is a PowerConsumer on this object, check if it has a PowerSource.
@@ -193,23 +198,23 @@ public class PlayerCharacter : MonoBehaviour {
                         // If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
                         if (ps == null)
                         {
-                            Battery batteryPC = this.inventory.getFirstItem().GetComponent<Battery>();
+						GameObject gameObjectPC = this.inventory.getFirstItem ();
+						Battery batteryPC = gameObjectPC.GetComponent<Battery>();
                             if (batteryPC != null && batteryPC.getPowerSource() != null)
                             {
                                 pc.attachPowerSource(batteryPC.getPowerSource());
                                 CentralLightController clc = hit.collider.gameObject.GetComponent<CentralLightController>();
-                                if (clc != null)
+                               	if (clc != null)
                                 {
                                     clc.setBattery(batteryPC.gameObject);
                                 }
-                                /*
+                                
                                 SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController>();
                                 if (sc != null)
                                 {
-                                    sc.setBattery(batteryPC.gameObject);
+									sc.setBattery(gameObjectPC);
                                 }
-                                */
-                                this.waitForEKeyUp = true;
+
                             }
                             // If the PowerConsumer did have a PowerSource, check if it's extractable & take it if it is
                         } else if (pc.isPowerSourceExtractable())
@@ -221,16 +226,9 @@ public class PlayerCharacter : MonoBehaviour {
                             battery.GetComponent<Battery>().setPowerSource(new PowerSource(oldPC.getMaxPower(), oldPC.getPowerLevel()));
                             this.inventory.addItem(battery);
                             battery.SetActive(false);
-                            this.waitForEKeyUp = true;
                         }
                     }
                 }
-                // If we're no longer pressing E, forget about that device so we can press E again.
-            }
-            else
-            {
-                this.waitForEKeyUp = false;
-            }
             // If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
         }
         else
@@ -267,16 +265,10 @@ public class PlayerCharacter : MonoBehaviour {
 		if (other.gameObject.CompareTag("battery"))
 		{
 			Battery battery = other.gameObject.GetComponent<Battery> ();
-			if (battery.isInUse ()) {
+			if (battery.deviceBatteryIsAttachedTo != null) {
+				battery.deviceBatteryIsAttachedTo.removePowerSource ();
+				battery.deviceBatteryIsAttachedTo = null;
 				Debug.Log ("Player took battery too early");
-				//				Debug.Log(battery.getDoorController ().gameObject.name);
-				DoorController doorController = battery.getDoorController ();
-				if (doorController != null) {
-					doorController.setIsSlowDoor (false);
-					battery.getSwitchController ().setBattery (null);
-					battery.setDoorController (null);
-				}
-				battery.setIsInUse (false);
 			}
 			if (inventory.addItem(other.gameObject))
 			{

@@ -58,8 +58,7 @@ public class Inventory : MonoBehaviour {
     }
 
 	public void sortDescending(){
-		items.Sort ((x, y) => (int)y.GetComponent<Battery> ().getPowerSource ().getPowerLevel ());
-			//.getPowerIndex().CompareTo(x.GetComponent<Battery>().getPowerIndex()));
+		items.Sort ((x, y) => (int)y.GetComponent<Battery> ().getPowerSource ().getPowerLevel ().CompareTo(x.GetComponent<Battery>().getPowerSource().getPowerLevel()));
 	}
 
     //clear out all inventory items

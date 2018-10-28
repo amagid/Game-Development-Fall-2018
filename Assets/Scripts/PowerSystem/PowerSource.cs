@@ -13,7 +13,6 @@ public class PowerSource {
         this.maxPower = maxPower;
         this.startingPower = startingPower;
         this.currentPower = this.startingPower;
-        Debug.Log(maxPower);
     }
 
 	// Use this for initialization
@@ -35,6 +34,10 @@ public class PowerSource {
             return true;
         } else
         {
+			// if the power source doesn't have enough power for the power consumer to continue running set power to 0
+			if(currentPower != 0){
+				currentPower = 0;
+			}
             return false;
         }
     }
@@ -92,6 +95,10 @@ public class PowerSource {
     {
         return currentPower == maxPower;
     }
+		
+
+
+
 
     /// <summary>
     /// Static class method for transferring Power between two arbitrary PowerSources.

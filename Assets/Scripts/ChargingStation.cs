@@ -5,18 +5,19 @@ using UnityEngine;
 public class ChargingStation : MonoBehaviour
 {
 
+	private PowerSource chargingStationPowerSource = new PowerSource(Mathf.Infinity, Mathf.Infinity);
     private Inventory inventory;
-
     private bool atSwitch = false;
-
     public double xOffset;
-
     public double yOffset;
-
     public double zOffset;
+
+	float test = Mathf.Infinity;
 
     void Start()
     {
+		test = test - 1;
+		Debug.Log (test);
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
@@ -52,9 +53,18 @@ public class ChargingStation : MonoBehaviour
             battery.SetActive(true);
 			if (battery.GetComponent<Battery>().getPowerSource().isEmpty())
             {
-                battery.GetComponent<Battery>().StartCoroutine("chargeBattery");
+				this.StartCoroutine(chargeBattery(battery.GetComponent<Battery>()));
             }
         }
     }
-}
+		
+	public IEnumerator chargeBattery(Battery battery)
+	{
 
+		while(!battery.getPowerSource().isFull())
+		{
+			yield return new WaitForSeconds(0.01f);
+			battery.getPowerSource().givePower(1f);
+		}
+	}
+}

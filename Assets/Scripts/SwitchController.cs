@@ -11,7 +11,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 
 	[SerializeField] private GameObject switchDevice;
 	private DirectOperation deviceController; 
-	private bool atSwitch = false;
     public double xOffset;
     public double yOffset;
     public double zOffset;
@@ -19,9 +18,7 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 	// the battery that is attached to the switch
 	private Battery battery = null;
 
-	private PowerConsumer powerConsumer; 
-
-
+	private PowerConsumer powerConsumer; // just public for the time being should be switched
 
 
 	void Start () {
@@ -33,18 +30,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 
 	// Update is called once per frame
 	void Update () {
-		// sets the battery in the switc
-		if (atSwitch) {
-			if (battery != null) {
-				Debug.Log (battery.name + " " + battery.getPowerSource().getPowerLevel());
-			}
-			if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 1 && battery == null)
-			{
-				setBattery ();
-				battery.setIsInUse (true); //NOTE: temporary battery is in use will be deleted soon
-			}
-		}
-
 		// Activate/Operate/Deactivate device based on powerConsumer state
 		// calls the Activate/Operat/Deactivate of the device the switch powers
 		bool deviceIsPowered = this.powerConsumer.powerDevice();
@@ -56,42 +41,30 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 			this.operate();
 		} else if (!deviceIsPowered && this.isActive())
 		{
-			//battery.setIsInUse (false); //NOTE: temporary battery is in use will be deleted soon
 			this.deactivate();
 		}
 	}
-
-
-	public void setBattery(){ // power consumer attach power source
+		
+	// called from playerCharacter when Input.getkeydown KeyCode.E
+	// sets the battery object active and attaches it to the power source 
+	public void setBattery(GameObject battery){ // power consumer attach power source
+		//this.battery = battery;
 		// Sets in game battery object on to the switch
-		GameObject batteryGO = inventory.getFirstItem();
-		Debug.Log ("BATTERY NAME: " + batteryGO.name);
-		batteryGO.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
-		batteryGO.SetActive(true);
+		Debug.Log ("BATTERY NAME: " + battery.name);
+		battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
+		battery.SetActive(true);
+		battery.GetComponent<Battery> ().deviceBatteryIsAttachedTo = this.powerConsumer;
+
 
 		// if there are no batteries with power
-		if (batteryGO.GetComponent<Battery> ().getPowerSource ().isEmpty ()) {
+		if (battery.GetComponent<Battery> ().getPowerSource ().isEmpty ()) {
 			Debug.Log ("Battery is empty!");
 		} else {
-			powerConsumer.attachPowerSource(batteryGO.GetComponent<Battery>().getPowerSource());
+			powerConsumer.attachPowerSource(battery.GetComponent<Battery>().getPowerSource());
 		}
-	}
 
-	public void setBattery(Battery battery){ // power consumer attach power source
-		this.battery = battery;
 	}
 		
-
-	void OnTriggerStay (Collider other) {
-		if (other.name == "Player")
-			atSwitch = true;
-	}
-
-	void OnTriggerExit(Collider other) {
-		atSwitch = false;
-	}
-
-
 	/// <summary>
 	/// Perform initial activation work for this device upon recieving sufficient Power
 	/// </summary>
@@ -99,8 +72,7 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 		this.active = true;
 		this.deviceController.activate ();
 	}
-
-
+		
 	/// <summary>
 	/// Tick-by-tick operation of this device. Operate() should finish in one Update() call.
 	/// </summary>
@@ -112,8 +84,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 	/// Perform deactivation work for this device upon losing sufficient Power
 	/// </summary>
 	public void deactivate(){
-		Debug.Log ("HELLO");
-
 		this.active = false;
 		deviceController.deactivate ();
 	}

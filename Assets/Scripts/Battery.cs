@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Battery : MonoBehaviour {
 
+<<<<<<< HEAD
 	public int max_power = 100;
 	public int power_index = 100;
+=======
+    public int max_power = 100;
+    public int power_index = 100;
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff
 	private PowerSource powerSource;
 	public PowerConsumer deviceBatteryIsAttachedTo = null; // WARNING: CURRENTLY ONLY SET UP FOR BATTERIES AND GENERIC SWITCH
 
@@ -13,6 +18,7 @@ public class Battery : MonoBehaviour {
 	void Start () {
 		powerSource = new PowerSource (max_power, power_index);
 	}
+<<<<<<< HEAD
 
 	// Update is called once per frame
 	void Update () {
@@ -24,6 +30,17 @@ public class Battery : MonoBehaviour {
 	}
 
 
+=======
+		
+	// Update is called once per frame
+	void Update () {
+		if(powerSource.getPowerLevel() != powerSource.getMaxPower()){
+			Debug.Log ("this is the battery for the things " + powerSource.getPowerLevel());
+		}
+		updateBatteryLights ();
+	}
+
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff
 	/// <summary>
 	/// Checks if battery is empty, if so sets the lights to red, checks if battery is full if so sets light to green.
 	/// Will do nothing if battery is already the correct color.
@@ -34,10 +51,13 @@ public class Battery : MonoBehaviour {
 			this.gameObject.GetComponent<Renderer>().material.color = Color.red;
 			this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.red;
 			this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.red;
+<<<<<<< HEAD
 			/*if (this.switchController != null) NOTE: Was in the previous doc will probably delete
 			{
 				this.switchController.deactivate();
 			}*/
+=======
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff
 		}
 		else if (powerSource.isFull() && gameObject.GetComponent<Renderer>().material.color != Color.green)
 		{
@@ -46,14 +66,28 @@ public class Battery : MonoBehaviour {
 			this.gameObject.transform.Find("light2").GetComponent<Light>().color = Color.green;
 		}
 	}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff
 	public PowerSource getPowerSource(){
 		return powerSource; 
 	}
 
+<<<<<<< HEAD
 	public void setPowerSource(PowerSource ps)
 	{
 		this.powerSource = ps;
 	}
 }
 
+=======
+    public void setPowerSource(PowerSource ps)
+    {
+        this.powerSource = ps;
+    }
+}
+
+
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff

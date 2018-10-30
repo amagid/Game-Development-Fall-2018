@@ -45,6 +45,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	}
 
+<<<<<<< HEAD:Assets/Scripts/DoorController.cs
 	private IEnumerator openDoor()
 	{
 		for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
@@ -54,6 +55,17 @@ public class DoorController : MonoBehaviour, DirectOperation {
 		}
 		//isOpen = true;
 	}
+=======
+    private IEnumerator openDoor()
+    {
+        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+        {
+            transform.position = Vector3.Lerp(closePos, openPos, t);
+            yield return null;
+        }
+        //isOpen = true;
+    }
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff:Assets/Scripts/PoweredDevices/DoorController.cs
 
 
 	private IEnumerator closeDoor()

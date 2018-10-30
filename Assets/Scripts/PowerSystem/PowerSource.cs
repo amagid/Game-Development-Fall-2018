@@ -19,6 +19,31 @@ public class PowerSource {
 	void Start () {
 		currentPower = startingPower;
 	}
+<<<<<<< HEAD:Assets/Scripts/PowerSource.cs
+=======
+    
+    /// <summary>
+    /// Instance method for taking a specified amount of Power from this PowerSource.
+    /// Returns true if succeeded, false if failed.
+    /// </summary>
+    /// <param name="amount">The amount of Power to transfer</param>
+    /// <returns>True if succeeded, False if failed</returns>
+    public bool takePower(float amount)
+    {
+        if (currentPower >= amount)
+        {
+            currentPower -= amount;
+            return true;
+        } else
+        {
+			// if the power source doesn't have enough power for the power consumer to continue running set power to 0
+			if(currentPower != 0){
+				currentPower = 0;
+			}
+            return false;
+        }
+    }
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff:Assets/Scripts/PowerSystem/PowerSource.cs
 
 	/// <summary>
 	/// Instance method for taking a specified amount of Power from this PowerSource.
@@ -78,6 +103,7 @@ public class PowerSource {
 		return maxPower;
 	}
 
+<<<<<<< HEAD:Assets/Scripts/PowerSource.cs
 	/// <summary>
 	/// Checks if this PowerSource is empty
 	/// </summary>
@@ -95,6 +121,20 @@ public class PowerSource {
 	{
 		return currentPower == maxPower;
 	}
+=======
+    /// <summary>
+    /// Checks if this PowerSource is full
+    /// </summary>
+    /// <returns>True if full, False if not</returns>
+    public bool isFull()
+    {
+        return currentPower == maxPower;
+    }
+		
+
+
+
+>>>>>>> ede83ecdeb9a6a452e419e3821774de75aa84cff:Assets/Scripts/PowerSystem/PowerSource.cs
 
 	/// <summary>
 	/// Static class method for transferring Power between two arbitrary PowerSources.

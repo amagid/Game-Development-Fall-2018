@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour {
 
     //sort the batterylist by descending power index
 	public void sortDescending(){
-		batteryList.Sort ((x, y) => (int)y.GetComponent<Battery> ().getPowerSource ().getPowerLevel ());
+		batteryList.Sort ((x, y) => (int)y.GetComponent<Battery> ().getPowerSource ().getPowerLevel ().CompareTo((int)x.GetComponent<Battery> ().getPowerSource ().getPowerLevel ()));
 			//.getPowerIndex().CompareTo(x.GetComponent<Battery>().getPowerIndex()));
 	}
 

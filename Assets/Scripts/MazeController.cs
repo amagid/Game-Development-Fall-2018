@@ -58,16 +58,6 @@ public class MazeController : MonoBehaviour {
     private IEnumerator startMazeSequence()
     {
         StartCoroutine("seqOne");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("seqTwo");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("seqThree");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("seqFour");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("seqFive");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("seqSix");
         yield return null;
     }
 
@@ -82,6 +72,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(redDoors[0], "x"));
         StartCoroutine(closeDoor(greenDoors[1], "z"));
         StartCoroutine(closeDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqTwo");
     }
 
     //BRG
@@ -95,6 +87,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(blueDoors[0], "x"));
         StartCoroutine(closeDoor(redDoors[1], "x"));
         StartCoroutine(closeDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqThree");
     }
 
     //GBR
@@ -108,6 +102,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(greenDoors[0], "z"));
         StartCoroutine(closeDoor(blueDoors[1], "x"));
         StartCoroutine(closeDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqFour");
     }
 
     //RBG
@@ -121,6 +117,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(redDoors[0], "x"));
         StartCoroutine(closeDoor(blueDoors[1], "x"));
         StartCoroutine(closeDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqFive");
     }
 
     //BGR
@@ -134,6 +132,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(blueDoors[0], "x"));
         StartCoroutine(closeDoor(greenDoors[1], "z"));
         StartCoroutine(closeDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqSix");
     }
 
     //GRB
@@ -147,6 +147,8 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(greenDoors[0], "z"));
         StartCoroutine(closeDoor(redDoors[1], "x"));
         StartCoroutine(closeDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("deactivateMaze");
     }
 
     //deactivate the maze by opening all the doors
@@ -164,7 +166,7 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(blueDoors[0], "x"));
         StartCoroutine(openDoor(blueDoors[1], "x"));
         StartCoroutine(openDoor(blueDoors[2], "x"));
-        activated = false;
+        //activated = false;
     }
 
     public IEnumerator openDoor(GameObject door, string axis)
@@ -219,7 +221,7 @@ public class MazeController : MonoBehaviour {
         }
         Vector3 closePos = new Vector3(closePosX, closePosY, closePosZ);
         door.SetActive(true);
-        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+        for (float t = 0f; t < 1; t += Time.deltaTime / 1.5f)
         {
             door.transform.position = Vector3.Lerp(openPos, closePos, t);
             yield return null;

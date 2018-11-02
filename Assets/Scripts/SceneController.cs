@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_door;
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
+    //[SerializeField]
     [SerializeField] private GameObject elevator_outside_lights;
     public bool lvl1_complete = false;
 

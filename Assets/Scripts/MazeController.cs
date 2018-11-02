@@ -13,10 +13,6 @@ public class MazeController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //elevDoors = new GameObject[3];
-        //redDoors = new GameObject[3];
-        //greenDoors = new GameObject[3];
-        //blueDoors = new GameObject[3];
         activated = false;
         setupInitialState();
 	}
@@ -39,16 +35,21 @@ public class MazeController : MonoBehaviour {
     {
         if (other.name == "Player" && !activated)
         {
-            activateMazeDoors();
+            activateMaze();
             activated = true;
         }
     }
 
-    void activateMazeDoors()
+    void activateMaze()
     {
         StartCoroutine(closeDoor(elevDoors[0], "z"));
         StartCoroutine(closeDoor(elevDoors[1], "z"));
         StartCoroutine(closeDoor(elevDoors[2], "z"));
+    }
+
+    void deactivateMaze()
+    {
+
     }
 
     public IEnumerator openDoor(GameObject door, string axis)

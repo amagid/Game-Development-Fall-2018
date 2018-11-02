@@ -587,6 +587,11 @@ Prefab:
       propertyPath: zOffset
       value: -0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 114241771546031136, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: consumptionRate
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
   m_IsPrefabAsset: 0
@@ -6380,7 +6385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &594264817
 Transform:
   m_ObjectHideFlags: 0
@@ -8840,7 +8845,7 @@ Prefab:
     - target: {fileID: 114634175438628162, guid: b1e004e2f60ec6840abefcca889b9df2,
         type: 2}
       propertyPath: power_index
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
@@ -16363,6 +16368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1370861058}
+  - component: {fileID: 1370861059}
   m_Layer: 0
   m_Name: Lvl1 Central Lights
   m_TagString: Untagged
@@ -16386,6 +16392,18 @@ Transform:
   m_Father: {fileID: 1233943989}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1370861059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370861057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a54ae4d3b262741865f98eb4a073d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  central_lights: {fileID: 1370861057}
 --- !u!1001 &1371068777
 Prefab:
   m_ObjectHideFlags: 0
@@ -16688,7 +16706,7 @@ Prefab:
     - target: {fileID: 114634175438628162, guid: b1e004e2f60ec6840abefcca889b9df2,
         type: 2}
       propertyPath: power_index
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
@@ -17595,6 +17613,11 @@ Prefab:
       propertyPath: m_Name
       value: Central Light Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 114241771546031136, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: consumptionRate
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
@@ -17612,10 +17635,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516021775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a54ae4d3b262741865f98eb4a073d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7051e5321dd87eb4ab18f837f189a8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  central_lights: {fileID: 1370861057}
+  switchDevice: {fileID: 1370861057}
   xOffset: -3.5
   yOffset: 4
   zOffset: 0.4
@@ -18765,6 +18788,16 @@ Prefab:
       propertyPath: m_Name
       value: Switch3
       objectReference: {fileID: 0}
+    - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: switchDevice
+      value: 
+      objectReference: {fileID: 985207461}
+    - target: {fileID: 114241771546031136, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: consumptionRate
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
   m_IsPrefabAsset: 0
@@ -18935,6 +18968,16 @@ Prefab:
     - target: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
       propertyPath: m_Name
       value: Switch1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: switchDevice
+      value: 
+      objectReference: {fileID: 1222385081}
+    - target: {fileID: 114241771546031136, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: consumptionRate
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}

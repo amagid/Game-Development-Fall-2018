@@ -83,6 +83,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		losingSanity = true;
 		if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
 		{
 			endGame();
@@ -246,15 +247,10 @@ public class PlayerCharacter : MonoBehaviour {
 		else
 		{
 			this.updateSeenObject(null);
-			if (this.currentConsumer != null)
-			{
-				this.currentConsumer.removePowerSource();
-			}
 			this.currentSource = null;
 		}
 
 
-		losingSanity = true;
 	}
 
 

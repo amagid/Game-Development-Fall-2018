@@ -8,8 +8,11 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_door;
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
+    [SerializeField] private GameObject levelfinal;
     [SerializeField] private GameObject elevator_outside_lights;
     public bool lvl1_complete = false;
+    public bool lvl2_complete = false;
+    public bool game_complete = false;
 
 
     // Use this for initialization
@@ -42,6 +45,17 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(4f);
         level1.SetActive(false);
         level2.SetActive(true);
+        StartCoroutine("elevatorMovingAnimation");
+        yield return new WaitForSeconds(6f);
+        elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
+    }
+
+    public IEnumerator loadLevelFinal()
+    {
+        elevator_light.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        level2.SetActive(false);
+        levelfinal.SetActive(true);
         StartCoroutine("elevatorMovingAnimation");
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");

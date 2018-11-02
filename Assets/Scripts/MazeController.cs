@@ -5,18 +5,18 @@ using System;
 
 public class MazeController : MonoBehaviour {
 
+    //Elevator doors move in the z axis
     [SerializeField] private GameObject[] elevDoors;
+    //Red doors move in the x axis
     [SerializeField] private GameObject[] redDoors;
+    //Green doors move in the z axis
     [SerializeField] private GameObject[] greenDoors;
+    //Blue doors move in the x axis
     [SerializeField] private GameObject[] blueDoors;
     private bool activated;
 
     // Use this for initialization
     void Start () {
-        //elevDoors = new GameObject[3];
-        //redDoors = new GameObject[3];
-        //greenDoors = new GameObject[3];
-        //blueDoors = new GameObject[3];
         activated = false;
         setupInitialState();
 	}
@@ -39,16 +39,134 @@ public class MazeController : MonoBehaviour {
     {
         if (other.name == "Player" && !activated)
         {
-            activateMazeDoors();
+            activateMaze();
             activated = true;
         }
     }
 
-    void activateMazeDoors()
+    void activateMaze()
     {
+        //close all elevator doors
         StartCoroutine(closeDoor(elevDoors[0], "z"));
         StartCoroutine(closeDoor(elevDoors[1], "z"));
         StartCoroutine(closeDoor(elevDoors[2], "z"));
+        //start maze sequence, let the game begin
+        StartCoroutine("startMazeSequence");
+    }
+
+    //RGB, BRG, GBR, RBG, BGR, GRB
+    private IEnumerator startMazeSequence()
+    {
+        StartCoroutine("seqOne");
+        yield return null;
+    }
+
+    //RGB
+    private IEnumerator seqOne()
+    {
+        Debug.Log("RGB");
+        StartCoroutine(openDoor(redDoors[0], "x"));
+        StartCoroutine(openDoor(greenDoors[1], "z"));
+        StartCoroutine(openDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(redDoors[0], "x"));
+        StartCoroutine(closeDoor(greenDoors[1], "z"));
+        StartCoroutine(closeDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqTwo");
+    }
+
+    //BRG
+    private IEnumerator seqTwo()
+    {
+        Debug.Log("BRG");
+        StartCoroutine(openDoor(blueDoors[0], "x"));
+        StartCoroutine(openDoor(redDoors[1], "x"));
+        StartCoroutine(openDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(blueDoors[0], "x"));
+        StartCoroutine(closeDoor(redDoors[1], "x"));
+        StartCoroutine(closeDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqThree");
+    }
+
+    //GBR
+    private IEnumerator seqThree()
+    {
+        Debug.Log("GBR");
+        StartCoroutine(openDoor(greenDoors[0], "z"));
+        StartCoroutine(openDoor(blueDoors[1], "x"));
+        StartCoroutine(openDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(greenDoors[0], "z"));
+        StartCoroutine(closeDoor(blueDoors[1], "x"));
+        StartCoroutine(closeDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqFour");
+    }
+
+    //RBG
+    private IEnumerator seqFour()
+    {
+        Debug.Log("RBG");
+        StartCoroutine(openDoor(redDoors[0], "x"));
+        StartCoroutine(openDoor(blueDoors[1], "x"));
+        StartCoroutine(openDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(redDoors[0], "x"));
+        StartCoroutine(closeDoor(blueDoors[1], "x"));
+        StartCoroutine(closeDoor(greenDoors[2], "z"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqFive");
+    }
+
+    //BGR
+    private IEnumerator seqFive()
+    {
+        Debug.Log("BGR");
+        StartCoroutine(openDoor(blueDoors[0], "x"));
+        StartCoroutine(openDoor(greenDoors[1], "z"));
+        StartCoroutine(openDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(blueDoors[0], "x"));
+        StartCoroutine(closeDoor(greenDoors[1], "z"));
+        StartCoroutine(closeDoor(redDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("seqSix");
+    }
+
+    //GRB
+    private IEnumerator seqSix()
+    {
+        Debug.Log("GRB");
+        StartCoroutine(openDoor(greenDoors[0], "z"));
+        StartCoroutine(openDoor(redDoors[1], "x"));
+        StartCoroutine(openDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(closeDoor(greenDoors[0], "z"));
+        StartCoroutine(closeDoor(redDoors[1], "x"));
+        StartCoroutine(closeDoor(blueDoors[2], "x"));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("deactivateMaze");
+    }
+
+    //deactivate the maze by opening all the doors
+    void deactivateMaze()
+    {
+        StartCoroutine(openDoor(elevDoors[0], "z"));
+        StartCoroutine(openDoor(elevDoors[1], "z"));
+        StartCoroutine(openDoor(elevDoors[2], "z"));
+        StartCoroutine(openDoor(redDoors[0], "x"));
+        StartCoroutine(openDoor(redDoors[1], "x"));
+        StartCoroutine(openDoor(redDoors[2], "x"));
+        StartCoroutine(openDoor(greenDoors[0], "z"));
+        StartCoroutine(openDoor(greenDoors[1], "z"));
+        StartCoroutine(openDoor(greenDoors[2], "z"));
+        StartCoroutine(openDoor(blueDoors[0], "x"));
+        StartCoroutine(openDoor(blueDoors[1], "x"));
+        StartCoroutine(openDoor(blueDoors[2], "x"));
+        //activated = false;
     }
 
     public IEnumerator openDoor(GameObject door, string axis)
@@ -103,7 +221,7 @@ public class MazeController : MonoBehaviour {
         }
         Vector3 closePos = new Vector3(closePosX, closePosY, closePosZ);
         door.SetActive(true);
-        for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+        for (float t = 0f; t < 1; t += Time.deltaTime / 1.5f)
         {
             door.transform.position = Vector3.Lerp(openPos, closePos, t);
             yield return null;

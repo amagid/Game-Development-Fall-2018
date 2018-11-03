@@ -208,10 +208,10 @@ public class PlayerCharacter : MonoBehaviour {
 				if (pc != null)
 				{
 					PowerSource ps = pc.getPowerSource();
-					// If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
+					// If the PowerConsumer did not have a PowerSource, attach the selected battery in our inventory.
 					if (ps == null)
 					{
-						GameObject gameObjectPC = this.inventory.getFirstBattery ();
+						GameObject gameObjectPC = this.inventory.getSelectedBattery ();
 						Battery batteryPC = gameObjectPC.GetComponent<Battery>();
 						if (batteryPC != null && batteryPC.getPowerSource() != null)
 						{
@@ -408,5 +408,7 @@ public class PlayerCharacter : MonoBehaviour {
 			this.cursorMessage = "";
 		}
 	}
+
+
 
 }

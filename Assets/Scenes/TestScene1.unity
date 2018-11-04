@@ -7290,7 +7290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &594264817
 Transform:
   m_ObjectHideFlags: 0
@@ -15909,7 +15909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1233943989
 Transform:
   m_ObjectHideFlags: 0
@@ -21482,6 +21482,11 @@ Prefab:
       propertyPath: m_Name
       value: Switch3
       objectReference: {fileID: 0}
+    - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: switchDevice
+      value: 
+      objectReference: {fileID: 985207461}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
   m_IsPrefabAsset: 0
@@ -21653,6 +21658,11 @@ Prefab:
       propertyPath: m_Name
       value: Switch1
       objectReference: {fileID: 0}
+    - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
+        type: 2}
+      propertyPath: switchDevice
+      value: 
+      objectReference: {fileID: 1222385081}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
   m_IsPrefabAsset: 0

@@ -795,8 +795,11 @@ MonoBehaviour:
   elevator_door: {fileID: 1006614528}
   level1: {fileID: 1233943988}
   level2: {fileID: 1634738379}
+  levelfinal: {fileID: 0}
   elevator_outside_lights: {fileID: 462186305}
   lvl1_complete: 0
+  lvl2_complete: 0
+  game_complete: 0
 --- !u!4 &63089281
 Transform:
   m_ObjectHideFlags: 0

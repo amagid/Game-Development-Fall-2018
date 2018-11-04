@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NavigationDirection : MonoBehaviour {
+	// stores the player game object
 	[SerializeField] private GameObject player;
+	// stores the text that displays the direction
 	[SerializeField] private Text directionText;
 	private enum CardinalDirection
 	{

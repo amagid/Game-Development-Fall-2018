@@ -10763,7 +10763,7 @@ GameObject:
   - component: {fileID: 980136615}
   - component: {fileID: 980136614}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DirectionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

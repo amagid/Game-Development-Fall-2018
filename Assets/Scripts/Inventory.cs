@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour {
 
     private List<GameObject> itemList;
 
+    public int selectedBatteryIndex;
+
 	// Use this for initialization
 	void Start () {
 		batteryList = new List<GameObject> ();
@@ -82,6 +84,17 @@ public class Inventory : MonoBehaviour {
             }
         }
         throw new Exception("Item not found!");
+    }
+
+    public GameObject getSelectedBattery()
+    {
+        if (selectedBatteryIndex == -1)
+        {
+            return null;
+        }
+        GameObject gameObj = (GameObject)(batteryList[selectedBatteryIndex]);
+        batteryList.Remove(gameObj);
+        return gameObj;
     }
 
     //retrieve the first battery in the batteryList

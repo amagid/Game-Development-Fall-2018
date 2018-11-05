@@ -118,47 +118,6 @@ public class PlayerCharacter : MonoBehaviour {
 			}
 		}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            this.inventory.setSelectedBatteryIndex(0);
-            Debug.Log("Battery 1 selected");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            this.inventory.setSelectedBatteryIndex(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            this.inventory.setSelectedBatteryIndex(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            this.inventory.setSelectedBatteryIndex(3);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            this.inventory.setSelectedBatteryIndex(4);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            this.inventory.setSelectedBatteryIndex(5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            this.inventory.setSelectedBatteryIndex(6);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            this.inventory.setSelectedBatteryIndex(7);
-        }
-
         //added a check if the central lighting in ON, player would not lose sanity
         if (central_lighting.activeSelf)
 		{

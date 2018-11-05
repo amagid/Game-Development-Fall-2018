@@ -7,6 +7,8 @@ public class PowerSource {
 	private float maxPower;
 	private float startingPower;
 	private float currentPower;
+	public Battery theBattery; // temporary fix bad code
+
 
 	public PowerSource(float maxPower, float startingPower)
 	{
@@ -95,6 +97,7 @@ public class PowerSource {
 	{
 		return currentPower == maxPower;
 	}
+
 
 	/// <summary>
 	/// Static class method for transferring Power between two arbitrary PowerSources.

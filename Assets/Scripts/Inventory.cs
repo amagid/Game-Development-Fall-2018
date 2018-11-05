@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour {
 
     private List<GameObject> itemList;
 
-    public int selectedBatteryIndex;
+    private int selectedBatteryIndex;
 	// Use this for initialization
 	void Start () {
 		batteryList = new List<GameObject> ();
@@ -85,8 +85,19 @@ public class Inventory : MonoBehaviour {
         throw new Exception("Item not found!");
     }
 
+    public int getSelectedBatteryIndex()
+    {
+        return this.selectedBatteryIndex;
+    }
+
+    public void setSelectedBatteryIndex(int index)
+    {
+        this.selectedBatteryIndex = index;
+    }
+
     public GameObject getSelectedBattery()
     {
+        Debug.Log("Selected Battery Is: " + selectedBatteryIndex);
         if (selectedBatteryIndex == -1)
         {
             return null;

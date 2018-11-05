@@ -56,7 +56,7 @@ public class InventoryUI : MonoBehaviour
             int index = selectedIndex + 1;
             GameObject.Find("Slot" + index).GetComponent<Outline>().effectColor = UnityEngine.Color.white;
         }
-        playerInventory.selectedBatteryIndex = selectedIndex;
+        playerInventory.setSelectedBatteryIndex(selectedIndex);
   
 
     }

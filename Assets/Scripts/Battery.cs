@@ -12,6 +12,7 @@ public class Battery : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		powerSource = new PowerSource (max_power, power_index);
+		powerSource.theBattery = this; // temporary bad code fix later
 	}
 
 	// Update is called once per frame

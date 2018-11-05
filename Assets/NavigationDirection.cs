@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Determines the direction the player is traveling in
 public class NavigationDirection : MonoBehaviour {
 	// stores the player object
 	[SerializeField] GameObject player;

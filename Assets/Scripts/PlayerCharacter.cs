@@ -233,13 +233,37 @@ public class PlayerCharacter : MonoBehaviour {
 					} else if (pc.isPowerSourceExtractable())
 					{
 						PowerSource oldPC = pc.removePowerSource();
-						GameObject battery = (GameObject)GameObject.Instantiate(Resources.Load("Battery"));
+						Battery battery = oldPC.theBattery;
+
+						inventory.addItem(battery.gameObject); 
+						battery.gameObject.SetActive(false);
+
+						/*GameObject battery = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/battery 1"));
 						battery.GetComponent<Battery>().max_power = (int) oldPC.getMaxPower();
 						battery.GetComponent<Battery>().power_index = (int) oldPC.getPowerLevel();
 						battery.GetComponent<Battery>().setPowerSource(new PowerSource(oldPC.getMaxPower(), oldPC.getPowerLevel()));
 						this.inventory.addItem(battery);
-						battery.SetActive(false);
+						battery.SetActive(false);*/
 					}
+
+
+
+					/*Battery battery = other.gameObject.GetComponent<Battery> ();
+					if (battery.deviceBatteryIsAttachedTo != null) {
+						battery.deviceBatteryIsAttachedTo.removePowerSource ();
+						battery.deviceBatteryIsAttachedTo = null;
+						Debug.Log ("Player took battery too early");
+					}*/
+
+
+
+
+
+
+
+
+
+
 				}
 			}
 			// If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
@@ -280,7 +304,7 @@ public class PlayerCharacter : MonoBehaviour {
 					battery.deviceBatteryIsAttachedTo = null;
 					Debug.Log ("Player took battery too early");
 				}
-				inventory.addItem(other.gameObject); // changed from a bool
+				inventory.addItem(other.gameObject); 
 				other.gameObject.SetActive(false);
 
 			} 

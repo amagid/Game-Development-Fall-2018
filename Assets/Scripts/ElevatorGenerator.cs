@@ -28,7 +28,7 @@ public class ElevatorGenerator : MonoBehaviour {
     {
         if (atSwitch)
         {
-            if (Input.GetKeyDown(KeyCode.E) && inventory.batteryCount() >= 3)
+            if (Input.GetKeyDown(KeyCode.E) && inventory.itemCount() >= 3)
             {
                 useBattery();
                 elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");

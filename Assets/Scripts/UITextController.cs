@@ -31,7 +31,7 @@ public class UITextController : MonoBehaviour {
         this.sanityValue = Mathf.RoundToInt(player.GetComponent<PlayerCharacter>().getSanity());
         this.powerValue = Mathf.RoundToInt(player.GetComponent<PlayerCharacter>().getPower());
         this.batteryAmount = player.GetComponent<PlayerCharacter>().GetInventory()
-            .batteryCount();
+            .itemCount();
         this.sanityText.text = "Sanity: " + sanityValue; 
         this.powerText.text = "Power: " + powerValue; 
         this.batteryText.text = "Battery: " + batteryAmount; 

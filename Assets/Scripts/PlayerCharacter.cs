@@ -287,6 +287,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 		GUI.Label(new Rect(Screen.width / 2 - 13, Screen.height / 2 - 13, 26, 26), "+", style2);
 		GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 10, 200, 60), this.cursorMessage, style3);
+
 	}
 
 

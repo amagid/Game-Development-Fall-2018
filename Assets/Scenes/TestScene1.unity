@@ -6583,7 +6583,7 @@ GameObject:
   - component: {fileID: 468634130}
   - component: {fileID: 468634129}
   m_Layer: 5
-  m_Name: Text
+  m_Name: +
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6639,7 +6639,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: +
 --- !u!222 &468634130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15536,8 +15536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccab06d120126400fae70a6869c20c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tablet: {fileID: 2112426896}
-  inventoryBar: {fileID: 1865806783}
+  Tablet: {fileID: 2112426896}
 --- !u!114 &1122542290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21928,7 +21927,7 @@ GameObject:
   - component: {fileID: 1559169441}
   - component: {fileID: 1559169440}
   m_Layer: 5
-  m_Name: Text
+  m_Name: '-'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21984,7 +21983,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: '-'
 --- !u!222 &1559169441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25681,7 +25680,7 @@ GameObject:
   - component: {fileID: 1865806785}
   - component: {fileID: 1865806789}
   m_Layer: 5
-  m_Name: InventroyBar
+  m_Name: InventoryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

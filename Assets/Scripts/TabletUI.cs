@@ -3,25 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TabletUI : MonoBehaviour {
-
-    [SerializeField] private GameObject tablet;
-    [SerializeField] private GameObject inventoryBar;
-
+        
+    [SerializeField] private GameObject Tablet;
+    private GameObject inventoryBar;
+    private bool isOn;
+    // Use this for initialization
+    void Start()
+    {
+        isOn = false;
+        inventoryBar = GameObject.Find("InventoryBar");
+    }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) {
-            tablet.SetActive(true);
+        if (isOn == false && Input.GetKeyDown(KeyCode.I))
+        {
+            Tablet.SetActive(true);
+            isOn = true;
             inventoryBar.SetActive(false);
+            Pause();
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                tablet.SetActive(false);
+                Tablet.SetActive(false);
+                isOn = false;
                 inventoryBar.SetActive(true);
+                Resume();
+
             }
         }
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
     }
 }

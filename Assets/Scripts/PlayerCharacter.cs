@@ -212,7 +212,7 @@ public class PlayerCharacter : MonoBehaviour {
 					if (ps == null)
 					{
 						GameObject gameObjectPC = this.inventory.getSelectedItem();
-						Battery batteryPC = gameObjectPC.GetComponent<Battery>();
+						Battery batteryPC = gameObjectPC != null ? gameObjectPC.GetComponent<Battery>() : null;
 						if (batteryPC != null && batteryPC.getPowerSource() != null)
 						{
 							pc.attachPowerSource(batteryPC.getPowerSource());

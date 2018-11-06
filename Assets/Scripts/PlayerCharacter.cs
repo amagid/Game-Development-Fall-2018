@@ -211,7 +211,7 @@ public class PlayerCharacter : MonoBehaviour {
 					// If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
 					if (ps == null)
 					{
-						GameObject gameObjectPC = this.inventory.getSelectedBattery ();
+						GameObject gameObjectPC = this.inventory.getSelectedItem();
 						Battery batteryPC = gameObjectPC.GetComponent<Battery>();
 						if (batteryPC != null && batteryPC.getPowerSource() != null)
 						{
@@ -281,7 +281,7 @@ public class PlayerCharacter : MonoBehaviour {
 	void OnGUI()
 	{
 
-		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.batteryCount()), style1);
+		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
 		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
 		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
 
@@ -421,7 +421,7 @@ public class PlayerCharacter : MonoBehaviour {
 				if (pc != null && ((obj.GetComponent<SwitchController>() != null && obj.GetComponent<SwitchController>().getBattery() == null) || (obj.GetComponent<CentralLightController>() != null))) // change here might be wrong the last boolean statment should be battery == null 
 				{
 					this.cursorMessage += "\nNeeds Battery";
-					if (this.inventory.batteryCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
+					if (this.inventory.itemCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
 					{
 						this.cursorMessage += "\nE - Attach Battery";
 					}

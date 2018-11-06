@@ -9,16 +9,11 @@ public class InventoryUI : MonoBehaviour
     private Inventory playerInventory;
     [SerializeField] private GameObject item1UI;
     List<Image> imgs;
-    int selectedIndex = -1; 
-    private int numBatteries = 0;
+    int selectedIndex = 0; 
 
 
     public void highLight(int indes) {
-        if(selectedIndex == indes) {
-            selectedIndex = -1;
-        } else {
-            selectedIndex = indes;
-        }
+        selectedIndex = indes;
     }
 
     // Use this for initialization
@@ -35,73 +30,44 @@ public class InventoryUI : MonoBehaviour
     }
 
     // Update is called once per frame
+    // TODO: Refactor so that updates are only done on events rather than every frame to improve performance
     void Update()
     {
-        numBatteries = playerInventory.batteryCount();
-        for (int i = 0; i < numBatteries; i++){
-            imgs[i].color = UnityEngine.Color.green;
-            int j = i + 1; 
-            GameObject.Find("Slot" + j).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
+        for (int i = 0; i < playerInventory.inventorySize; i++) {
+            if (playerInventory.getItem(i) != null)
+            {
+                imgs[i].color = UnityEngine.Color.green; // TODO: Set image to item icon once we have icons
+            } else
+            {
+                imgs[i].color = UnityEngine.Color.gray; // TODO: Revisit later to potentially improve look
+            }
+            GameObject.Find("Slot" + (i + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
         }
-        for (int i = numBatteries; i < 8; i++) {
-            int j = i + 1; 
-            imgs[i].color = UnityEngine.Color.red;
-            GameObject.Find("Slot" + j).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
-        }
-        if (selectedIndex >= numBatteries)
-        {
-            selectedIndex = -1;
-        }
-        if(selectedIndex != -1) {
-            int index = selectedIndex + 1;
-            GameObject.Find("Slot" + index).GetComponent<Outline>().effectColor = UnityEngine.Color.white;
-        }
-
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (selectedIndex < 0 || selectedIndex > playerInventory.inventorySize)
         {
             selectedIndex = 0;
         }
+        GameObject.Find("Slot" + (selectedIndex + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.white;
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
+
+        // Set selected slot with keys
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            selectedIndex = 0;
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
             selectedIndex = 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
             selectedIndex = 2;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
             selectedIndex = 3;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
             selectedIndex = 4;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
             selectedIndex = 5;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
             selectedIndex = 6;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
             selectedIndex = 7;
-        }
 
-
-        playerInventory.setSelectedBatteryIndex(selectedIndex);
-  
-
+        playerInventory.setSelectedItemIndex(selectedIndex);
     }
 }

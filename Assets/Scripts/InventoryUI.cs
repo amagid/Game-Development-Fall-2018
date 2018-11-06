@@ -7,7 +7,6 @@ public class InventoryUI : MonoBehaviour
 {
 
     private Inventory playerInventory;
-    [SerializeField] private GameObject item1UI;
     List<Image> imgs;
     int selectedIndex = -1; 
     private int numBatteries = 0;

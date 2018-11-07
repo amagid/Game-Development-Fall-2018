@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class MazeDoorSwitch : MonoBehaviour {
 
-    bool atSwitch = false;
+    private bool deviceActive;
+    private PowerConsumer powerConsumer;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject maze_controller;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+
+    // Use this for initialization
+    void Start () {
+        deviceActive = false;
+        this.powerConsumer = this.getPowerConsumer();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (atSwitch)
+        bool deviceIsPowered = this.powerConsumer.powerDevice();
+        if (deviceIsPowered)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine("activate");
-            }
+            maze_controller.GetComponent<MazeController>().nextMazeSequence();
         }
     }
 
-    void OnTriggerStay(Collider other)
+    public PowerConsumer getPowerConsumer()
     {
-        if (other.name == "Player")
+        PowerConsumer pc = this.gameObject.GetComponent<PowerConsumer>();
+        if (pc == null)
         {
-            atSwitch = true;
+            throw new NoPowerConsumerException("ComputerControllers must always have PowerConsumers! Please attach a PowerConsumer component in the Unity editor.");
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        atSwitch = false;
+        return pc;
     }
 }

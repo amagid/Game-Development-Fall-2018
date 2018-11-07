@@ -60,7 +60,6 @@ public class NoteController : MonoBehaviour {
 	void OnTriggerStay (Collider other) {
 		if (other.name == "Player") {
 			atNote = true;
-			Debug.Log ("pLAYER DETECTED");
 		}
 		
 	}

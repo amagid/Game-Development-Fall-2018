@@ -4,64 +4,73 @@ using UnityEngine;
 using System;
 
 public class Inventory : MonoBehaviour {
+    
+    private GameObject[] itemList;
 
-	private List<GameObject> batteryList;
+    // Only for initialization
+    public int inventorySize;
 
-    private List<GameObject> itemList;
-
-    private int selectedBatteryIndex;
+    private int selectedItemIndex;
 	// Use this for initialization
 	void Start () {
-		batteryList = new List<GameObject> ();
-        itemList = new List<GameObject>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        itemList = new GameObject[this.inventorySize];
 	}
 
     //return the number of items the player currently have
     public int itemCount()
     {
-        return itemList.Count;
+        int count = 0;
+        for (int i = 0; i < this.itemList.Length; i++)
+        {
+            if (itemList[i] != null)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
-    //return the number of batteries the player currently have
-    public int batteryCount()
-    {
-        return batteryList.Count;
+    /// <summary>
+    /// Add an item to the first available inventory slot. Returns true if successful, false if not.
+    /// </summary>
+    public bool addItem(GameObject item) {
+        for (int i = 0; i < this.itemList.Length; i++)
+        {
+            if (this.itemList[i] == null)
+            {
+                this.itemList[i] = item;
+                return true;
+            }
+        }
+        return false;
     }
 
-    //add an item to the battery list or item List
-    public void addItem(GameObject item) {
-        //Debug.Log ("Item added: " + item.name);
-        if (item.CompareTag("battery"))
+    /// <summary>
+    /// Remove an item from the inventory. Returns true if successful, false if not.
+    /// </summary>
+	public bool removeItem(GameObject item) {
+        for (int i = 0; i < this.itemList.Length; i++)
         {
-            batteryList.Add(item);
+            if (this.itemList[i] == item)
+            {
+                this.itemList[i] = null;
+                return true;
+            }
         }
-        else
-        {
-            itemList.Add(item);
-        }
-	}
-
-    //remove a specific item from the itemList
-	public void removeItem(GameObject item) {
-        //Debug.Log("Item removed: " + item.name);
-        itemList.Remove (item);
+        return false;
 	}
 
     public bool hasItem() {
-        return itemList.Count > 0;
+        return this.itemList.Length > 0;
     }
 
-    public bool hasBattery() {
-        return batteryList.Count > 0;
-    }
+//    public bool hasBattery() {
+  //      return batteryList.Count > 0;
+    //}
 
     //check if the itemList contains a specific item
 	public bool containItem(string itemName) {
-        if(! (hasItem())) {
+        if(!hasItem()) {
             return false;
         }
 		foreach (GameObject obj in itemList) {
@@ -82,59 +91,52 @@ public class Inventory : MonoBehaviour {
                 return obj;
             }
         }
-        throw new Exception("Item not found!");
+        return null;
     }
 
-    public int getSelectedBatteryIndex()
+    public GameObject getItem(int index)
     {
-        return this.selectedBatteryIndex;
+        return this.itemList[index];
     }
 
-    public void setSelectedBatteryIndex(int index)
+    public int getSelectedItemIndex()
     {
-        this.selectedBatteryIndex = index;
+        return this.selectedItemIndex;
     }
 
-    public GameObject getSelectedBattery()
+    public void setSelectedItemIndex(int index)
     {
-        Debug.Log("Selected Battery Is: " + selectedBatteryIndex);
-        if (selectedBatteryIndex == -1)
-        {
-            return null;
-        }
-        GameObject gameObj = (GameObject)(batteryList[selectedBatteryIndex]);
-        batteryList.Remove(gameObj);
+        this.selectedItemIndex = index;
+    }
+
+    public GameObject getSelectedItem()
+    {
+        GameObject gameObj = (GameObject)(itemList[selectedItemIndex]);
+        this.removeItem(gameObj);
         return gameObj;
     }
 
-    //retrieve the first battery in the batteryList
+    //retrieve the first battery in the inventory
     public GameObject getFirstBattery()
     {
-		sortDescending ();
-        GameObject gameObj = (GameObject)(batteryList[0]);
-        batteryList.Remove(gameObj);
-        return gameObj;
+        GameObject battery = null;
+        for (int i = 0; i < itemList.Length; i++)
+        {
+            if (itemList[i].CompareTag("battery"))
+            {
+                battery = itemList[i];
+                itemList[i] = null;
+                return battery;
+            }
+        }
+        return null;
     }
-
-    //sort the batterylist by descending power index
-	public void sortDescending(){
-		batteryList.Sort ((x, y) => (int)y.GetComponent<Battery> ().getPowerSource ().getPowerLevel ().CompareTo((int)x.GetComponent<Battery> ().getPowerSource ().getPowerLevel ()));
-			//.getPowerIndex().CompareTo(x.GetComponent<Battery>().getPowerIndex()));
-	}
 
     //clear out all items
     public void clearItems() {
-        while (itemList.Count > 0)
+        for (int i = 0; i < this.itemList.Length; i++)
         {
-            itemList.RemoveAt(0);
-        }
-    }
-
-    //clear out all batteries
-    public void clearBatteries() {
-        while (batteryList.Count > 0)
-        {
-            batteryList.RemoveAt(0);
+            this.itemList[i] = null;
         }
     }
 }

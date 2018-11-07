@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     private bool updateOn;
     private bool charging = false;
     private bool discharging = false;
+    private PowerSource playerBattery;
 
 
     public void highLight(int index)
@@ -25,7 +26,9 @@ public class InventoryUI : MonoBehaviour
     {
         updateOn = true;
         imgs = new List<Image>();
-        playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
+        GameObject player = GameObject.Find("Player"); 
+        playerInventory = player.GetComponent<Inventory>();
+        playerBattery = player.GetComponent<PowerConsumer>().getPowerSource();
         for (int i = 0; i < playerInventory.inventorySize; i++)
         {
             string tag = "Slot" + (i + 1);
@@ -91,15 +94,60 @@ public class InventoryUI : MonoBehaviour
                 imgs[i].color = UnityEngine.Color.blue;
             }
         }
-        this.charging = true;
+        this.charging = !this.charging;
         this.chargeSelectedBattery();
+    }
+
+    public void clickDischargePlayer()
+    {
+        updateOn = false;
+        for (int i = 0; i < playerInventory.inventorySize; i++)
+        {
+            if (imgs[i].color == UnityEngine.Color.green)
+            {
+                imgs[i].color = UnityEngine.Color.blue;
+            }
+        }
+        this.discharging = !this.discharging;
+        this.dischargeSelectedBattery();
     }
 
     private void chargeSelectedBattery()
     {
+        Debug.Log("playerBattery " + playerBattery != null);
         if (this.charging)
         {
-            if (this.playerInventory.getSelectedItem());
+            GameObject selectedItem = this.playerInventory.peekSelectedItem();
+            Debug.Log("playerBattery " + playerBattery != null);
+            if (selectedItem != null
+                && selectedItem.CompareTag("battery")
+                && (PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), 20f)
+                    || PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), selectedItem.GetComponent<Battery>().getPowerSource().getMaxPower() - selectedItem.GetComponent<Battery>().getPowerSource().getPowerLevel())))
+            {
+                Invoke("chargeSelectedBattery", 1f);
+            } else
+            {
+                this.charging = false;
+            }
+        }
+    }
+
+    private void dischargeSelectedBattery()
+    {
+        if (this.discharging)
+        {
+            GameObject selectedItem = this.playerInventory.peekSelectedItem();
+            if (selectedItem != null
+                && selectedItem.CompareTag("battery")
+                && (PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, 20f)
+                    || PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, playerBattery.getMaxPower() - playerBattery.getPowerLevel())))
+            {
+                Invoke("dischargeSelectedBattery", 1f);
+            }
+            else
+            {
+                this.discharging = false;
+            }
         }
     }
 }

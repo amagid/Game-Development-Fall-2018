@@ -116,6 +116,11 @@ public class Inventory : MonoBehaviour {
         return gameObj;
     }
 
+    public GameObject peekSelectedItem()
+    {
+        return (GameObject)(itemList[selectedItemIndex]);
+    }
+
     //retrieve the first battery in the inventory
     public GameObject getFirstBattery()
     {

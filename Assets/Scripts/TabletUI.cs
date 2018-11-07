@@ -5,13 +5,12 @@ using UnityEngine;
 public class TabletUI : MonoBehaviour {
         
     [SerializeField] private GameObject Tablet;
-    private GameObject inventoryBar;
+    [SerializeField] private GameObject inventoryBar;
     private bool isOn;
     // Use this for initialization
     void Start()
     {
         isOn = false;
-        inventoryBar = GameObject.Find("InventoryBar");
     }
 
     // Update is called once per frame

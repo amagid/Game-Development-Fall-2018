@@ -12,18 +12,20 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
     [SerializeField] private GameObject lvl2_maze_controller;
+    private Vector3 elevator_outside_lights_initPos;
     public GameObject button_light;
     private GameObject current_level;
     public bool isElevatorMoving;
     public int current_level_num;
-    private bool elevatorLightOn;
+    private bool flickerOn;
     public bool lvl1_complete;
     public bool lvl2_complete;
     public bool game_complete;
 
     // Use this for initialization
     void Start () {
-        elevatorLightOn = true;
+        elevator_outside_lights_initPos = elevator_outside_lights.transform.position;
+        flickerOn = true;
         current_level_num = 1;
         current_level = level_one;
         isElevatorMoving = false;
@@ -34,13 +36,13 @@ public class SceneController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (elevatorLightOn)
+        if (flickerOn)
         {
             elevatorLightFlicker();
         }
         else
         {
-            elevator_light.SetActive(false);
+            elevator_light.SetActive(true);
         }
         //need a check for lvl1_complete
         lvl2_complete = lvl2_maze_controller.GetComponent<MazeController>().isComplete;
@@ -51,10 +53,19 @@ public class SceneController : MonoBehaviour {
     {
         isElevatorMoving = true;
         button_light.SetActive(true);
-        elevatorLightOn = false;
+        flickerOn = false;
         elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
         yield return new WaitForSeconds(4f);
         current_level.SetActive(false);
+        string direction = "";
+        if(level > current_level_num)
+        {
+            direction = "UP";
+        }
+        else if (level < current_level_num)
+        {
+            direction = "DOWN";
+        }
         switch (level)
         {
             case 1:
@@ -76,23 +87,41 @@ public class SceneController : MonoBehaviour {
                 throw new Exception("No Such Level");
                 break;
         }
-        StartCoroutine("elevatorMovingAnimation");
+        StartCoroutine("elevatorMovingAnimation", direction);
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
         isElevatorMoving = false;
-        elevatorLightOn = true;
+        flickerOn = true;
         button_light.SetActive(false);
     }
 
-    public IEnumerator elevatorMovingAnimation() {
+    public IEnumerator elevatorMovingAnimation(string direction) {
+        elevator_outside_lights.transform.position = elevator_outside_lights_initPos;
+        float initPosX = elevator_outside_lights.transform.position.x;
+        float initPosY = elevator_outside_lights.transform.position.y;
+        float initPosZ = elevator_outside_lights.transform.position.z;
+        float finalPosX = initPosX;
+        float finalPosY = initPosY;
+        float finalPosZ = initPosZ;
+        elevator_outside_lights.SetActive(true);
+        switch (direction)
+        {
+            //elevator going UP, lights going down
+            case "UP":
+                finalPosY = initPosY - 20f;
+                break;
+            //elevator going DOWN, lights going up
+            case "DOWN":
+                finalPosY = initPosY;
+                initPosY -= 20f;
+                break;
+            default:
+                throw new Exception("No such directions for elevator lights");
+        }
+        Vector3 initPos = new Vector3(initPosX, initPosY, initPosZ);
+        Vector3 finalPos = new Vector3(finalPosX, finalPosY, finalPosZ);
         for (int i = 0; i < 3; i++)
         {
-            elevator_outside_lights.SetActive(true);
-            Vector3 initPos = elevator_outside_lights.transform.position;
-            float x = elevator_outside_lights.transform.position.x;
-            float y = elevator_outside_lights.transform.position.y - 20f;
-            float z = elevator_outside_lights.transform.position.z;
-            Vector3 finalPos = new Vector3(x, y, z);
             for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
             {
                 elevator_outside_lights.transform.position = Vector3.Lerp(initPos, finalPos, t);
@@ -100,9 +129,9 @@ public class SceneController : MonoBehaviour {
             }
             //moving the lights back to init position after it finished moving up
             elevator_outside_lights.transform.position = initPos;
-            elevator_outside_lights.SetActive(false);
             yield return new WaitForSeconds(0.7f);
         }
+        elevator_outside_lights.SetActive(false);
     }
 
     private void elevatorLightFlicker()

@@ -58,7 +58,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	private IEnumerator closeDoor()
 	{
-		for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+		for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
 		{
 			transform.position = Vector3.Lerp(openPos, closePos, t);
 			yield return null;

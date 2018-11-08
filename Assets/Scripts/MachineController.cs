@@ -19,6 +19,8 @@ public class MachineController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Time.timeScale == 0)
+			return;
 		if(atMachine)
         {
             if(Input.GetKeyDown(KeyCode.E) && player.GetComponent<Inventory>().itemCount() == numOfParts && !activated)

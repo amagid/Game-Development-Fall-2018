@@ -86,30 +86,16 @@ public class InventoryUI : MonoBehaviour
 
     public void clickChargePlayer()
     {
-        updateOn = false;
-        for (int i = 0; i < playerInventory.inventorySize; i++)
-        {
-            if (imgs[i].color == UnityEngine.Color.green)
-            {
-                imgs[i].color = UnityEngine.Color.blue;
-            }
-        }
-        this.charging = !this.charging;
-        this.chargeSelectedBattery();
+
+        this.discharging = !this.discharging;
+        this.dischargeSelectedBattery();
     }
 
     public void clickDischargePlayer()
     {
-        updateOn = false;
-        for (int i = 0; i < playerInventory.inventorySize; i++)
-        {
-            if (imgs[i].color == UnityEngine.Color.green)
-            {
-                imgs[i].color = UnityEngine.Color.blue;
-            }
-        }
-        this.discharging = !this.discharging;
-        this.dischargeSelectedBattery();
+
+        this.charging = !this.charging;
+        this.chargeSelectedBattery();
     }
 
     private void chargeSelectedBattery()

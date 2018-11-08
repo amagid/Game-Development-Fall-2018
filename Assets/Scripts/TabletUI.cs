@@ -6,9 +6,6 @@ public class TabletUI : MonoBehaviour {
         
     [SerializeField] private GameObject Tablet;
     [SerializeField] private GameObject inventoryBar;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject camera;
-
     private bool isOn;
     // Use this for initialization
     void Start()
@@ -39,22 +36,13 @@ public class TabletUI : MonoBehaviour {
         }
     }
 
-
     public void Resume()
     {
         Time.timeScale = 1f;
-        player.GetComponent<MouseLook>().enabled = true;
-        camera.GetComponent<MouseLook>().enabled = true;
-        player.GetComponent<PowerConsumer>().enabled = true;
-        player.GetComponent<PlayerCharacter>().enabled = true;
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
-        player.GetComponent<MouseLook>().enabled = false;
-        player.GetComponent<PlayerCharacter>().enabled = false;
-        player.GetComponent<PowerConsumer>().enabled = false;
-        camera.GetComponent<MouseLook>().enabled = false;
     }
 }

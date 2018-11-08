@@ -8,29 +8,39 @@ public class ElevatorControlUP : MonoBehaviour {
     [SerializeField] private GameObject button_light;
     private PowerConsumer powerConsumer;
     private int current_level_num;
+    private bool isCurrentlyMoving;
 
     // Use this for initialization
     void Start()
     {
         this.powerConsumer = this.getPowerConsumer();
         current_level_num = 1;
+        isCurrentlyMoving = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(button_light.active);
         bool deviceIsPowered = this.powerConsumer.powerDevice();
-        if (deviceIsPowered)
+        if (deviceIsPowered && !isCurrentlyMoving)
         {
             if(current_level_num < 3)
             {
-                current_level_num++;
-                button_light.SetActive(true);
-                scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel", current_level_num);
-                button_light.SetActive(false);
+                StartCoroutine("loadUpperLevel");
             }
         }
     }
+
+    private IEnumerator loadUpperLevel()
+    {
+        isCurrentlyMoving = true;
+        current_level_num++;
+        scene_controller.GetComponent<SceneController>().button_light = this.button_light;
+        scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel", current_level_num);
+        yield return new WaitForSeconds(1f);
+    }
+    
 
     public PowerConsumer getPowerConsumer()
     {

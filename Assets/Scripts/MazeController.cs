@@ -20,7 +20,7 @@ public class MazeController : MonoBehaviour {
     //if the maze has been activated
     private bool activated;
     //if the player picks up all 3 parts
-    private bool isComplete;
+    public bool isComplete;
 
     // Use this for initialization
     void Start () {

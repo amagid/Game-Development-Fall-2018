@@ -11,19 +11,24 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject level_two;
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
+    [SerializeField] private GameObject lvl2_maze_controller;
     private GameObject current_level;
+    public bool lvl1_complete;
+    public bool lvl2_complete;
     public bool game_complete;
 
     // Use this for initialization
     void Start () {
         current_level = level_one;
+        lvl1_complete = false;
+        lvl2_complete = false;
         game_complete = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
         //elevator light flicker effect
-        if (Random.value > 0.9)
+        if (UnityEngine.Random.value > 0.9)
         {
             if (elevator_light.active == true)
             {
@@ -34,6 +39,9 @@ public class SceneController : MonoBehaviour {
                 elevator_light.active = true;
             }
         }
+        //need a check for lvl1_complete
+        lvl2_complete = lvl2_maze_controller.GetComponent<MazeController>().isComplete;
+        //need a check for game_complete
     }
 
     public IEnumerator loadLevel(int level)
@@ -82,7 +90,7 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    public IEnumerator victory()
+    public void victory()
     {
         //do something if player completes the game
     }

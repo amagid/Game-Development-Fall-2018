@@ -64,6 +64,16 @@ public class DoorController : MonoBehaviour, DirectOperation {
 		}
 	}
 
+    private IEnumerator closeDoorForPower()
+    {
+        yield return new WaitForSeconds(1.6f);
+        for (float t = 0f; t < 1; t += Time.deltaTime / 0.5f)
+        {
+            transform.position = Vector3.Lerp(openPos, closePos, t);
+            yield return null;
+        }
+    }
+
 	public void activate()
 	{
 		this.active = true;
@@ -75,7 +85,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	public void deactivate()
 	{
 		this.active = false;
-		StartCoroutine(this.closeDoor());
+        StartCoroutine(this.closeDoorForPower());
 	}
 
 	public bool isActive()

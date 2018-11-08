@@ -18,19 +18,19 @@ public class MazeController : MonoBehaviour {
     //if the maze has been activated
     private bool activated;
     //if the player is in the center room
-    private bool isComplete;
+    private bool atCenterRoom;
 
     // Use this for initialization
     void Start () {
         seqnum = 1;
         activated = false;
-        isComplete = false;
+        atCenterRoom = false;
         setupInitialState();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
 
     //setup the initial doors' state: All doors leading towards the elevator would be open
@@ -41,7 +41,7 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(elevDoors[2], "z"));
     }
 
-    //method to check if the player enters the center room
+    //method to activate maze
     void OnTriggerEnter(Collider other)
     {
         if (other.name == "Player")
@@ -49,7 +49,9 @@ public class MazeController : MonoBehaviour {
             if(!activated)
             {
                 closeDoorsBehind();
+                activated = true;
             }
+            atCenterRoom = true;
         }
     }
 
@@ -65,12 +67,6 @@ public class MazeController : MonoBehaviour {
     //Sequence order: RGB, BRG, GBR, RBG, BGR, GRB
     public void nextMazeSequence()
     {
-        if(isComplete)
-        {
-            deactivateMaze();
-            return;
-        }
-
         switch (this.seqnum)
         {
             case 1:
@@ -112,7 +108,6 @@ public class MazeController : MonoBehaviour {
             StartCoroutine(closeDoor(greenDoors[0], "z"));
             StartCoroutine(closeDoor(redDoors[1], "x"));
             StartCoroutine(closeDoor(blueDoors[2], "x"));
-            activated = true;
             yield return new WaitForSeconds(2f);
         }
         StartCoroutine(openDoor(redDoors[0], "x"));

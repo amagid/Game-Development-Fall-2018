@@ -32,7 +32,8 @@ public class ComputerController : MonoBehaviour, PoweredOperation
     // Update is called once per frame
     void Update()
     {
-
+		if (Time.timeScale == 0)
+			return;
         // Activate/Operate/Deactivate device based on powerConsumer state
         bool deviceIsPowered = this.powerConsumer.powerDevice();
         if (deviceIsPowered && !this.isActive())

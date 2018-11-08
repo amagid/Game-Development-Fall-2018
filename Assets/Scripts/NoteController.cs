@@ -9,16 +9,11 @@ public class NoteController : MonoBehaviour {
 	[SerializeField] GameObject content;
 	// the DisplayData object of OnGameGUI
 	[SerializeField] GameObject displayContent;
-	// the player game object
-	[SerializeField] GameObject player;
-	// the SecondaryCamera game object
-	[SerializeField] GameObject secondaryCameraGO;
 
 	private bool atNote = false;
 
 	void Start(){
 		displayContent.SetActive (false);
-		secondaryCameraGO.SetActive (false);
 		Image img = content.GetComponent<Image> ();
 		img.sprite = image;
 	}
@@ -27,7 +22,7 @@ public class NoteController : MonoBehaviour {
 		if (atNote) {
 			if (Input.GetKeyDown(KeyCode.E)){
 				// display panel here w/ note
-				freezeGame();
+				SceneController.freezeGame();
 				Image img = content.GetComponent<Image> ();
 				img.sprite = image;
 				displayContent.SetActive (true);
@@ -36,25 +31,10 @@ public class NoteController : MonoBehaviour {
 		}
 	}
 
-	// removes the player from the game temporarily so sanity/power doesn't decrease
-	void freezeGame(){
-		GameObject camera = player.transform.Find("Camera").gameObject;
-		secondaryCameraGO.transform.position = camera.transform.position;
-		secondaryCameraGO.transform.rotation = camera.transform.rotation;
-		secondaryCameraGO.transform.localEulerAngles = camera.transform.localEulerAngles;
-		player.SetActive (false);
-		secondaryCameraGO.SetActive (true);
-	}
-
-	void unfreezeGame(){
-		secondaryCameraGO.SetActive (false);
-		player.SetActive (true);
-	}
-
 	// Closes the content display panel
 	public void closePanel(){
 		displayContent.SetActive (false);
-		unfreezeGame();
+		SceneController.unfreezeGame();
 	}
 
 	void OnTriggerStay (Collider other) {

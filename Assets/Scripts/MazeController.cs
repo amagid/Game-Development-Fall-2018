@@ -13,18 +13,15 @@ public class MazeController : MonoBehaviour {
     [SerializeField] private GameObject[] greenDoors;
     //Blue doors move in the x axis
     [SerializeField] private GameObject[] blueDoors;
-    //the indicator light of the switch
-    [SerializeField] private Light indicator;
     //the current sequence number
     private int seqnum;
     //if the maze has been activated
     private bool activated;
-    //if the player picks up all 3 parts
+    //if the player is in the center room
     private bool isComplete;
 
     // Use this for initialization
     void Start () {
-        indicator.color = Color.white;
         seqnum = 1;
         activated = false;
         isComplete = false;
@@ -62,14 +59,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(closeDoor(elevDoors[0], "z"));
         StartCoroutine(closeDoor(elevDoors[1], "z"));
         StartCoroutine(closeDoor(elevDoors[2], "z"));
-        indicator.color = Color.red;
     }
 
     //changing the door sequence when called
     //Sequence order: RGB, BRG, GBR, RBG, BGR, GRB
     public void nextMazeSequence()
     {
-        //if the player picks up all 3 parts, deactivate the maze
         if(isComplete)
         {
             deactivateMaze();
@@ -112,7 +107,6 @@ public class MazeController : MonoBehaviour {
     private IEnumerator seqOne()
     {
         Debug.Log("RGB");
-        indicator.color = Color.green;
         if (activated)
         {
             StartCoroutine(closeDoor(greenDoors[0], "z"));
@@ -125,14 +119,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(greenDoors[1], "z"));
         StartCoroutine(openDoor(blueDoors[2], "x"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //BRG
     private IEnumerator seqTwo()
     {
         Debug.Log("BRG");
-        indicator.color = Color.green;
         StartCoroutine(closeDoor(redDoors[0], "x"));
         StartCoroutine(closeDoor(greenDoors[1], "z"));
         StartCoroutine(closeDoor(blueDoors[2], "x"));
@@ -141,14 +133,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(redDoors[1], "x"));
         StartCoroutine(openDoor(greenDoors[2], "z"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //GBR
     private IEnumerator seqThree()
     {
         Debug.Log("GBR");
-        indicator.color = Color.green;
         StartCoroutine(closeDoor(blueDoors[0], "x"));
         StartCoroutine(closeDoor(redDoors[1], "x"));
         StartCoroutine(closeDoor(greenDoors[2], "z"));
@@ -157,14 +147,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(blueDoors[1], "x"));
         StartCoroutine(openDoor(redDoors[2], "x"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //RBG
     private IEnumerator seqFour()
     {
         Debug.Log("RBG");
-        indicator.color = Color.green;
         StartCoroutine(closeDoor(greenDoors[0], "z"));
         StartCoroutine(closeDoor(blueDoors[1], "x"));
         StartCoroutine(closeDoor(redDoors[2], "x"));
@@ -173,14 +161,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(blueDoors[1], "x"));
         StartCoroutine(openDoor(greenDoors[2], "z"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //BGR
     private IEnumerator seqFive()
     {
         Debug.Log("BGR");
-        indicator.color = Color.green;
         StartCoroutine(closeDoor(redDoors[0], "x"));
         StartCoroutine(closeDoor(blueDoors[1], "x"));
         StartCoroutine(closeDoor(greenDoors[2], "z"));
@@ -189,14 +175,12 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(greenDoors[1], "z"));
         StartCoroutine(openDoor(redDoors[2], "x"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //GRB
     private IEnumerator seqSix()
     {
         Debug.Log("GRB");
-        indicator.color = Color.green;
         StartCoroutine(closeDoor(blueDoors[0], "x"));
         StartCoroutine(closeDoor(greenDoors[1], "z"));
         StartCoroutine(closeDoor(redDoors[2], "x"));
@@ -205,7 +189,6 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(redDoors[1], "x"));
         StartCoroutine(openDoor(blueDoors[2], "x"));
         yield return new WaitForSeconds(2f);
-        indicator.color = Color.red;
     }
 
     //deactivate the maze by opening all the doors
@@ -223,7 +206,7 @@ public class MazeController : MonoBehaviour {
         StartCoroutine(openDoor(blueDoors[0], "x"));
         StartCoroutine(openDoor(blueDoors[1], "x"));
         StartCoroutine(openDoor(blueDoors[2], "x"));
-        indicator.color = Color.white;
+        //activated = false;
     }
 
     public IEnumerator openDoor(GameObject door, string axis)

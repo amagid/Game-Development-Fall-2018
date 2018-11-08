@@ -16780,6 +16780,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tablet: {fileID: 2081598068}
   inventoryBar: {fileID: 1865806783}
+  player: {fileID: 1248575531}
+  camera: {fileID: 1681190364}
 --- !u!114 &1204107557
 MonoBehaviour:
   m_ObjectHideFlags: 0

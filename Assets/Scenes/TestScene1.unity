@@ -17465,7 +17465,6 @@ GameObject:
   - component: {fileID: 1248575536}
   - component: {fileID: 1248575537}
   - component: {fileID: 1248575541}
-  - component: {fileID: 1248575532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -17473,19 +17472,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1248575532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1248575531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccab06d120126400fae70a6869c20c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tablet: {fileID: 1204107554}
-  inventoryBar: {fileID: 1865806783}
 --- !u!23 &1248575533
 MeshRenderer:
   m_ObjectHideFlags: 0

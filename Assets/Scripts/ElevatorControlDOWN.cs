@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorControlUP : MonoBehaviour {
+public class ElevatorControlDOWN : MonoBehaviour {
 
     [SerializeField] private GameObject scene_controller;
     [SerializeField] private GameObject button_light;
@@ -26,20 +26,20 @@ public class ElevatorControlUP : MonoBehaviour {
         bool deviceIsPowered = this.powerConsumer.powerDevice();
         if (deviceIsPowered && !isCurrentlyMoving)
         {
-            if(current_level_num < 3)
+            if (current_level_num > 1)
             {
-                StartCoroutine("loadUpperLevel");
+                StartCoroutine("loadLowerLevel");
             }
         }
     }
 
-    private IEnumerator loadUpperLevel()
+    private IEnumerator loadLowerLevel()
     {
         scene_controller.GetComponent<SceneController>().button_light = this.button_light;
-        scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel", current_level_num + 1);
+        scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel", current_level_num - 1);
         yield return new WaitForSeconds(1f);
     }
-    
+
 
     public PowerConsumer getPowerConsumer()
     {

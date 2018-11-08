@@ -14,6 +14,8 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject lvl2_maze_controller;
     public GameObject button_light;
     private GameObject current_level;
+    public bool isElevatorMoving;
+    public int current_level_num;
     private bool elevatorLightOn;
     public bool lvl1_complete;
     public bool lvl2_complete;
@@ -22,7 +24,9 @@ public class SceneController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         elevatorLightOn = true;
+        current_level_num = 1;
         current_level = level_one;
+        isElevatorMoving = false;
         lvl1_complete = false;
         lvl2_complete = false;
         game_complete = false;
@@ -45,6 +49,7 @@ public class SceneController : MonoBehaviour {
 
     public IEnumerator loadLevel(int level)
     {
+        isElevatorMoving = true;
         button_light.SetActive(true);
         elevatorLightOn = false;
         elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
@@ -54,14 +59,17 @@ public class SceneController : MonoBehaviour {
         {
             case 1:
                 level_one.SetActive(true);
+                current_level_num = 1;
                 current_level = level_one;
                 break;
             case 2:
                 level_two.SetActive(true);
+                current_level_num = 2;
                 current_level = level_two;
                 break;
             case 3:
                 level_final.SetActive(true);
+                current_level_num = 3;
                 current_level = level_final;
                 break;
             default:
@@ -71,6 +79,7 @@ public class SceneController : MonoBehaviour {
         StartCoroutine("elevatorMovingAnimation");
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
+        isElevatorMoving = false;
         elevatorLightOn = true;
         button_light.SetActive(false);
     }

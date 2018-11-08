@@ -13,12 +13,14 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_outside_lights;
     [SerializeField] private GameObject lvl2_maze_controller;
     private GameObject current_level;
+    private bool elevatorLightOn;
     public bool lvl1_complete;
     public bool lvl2_complete;
     public bool game_complete;
 
     // Use this for initialization
     void Start () {
+        elevatorLightOn = true;
         current_level = level_one;
         lvl1_complete = false;
         lvl2_complete = false;
@@ -27,17 +29,13 @@ public class SceneController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        //elevator light flicker effect
-        if (UnityEngine.Random.value > 0.9)
+        if (elevatorLightOn)
         {
-            if (elevator_light.active == true)
-            {
-                elevator_light.active = false;
-            }
-            else
-            {
-                elevator_light.active = true;
-            }
+            elevatorLightFlicker();
+        }
+        else
+        {
+            elevator_light.SetActive(false);
         }
         //need a check for lvl1_complete
         lvl2_complete = lvl2_maze_controller.GetComponent<MazeController>().isComplete;
@@ -46,19 +44,23 @@ public class SceneController : MonoBehaviour {
 
     public IEnumerator loadLevel(int level)
     {
-        elevator_light.SetActive(false);
+        elevatorLightOn = false;
+        elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
         yield return new WaitForSeconds(4f);
         current_level.SetActive(false);
         switch (level)
         {
             case 1:
                 level_one.SetActive(true);
+                current_level = level_one;
                 break;
             case 2:
                 level_two.SetActive(true);
+                current_level = level_two;
                 break;
             case 3:
                 level_final.SetActive(true);
+                current_level = level_final;
                 break;
             default:
                 throw new Exception("No Such Level");
@@ -67,6 +69,7 @@ public class SceneController : MonoBehaviour {
         StartCoroutine("elevatorMovingAnimation");
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
+        elevatorLightOn = true;
     }
 
     public IEnumerator elevatorMovingAnimation() {
@@ -87,6 +90,22 @@ public class SceneController : MonoBehaviour {
             elevator_outside_lights.transform.position = initPos;
             elevator_outside_lights.SetActive(false);
             yield return new WaitForSeconds(0.7f);
+        }
+    }
+
+    private void elevatorLightFlicker()
+    {
+        //elevator light flicker effect
+        if (UnityEngine.Random.value > 0.9)
+        {
+            if (elevator_light.active == true)
+            {
+                elevator_light.active = false;
+            }
+            else
+            {
+                elevator_light.active = true;
+            }
         }
     }
 

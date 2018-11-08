@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
     [SerializeField] private GameObject lvl2_maze_controller;
+    public GameObject button_light;
     private GameObject current_level;
     private bool elevatorLightOn;
     public bool lvl1_complete;
@@ -44,6 +45,7 @@ public class SceneController : MonoBehaviour {
 
     public IEnumerator loadLevel(int level)
     {
+        button_light.SetActive(true);
         elevatorLightOn = false;
         elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
         yield return new WaitForSeconds(4f);
@@ -70,6 +72,7 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
         elevatorLightOn = true;
+        button_light.SetActive(false);
     }
 
     public IEnumerator elevatorMovingAnimation() {

@@ -7,6 +7,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	//private bool isOpen;
 	private Vector3 closePos;
 	private Vector3 openPos;
+    private Vector3 curPos;
 
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField] private DoorAxes doorAxisDirection;
@@ -21,7 +22,8 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	// Use this for initialization
 	void Start () {
-		this.closePos = transform.position;
+        this.curPos = transform.position;
+        this.closePos = curPos;
 		Vector3 openPos = new Vector3 (closePos.x, closePos.y, closePos.z);
 		switch (doorAxisDirection) {
 		case DoorAxes.X:
@@ -42,14 +44,14 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	// Update is called once per frame
 	void Update () {
-
+        curPos = transform.position;
 	}
 
 	private IEnumerator openDoor()
 	{
 		for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
 		{
-			transform.position = Vector3.Lerp(closePos, openPos, t);
+            transform.position = Vector3.Lerp(curPos, openPos, t);
 			yield return null;
 		}
 	}
@@ -59,17 +61,16 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	{
 		for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
 		{
-			transform.position = Vector3.Lerp(openPos, closePos, t);
-			yield return null;
+            transform.position = Vector3.Lerp(curPos, closePos, t);
+            yield return null;
 		}
 	}
 
     private IEnumerator closeDoorForPower()
     {
-        yield return new WaitForSeconds(1.6f);
-        for (float t = 0f; t < 1; t += Time.deltaTime / 0.5f)
+        for (float t = 0f; t < 1; t += Time.deltaTime / 0.7f)
         {
-            transform.position = Vector3.Lerp(openPos, closePos, t);
+            transform.position = Vector3.Lerp(curPos, closePos, t);
             yield return null;
         }
     }
@@ -85,6 +86,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	public void deactivate()
 	{
 		this.active = false;
+        StopAllCoroutines();
         StartCoroutine(this.closeDoorForPower());
 	}
 

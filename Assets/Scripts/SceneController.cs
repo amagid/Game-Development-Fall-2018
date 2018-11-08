@@ -1,31 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SceneController : MonoBehaviour {
 
     [SerializeField] private GameObject elevator_light;
     [SerializeField] private GameObject elevator_door;
-    [SerializeField] private GameObject level1;
-    [SerializeField] private GameObject level2;
-    [SerializeField] private GameObject levelfinal;
+    [SerializeField] private GameObject level_one;
+    [SerializeField] private GameObject level_two;
+    [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
-    public bool lvl1_complete = false;
-    public bool lvl2_complete = false;
-    public bool game_complete = false;
-
+    private GameObject current_level;
+    public bool game_complete;
 
     // Use this for initialization
     void Start () {
-
+        current_level = level_one;
+        game_complete = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
-        if(lvl1_complete) {
-            elevator_light.SetActive(false);
-        }
-        //light flicker
+        //elevator light flicker effect
         if (Random.value > 0.9)
         {
             if (elevator_light.active == true)
@@ -39,23 +36,26 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    public IEnumerator loadLevel2()
+    public IEnumerator loadLevel(int level)
     {
         elevator_light.SetActive(false);
         yield return new WaitForSeconds(4f);
-        level1.SetActive(false);
-        level2.SetActive(true);
-        StartCoroutine("elevatorMovingAnimation");
-        yield return new WaitForSeconds(6f);
-        elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
-    }
-
-    public IEnumerator loadLevelFinal()
-    {
-        elevator_light.SetActive(false);
-        yield return new WaitForSeconds(4f);
-        level2.SetActive(false);
-        levelfinal.SetActive(true);
+        current_level.SetActive(false);
+        switch (level)
+        {
+            case 1:
+                level_one.SetActive(true);
+                break;
+            case 2:
+                level_two.SetActive(true);
+                break;
+            case 3:
+                level_final.SetActive(true);
+                break;
+            default:
+                throw new Exception("No Such Level");
+                break;
+        }
         StartCoroutine("elevatorMovingAnimation");
         yield return new WaitForSeconds(6f);
         elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
@@ -80,5 +80,10 @@ public class SceneController : MonoBehaviour {
             elevator_outside_lights.SetActive(false);
             yield return new WaitForSeconds(0.7f);
         }
+    }
+
+    public IEnumerator victory()
+    {
+        //do something if player completes the game
     }
 }

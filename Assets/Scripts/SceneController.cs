@@ -12,6 +12,11 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
     [SerializeField] private GameObject lvl2_maze_controller;
+	// the player game object
+	[SerializeField] private GameObject player;
+	[SerializeField] private GameObject camera;
+	private static GameObject staticPlayer;
+	private static GameObject staticCamera;
     public GameObject button_light;
     private GameObject current_level;
     public bool isElevatorMoving;
@@ -30,6 +35,8 @@ public class SceneController : MonoBehaviour {
         lvl1_complete = false;
         lvl2_complete = false;
         game_complete = false;
+		staticPlayer = player;
+		staticCamera = camera;
 	}
 
 	// Update is called once per frame
@@ -46,6 +53,24 @@ public class SceneController : MonoBehaviour {
         lvl2_complete = lvl2_maze_controller.GetComponent<MazeController>().isComplete;
         //need a check for game_complete
     }
+
+	// removes the player from the game temporarily so sanity/power doesn't decrease
+	public static void freezeGame(){
+		Time.timeScale = 0;
+		staticPlayer.GetComponent<FPSInput> ().enabled = false;
+		staticPlayer.GetComponent<MouseLook> ().enabled = false;
+		staticPlayer.GetComponent<PlayerCharacter> ().enabled = false;
+		staticCamera.GetComponent<MouseLook> ().enabled = false;
+
+	}
+
+	public static void unfreezeGame(){
+		Time.timeScale = 1;
+		staticPlayer.GetComponent<FPSInput> ().enabled = true;
+		staticPlayer.GetComponent<MouseLook> ().enabled = true;
+		staticPlayer.GetComponent<PlayerCharacter> ().enabled = true;
+		staticCamera.GetComponent<MouseLook> ().enabled = false;
+	}
 
     public IEnumerator loadLevel(int level)
     {

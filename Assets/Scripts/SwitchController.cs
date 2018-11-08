@@ -49,6 +49,8 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 
 	// Update is called once per frame
 	void Update () {
+		if (Time.timeScale == 0)
+			return;
 		// Activate/Operate/Deactivate device based on powerConsumer state
 		// calls the Activate/Operat/Deactivate of the device the switch powers
 		bool deviceIsPowered = this.powerConsumer.powerDevice();

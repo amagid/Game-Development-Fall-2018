@@ -52,7 +52,6 @@ public class DoorController : MonoBehaviour, DirectOperation {
 			transform.position = Vector3.Lerp(closePos, openPos, t);
 			yield return null;
 		}
-		//isOpen = true;
 	}
 
 

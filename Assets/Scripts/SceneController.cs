@@ -71,7 +71,7 @@ public class SceneController : MonoBehaviour {
 		staticPlayer.GetComponent<FPSInput> ().enabled = true;
 		staticPlayer.GetComponent<MouseLook> ().enabled = true;
 		staticPlayer.GetComponent<PlayerCharacter> ().enabled = true;
-		staticCamera.GetComponent<MouseLook> ().enabled = false;
+		staticCamera.GetComponent<MouseLook> ().enabled = true;
 	}
 
     public IEnumerator loadLevel(int level)

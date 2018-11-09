@@ -7807,12 +7807,12 @@ GameObject:
   - component: {fileID: 564570542}
   - component: {fileID: 564570541}
   m_Layer: 0
-  m_Name: Ceiling (1)
+  m_Name: Zone3Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &564570540
 Transform:
   m_ObjectHideFlags: 0
@@ -14668,7 +14668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1094579645
 Transform:
   m_ObjectHideFlags: 0

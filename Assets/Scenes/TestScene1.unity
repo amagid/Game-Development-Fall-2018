@@ -26572,10 +26572,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   operatorText: {fileID: 255017319}
   sceneController: {fileID: 63089279}
-  messages: []
+  messages:
+  - ID: 1
+    message: Systems show that you are finally operational... [SPACE]
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 2
+    message: Let's test your systems to ensure you are fully operational. [SPACE]
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 3
+    message: This facility is dark - test your torch with [TAB].
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 4
+    message: Test your interface display with [I]
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 5
+    message: All systems seem to be in order. Exit the elevator to begin your mission.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 6
+    message: This test message has a time delay of 3 seconds!
+    isObjective: 0
+    timeDelay: 3
+    prerequisiteID: 
+    completed: 0
+  - ID: 7
+    message: This test message was already completed so it will be cut off
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 1
+  - ID: 8
+    message: 
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
   characterDelay: 0.1
   interMessageDelay: 0.25
-  messageCompletedComment: 
+  messageCompletedComment: '...Oh, looks like you already did that.'
 --- !u!4 &1752115324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4907604096926318, guid: 45263d93f0fd91641804330ddf295a91,

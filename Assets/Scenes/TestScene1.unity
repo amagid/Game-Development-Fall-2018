@@ -18492,7 +18492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1233943989
 Transform:
   m_ObjectHideFlags: 0
@@ -21269,11 +21269,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2701dc93265aa6449e8c42acd133e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1: {fileID: 1233943988}
-  level2: {fileID: 594264816}
-  finalLevel: {fileID: 1634738379}
   operatorText: {fileID: 255017319}
   sceneController: {fileID: 63089279}
+  messages: []
+  characterDelay: 0.1
+  interMessageDelay: 0.25
+  messageCompletedComment: 
 --- !u!1 &1416310688
 GameObject:
   m_ObjectHideFlags: 0
@@ -24494,7 +24495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1634738380
 Transform:
   m_ObjectHideFlags: 0
@@ -26667,11 +26668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2701dc93265aa6449e8c42acd133e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1: {fileID: 1233943988}
-  level2: {fileID: 594264816}
-  finalLevel: {fileID: 1634738379}
   operatorText: {fileID: 255017319}
   sceneController: {fileID: 63089279}
+  messages: []
+  characterDelay: 0.1
+  interMessageDelay: 0.25
+  messageCompletedComment: 
 --- !u!4 &1752115324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4907604096926318, guid: 45263d93f0fd91641804330ddf295a91,

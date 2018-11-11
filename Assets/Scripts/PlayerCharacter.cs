@@ -123,9 +123,7 @@ public class PlayerCharacter : MonoBehaviour {
 		{
 			losingSanity = false;
 		}
-
-
-
+			
 		// Raycast to find powerable objects
 		RaycastHit hit;
 
@@ -215,22 +213,21 @@ public class PlayerCharacter : MonoBehaviour {
 						Battery batteryPC = gameObjectPC != null ? gameObjectPC.GetComponent<Battery>() : null;
 						if (batteryPC != null && batteryPC.getPowerSource() != null)
 						{
-							pc.attachPowerSource(batteryPC.getPowerSource());
-							CentralLightController clc = hit.collider.gameObject.GetComponent<CentralLightController>();
-							if (clc != null)
-							{
-								clc.setBattery(batteryPC.gameObject);
+							if(pc.isOneTimeActivation()){
+								inventory.addItem (gameObjectPC);
 							}
-
+							pc.attachPowerSource(batteryPC.getPowerSource());
+					
 							SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController>();
 							if (sc != null)
 							{
 								sc.setBattery(gameObjectPC);
 							}
-
 						}
+						// if the power consumer is one time use return the battery to the character
+
 						// If the PowerConsumer did have a PowerSource, check if it's extractable & take it if it is
-					} else if (pc.isPowerSourceExtractable())
+					} else if (pc.isPowerSourceExtractable() && !pc.isOneTimeActivation())
 					{
 						PowerSource oldPC = pc.removePowerSource();
 						Battery battery = oldPC.theBattery;
@@ -238,32 +235,7 @@ public class PlayerCharacter : MonoBehaviour {
 						inventory.addItem(battery.gameObject); 
 						battery.gameObject.SetActive(false);
 
-						/*GameObject battery = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/battery 1"));
-						battery.GetComponent<Battery>().max_power = (int) oldPC.getMaxPower();
-						battery.GetComponent<Battery>().power_index = (int) oldPC.getPowerLevel();
-						battery.GetComponent<Battery>().setPowerSource(new PowerSource(oldPC.getMaxPower(), oldPC.getPowerLevel()));
-						this.inventory.addItem(battery);
-						battery.SetActive(false);*/
 					}
-
-
-
-					/*Battery battery = other.gameObject.GetComponent<Battery> ();
-					if (battery.deviceBatteryIsAttachedTo != null) {
-						battery.deviceBatteryIsAttachedTo.removePowerSource ();
-						battery.deviceBatteryIsAttachedTo = null;
-						Debug.Log ("Player took battery too early");
-					}*/
-
-
-
-
-
-
-
-
-
-
 				}
 			}
 			// If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
@@ -273,11 +245,8 @@ public class PlayerCharacter : MonoBehaviour {
 			this.updateSeenObject(null);
 			this.currentSource = null;
 		}
-
-
 	}
-
-
+		
 	void OnGUI()
 	{
 
@@ -287,11 +256,8 @@ public class PlayerCharacter : MonoBehaviour {
 
 		GUI.Label(new Rect(Screen.width / 2 - 13, Screen.height / 2 - 13, 26, 26), "+", style2);
 		GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 10, 200, 60), this.cursorMessage, style3);
-
 	}
-
-
-
+		
 	//test for picking up batteries and use them for Test Scene One
 	void OnTriggerEnter(Collider other)
 	{

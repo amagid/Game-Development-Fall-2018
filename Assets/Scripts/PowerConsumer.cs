@@ -51,7 +51,7 @@ public class PowerConsumer : MonoBehaviour {
 	{
 		if (this.oneTimeActivation)
 		{
-			return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.activationThreshold) && this.removePowerSource() != null;
+			return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold & this.currentPowerSource.takePower(this.activationThreshold) & this.removePowerSource() != null;
 		} else {
 			return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
 		}
@@ -189,8 +189,7 @@ public class PowerConsumer : MonoBehaviour {
 	{
 		return this.powerSourceExtractable;	
 	}
-
-
+		
 }
 
 

@@ -9,7 +9,7 @@ public class MachineController : MonoBehaviour {
     private Inventory inventory;
     //the number of parts that are needed to activate the machine
     private bool atMachine;
-    private bool activated = false;
+	public static bool activated = false;
     public int numOfParts;
 
 	// Use this for initialization

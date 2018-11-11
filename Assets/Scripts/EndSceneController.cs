@@ -17,7 +17,6 @@ public class EndSceneController : MonoBehaviour {
 			return;
 		
 		if (atEndScene && MachineController.activated) {
-			Debug.Log ("*******************");
 			SceneManager.LoadScene ("EndGame");
 		}
 		

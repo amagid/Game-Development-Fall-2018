@@ -24,6 +24,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private bool losingSanity;
 	private bool inElevator;
 	private bool isCrouching;
+	private bool isPersonalLightOn = false;
 	private bool canStandUp;
 	private PowerSource internalBattery;
 	private PowerConsumer internalPowerConsumer;
@@ -93,9 +94,15 @@ public class PlayerCharacter : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            this.personalLight.enabled = !this.personalLight.enabled;
+			if (isPersonalLightOn) {
+				this.personalLight.enabled = false;
+				isPersonalLightOn = false;
+			} else {
+				this.personalLight.enabled = true;
+				isPersonalLightOn = true;
+			}
         }
-        if (this.personalLight.enabled) {
+		if (isPersonalLightOn) {
 			this.internalBattery.takePower(personalLightPowerRate);
 			losingSanity = false;
 		}

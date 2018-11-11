@@ -32,6 +32,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private PowerConsumer currentConsumer;
 	private PowerSource currentSource;
 	private string cursorMessage;
+    private bool personalLightOn = false;
 
 	void Start () {
 		style1.fontSize = 25;
@@ -59,6 +60,7 @@ public class PlayerCharacter : MonoBehaviour {
 		this.internalPowerConsumer.attachPowerSource(this.internalBattery);
 
 		this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
+        this.personalLight.enabled = false;
 		InvokeRepeating("sanityChange", 1f, 0.1f);
 	}
 
@@ -89,14 +91,13 @@ public class PlayerCharacter : MonoBehaviour {
 			endGame();
 		}
 
-		if (Input.GetKey(KeyCode.LeftShift))
-		{
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            this.personalLight.enabled = !this.personalLight.enabled;
+        }
+        if (this.personalLight.enabled) {
 			this.internalBattery.takePower(personalLightPowerRate);
-			this.personalLight.enabled = true;
 			losingSanity = false;
-		} else
-		{
-			this.personalLight.enabled = false;
 		}
 
 		//the crouch function

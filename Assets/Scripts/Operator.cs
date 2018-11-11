@@ -4,55 +4,157 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
+[System.Serializable]
+public class Message
+{
+    // A unique ID for this message (used for completing it)
+    public string ID;
+
+    // The message
+    public string message;
+
+    // Is this message an objective, or just a message?
+    public bool isObjective = false;
+
+    // An optional time-delay before displaying this message after the previous one is dismissed
+    public float timeDelay = 0f;
+
+    // Optional prerequisite message/objective that must be completed before this one can be completed (Does not affect showing this message)
+    public string prerequisiteID = "";
+
+    // Has this message been completed / dismissed?
+    public bool completed = false;
+}
+
 public class Operator : MonoBehaviour {
-	[SerializeField] private GameObject level1;
-	[SerializeField] private GameObject level2;
-	[SerializeField] private GameObject finalLevel;
 	[SerializeField] private Text operatorText;
 	[SerializeField] private GameObject sceneController;
+    [SerializeField] private Message[] messages;
+	[SerializeField] private float characterDelay = 0.1f;
+    [SerializeField] private float interMessageDelay = 0.25f;
+    [SerializeField] private string messageCompletedComment = "";
 
-	private float wordsPerSecond = 5f;
-	private float timeElapsed = 0f;
-	private const string level1Text = "Hello.\nGoal: get out.\nFind 3 batteries.";
-	private const string level2Text = "";
-	private const string finalText = "";
-	private float wordCount = 0f;
+    private bool typing = false;
+    private int currentMessage = -1;
+    private int typedLength = 1;
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		timeElapsed += Time.fixedDeltaTime;
+    private void Start()
+    {
+        this.nextMessage();
+    }
 
-		wordCount = timeElapsed * wordsPerSecond;
-		if (level1.activeSelf && !sceneController.GetComponent<SceneController> ().lvl1_complete) {
-			animateDisplayMessage (level1Text, wordCount); 
-		} else if (level2.activeSelf && !sceneController.GetComponent<SceneController> ().lvl2_complete) {
-			animateDisplayMessage (level2Text, wordCount); 
-		} else if (finalLevel.activeSelf && !sceneController.GetComponent<SceneController> ().game_complete) {
-			animateDisplayMessage (finalText, wordCount); 
-		} else {
-			operatorText.text = string.Empty;
-		}
-	}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (typing)
+            {
+                this.skipTyping();
+            } else if (!this.getCurrentMessage().isObjective || this.getCurrentMessage().completed)
+            {
+                this.attemptCompleteMessage();
+            }
+        }
+    }
 
-	private void animateDisplayMessage(string completeMessage, float wordCount){
-		// full message has already been displayed - stop animation
-		if (operatorText.text.Equals (completeMessage)) {
-			return;
-		}
-		float words = wordCount;
-		StringBuilder builder = new StringBuilder (); 
-		foreach (char c in completeMessage) {
-			// word count limit has been reached
-			if (words < 0) {
-				operatorText.text = builder.ToString ();
-				return;
-			} else {
-				builder.Append (c);
-				if (c != ' ') {
-					words--;
-				}
-			}
-		}
-		operatorText.text = builder.ToString ();
-	}
+    public Message getCurrentMessage()
+    {
+        return this.messages[this.currentMessage];
+    }
+
+    private Message getMessage(string id)
+    {
+        foreach (Message m in this.messages)
+        {
+            if (m.ID == id)
+            {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    private void nextMessage()
+    {
+        this.currentMessage++;
+        // If we've shown all of the messages, we're done
+        if (this.currentMessage >= this.messages.Length)
+        {
+            return;
+        }
+
+        Message message = this.getCurrentMessage();
+        if (message.completed)
+        {
+            message.message = message.message.Substring(0, (int)Mathf.Floor((float)(message.message.Length * 0.75))) + this.messageCompletedComment;
+        }
+        operatorText.text = "";
+        Invoke("animateDisplayMessage", message.timeDelay);
+    }
+
+    private void animateDisplayMessage()
+    {
+        this.typing = true;
+        this.typedLength = 1;
+        this.typeMessage();
+    }
+
+    private void typeMessage()
+    {
+        this.operatorText.text = this.getCurrentMessage().message.Substring(0, this.typedLength);
+        this.typedLength++;
+        if (typing && this.typedLength <= this.getCurrentMessage().message.Length)
+        {
+            Invoke("typeMessage", this.characterDelay);
+        }
+        else if (!typing)
+        {
+            this.operatorText.text = this.getCurrentMessage().message;
+            this.typedLength = this.getCurrentMessage().message.Length;
+        } else {
+            typing = false;
+        }
+    }
+
+    public bool attemptCompleteMessage()
+    {
+        return this.completeMessage(this.getCurrentMessage());
+    }
+
+    public bool attemptCompleteMessage(string id)
+    {
+        return this.completeMessage(this.getMessage(id));
+    }
+
+    private bool completeMessage(Message message)
+    {
+        // Decide whether we can complete this message or not (and set completed if we can)
+        if (message.prerequisiteID != "")
+        {
+            if (!this.getMessage(message.prerequisiteID).completed)
+            {
+                return false;
+            } else
+            {
+                message.completed = true;
+            }
+        } else
+        {
+            message.completed = true;
+        }
+
+        // Advance the message if we just completed the current message
+        if (message == this.getCurrentMessage())
+        {
+            this.typing = false;
+            Invoke("nextMessage", this.interMessageDelay);
+        }
+
+        return true;
+    }
+
+    public void skipTyping()
+    {
+        this.typing = false;
+    }
 }

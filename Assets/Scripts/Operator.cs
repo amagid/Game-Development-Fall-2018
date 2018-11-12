@@ -76,13 +76,13 @@ public class Operator : MonoBehaviour {
 
     private void nextMessage()
     {
-        this.currentMessage++;
         // If we've shown all of the messages, we're done
-        if (this.currentMessage >= this.messages.Length)
+        if (this.currentMessage + 1 >= this.messages.Length)
         {
             return;
         }
 
+        this.currentMessage++;
         Message message = this.getCurrentMessage();
         if (message.completed)
         {
@@ -147,7 +147,8 @@ public class Operator : MonoBehaviour {
         if (message == this.getCurrentMessage())
         {
             this.typing = false;
-            Invoke("nextMessage", this.interMessageDelay);
+            this.nextMessage();
+//            Invoke("nextMessage", this.interMessageDelay);
         }
 
         return true;

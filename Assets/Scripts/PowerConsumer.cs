@@ -10,14 +10,20 @@ public class PowerConsumer : MonoBehaviour {
 	[SerializeField] private PowerSource currentPowerSource;
 	[SerializeField] private float activationThreshold = 0; // Minimum Power to activate device
 	[SerializeField] private bool oneTimeActivation = false;
-	private bool powerSourceExtractable = true;
+	[SerializeField] private bool powerSourceExtractable = true;
+    private PowerObjective objective = null;
 
-	/// <summary>
-	/// Constructor 1. Sets consumption rate and initial power source
-	/// </summary>
-	/// <param name="consumptionRate">The amount of Power per game tick that this PowerConsumer consumes</param>
-	/// <param name="initialPowerSource">The initial PowerSource that will be used by this PowerConsumer</param>
-	public PowerConsumer(float consumptionRate, PowerSource initialPowerSource)
+    private void Start()
+    {
+        this.objective = this.GetComponent<PowerObjective>();
+    }
+
+    /// <summary>
+    /// Constructor 1. Sets consumption rate and initial power source
+    /// </summary>
+    /// <param name="consumptionRate">The amount of Power per game tick that this PowerConsumer consumes</param>
+    /// <param name="initialPowerSource">The initial PowerSource that will be used by this PowerConsumer</param>
+    public PowerConsumer(float consumptionRate, PowerSource initialPowerSource)
 	{
 		this.consumptionRate = consumptionRate;
 		this.currentPowerSource = initialPowerSource;
@@ -49,12 +55,20 @@ public class PowerConsumer : MonoBehaviour {
 	/// <returns>True if the PowerConsumer has enough Power to activate, False if not.</returns>
 	public bool powerDevice()
 	{
+        bool result;
 		if (this.oneTimeActivation)
 		{
-			return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold & this.currentPowerSource.takePower(this.activationThreshold) & this.removePowerSource() != null;
+			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold & this.currentPowerSource.takePower(this.activationThreshold) & this.removePowerSource() != null;
 		} else {
-			return this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
+			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
 		}
+
+        if (result && this.objective != null)
+        {
+            this.objective.complete();
+        }
+
+        return result;
 	}
 
 	/// <summary>

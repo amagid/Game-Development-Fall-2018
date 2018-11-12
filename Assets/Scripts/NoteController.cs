@@ -11,11 +11,13 @@ public class NoteController : MonoBehaviour {
 	[SerializeField] GameObject displayContent;
 
 	private bool atNote = false;
+    private NoteObjective objective = null;
 
 	void Start(){
 		displayContent.SetActive (false);
 		Image img = content.GetComponent<Image> ();
 		img.sprite = image;
+        this.objective = this.GetComponent<NoteObjective>();
 	}
 
 	void Update(){
@@ -27,6 +29,10 @@ public class NoteController : MonoBehaviour {
 				img.sprite = image;
 				displayContent.SetActive (true);
 				atNote = false;
+                if (this.objective != null)
+                {
+                    this.objective.complete();
+                }
 			}
 		}
 	}

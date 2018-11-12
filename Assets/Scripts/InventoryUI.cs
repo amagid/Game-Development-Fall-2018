@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     private Inventory playerInventory;
     [SerializeField] private GameObject item1UI;
     List<Image> imgs;
+    List<Image> powerLevels;
     int selectedIndex = 0;
     private bool updateOn;
     private bool charging = false;
@@ -26,14 +27,19 @@ public class InventoryUI : MonoBehaviour
     {
         updateOn = true;
         imgs = new List<Image>();
+        powerLevels = new List<Image>();
         GameObject player = GameObject.Find("Player"); 
         playerInventory = player.GetComponent<Inventory>();
         playerBattery = player.GetComponent<PowerConsumer>().getPowerSource();
         for (int i = 0; i < playerInventory.inventorySize; i++)
         {
             string tag = "Slot" + (i + 1);
+            string powerLevelTag = "Power Level " + (i + 1);
             imgs.Add(GameObject.Find(tag).GetComponent<Image>());
+            powerLevels.Add(GameObject.Find(powerLevelTag).GetComponent<Image>());
+
         }
+
 
     }
 
@@ -48,10 +54,28 @@ public class InventoryUI : MonoBehaviour
                 if (playerInventory.getItem(i) != null)
                 {
                     imgs[i].color = UnityEngine.Color.green; // TODO: Set image to item icon once we have icons
+                    powerLevels[i].color = UnityEngine.Color.green;
+                    if (playerInventory.getItem(i).GetComponent<Battery>() != null)
+                    {
+                        float width;
+                        if (playerInventory.getItem(i).GetComponent<Battery>().getPowerSource().getPowerLevel() >= 100)
+                        {
+                            width = 100 / 3;   // Maximum length
+                        }
+                        else
+                        {
+                            // Bar width decreases only when powerLeverl < 100
+                            width = playerInventory.getItem(i).GetComponent<Battery>().getPowerSource().getPowerLevel() / 3;
+                        }
+                        RectTransform rt = (RectTransform)powerLevels[i].gameObject.transform;
+                        rt.sizeDelta = new Vector2(width, 5);
+                    }
                 }
                 else
                 {
                     imgs[i].color = UnityEngine.Color.gray; // TODO: Revisit later to potentially improve look
+                    RectTransform rt = (RectTransform)powerLevels[i].gameObject.transform;
+                    rt.sizeDelta = new Vector2(0, 0);
                 }
                 GameObject.Find("Slot" + (i + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
             }

@@ -17,8 +17,11 @@ public class ComputerController : MonoBehaviour, PoweredOperation
     // the player game object
     [SerializeField] GameObject player;
 
+    private SceneController sceneController;
+
     void Start()
     {
+        sceneController = GameObject.Find("Scene Controller").GetComponent<SceneController>();
         deviceActive = false;
         this.powerConsumer = this.getPowerConsumer();
         displayContent.SetActive(false);
@@ -51,7 +54,7 @@ public class ComputerController : MonoBehaviour, PoweredOperation
     {
         this.deviceActive = true;
         // display panel here w/ note
-        SceneController.freezeGame();
+        sceneController.freezeGame();
         Image img = content.GetComponent<Image>();
         img.sprite = image;
         displayContent.SetActive(true);
@@ -62,7 +65,7 @@ public class ComputerController : MonoBehaviour, PoweredOperation
     public void closePanel()
     {
         displayContent.SetActive(false);
-        SceneController.unfreezeGame();
+        sceneController.unfreezeGame();
     }
 
     public void operate() {}

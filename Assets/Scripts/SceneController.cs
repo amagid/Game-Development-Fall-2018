@@ -29,6 +29,7 @@ public class SceneController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Cursor.visible = false;
         elevator_outside_lights_initPos = elevator_outside_lights.transform.position;
         flickerOn = true;
         current_level_num = 1;
@@ -57,21 +58,24 @@ public class SceneController : MonoBehaviour {
     }
 
 	// removes the player from the game temporarily so sanity/power doesn't decrease
-	public static void freezeGame(){
-		Time.timeScale = 0;
-		staticPlayer.GetComponent<FPSInput> ().enabled = false;
-		staticPlayer.GetComponent<MouseLook> ().enabled = false;
-		staticPlayer.GetComponent<PlayerCharacter> ().enabled = false;
-		staticCamera.GetComponent<MouseLook> ().enabled = false;
-
+	public void freezeGame()
+    {
+        Time.timeScale = 0f;
+        player.GetComponent<MouseLook>().enabled = false;
+        player.GetComponent<PlayerCharacter>().enabled = false;
+        player.GetComponent<PowerConsumer>().enabled = false;
+        camera.GetComponent<MouseLook>().enabled = false;
+        Cursor.visible = true;
 	}
 
-	public static void unfreezeGame(){
-		Time.timeScale = 1;
-		staticPlayer.GetComponent<FPSInput> ().enabled = true;
-		staticPlayer.GetComponent<MouseLook> ().enabled = true;
-		staticPlayer.GetComponent<PlayerCharacter> ().enabled = true;
-		staticCamera.GetComponent<MouseLook> ().enabled = true;
+	public void unfreezeGame()
+    {
+        Time.timeScale = 1f;
+        player.GetComponent<MouseLook>().enabled = true;
+        camera.GetComponent<MouseLook>().enabled = true;
+        player.GetComponent<PowerConsumer>().enabled = true;
+        player.GetComponent<PlayerCharacter>().enabled = true;
+        Cursor.visible = false;
 	}
 
     public IEnumerator loadLevel(int level)

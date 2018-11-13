@@ -8,12 +8,14 @@ public class TabletUI : MonoBehaviour {
     [SerializeField] private GameObject inventoryBar;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject camera;
+    private SceneController sceneController;
 
     private bool isOn;
     // Use this for initialization
     void Start()
     {
         isOn = false;
+        this.sceneController = GameObject.Find("Scene Controller").GetComponent<SceneController>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,8 @@ public class TabletUI : MonoBehaviour {
             Tablet.SetActive(true);
             isOn = true;
             inventoryBar.SetActive(false);
-            Pause();
+            sceneController.freezeGame();
+            
         }
         else
         {
@@ -33,28 +36,8 @@ public class TabletUI : MonoBehaviour {
                 Tablet.SetActive(false);
                 isOn = false;
                 inventoryBar.SetActive(true);
-                Resume();
-
+                sceneController.unfreezeGame();
             }
         }
-    }
-
-
-    public void Resume()
-    {
-        Time.timeScale = 1f;
-        player.GetComponent<MouseLook>().enabled = true;
-        camera.GetComponent<MouseLook>().enabled = true;
-        player.GetComponent<PowerConsumer>().enabled = true;
-        player.GetComponent<PlayerCharacter>().enabled = true;
-    }
-
-    public void Pause()
-    {
-        Time.timeScale = 0f;
-        player.GetComponent<MouseLook>().enabled = false;
-        player.GetComponent<PlayerCharacter>().enabled = false;
-        player.GetComponent<PowerConsumer>().enabled = false;
-        camera.GetComponent<MouseLook>().enabled = false;
     }
 }

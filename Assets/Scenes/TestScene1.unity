@@ -2471,6 +2471,25 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a34d559676e53bc468e9a0dc185e9b4a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &146548168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1427509189}
+--- !u!114 &146548169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 146548168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38e956ec9def7a438a6c6d62b24d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 12
+  useBattery: 1
+  usePersonalPower: 0
 --- !u!1001 &149502845
 Prefab:
   m_ObjectHideFlags: 0
@@ -3663,7 +3682,7 @@ RectTransform:
   m_Children:
   - {fileID: 1089444163}
   m_Father: {fileID: 621889719}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5758,15 +5777,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.70231
+      value: -22.57
       objectReference: {fileID: 0}
     - target: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.6099973
+      value: -4.67
       objectReference: {fileID: 0}
     - target: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -14.024985
+      value: 8.16
       objectReference: {fileID: 0}
     - target: {fileID: 4160669633995410, guid: b1e004e2f60ec6840abefcca889b9df2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8571,6 +8590,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4747341804248288, guid: 5bae2b33eb32aec40b78d7b2064291d6,
     type: 2}
   m_PrefabInternal: {fileID: 1374445941}
+--- !u!1 &539957034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946213567}
+--- !u!114 &539957035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539957034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38e956ec9def7a438a6c6d62b24d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 12
+  useBattery: 1
+  usePersonalPower: 0
 --- !u!1001 &548094834
 Prefab:
   m_ObjectHideFlags: 0
@@ -9571,8 +9609,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 230541174}
   - {fileID: 1750262386}
+  - {fileID: 230541174}
   - {fileID: 1413878099}
   - {fileID: 567755404}
   - {fileID: 1094309263}
@@ -11425,6 +11463,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4356620375387644, guid: e652ad9cbb377304ebe5d7a5e9e435f6,
     type: 2}
   m_PrefabInternal: {fileID: 721054466}
+--- !u!1 &731960129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731960130}
+  - component: {fileID: 731960133}
+  - component: {fileID: 731960132}
+  - component: {fileID: 731960131}
+  m_Layer: 0
+  m_Name: ObjectiveMaintenanceRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731960130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731960129}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.8323097, y: -2.233997, z: 7.724989}
+  m_LocalScale: {x: 1, y: 6.423519, z: 5.9298754}
+  m_Children: []
+  m_Father: {fileID: 1233943989}
+  m_RootOrder: 142
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731960131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731960129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753e8b646e875b49b0ecb0b4a4b0413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 6
+  destroyWhenCompleted: 1
+--- !u!65 &731960132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731960129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &731960133
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731960129}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &733814804
 GameObject:
   m_ObjectHideFlags: 0
@@ -13209,6 +13310,69 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bae2b33eb32aec40b78d7b2064291d6, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &866271381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866271382}
+  - component: {fileID: 866271385}
+  - component: {fileID: 866271384}
+  - component: {fileID: 866271383}
+  m_Layer: 0
+  m_Name: ObjectiveMaintenanceRoom2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866271382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866271381}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.15, y: -2.233997, z: 7.724989}
+  m_LocalScale: {x: 1, y: 6.4235196, z: 5.9298797}
+  m_Children: []
+  m_Father: {fileID: 1233943989}
+  m_RootOrder: 143
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866271383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866271381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753e8b646e875b49b0ecb0b4a4b0413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 7
+  destroyWhenCompleted: 1
+--- !u!65 &866271384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866271381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &866271385
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866271381}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &869684748
 Prefab:
   m_ObjectHideFlags: 0
@@ -16742,6 +16906,61 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1094579644}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1095803455
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1233943989}
+    m_Modifications:
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -27.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.9899971
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_RootOrder
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626686584227430, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_Name
+      value: ShortShelfEmpty (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 348ae78e4da415d419ca8ad6273be9d8, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1095803456 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4254298854240096, guid: 348ae78e4da415d419ca8ad6273be9d8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1095803455}
 --- !u!1 &1099047561
 GameObject:
   m_ObjectHideFlags: 0
@@ -17742,6 +17961,69 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 325f56c17f3c16341b5878830ab5a5aa, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1138184093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138184094}
+  - component: {fileID: 1138184097}
+  - component: {fileID: 1138184096}
+  - component: {fileID: 1138184095}
+  m_Layer: 9
+  m_Name: ObjectiveTutorialWalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1138184094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138184093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2871, y: -0.291, z: 11.6}
+  m_LocalScale: {x: 6.8481297, y: 6.0307636, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1620736275}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1138184095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138184093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753e8b646e875b49b0ecb0b4a4b0413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: tutorial_walk
+  destroyWhenCompleted: 1
+--- !u!65 &1138184096
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138184093}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1138184097
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1138184093}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1140653849
 GameObject:
   m_ObjectHideFlags: 0
@@ -19697,6 +19979,11 @@ Transform:
   - {fileID: 457656664}
   - {fileID: 1715898616}
   - {fileID: 65820765}
+  - {fileID: 731960130}
+  - {fileID: 866271382}
+  - {fileID: 1586682147}
+  - {fileID: 1095803456}
+  - {fileID: 1268621701}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20464,6 +20751,69 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1d1e454b02ab844598921cfaa1d9d86, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1268621700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268621701}
+  - component: {fileID: 1268621704}
+  - component: {fileID: 1268621703}
+  - component: {fileID: 1268621702}
+  m_Layer: 0
+  m_Name: ObjectiveMaintenanceRoom4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268621701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268621700}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.089, y: -2.233997, z: 7.724989}
+  m_LocalScale: {x: 1, y: 6.4235196, z: 5.9298797}
+  m_Children: []
+  m_Father: {fileID: 1233943989}
+  m_RootOrder: 146
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268621702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268621700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753e8b646e875b49b0ecb0b4a4b0413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 10
+  destroyWhenCompleted: 1
+--- !u!65 &1268621703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268621700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.21326293}
+  m_Center: {x: 0, y: 0, z: 0.059303492}
+--- !u!33 &1268621704
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1268621700}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1272696170
 Prefab:
   m_ObjectHideFlags: 0
@@ -25592,6 +25942,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4907604096926318, guid: 45263d93f0fd91641804330ddf295a91,
     type: 2}
   m_PrefabInternal: {fileID: 2126236216}
+--- !u!1 &1586682146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586682147}
+  - component: {fileID: 1586682150}
+  - component: {fileID: 1586682149}
+  - component: {fileID: 1586682148}
+  m_Layer: 0
+  m_Name: ObjectiveMaintenanceRoom3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586682147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586682146}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.595, y: -2.233997, z: 7.724989}
+  m_LocalScale: {x: 1, y: 6.4235196, z: 5.9298797}
+  m_Children: []
+  m_Father: {fileID: 1233943989}
+  m_RootOrder: 144
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586682148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586682146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0753e8b646e875b49b0ecb0b4a4b0413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 8
+  destroyWhenCompleted: 1
+--- !u!65 &1586682149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586682146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1586682150
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586682146}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1591990538
 GameObject:
   m_ObjectHideFlags: 0
@@ -26030,6 +26443,7 @@ Transform:
   - {fileID: 1493262320}
   - {fileID: 1191816927}
   - {fileID: 1568316315}
+  - {fileID: 1138184094}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28340,7 +28754,7 @@ RectTransform:
   m_Children:
   - {fileID: 255017318}
   m_Father: {fileID: 621889719}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -28424,14 +28838,35 @@ MonoBehaviour:
     timeDelay: 0
     prerequisiteID: 
     completed: 0
-  - ID: 2
-    message: Let's test your systems to ensure you are fully operational. [SPACE]
+  - ID: 1a
+    message: Honestly, I'm surprised you survived that fall, but when life gives you
+      lemons... Let's get started. [SPACE]
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 
     completed: 0
+  - ID: 1b
+    message: In general, press [SPACE] when you've read my messages. If I think you've
+      got it, I might take it out of your field of view.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 2
+    message: We'll start by testing your systems to ensure you are fully operational.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: tutorial_walk
+    message: Test your mobility systems with [W,A,S,D]
+    isObjective: 1
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
   - ID: 3
-    message: This facility is dark - test your torch with [TAB].
+    message: Good, you can walk. This facility is dark - test your torch with [F].
+      But don't be stupid and leave it on as it'll drain your Power.
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 
@@ -28442,32 +28877,98 @@ MonoBehaviour:
     timeDelay: 0
     prerequisiteID: 
     completed: 0
+  - ID: 4a
+    message: Alright, core systems seem to be in order, though you're on the wrong
+      floor... Lucky you, you fell through the ceiling of the main elevator.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 4b
+    message: Hit that elevator UP button. It's probably not powered, so you'll have
+      to give it some juice with your [Left Mouse Button].
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
   - ID: 5
-    message: All systems seem to be in order. Exit the elevator to begin your mission.
+    message: Didn't work? Figures. We're going to have to find the maintenance room.
+      Exit the elevator.
     isObjective: 1
     timeDelay: 0
     prerequisiteID: 
     completed: 0
   - ID: 6
-    message: This message automatically shows when you exit the elevator!
-    isObjective: 0
+    message: Alright. There must be a maintenance room somewhere near the elevator...
+      Try to your left.
+    isObjective: 1
     timeDelay: 0
     prerequisiteID: 
     completed: 0
   - ID: 7
-    message: This test message has a time delay of 3 seconds!
-    isObjective: 0
-    timeDelay: 3
+    message: Hey moron. See the gap under the door? Get down and crawl with [C] and
+      then you'll fit. Idiot...
+    isObjective: 1
+    timeDelay: 0
     prerequisiteID: 
     completed: 0
   - ID: 8
-    message: This test message was already completed so it will be cut off
+    message: Good for you! You figured out how to bend your legs! Walk around so I
+      can see the room.
+    isObjective: 1
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 9
+    message: Ok. I see the problem. The control system needs backup batteries in all
+      3 slots.
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 
-    completed: 1
-  - ID: 9
-    message: 
+    completed: 0
+  - ID: 10
+    message: Grab the high-capacity battery at the back of the room.
+    isObjective: 1
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 11
+    message: You may have noticed the battery show up at the bottom of your display.
+      Press [1] to select it for use.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 12
+    message: Once you've selected the battery, install it in one of the switches with
+      [E].
+    isObjective: 1
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 13
+    message: Good. Maybe you're not hopeless after all... Alright. Go find the other
+      batteries. I'm going to get lunch.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 13a
+    message: If you find yourself running low on Power, just find an electronic device
+      with Power and steal it with your [Right Mouse Button].
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 14
+    message: Oh yeah, and I know you're deathly afraid of the dark, so try not to
+      go insane while I'm gone? You never know what might be lurking...
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: ending_buffer
+    message: ' '
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 
@@ -31172,6 +31673,25 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1908663291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1656145459}
+--- !u!114 &1908663292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1908663291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38e956ec9def7a438a6c6d62b24d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveID: 12
+  useBattery: 1
+  usePersonalPower: 0
 --- !u!1 &1911584303
 GameObject:
   m_ObjectHideFlags: 0

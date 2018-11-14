@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 65820765}
   - component: {fileID: 65820764}
   - component: {fileID: 65820763}
+  - component: {fileID: 65820766}
   m_Layer: 0
   m_Name: Zone 3 Door Closer
   m_TagString: Untagged
@@ -987,13 +988,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65820762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.13, y: 2.995, z: -18.04}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -20.61231, y: -2.9449973, z: -41.38501}
   m_LocalScale: {x: 1, y: 5.077094, z: 8.923088}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1233943989}
+  m_RootOrder: 141
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65820766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65820762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f3225cfa78a6a4e9169c6fb3cd04ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  device: {fileID: 1733753019}
 --- !u!1 &74193822
 GameObject:
   m_ObjectHideFlags: 0
@@ -19682,6 +19696,7 @@ Transform:
   - {fileID: 587686022}
   - {fileID: 457656664}
   - {fileID: 1715898616}
+  - {fileID: 65820765}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28000,6 +28015,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4672431482272914, guid: 325f56c17f3c16341b5878830ab5a5aa,
     type: 2}
   m_PrefabInternal: {fileID: 576967225}
+--- !u!1 &1733753019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659799862}
 --- !u!4 &1739603330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4672431482272914, guid: 325f56c17f3c16341b5878830ab5a5aa,

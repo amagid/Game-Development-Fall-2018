@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class NavigationDirection : MonoBehaviour {
 	// stores the player object
 	[SerializeField] GameObject player;
-	// stores the text to display the direction to
-	[SerializeField] Text directionText;
-	
-	private enum CardinalDirection
-	{
-		North, South, East, West
+	[SerializeField] Image compass;
+	[SerializeField] Sprite north;
+	[SerializeField] Sprite south;
+	[SerializeField] Sprite east;
+	[SerializeField] Sprite west;
+
+
+	void Start(){
+		compass.sprite = east;
 	}
 
 	// Update is called once per frame
@@ -21,13 +24,13 @@ public class NavigationDirection : MonoBehaviour {
 		v.y = 0;
 		v.Normalize ();
 		if (Vector3.Angle (v, Vector3.forward) <= 45.0) {
-			directionText.text = CardinalDirection.North.ToString();
+			compass.sprite = north;
 		} else if (Vector3.Angle (v, Vector3.right) <= 45.0) {
-			directionText.text = CardinalDirection.East.ToString();
+			compass.sprite = east;
 		} else if (Vector3.Angle (v, Vector3.back) <= 45.0) {
-			directionText.text = CardinalDirection.South.ToString();
+			compass.sprite = south;
 		} else {
-			directionText.text = CardinalDirection.West.ToString();
+			compass.sprite = west;
 		}
 	}
 }

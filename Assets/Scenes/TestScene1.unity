@@ -28904,6 +28904,20 @@ MonoBehaviour:
     prerequisiteID: 
     completed: 0
   - ID: 13b
+    message: To recharge a battery (or steal Power from it to keep yourself alive),
+      open your inventory with [I].
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 13c
+    message: In that window, click a battery and then use the Charge and Drain buttons
+      to charge or drain it.
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 13d
     message: You might also see glowing high-capacity data drives in the facility.
       Check them for useful information with [E].
     isObjective: 0

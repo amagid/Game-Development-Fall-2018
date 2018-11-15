@@ -28891,7 +28891,7 @@ MonoBehaviour:
     completed: 0
   - ID: 13
     message: Good. Maybe you're not hopeless after all... Alright. Go find the other
-      batteries. I'm going to get lunch.
+      batteries. Oh, and a few tips...
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 
@@ -28903,9 +28903,29 @@ MonoBehaviour:
     timeDelay: 0
     prerequisiteID: 
     completed: 0
+  - ID: 13b
+    message: You might also see glowing high-capacity data drives in the facility.
+      Check them for useful information with [E].
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
   - ID: 14
     message: Oh yeah, and I know you're deathly afraid of the dark, so try not to
       go insane while I'm gone? You never know what might be lurking...
+    isObjective: 0
+    timeDelay: 0
+    prerequisiteID: 
+    completed: 0
+  - ID: 15
+    message: '...I feel like I''m forgetting something important... Eh. who cares?'
+    isObjective: 0
+    timeDelay: 3
+    prerequisiteID: 
+    completed: 0
+  - ID: 16
+    message: Anyway I've got a burrito that's calling out to me. Try not to ruin my
+      lunch by dying, ok?
     isObjective: 0
     timeDelay: 0
     prerequisiteID: 

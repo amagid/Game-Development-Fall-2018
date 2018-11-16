@@ -9,10 +9,28 @@ public class PowerObjective : MonoBehaviour {
     [SerializeField] private bool usePersonalPower = true;
     private bool completed = false;
     private Operator op;
+    private PowerConsumer pc;
+    private PowerConsumer playerPC;
 
     private void Start()
     {
         this.op = GameObject.Find("Operator").GetComponent<Operator>();
+        this.pc = this.GetComponent<PowerConsumer>();
+        this.playerPC = GameObject.Find("Player").GetComponent<PowerConsumer>();
+    }
+
+    private void Update()
+    {
+        if (this.pc.canPowerDevice())
+        {
+            if (this.useBattery && this.pc.getPowerSource() != this.playerPC.getPowerSource())
+            {
+                this.complete();
+            } else if (this.usePersonalPower && this.pc.getPowerSource() == this.playerPC.getPowerSource())
+            {
+                this.complete();
+            }
+        }
     }
 
     public bool isComplete()
@@ -28,7 +46,12 @@ public class PowerObjective : MonoBehaviour {
         }
         else
         {
-            return this.completed = this.op.attemptCompleteMessage(this.objectiveID);
+            this.completed = this.op.attemptCompleteMessage(this.objectiveID);
+            if (this.completed)
+            {
+                this.enabled = false;
+            }
+            return this.completed;
         }
     }
 

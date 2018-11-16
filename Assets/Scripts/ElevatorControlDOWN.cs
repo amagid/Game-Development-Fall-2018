@@ -23,13 +23,9 @@ public class ElevatorControlDOWN : MonoBehaviour {
     {
         current_level_num = scene_controller.GetComponent<SceneController>().current_level_num;
         isCurrentlyMoving = scene_controller.GetComponent<SceneController>().isElevatorMoving;
-        bool deviceIsPowered = this.powerConsumer.powerDevice();
-        if (deviceIsPowered && !isCurrentlyMoving)
+        if (!isCurrentlyMoving && current_level_num > 1 && this.powerConsumer.powerDevice())
         {
-            if (current_level_num > 1)
-            {
-                StartCoroutine("loadLowerLevel");
-            }
+            StartCoroutine("loadLowerLevel");
         }
     }
 

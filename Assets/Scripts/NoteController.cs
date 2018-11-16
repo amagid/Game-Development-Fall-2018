@@ -13,7 +13,10 @@ public class NoteController : MonoBehaviour {
 	private bool atNote = false;
     private NoteObjective objective = null;
 
+    private SceneController sceneController;
+
 	void Start(){
+        sceneController = GameObject.Find("Scene Controller").GetComponent<SceneController>();
 		displayContent.SetActive (false);
 		Image img = content.GetComponent<Image> ();
 		img.sprite = image;
@@ -24,7 +27,7 @@ public class NoteController : MonoBehaviour {
 		if (atNote) {
 			if (Input.GetKeyDown(KeyCode.E)){
 				// display panel here w/ note
-				SceneController.freezeGame();
+				sceneController.freezeGame();
 				Image img = content.GetComponent<Image> ();
 				img.sprite = image;
 				displayContent.SetActive (true);
@@ -40,7 +43,7 @@ public class NoteController : MonoBehaviour {
 	// Closes the content display panel
 	public void closePanel(){
 		displayContent.SetActive (false);
-		SceneController.unfreezeGame();
+		sceneController.unfreezeGame();
 	}
 
 	void OnTriggerStay (Collider other) {

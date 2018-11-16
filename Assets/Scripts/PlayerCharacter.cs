@@ -91,7 +91,7 @@ public class PlayerCharacter : MonoBehaviour {
 			endGame();
 		}
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+		if (Input.GetKeyDown(KeyCode.F))
         {
             this.personalLight.enabled = !this.personalLight.enabled;
         }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElevatorControlUP : MonoBehaviour {
+public class ElevatorControlUP : MonoBehaviour, DirectOperation {
 
     [SerializeField] private GameObject scene_controller;
     [SerializeField] private GameObject button_light;
     private PowerConsumer powerConsumer;
     private int current_level_num;
     private bool isCurrentlyMoving;
+    private int numBatteries = 0;
 
     // Use this for initialization
     void Start()
@@ -23,13 +24,9 @@ public class ElevatorControlUP : MonoBehaviour {
     {
         current_level_num = scene_controller.GetComponent<SceneController>().current_level_num;
         isCurrentlyMoving = scene_controller.GetComponent<SceneController>().isElevatorMoving;
-        bool deviceIsPowered = this.powerConsumer.powerDevice();
-        if (deviceIsPowered && !isCurrentlyMoving)
+        if (!isCurrentlyMoving && numBatteries == 3 && current_level_num < 3 && this.powerConsumer.powerDevice())
         {
-            if(current_level_num < 3)
-            {
-                StartCoroutine("loadUpperLevel");
-            }
+            StartCoroutine("loadUpperLevel");
         }
     }
 
@@ -49,5 +46,22 @@ public class ElevatorControlUP : MonoBehaviour {
             throw new NoPowerConsumerException("ComputerControllers must always have PowerConsumers! Please attach a PowerConsumer component in the Unity editor.");
         }
         return pc;
+    }
+
+    // DirectOperation classes used for restricting elevator on first level
+    public void activate()
+    {
+        this.numBatteries++;
+    }
+    public void operate()
+    {
+    }
+    public void deactivate()
+    {
+        this.numBatteries--;
+    }
+    public bool isActive()
+    {
+        return this.numBatteries == 3;
     }
 }

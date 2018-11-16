@@ -11,12 +11,6 @@ public class PowerConsumer : MonoBehaviour {
 	[SerializeField] private float activationThreshold = 0; // Minimum Power to activate device
 	[SerializeField] private bool oneTimeActivation = false;
 	[SerializeField] private bool powerSourceExtractable = true;
-    private PowerObjective objective = null;
-
-    private void Start()
-    {
-        this.objective = this.GetComponent<PowerObjective>();
-    }
 
     /// <summary>
     /// Constructor 1. Sets consumption rate and initial power source
@@ -62,11 +56,6 @@ public class PowerConsumer : MonoBehaviour {
 		} else {
 			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
 		}
-
-        if (result && this.objective != null)
-        {
-            this.objective.complete();
-        }
 
         return result;
 	}

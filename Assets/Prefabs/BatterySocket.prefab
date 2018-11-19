@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 65035525849848362}
   - component: {fileID: 114241771546031136}
   - component: {fileID: 114004511336695420}
+  - component: {fileID: 82723318054257580}
   m_Layer: 0
   m_Name: BatterySocket
   m_TagString: Switch
@@ -460,7 +461,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635716209084690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.35769, y: -6.7999973, z: -26.410011}
+  m_LocalPosition: {x: 28.37, y: -6.7999973, z: -16.414997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4892118862142376}
@@ -1093,10 +1094,105 @@ BoxCollider:
   m_GameObject: {fileID: 1635716209084690}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 6.6217327, y: 5.4375877, z: 5.4794407}
   m_Center: {x: -3.15526, y: 4.04255, z: 2.2397203}
+--- !u!82 &82723318054257580
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1635716209084690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!108 &108302888282359546
 Light:
   m_ObjectHideFlags: 1
@@ -1404,10 +1500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051e5321dd87eb4ab18f837f189a8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  switchDevice: {fileID: 0}
   xOffset: -3.5
   yOffset: 4
   zOffset: 0.4
+  switchOn: {fileID: 8300000, guid: 2c25c359f6c38354e9ad2bd28151a504, type: 3}
 --- !u!114 &114241771546031136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1422,3 +1519,4 @@ MonoBehaviour:
   consumptionRate: 0.1
   activationThreshold: 0
   oneTimeActivation: 0
+  powerSourceExtractable: 1

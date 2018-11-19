@@ -11,13 +11,13 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private float powerSiphonRate;
 	[SerializeField] private Camera camera;
 	[SerializeField] private float interactionRange = 2.5f;
+ 
 	private GUIStyle style1 = new GUIStyle();
 	private GUIStyle style2 = new GUIStyle();
 	private GUIStyle style3 = new GUIStyle();
 	private Inventory inventory;
 	private const float MAX_SANITY = 100f;
-	[SerializeField] private float personalLightSanityRate = 0.02f;
-	private const float SANITY_DECREASE_RATE = 0.05f;
+	private const float SANITY_DECREASE_RATE = 0.1f;
 	private const float ELEVATOR_SANITY_RATE = 0.1f;
 
 	private float sanity;
@@ -46,7 +46,7 @@ public class PlayerCharacter : MonoBehaviour {
 		style3.alignment = TextAnchor.UpperCenter;
 
 		inventory = GetComponent<Inventory>();
-		sanity = MAX_SANITY;
+		sanity = 85f;
 		losingSanity = true;
 		inElevator = false;
 		isCrouching = false;
@@ -66,8 +66,8 @@ public class PlayerCharacter : MonoBehaviour {
 
 	//invoke repeat method for general dark area decrease, elevator increase and personal light increase
 	void sanityChange() {
-		if(this.personalLight.enabled) {
-			sanity += personalLightSanityRate;
+		if(this.personalLight.enabled && !inElevator) {
+            sanity -= (SANITY_DECREASE_RATE / 3f);
 			if (sanity > MAX_SANITY)
 			{
 				sanity = MAX_SANITY;
@@ -246,17 +246,6 @@ public class PlayerCharacter : MonoBehaviour {
 			this.updateSeenObject(null);
 			this.currentSource = null;
 		}
-	}
-		
-	void OnGUI()
-	{
-
-		GUI.Label (new Rect (Screen.width - 160, 0, 200, 200), ("Batteries: " + inventory.itemCount()), style1);
-		GUI.Label (new Rect (Screen.width - 160, 20, 200, 200), ("Power: " + Mathf.RoundToInt(internalBattery.getPowerLevel())), style1);
-		GUI.Label (new Rect (Screen.width - 160, 40, 200, 200), ("Sanity: " + Mathf.RoundToInt(sanity)), style1);	
-
-		GUI.Label(new Rect(Screen.width / 2 - 13, Screen.height / 2 - 13, 26, 26), "+", style2);
-		GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 10, 200, 60), this.cursorMessage, style3);
 	}
 		
 	//test for picking up batteries and use them for Test Scene One

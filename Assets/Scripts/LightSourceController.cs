@@ -10,6 +10,8 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 	GameObject pointLight;
     private bool deviceActive;
     private PowerConsumer powerConsumer;
+    private AudioSource source;
+    public AudioClip lampOn;
 
 	void Start () {
 		Player = GameObject.Find ("Player");
@@ -21,6 +23,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 		pointLight.SetActive (false);
         deviceActive = false;
         this.powerConsumer = this.getPowerConsumer();
+        source = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -71,6 +74,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     {
         pointLight.SetActive(true);
         this.deviceActive = true;
+        source.PlayOneShot(lampOn, 0.3f);
     }
 
     public void operate()

@@ -20,29 +20,25 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 	// the battery that is attached to the switch
 	private Battery battery = null;
 	private PowerConsumer powerConsumer;
+    private AudioSource source;
+    public AudioClip switchOn;
 
 
 	void Start () {
+        source = GetComponent<AudioSource>();
 		inventory = GameObject.Find ("Player").GetComponent<Inventory> ();
 		this.powerConsumer = this.getPowerConsumer();
 		this.deviceController = this.switchDevice.GetComponent<DirectOperation> ();
-
-
-		// NEW --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		Transform gl = this.gameObject.transform.Find("GreenLights");
 		Transform rl = this.gameObject.transform.Find("RedLights");
 		if (gl != null)
 		{
 			this.GreenLights = gl.gameObject;
 		}
-		if (rl != null)
-		{
-			this.RedLights = rl.gameObject;
-		}
-		// NEW --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+        if (rl != null)
+        {
+            this.RedLights = rl.gameObject;
+        }
 
 	}
 
@@ -90,8 +86,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 	/// Perform initial activation work for this device upon recieving sufficient Power
 	/// </summary>
 	public void activate(){
-
-		// new -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		if (this.GreenLights != null && !this.GreenLights.activeInHierarchy)
 		{
 			this.GreenLights.SetActive(true);
@@ -100,8 +94,7 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 		{
 			this.RedLights.SetActive(false);
 		}
-		// new -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        source.PlayOneShot(switchOn, 0.5f);
 		this.active = true;
 		this.deviceController.activate ();
 	}

@@ -23852,6 +23852,7 @@ MonoBehaviour:
   xOffset: -3.5
   yOffset: 4
   zOffset: 0.4
+  switchOn: {fileID: 0}
 --- !u!4 &1516021780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4476821692017988, guid: 1ae9cfb29742542449cca7d6f85009e3,
@@ -26305,22 +26306,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
         type: 2}
-      propertyPath: door
+      propertyPath: switchDevice
       value: 
       objectReference: {fileID: 1222385081}
     - target: {fileID: 1635716209084690, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}
       propertyPath: m_Name
       value: Switch1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114004511336695420, guid: 1ae9cfb29742542449cca7d6f85009e3,
-        type: 2}
-      propertyPath: switchDevice
-      value: 
-      objectReference: {fileID: 1222385081}
-    - target: {fileID: 65542560910570892, guid: 1ae9cfb29742542449cca7d6f85009e3,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}

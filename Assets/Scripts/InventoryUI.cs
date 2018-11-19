@@ -110,54 +110,37 @@ public class InventoryUI : MonoBehaviour
 
     public void clickChargePlayer()
     {
-
-        this.discharging = !this.discharging;
-        this.dischargeSelectedBattery();
+            this.dischargeSelectedBattery();
     }
 
     public void clickDischargePlayer()
     {
-
-        this.charging = !this.charging;
-        this.chargeSelectedBattery();
+            this.chargeSelectedBattery();
     }
 
     private void chargeSelectedBattery()
     {
         Debug.Log("playerBattery " + playerBattery != null);
-        if (this.charging)
+        GameObject selectedItem = this.playerInventory.peekSelectedItem();
+        Debug.Log("playerBattery " + playerBattery != null);
+        if (selectedItem != null
+             && selectedItem.CompareTag("battery")
+             && (PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), 20f)
+                 || PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), selectedItem.GetComponent<Battery>().getPowerSource().getMaxPower() - selectedItem.GetComponent<Battery>().getPowerSource().getPowerLevel())))
         {
-            GameObject selectedItem = this.playerInventory.peekSelectedItem();
-            Debug.Log("playerBattery " + playerBattery != null);
-            if (selectedItem != null
-                && selectedItem.CompareTag("battery")
-                && (PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), 20f)
-                    || PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), selectedItem.GetComponent<Battery>().getPowerSource().getMaxPower() - selectedItem.GetComponent<Battery>().getPowerSource().getPowerLevel())))
-            {
-                Invoke("chargeSelectedBattery", 1f);
-            } else
-            {
-                this.charging = false;
-            }
+            Invoke("chargeSelectedBattery", 1f);
         }
     }
 
     private void dischargeSelectedBattery()
     {
-        if (this.discharging)
-        {
             GameObject selectedItem = this.playerInventory.peekSelectedItem();
-            if (selectedItem != null
-                && selectedItem.CompareTag("battery")
-                && (PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, 20f)
-                    || PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, playerBattery.getMaxPower() - playerBattery.getPowerLevel())))
-            {
-                Invoke("dischargeSelectedBattery", 1f);
-            }
-            else
-            {
-                this.discharging = false;
-            }
+        if (selectedItem != null
+            && selectedItem.CompareTag("battery")
+            && (PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, 20f)
+                || PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, playerBattery.getMaxPower() - playerBattery.getPowerLevel())))
+        {
+            Invoke("dischargeSelectedBattery", 1f);
         }
     }
 }

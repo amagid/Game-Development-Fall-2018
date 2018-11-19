@@ -11,9 +11,11 @@ public class LowSanityEffects : MonoBehaviour {
     [SerializeField] private GameObject level_one;
     //audio
     private AudioSource source;
+    private AudioSource ambience_source;
     public AudioClip heavy_breathing;
     public AudioClip whispers;
     public AudioClip tinnitus;
+    public AudioClip general_ambience;
 
     private List<GameObject> current_cubes;
     private float current_level = 50f;
@@ -24,15 +26,16 @@ public class LowSanityEffects : MonoBehaviour {
         sanity = player.GetComponent<PlayerCharacter>().getSanity();
         current_cubes = new List<GameObject>();
         source = GetComponent<AudioSource>();
+        ambience_source = player.AddComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         sanity = player.GetComponent<PlayerCharacter>().getSanity();
         float magnitude = 0f;
-        if(sanity < 80f)
+        if(!ambience_source.isPlaying)
         {
-            
+            ambience_source.PlayOneShot(general_ambience, 1f);
         }
         if(sanity < 60f) {
             StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.001f));

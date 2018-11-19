@@ -94,7 +94,7 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 		{
 			this.RedLights.SetActive(false);
 		}
-        source.PlayOneShot(switchOn, 0.5f);
+        source.PlayOneShot(switchOn, 0.4f);
 		this.active = true;
 		this.deviceController.activate ();
 	}

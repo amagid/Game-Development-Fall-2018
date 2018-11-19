@@ -74,7 +74,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     {
         pointLight.SetActive(true);
         this.deviceActive = true;
-        source.PlayOneShot(lampOn, 0.7f);
+        source.PlayOneShot(lampOn, 0.3f);
     }
 
     public void operate()

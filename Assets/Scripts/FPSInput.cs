@@ -6,16 +6,17 @@ using UnityEngine;
 [AddComponentMenu("Control Script/FPS Input")]
 public class FPSInput : MonoBehaviour {
 
+    public GameObject player;
 	public float speed = 25.0f;
 	public float gravity = -9.8f;
     //private Inventory inventory;
     private CharacterController _charController;
-    private AudioSource source;
+    private AudioSource footstep_source;
     public AudioClip footsteps;
 
 	// Use this for initialization
 	void Start () {
-        source = GetComponent<AudioSource>();
+        footstep_source = player.AddComponent<AudioSource>();
 		_charController = GetComponent<CharacterController> ();
         //inventory = GetComponent<Inventory>();
     }
@@ -32,9 +33,9 @@ public class FPSInput : MonoBehaviour {
 		_charController.Move(movement);
         if (deltaX != 0f || deltaZ != 0f)
         {
-            if (!source.isPlaying)
+            if (!footstep_source.isPlaying)
             {
-                source.PlayOneShot(footsteps, 1f);
+                footstep_source.PlayOneShot(footsteps, 1f);
             }
         }
     }

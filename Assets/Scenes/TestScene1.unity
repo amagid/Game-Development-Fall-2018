@@ -19525,9 +19525,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f584d7028c2c7f4b9aab3362718240a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1248575531}
   speed: 6
   gravity: -9.8
-  footsteps: {fileID: 8300000, guid: eacfa040aeae61049a38fbf3ff649c79, type: 3}
+  footsteps: {fileID: 8300000, guid: 7c3154b93369ce54c99265d06b65399b, type: 3}
 --- !u!114 &1248575540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19579,8 +19580,8 @@ MonoBehaviour:
   level_one: {fileID: 1233943988}
   heavy_breathing: {fileID: 8300000, guid: 086453ce3b8819845b5e126159018bfb, type: 3}
   whispers: {fileID: 0}
-  footsteps: {fileID: 0}
   tinnitus: {fileID: 0}
+  general_ambience: {fileID: 8300000, guid: 915b8b7db1076ea448f1a8a17a2123a8, type: 3}
 --- !u!82 &1248575543
 AudioSource:
   m_ObjectHideFlags: 0

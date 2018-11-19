@@ -56,6 +56,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	{
         if (!isClosing)
         {
+            source.PlayOneShot(doorOpen, 0.15f);
             isOpening = true;
             if (!isElevatorDoor)
             {
@@ -75,6 +76,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	{
         if (!isOpening)
         {
+            source.PlayOneShot(doorOpen, 0.15f);
             isClosing = true;
             if (!isElevatorDoor)
             {
@@ -93,7 +95,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	{
 		this.active = true;
 		StartCoroutine(this.openDoor());
-        source.PlayOneShot(doorOpen, 0.15f);
+        
 	}
 
 	public void operate() {}
@@ -103,7 +105,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 		this.active = false;
         StopAllCoroutines();
         StartCoroutine(this.closeDoor());
-        source.PlayOneShot(doorOpen, 0.15f);
+        
     }
 
 	public bool isActive()

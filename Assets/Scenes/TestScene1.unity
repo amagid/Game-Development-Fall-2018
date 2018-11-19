@@ -14850,6 +14850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorAxisDirection: 2
   isElevatorDoor: 1
+  doorOpen: {fileID: 0}
 --- !u!1 &1007261436
 GameObject:
   m_ObjectHideFlags: 0
@@ -19575,7 +19576,7 @@ MonoBehaviour:
   camera_light: {fileID: 1134062038}
   colorHaze: {fileID: 2133285391}
   level_one: {fileID: 1233943988}
-  heavy_breathing: {fileID: 8300000, guid: b3fa3e18161c652488bfdb053167cead, type: 3}
+  heavy_breathing: {fileID: 8300000, guid: 086453ce3b8819845b5e126159018bfb, type: 3}
   whispers: {fileID: 0}
   footsteps: {fileID: 0}
   tinnitus: {fileID: 0}
@@ -24679,14 +24680,6 @@ Prefab:
     - target: {fileID: 1786863202802748, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}
       propertyPath: m_Name
       value: Door1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087171191938570, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 74.7623
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087171191938570, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 52.540413
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}

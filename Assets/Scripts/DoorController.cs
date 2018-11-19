@@ -13,15 +13,20 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	[SerializeField] private DoorAxes doorAxisDirection;
 	[SerializeField] private bool isElevatorDoor = false;
 	private bool active = false;
-
 	private float CLOSE_FACTOR = 6f;
 	private bool isSlowDoor = true;
+    private bool isClosing = false;
+    private bool isOpening = false;
+    private AudioSource source;
+    public AudioClip doorOpen;
+
 	public void setIsSlowDoor(bool isSlowDoor){
 		this.isSlowDoor = isSlowDoor;
 	}
 
 	// Use this for initialization
 	void Start () {
+        source = GetComponent<AudioSource>();
         this.curPos = transform.position;
         this.closePos = curPos;
 		Vector3 openPos = new Vector3 (closePos.x, closePos.y, closePos.z);
@@ -44,32 +49,51 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	// Update is called once per frame
 	void Update () {
-        curPos = transform.position;
+        //curPos = transform.position;
 	}
 
 	private IEnumerator openDoor()
 	{
-		for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
-		{
-            transform.position = Vector3.Lerp(curPos, openPos, t);
-			yield return null;
-		}
+        if (!isClosing)
+        {
+            isOpening = true;
+            if (!isElevatorDoor)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+            {
+                transform.position = Vector3.Lerp(closePos, openPos, t);
+                yield return null;
+            }
+            isOpening = false;
+        }
 	}
 
 
 	private IEnumerator closeDoor()
 	{
-		for (float t = 0f; t < 1; t += Time.deltaTime / 1f)
-		{
-            transform.position = Vector3.Lerp(curPos, closePos, t);
-            yield return null;
-		}
+        if (!isOpening)
+        {
+            isClosing = true;
+            if (!isElevatorDoor)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
+            {
+                transform.position = Vector3.Lerp(openPos, closePos, t);
+                yield return null;
+            }
+            isClosing = false;
+        }
 	}
 
 	public void activate()
 	{
 		this.active = true;
 		StartCoroutine(this.openDoor());
+        source.PlayOneShot(doorOpen, 0.15f);
 	}
 
 	public void operate() {}
@@ -79,7 +103,8 @@ public class DoorController : MonoBehaviour, DirectOperation {
 		this.active = false;
         StopAllCoroutines();
         StartCoroutine(this.closeDoor());
-	}
+        source.PlayOneShot(doorOpen, 0.15f);
+    }
 
 	public bool isActive()
 	{

@@ -10,9 +10,12 @@ public class FPSInput : MonoBehaviour {
 	public float gravity = -9.8f;
     //private Inventory inventory;
     private CharacterController _charController;
+    private AudioSource source;
+    public AudioClip footsteps;
 
 	// Use this for initialization
 	void Start () {
+        source = GetComponent<AudioSource>();
 		_charController = GetComponent<CharacterController> ();
         //inventory = GetComponent<Inventory>();
     }
@@ -27,6 +30,12 @@ public class FPSInput : MonoBehaviour {
 		movement *= Time.deltaTime;
 		movement = transform.TransformDirection(movement);
 		_charController.Move(movement);
-        Debug.Log(deltaX);
+        if (deltaX != 0f || deltaZ != 0f)
+        {
+            if (!source.isPlaying)
+            {
+                source.PlayOneShot(footsteps, 1f);
+            }
+        }
     }
 }

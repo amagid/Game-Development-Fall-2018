@@ -19527,6 +19527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   gravity: -9.8
+  footsteps: {fileID: 8300000, guid: eacfa040aeae61049a38fbf3ff649c79, type: 3}
 --- !u!114 &1248575540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19589,7 +19590,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b3fa3e18161c652488bfdb053167cead, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 086453ce3b8819845b5e126159018bfb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

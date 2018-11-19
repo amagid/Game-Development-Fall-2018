@@ -10,10 +10,9 @@ public class LowSanityEffects : MonoBehaviour {
 	[SerializeField] private GameObject colorHaze;
     [SerializeField] private GameObject level_one;
     //audio
-    private AudioSource audio;
+    private AudioSource source;
     public AudioClip heavy_breathing;
     public AudioClip whispers;
-    public AudioClip footsteps;
     public AudioClip tinnitus;
 
     private List<GameObject> current_cubes;
@@ -24,7 +23,7 @@ public class LowSanityEffects : MonoBehaviour {
 	void Start () {
         sanity = player.GetComponent<PlayerCharacter>().getSanity();
         current_cubes = new List<GameObject>();
-        audio = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -37,9 +36,9 @@ public class LowSanityEffects : MonoBehaviour {
         }
         if(sanity < 60f) {
             StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.001f));
-            if (!audio.isPlaying)
+            if (!source.isPlaying)
             {
-                audio.PlayOneShot(heavy_breathing, (1f- sanity/100f));
+                source.PlayOneShot(heavy_breathing, (1f- sanity/100f));
             }
         }
 

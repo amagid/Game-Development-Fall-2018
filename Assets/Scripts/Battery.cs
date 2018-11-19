@@ -40,7 +40,7 @@ public class Battery : MonoBehaviour {
 				this.switchController.deactivate();
 			}*/
 		}
-		else if (powerSource.isFull() && gameObject.GetComponent<Renderer>().material.color != Color.green)
+		else if (!powerSource.isEmpty() && gameObject.GetComponent<Renderer>().material.color != Color.green)
 		{
 			this.gameObject.GetComponent<Renderer>().material.color = Color.green;
 			this.gameObject.transform.Find("light1").GetComponent<Light>().color = Color.green;

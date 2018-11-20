@@ -33,6 +33,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private PowerSource currentSource;
 	private string cursorMessage;
     private bool personalLightOn = false;
+    private bool dying = false;
 
 	void Start () {
 		style1.fontSize = 25;
@@ -85,11 +86,21 @@ public class PlayerCharacter : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (dying)
+        {
+            return;
+        }
+
 		losingSanity = true;
-		if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
+		if (sanity <= 0)
 		{
-			endGame();
+			sanityDeath();
 		}
+
+        if (!this.internalPowerConsumer.powerDevice())
+        {
+            powerDeath();
+        }
 
 		if (Input.GetKeyDown(KeyCode.F))
         {
@@ -322,6 +333,23 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 		this.losingSanity = false;
 	}
+
+    public void sanityDeath()
+    {
+        this.dying = true;
+        this.GetComponent<FPSInput>().enabled = false;
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2f, transform.localScale.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y / 2f, transform.position.z);
+        isCrouching = true;
+        this.canStandUp = false;
+        Invoke("endGame", 5f);
+    }
+
+    public void powerDeath()
+    {
+        this.dying = true;
+        this.endGame();
+    }
 
 	public void endGame(){
 		SceneManager.LoadScene("GameOver");

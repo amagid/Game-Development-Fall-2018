@@ -33,6 +33,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private PowerSource currentSource;
 	private string cursorMessage;
     private bool personalLightOn = false;
+	private string typeOfDeath = null;
 
 	void Start () {
 		style1.fontSize = 25;
@@ -88,6 +89,7 @@ public class PlayerCharacter : MonoBehaviour {
 		losingSanity = true;
 		if (sanity <= 0 || !this.internalPowerConsumer.powerDevice())
 		{
+			typeOfDeath = "You went insane.";
 			endGame();
 		}
 
@@ -311,6 +313,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 	public void reducePower() {
 		if (!internalBattery.takePower(1)) {
+			typeOfDeath = "You ran out of power.";
 			endGame();
 		}
 	}
@@ -324,6 +327,7 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	public void endGame(){
+		PlayerPrefs.SetString("endGame", typeOfDeath);
 		SceneManager.LoadScene("GameOver");
 	}
 

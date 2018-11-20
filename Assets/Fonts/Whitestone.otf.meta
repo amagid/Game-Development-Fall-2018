@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 6244d5f1ff2c4324cacdd50645e7b295
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Whitestone
+  fontNames:
+  - Whitestone
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1435d5d50a6eb2b4899b36fcb287feb7, type: 3}
+  - {fileID: 12800000, guid: 1dee5147a312e5d4fa1652c0fee07cb0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

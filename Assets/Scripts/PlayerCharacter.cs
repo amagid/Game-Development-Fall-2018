@@ -328,6 +328,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 	public void endGame(){
 		PlayerPrefs.SetString("endGame", typeOfDeath);
+		PlayerPrefs.SetFloat ("totalTime", Time.timeSinceLevelLoad);
 		SceneManager.LoadScene("GameOver");
 	}
 

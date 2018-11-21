@@ -10,4 +10,8 @@ public class InformedDeath : MonoBehaviour {
 		Cursor.visible = true;
 		typeOfDeath.text = PlayerPrefs.GetString ("endGame");
 	}
+
+	void Update(){
+		Debug.Log (Time.timeSinceLevelLoad);
+	}
 }

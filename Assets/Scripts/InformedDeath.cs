@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class InformedDeath : MonoBehaviour {
 	[SerializeField] Text typeOfDeath;
-	// Use this for initialization
+	[SerializeField] Text timeOfDeath;
 	void Start () {
 		Cursor.visible = true;
 		typeOfDeath.text = PlayerPrefs.GetString ("endGame");
-	}
-
-	void Update(){
-		Debug.Log (Time.timeSinceLevelLoad);
+		timeOfDeath.text = string.Format ("You survived for {0:0.0} seconds.", PlayerPrefs.GetFloat ("totalTime"));
 	}
 }

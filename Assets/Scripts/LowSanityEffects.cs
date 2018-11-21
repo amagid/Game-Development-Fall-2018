@@ -70,12 +70,13 @@ public class LowSanityEffects : MonoBehaviour {
             current_cubes = new List<GameObject>();
             current_level = 50f;
         }
-
+        /*
         if (sanity < 10f) {
 			colorHaze.SetActive (true);
 		} else {
 			colorHaze.SetActive (false);
 		}
+        */
     }
 
     //camera shaking when sanity is lower than 70
@@ -126,6 +127,7 @@ public class LowSanityEffects : MonoBehaviour {
 			if (!Physics.CheckSphere(proposedCubePosition, sphereRadius, layerMask)) {
 				// create cube
 				GameObject cube = Instantiate(cube_prefab) as GameObject;
+                cube.GetComponent<ShadowMonsterController>().setPlayerCharacter(this.player.GetComponent<PlayerCharacter>());
 				current_cubes.Add(cube);
 				cube.transform.parent = level_one.transform;
 				cube.transform.position = proposedCubePosition;

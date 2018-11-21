@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InformedDeath : MonoBehaviour {
+	// stores the type of player death - no power, insane
 	[SerializeField] Text typeOfDeath;
+	// stores the time in seconds the player survived
 	[SerializeField] Text timeOfDeath;
+
 	void Start () {
 		Cursor.visible = true;
 		typeOfDeath.text = PlayerPrefs.GetString ("endGame");

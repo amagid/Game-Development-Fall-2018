@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TabletUI : MonoBehaviour {
         
-    [SerializeField] private GameObject Tablet;
+    [SerializeField] private GameObject powerPanel;
+    [SerializeField] private GameObject notePanel;
     [SerializeField] private GameObject inventoryBar;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject camera;
@@ -23,7 +24,7 @@ public class TabletUI : MonoBehaviour {
     {
         if (isOn == false && Input.GetKeyDown(KeyCode.I))
         {
-            Tablet.SetActive(true);
+            powerPanel.SetActive(true);
             isOn = true;
             inventoryBar.SetActive(false);
             sceneController.freezeGame();
@@ -33,7 +34,8 @@ public class TabletUI : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                Tablet.SetActive(false);
+                powerPanel.SetActive(false);
+                notePanel.SetActive(false);
                 isOn = false;
                 inventoryBar.SetActive(true);
                 sceneController.unfreezeGame();

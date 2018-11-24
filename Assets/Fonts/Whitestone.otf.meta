@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6244d5f1ff2c4324cacdd50645e7b295
+guid: a6e74337860c5654a8c3544dfcc7c93f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -12,8 +12,9 @@ TrueTypeFontImporter:
   fontNames:
   - Whitestone
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 1435d5d50a6eb2b4899b36fcb287feb7, type: 3}
-  - {fileID: 12800000, guid: 1dee5147a312e5d4fa1652c0fee07cb0, type: 3}
+  - {fileID: 12800000, guid: 560c7f18c01445c4692b8148f46f8a55, type: 3}
+  - {fileID: 12800000, guid: 3d5b8d6f12cd5414facbdb40bb15a3f2, type: 3}
+  - {fileID: 12800000, guid: 9982a67fc5ba77b42bb93ebf918f6b83, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

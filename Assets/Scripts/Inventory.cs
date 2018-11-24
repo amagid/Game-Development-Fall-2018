@@ -6,14 +6,18 @@ using System;
 public class Inventory : MonoBehaviour {
     
     private GameObject[] itemList;
+    private GameObject[] noteList;
 
     // Only for initialization
     public int inventorySize;
 
     private int selectedItemIndex;
+    private int selectedNoteIndex; 
+
 	// Use this for initialization
 	void Start () {
         itemList = new GameObject[this.inventorySize];
+        noteList = new GameObject[this.inventorySize];
 	}
 
     //return the number of items the player currently have
@@ -45,6 +49,18 @@ public class Inventory : MonoBehaviour {
         return false;
     }
 
+    public bool addNote(GameObject note) {
+        for (int i = 0; i < this.noteList.Length; i++)
+        {
+            if (this.noteList[i] == null)
+            {
+                this.noteList[i] = note;
+                return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Remove an item from the inventory. Returns true if successful, false if not.
     /// </summary>
@@ -59,6 +75,18 @@ public class Inventory : MonoBehaviour {
         }
         return false;
 	}
+
+    public bool removeNote (GameObject note) {
+        for (int i = 0; i < this.noteList.Length; i++)
+        {
+            if (this.noteList[i] == note)
+            {
+                this.noteList[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public bool hasItem() {
         return this.itemList.Length > 0;
@@ -113,6 +141,27 @@ public class Inventory : MonoBehaviour {
     {
         GameObject gameObj = (GameObject)(itemList[selectedItemIndex]);
         this.removeItem(gameObj);
+        return gameObj;
+    }
+
+    public GameObject getNote(int index)
+    {
+        return this.noteList[index];
+    }
+
+    public int getSelectedNoteIndex()
+    {
+        return this.selectedNoteIndex;
+    }
+
+    public void setSelectedNoteIndex(int index)
+    {
+        this.selectedNoteIndex = index;
+    }
+
+    public GameObject getSelectedNote()
+    {
+        GameObject gameObj = (GameObject)(noteList[selectedNoteIndex]);
         return gameObj;
     }
 

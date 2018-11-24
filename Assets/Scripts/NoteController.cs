@@ -9,6 +9,8 @@ public class NoteController : MonoBehaviour {
 	[SerializeField] GameObject content;
 	// the DisplayData object of OnGameGUI
 	[SerializeField] GameObject displayContent;
+    [SerializeField] private Inventory inventory;
+
 
 	private bool atNote = false;
     private NoteObjective objective = null;
@@ -21,24 +23,31 @@ public class NoteController : MonoBehaviour {
 		Image img = content.GetComponent<Image> ();
 		img.sprite = image;
         this.objective = this.GetComponent<NoteObjective>();
+        inventory = GameObject.Find("Player").GetComponent<Inventory>();
 	}
 
 	void Update(){
 		if (atNote) {
 			if (Input.GetKeyDown(KeyCode.E)){
-				// display panel here w/ note
-				sceneController.freezeGame();
-				Image img = content.GetComponent<Image> ();
-				img.sprite = image;
-				displayContent.SetActive (true);
-				atNote = false;
-                if (this.objective != null)
-                {
-                    this.objective.complete();
-                }
+                openNote();
+                inventory.addNote(this.gameObject);
 			}
 		}
 	}
+
+    public void openNote() {
+        // display panel here w/ note
+        sceneController.freezeGame();
+        Image img = content.GetComponent<Image>();
+        img.sprite = image;
+        displayContent.SetActive(true);
+        atNote = false;
+        if (this.objective != null)
+        {
+            this.objective.complete();
+        }
+        this.gameObject.SetActive(false);
+    }
 
 	// Closes the content display panel
 	public void closePanel(){

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IntroScenePlayer : MonoBehaviour {
     [SerializeField] private GameObject headBag;
+    [SerializeField] private GameObject kickSound;
     [SerializeField] private GameObject shaftBottom;
     [SerializeField] private GameObject blackout;
     [SerializeField] private float dragTime = 1.0f;
@@ -76,6 +77,7 @@ public class IntroScenePlayer : MonoBehaviour {
         this.startPosition = this.headBag.transform.position;
         this.endPosition = this.headBag.transform.position + new Vector3(0, 1.0f, 0);
         this.bagMoving = true;
+        this.headBag.GetComponent<AudioSource>().Play();
         Invoke("startLookLeft", this.bagRemoveTime);
     }
 
@@ -117,6 +119,11 @@ public class IntroScenePlayer : MonoBehaviour {
     void startKick()
     {
         this.rotating = false;
+        this.kickSound.GetComponent<AudioSource>().Play();
+        Invoke("startKickMovement", 0.6f);
+    }
+
+    void startKickMovement() {
         this.resetRotationTime();
         this.rotationTimeLimit = this.kickTime;
         this.startRotation = this.transform.rotation;

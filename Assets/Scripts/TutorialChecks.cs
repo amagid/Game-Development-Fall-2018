@@ -93,7 +93,8 @@ public class TutorialChecks : MonoBehaviour {
                     break;
                 case "CheckChargeFromFreezer":
                     Debug.Log("Your power is low. " +
-                        "You can siphon a small amount of power from a freezer by getting close and holding RMB.");
+                        "You can siphon a small amount of power from the freezer on your right by getting close and holding RMB." +
+                        "It will regenerate in some time.");
                     break;
                 case "CheckChargeFromBattery":
                     Debug.Log("Pick up the battery in front of you." +
@@ -106,7 +107,7 @@ public class TutorialChecks : MonoBehaviour {
                     break;
                 case "TutorialFinal":
                     Debug.Log("Congratz! You have finished the tutorial!" +
-                        "You are now inside the facility. If you need help again, press H to get to the help menu. Good luck on your mission!");
+                        "You are now inside the facility. If you need help again, press Escape and go to the help menu. Good luck on your mission!");
                     break;
                 default:
                     break;

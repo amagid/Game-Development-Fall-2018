@@ -113,6 +113,11 @@ public class PlayerCharacter : MonoBehaviour {
 			losingSanity = false;
 		}
 
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            //Open Help Menu
+        }
+
 		//the crouch function
 		if (Input.GetKeyDown(KeyCode.C))
 		{

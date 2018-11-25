@@ -8,6 +8,8 @@ public class TutorialChecks : MonoBehaviour {
 
     private PlayerCharacter player_character;
 
+    private bool hasReducedSanity = false;
+
 	// Use this for initialization
 	void Start () {
         this.player = GameObject.FindGameObjectWithTag("Player");
@@ -76,7 +78,11 @@ public class TutorialChecks : MonoBehaviour {
                         "Press E to place a battery on the switch to activate the door.");
                     break;
                 case "CheckPersonalLight":
-                    player_character.reduceSanity(15f);
+                    if (!hasReducedSanity)
+                    {
+                        player_character.reduceSanity(15f);
+                        hasReducedSanity = true;
+                    }
                     Debug.Log("While in the dark, your sanity drops quite a bit. " +
                         "Press F to toggle your personal light to stop your sanity from decreasing." +
                         "Using the personal Light will consume your power.");
@@ -92,14 +98,13 @@ public class TutorialChecks : MonoBehaviour {
                 case "CheckChargeFromBattery":
                     Debug.Log("Pick up the battery in front of you." +
                         "Press I to open up the inventory UI." +
-                        "Click on the battery and press the Charge button until it fills up your power.");
+                        "Click on the battery and keep pressing the Charge button until it fills up your power. Press I again to close it.");
                     break;
                 case "CheckCrouch":
                     Debug.Log("Most obstacles can be overcome by crouching and walking through it." +
-                        "Press C to crouch and again to stand up when you are clear." +
-                        "Beyond this obstacle is the inside of the facility. Are you ready to complete your mission?");
+                        "Press C to crouch and again to stand up when you are clear.");
                     break;
-                case "tutorialFinal":
+                case "TutorialFinal":
                     Debug.Log("Congratz! You have finished the tutorial!" +
                         "You are now inside the facility. If you need help again, press H to get to the help menu. Good luck on your mission!");
                     break;

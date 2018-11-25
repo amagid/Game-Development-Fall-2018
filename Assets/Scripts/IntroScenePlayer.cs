@@ -32,6 +32,7 @@ public class IntroScenePlayer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Cursor.visible = false;
         this.startDrag();
 	}
 	
@@ -78,8 +79,10 @@ public class IntroScenePlayer : MonoBehaviour {
         this.endPosition = this.headBag.transform.position + new Vector3(0, 1.0f, 0);
         this.bagMoving = true;
         this.headBag.GetComponent<AudioSource>().Play();
-        Invoke("startLookLeft", this.bagRemoveTime);
+        Invoke("startKick", this.bagRemoveTime);
     }
+
+    /*
 
     void startLookLeft()
     {
@@ -116,8 +119,12 @@ public class IntroScenePlayer : MonoBehaviour {
         Invoke("startKick", this.lookTime * 0.5f);
     }
 
+    */
+
     void startKick()
     {
+        this.bagMoving = false;
+        this.headBag.SetActive(false);
         this.rotating = false;
         this.kickSound.GetComponent<AudioSource>().Play();
         Invoke("startKickMovement", 0.4f);

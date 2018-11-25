@@ -6,15 +6,46 @@ public class TutorialChecks : MonoBehaviour {
 
     private GameObject player;
 
+    private PlayerCharacter player_character;
+
 	// Use this for initialization
 	void Start () {
         this.player = GameObject.FindGameObjectWithTag("Player");
+        this.player_character = this.player.GetComponent<PlayerCharacter>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            switch (this.name)
+            {
+                case "CheckMovement":
+                    player_character.gainSanity(0.05f);
+                    break;
+                case "TutorialInstructions":
+                    player_character.gainSanity(0.05f);
+                    break;
+                case "CheckPickup":
+                    player_character.gainSanity(0.05f);
+                    break;
+                case "CheckNoteReading":
+                    player_character.gainSanity(0.05f);
+                    break;
+                case "CheckDoorOpening":
+                    player_character.gainSanity(0.05f);
+                    break;
+                default:
+                    player_character.resumeSanityLoss();
+                    break;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,9 +54,12 @@ public class TutorialChecks : MonoBehaviour {
             switch (this.name)
             {
                 case "CheckMovement":
+                    //set current dialogue box to be ACTIVE
                     Debug.Log("Welcome Player! Use WASD to move around!");
                     break;
                 case "TutorialInstructions":
+                    //set previous dialogue box to be INACTIVE
+                    //set current dialogue box to be ACTIVE
                     Debug.Log("This is the tutorial. " +
                         "Your sanity level is indicated on the left bar; power level on the right." +
                         "The bottom bar is a quick inventory menu." +
@@ -42,9 +76,10 @@ public class TutorialChecks : MonoBehaviour {
                         "Press E to place a battery on the switch to activate the door.");
                     break;
                 case "CheckPersonalLight":
+                    player_character.reduceSanity(15f);
                     Debug.Log("While in the dark, your sanity drops quite a bit. " +
                         "Press F to toggle your personal light to stop your sanity from decreasing." +
-                        "Using the personal Light will consume your power");
+                        "Using the personal Light will consume your power.");
                     break;
                 case "CheckTurnOnLamp":
                     Debug.Log("Light sources will bring your sanity back up." +
@@ -63,6 +98,10 @@ public class TutorialChecks : MonoBehaviour {
                     Debug.Log("Most obstacles can be overcome by crouching and walking through it." +
                         "Press C to crouch and again to stand up when you are clear." +
                         "Beyond this obstacle is the inside of the facility. Are you ready to complete your mission?");
+                    break;
+                case "tutorialFinal":
+                    Debug.Log("Congratz! You have finished the tutorial!" +
+                        "You are now inside the facility. If you need help again, press H to get to the help menu. Good luck on your mission!");
                     break;
                 default:
                     break;

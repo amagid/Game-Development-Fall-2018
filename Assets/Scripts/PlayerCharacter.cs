@@ -69,7 +69,7 @@ public class PlayerCharacter : MonoBehaviour {
 	//invoke repeat method for general dark area decrease, elevator increase and personal light increase
 	void sanityChange() {
 		if(this.personalLight.enabled && !inElevator) {
-            sanity -= (SANITY_DECREASE_RATE / 3f);
+            sanity += (SANITY_DECREASE_RATE / 6f);
 			if (sanity > MAX_SANITY)
 			{
 				sanity = MAX_SANITY;
@@ -337,6 +337,16 @@ public class PlayerCharacter : MonoBehaviour {
 		this.losingSanity = false;
 	}
 
+    public void reduceSanity(float amount)
+    {
+        this.sanity -= amount;
+        if (this.sanity < 10f)
+        {
+            this.sanity = 10f;
+        }
+        this.losingSanity = false;
+    }
+
     public void sanityDeath()
     {
         this.dying = true;
@@ -376,6 +386,11 @@ public class PlayerCharacter : MonoBehaviour {
 	{
 		this.losingSanity = false;
 	}
+
+    public void resumeSanityLoss()
+    {
+        this.losingSanity = true;
+    }
 
 	private void updateSeenObject(GameObject obj)
 	{

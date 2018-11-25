@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TutorialChecks : MonoBehaviour {
 
-    [SerializeField] private GameObject player;
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		
+        this.player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -23,10 +23,34 @@ public class TutorialChecks : MonoBehaviour {
             switch (this.name)
             {
                 case "CheckMovement":
-                    Debug.Log("Checking Movement");
+                    Debug.Log("Welcome Player! Use WASD to move around!");
+                    break;
+                case "TutorialInstructions":
+                    Debug.Log("");
                     break;
                 case "CheckPickup":
                     Debug.Log("Checking Pickup");
+                    break;
+                case "CheckNoteReading":
+                    Debug.Log("Checking NoteReading");
+                    break;
+                case "CheckDoorOpening":
+                    Debug.Log("Checking DoorOpening");
+                    break;
+                case "CheckPersonalLight":
+                    Debug.Log("");
+                    break;
+                case "CheckTurnOnLamp":
+                    Debug.Log("");
+                    break;
+                case "CheckChargeFromFreezer":
+                    Debug.Log("");
+                    break;
+                case "CheckChargeFromBattery":
+                    Debug.Log("");
+                    break;
+                case "CheckCrouch":
+                    Debug.Log("");
                     break;
                 default:
                     break;

@@ -447,7 +447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
@@ -683,6 +683,10 @@ Prefab:
     - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_Name
       value: ElevatorShaftLightGroup (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
@@ -1016,6 +1020,10 @@ Prefab:
       propertyPath: m_Name
       value: ElevatorShaftLightGroup (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
   m_IsPrefabAsset: 0
@@ -1212,6 +1220,10 @@ Prefab:
     - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_Name
       value: ElevatorShaftLightGroup (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
@@ -1699,8 +1711,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3
-  m_Range: 4
+  m_Intensity: 1.7
+  m_Range: 3
   m_SpotAngle: 59
   m_CookieSize: 10
   m_Shadows:
@@ -1733,7 +1745,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194457884}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.081, y: 3.28, z: 0}
+  m_LocalPosition: {x: 7.081, y: 2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1765,7 +1777,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1.7
   m_Range: 60
   m_SpotAngle: 63
   m_CookieSize: 10
@@ -2451,6 +2463,10 @@ Prefab:
       propertyPath: m_Name
       value: ElevatorShaftLightGroup (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
   m_IsPrefabAsset: 0
@@ -2697,7 +2713,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
@@ -2740,46 +2756,6 @@ Prefab:
     - target: {fileID: 4057354092309148, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 108343290660874888, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 108669565148115502, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 108907986116391594, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 108263544486175880, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 108343290660874888, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 108669565148115502, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 108907986116391594, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 108263544486175880, guid: 69a6c0135ef032342ace2d8db3b7ddf3,
-        type: 2}
-      propertyPath: m_Intensity
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
@@ -2849,6 +2825,10 @@ Prefab:
     - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
       propertyPath: m_Name
       value: ElevatorShaftLightGroup (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229412969861366, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c0135ef032342ace2d8db3b7ddf3, type: 2}

@@ -120,7 +120,7 @@ public class IntroScenePlayer : MonoBehaviour {
     {
         this.rotating = false;
         this.kickSound.GetComponent<AudioSource>().Play();
-        Invoke("startKickMovement", 0.6f);
+        Invoke("startKickMovement", 0.4f);
     }
 
     void startKickMovement() {

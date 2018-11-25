@@ -201,5 +201,6 @@ public class InventoryUI : MonoBehaviour
 
     public void openNote(){
         playerInventory.getSelectedNote().GetComponent<NoteController>().openNote();
+        GameObject.Find("DataPanel").SetActive(false);
     }
 }

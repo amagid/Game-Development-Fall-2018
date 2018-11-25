@@ -11,8 +11,8 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private float powerSiphonRate;
 	[SerializeField] private Camera camera;
 	[SerializeField] private float interactionRange = 2.5f;
-    [SerializeField] private GameObject lightningEmitter;
-    private DigitalRuby.LightningBolt.LightningBoltScript lightningScript;
+    [SerializeField] private GameObject[] lightningEmitters;
+    private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScripts;
  
 	private GUIStyle style1 = new GUIStyle();
 	private GUIStyle style2 = new GUIStyle();
@@ -65,7 +65,11 @@ public class PlayerCharacter : MonoBehaviour {
 
 		this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
         this.personalLight.enabled = false;
-        this.lightningScript = this.lightningEmitter.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
+        this.lightningScripts = new DigitalRuby.LightningBolt.LightningBoltScript[this.lightningEmitters.Length];
+        for (int i = 0; i < this.lightningEmitters.Length; i++)
+        {
+            this.lightningScripts[i] = this.lightningEmitters[i].GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
+        }
 		InvokeRepeating("sanityChange", 1f, 0.1f);
 	}
 
@@ -174,8 +178,10 @@ public class PlayerCharacter : MonoBehaviour {
 					if (pc.attachPowerSource(this.internalBattery))
 					{
 						this.currentConsumer = pc;
-
-                        this.lightningScript.EndPosition = pc.gameObject.GetComponent<Collider>().bounds.center;
+                        for (int i = 0; i < this.lightningScripts.Length; i++)
+                        {
+                            this.lightningScripts[i].EndPosition = pc.gameObject.GetComponent<Collider>().bounds.center;
+                        }
 					}
 					// If the PowerConsumer did not exist, then we looked away so we need to disconnect from our previous PowerConsumer
 				}
@@ -183,7 +189,10 @@ public class PlayerCharacter : MonoBehaviour {
 				// TODO: Figure out why 2 * interactionRange is needed - we get a blinking effect without it.
 			} else if (Input.GetKey(KeyCode.Mouse0))
             {
-                this.lightningScript.Trigger();
+                for (int i = 0; i < this.lightningScripts.Length; i++)
+                {
+                    this.lightningScripts[i].Trigger();
+                }
             }
 
             //If the right mouse button is being pressed, attempt to siphon power from the hit device.

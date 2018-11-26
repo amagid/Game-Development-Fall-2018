@@ -6528,7 +6528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &340122450
 Transform:
   m_ObjectHideFlags: 0
@@ -15258,7 +15258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &831763570
 Transform:
   m_ObjectHideFlags: 0
@@ -15266,8 +15266,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 831763569}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -125.5, y: 17.3, z: -4.6900005}
-  m_LocalScale: {x: 95.00801, y: 14.639587, z: 1.0000005}
+  m_LocalPosition: {x: -121, y: 17.3, z: -4.6900005}
+  m_LocalScale: {x: 106.278305, y: 14.639587, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 2125264570}
   m_RootOrder: 3
@@ -19711,7 +19711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1094579645
 Transform:
   m_ObjectHideFlags: 0
@@ -28446,10 +28446,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Congratz! You have finished the tutorial!
-
-    You are now inside the facility. If you need help again, press Escape and go to
-    the help menu. Good luck on your mission!'
+  m_Text: "Congratz! You have finished the tutorial!\nYou are now inside the facility.
+    \nIf you need help again, press Esc for help. \nGood luck on your mission!"
 --- !u!222 &1461956929
 CanvasRenderer:
   m_ObjectHideFlags: 0

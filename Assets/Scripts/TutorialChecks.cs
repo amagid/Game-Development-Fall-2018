@@ -73,14 +73,11 @@ public class TutorialChecks : MonoBehaviour {
             switch (this.name)
             {
                 case "CheckMovement":
-                    //set current dialogue box to be ACTIVE
                     hideAllDialogues();
                     currentDialogue.SetActive(true);
                     Debug.Log("Welcome Player! Use WASD to move around!");
                     break;
                 case "TutorialInstructions":
-                    //set previous dialogue box to be INACTIVE
-                    //set current dialogue box to be ACTIVE
                     hideAllDialogues();
                     currentDialogue.SetActive(true);
                     Debug.Log("This is the tutorial. " +
@@ -147,6 +144,9 @@ public class TutorialChecks : MonoBehaviour {
                     currentDialogue.SetActive(true);
                     Debug.Log("Congratz! You have finished the tutorial!" +
                         "You are now inside the facility. If you need help again, press Escape and go to the help menu. Good luck on your mission!");
+                    break;
+                case "CloseAll":
+                    hideAllDialogues();
                     break;
                 default:
                     break;

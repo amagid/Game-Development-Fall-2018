@@ -2029,6 +2029,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4672431482272914, guid: 325f56c17f3c16341b5878830ab5a5aa,
     type: 2}
   m_PrefabInternal: {fileID: 1137830972}
+--- !u!1 &109967045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 109967046}
+  - component: {fileID: 109967048}
+  - component: {fileID: 109967047}
+  m_Layer: 0
+  m_Name: CloseAll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &109967046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109967045}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -68.03, y: 13.8, z: -4.5}
+  m_LocalScale: {x: 0.10074992, y: 1, z: 1.04915}
+  m_Children: []
+  m_Father: {fileID: 1437263138}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &109967047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109967045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbca82927ed1d84fa611116b0d07aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDialogue: {fileID: 835302170}
+--- !u!65 &109967048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109967045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 21.62, y: 6.3099995, z: 13.449024}
+  m_Center: {x: -4.8, y: 0, z: 0}
 --- !u!1001 &114046937
 Prefab:
   m_ObjectHideFlags: 0
@@ -2674,7 +2728,7 @@ RectTransform:
   - {fileID: 1050352903}
   - {fileID: 835302171}
   m_Father: {fileID: 1437263138}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2708,11 +2762,11 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2890,7 +2944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148295006
@@ -2905,7 +2959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3268,7 +3322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159019530
@@ -3283,7 +3337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3437,7 +3491,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'While in the dark, your sanity drops quite a bit.
 
-    Using the personal Light will consume your power.'
+    Using the Personal Light will consume a bit of your power.
+
+    Press F to toggle the Personal Light ON/OFF.'
 --- !u!222 &173146645
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8721,7 +8777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472195339
@@ -8736,7 +8792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10309,8 +10365,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Light sources will bring your sanity back up.
 
-    Point the crosshair towards the lamp and hold LMB to power it until your sanity
-    becomes full again.'
+    Point the crosshair at the lamp on your left and hold LMB to power it UNTIL your
+    sanity becomes full again.
+
+    Don''t overuse it or it will cause too much power!'
 --- !u!222 &573027391
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11456,7 +11514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642019309
@@ -11471,7 +11529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -14873,7 +14931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0000060796738, y: -82.100006}
+  m_AnchoredPosition: {x: -0.0000060796738, y: -108.2}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820127989
@@ -14888,7 +14946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15381,7 +15439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835302172
@@ -15396,7 +15454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19096,7 +19154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050352904
@@ -19111,7 +19169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -20557,7 +20615,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -21095,7 +21153,7 @@ Transform:
   - {fileID: 1410542442}
   - {fileID: 1889683776}
   m_Father: {fileID: 1437263138}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147424135
 GameObject:
@@ -23647,7 +23705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalLightPowerRate: 0.01
-  starting_power: 150
+  starting_power: 200
   central_lighting: {fileID: 1370861057}
   powerSiphonRate: 0.1
   camera: {fileID: 1681190367}
@@ -25818,7 +25876,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Doors are controlled by switches. Get close to the switch on your right.
 
-    Press E to place a battery on the switch to activate the door.'
+    Press E to place a battery on the switch to activate the door.
+
+    Go through the door.'
 --- !u!222 &1341854473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26062,7 +26122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348651876
@@ -26077,7 +26137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -26438,7 +26498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372011585
@@ -26453,7 +26513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -27789,6 +27849,7 @@ Transform:
   - {fileID: 2019093482}
   - {fileID: 218005333}
   - {fileID: 1447819975}
+  - {fileID: 109967046}
   - {fileID: 2125264570}
   - {fileID: 1144361428}
   - {fileID: 140763507}
@@ -28732,7 +28793,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome Player! \nUse WASD to move around!"
+  m_Text: "Welcome Player! \nUse WASD to move around!\nProceed forward."
 --- !u!222 &1479332112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34358,7 +34419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760870176
@@ -34373,7 +34434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -35402,11 +35463,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Your sanity level is indicated on the left bar; power level on the right.
-
-    The bottom bar is a quick inventory menu.
-
-    Make sure you complete each objective in this tutorial before you proceed!'
+  m_Text: "Left bar indicates your sanity. \nRight bar is power.\nBottom bar is a
+    quick inventory menu.\nMake sure you complete each objective in this tutorial
+    before you proceed!"
 --- !u!222 &1833610862
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36194,7 +36253,7 @@ MonoBehaviour:
     You can siphon a small amount of power from the freezer on your right by getting
     close and holding RMB.
 
-    It will regenerate in some time.'
+    It will regenerate and turn green in some time. For now, proceed forward.'
 --- !u!222 &1869554129
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41588,7 +41647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -82.100006}
+  m_AnchoredPosition: {x: 0, y: -108.20004}
   m_SizeDelta: {x: 553.2, y: 164.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2053332635
@@ -41603,7 +41662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -43227,7 +43286,7 @@ Transform:
   - {fileID: 960691468}
   - {fileID: 831763570}
   m_Father: {fileID: 1437263138}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2125778735
 Prefab:

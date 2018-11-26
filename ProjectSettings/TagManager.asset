@@ -11,6 +11,7 @@ TagManager:
   - power_source
   - ceiling
   - crouch_only
+  - dialogue
   layers:
   - Default
   - TransparentFX

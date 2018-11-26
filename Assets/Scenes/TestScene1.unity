@@ -10150,12 +10150,12 @@ Prefab:
         type: 2}
       propertyPath: content
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 865228845}
     - target: {fileID: 114992887805707822, guid: 4ad0997aae1b9c8478f37b363f870165,
         type: 2}
       propertyPath: displayContent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848685388}
     - target: {fileID: 114992887805707822, guid: 4ad0997aae1b9c8478f37b363f870165,
         type: 2}
       propertyPath: player
@@ -12056,12 +12056,12 @@ Prefab:
         type: 2}
       propertyPath: content
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 865228845}
     - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
         type: 2}
       propertyPath: displayContent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848685388}
     - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
         type: 2}
       propertyPath: image
@@ -27981,6 +27981,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.23828815
       objectReference: {fileID: 0}
+    - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
+        type: 2}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 865228845}
+    - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
+        type: 2}
+      propertyPath: displayContent
+      value: 
+      objectReference: {fileID: 1848685388}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
   m_IsPrefabAsset: 0
@@ -30649,12 +30659,12 @@ Prefab:
         type: 2}
       propertyPath: content
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 865228845}
     - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
         type: 2}
       propertyPath: displayContent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848685388}
     - target: {fileID: 1309257534456042, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
       propertyPath: m_Name
       value: Note1JournalEntry
@@ -31483,12 +31493,12 @@ Prefab:
         type: 2}
       propertyPath: content
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 865228845}
     - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
         type: 2}
       propertyPath: displayContent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848685388}
     - target: {fileID: 65828831698031074, guid: 3567e802ac7236d4f92163ce1a9ba74c,
         type: 2}
       propertyPath: m_Size.y

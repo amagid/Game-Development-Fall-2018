@@ -11,8 +11,12 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private float powerSiphonRate;
 	[SerializeField] private Camera camera;
 	[SerializeField] private float interactionRange = 2.5f;
- 
-	private GUIStyle style1 = new GUIStyle();
+    [SerializeField] private GameObject[] lightningEmittersGive;
+    private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsGive;
+    [SerializeField] private GameObject[] lightningEmittersTake;
+    private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsTake;
+
+    private GUIStyle style1 = new GUIStyle();
 	private GUIStyle style2 = new GUIStyle();
 	private GUIStyle style3 = new GUIStyle();
 	private Inventory inventory;
@@ -63,7 +67,17 @@ public class PlayerCharacter : MonoBehaviour {
 
 		this.personalLight = this.GetComponentInChildren<Camera>().gameObject.GetComponentInChildren<Light>();
         this.personalLight.enabled = false;
-		InvokeRepeating("sanityChange", 1f, 0.1f);
+        this.lightningScriptsGive = new DigitalRuby.LightningBolt.LightningBoltScript[this.lightningEmittersGive.Length];
+        for (int i = 0; i < this.lightningEmittersGive.Length; i++)
+        {
+            this.lightningScriptsGive[i] = this.lightningEmittersGive[i].GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
+        }
+        this.lightningScriptsTake = new DigitalRuby.LightningBolt.LightningBoltScript[this.lightningEmittersTake.Length];
+        for (int i = 0; i < this.lightningEmittersTake.Length; i++)
+        {
+            this.lightningScriptsTake[i] = this.lightningEmittersTake[i].GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
+        }
+        InvokeRepeating("sanityChange", 1f, 0.1f);
 	}
 
 	//invoke repeat method for general dark area decrease, elevator increase and personal light increase
@@ -176,21 +190,35 @@ public class PlayerCharacter : MonoBehaviour {
 					if (pc.attachPowerSource(this.internalBattery))
 					{
 						this.currentConsumer = pc;
+                        for (int i = 0; i < this.lightningScriptsGive.Length; i++)
+                        {
+                            this.lightningScriptsGive[i].EndPosition = pc.gameObject.GetComponent<Collider>().bounds.center;
+                        }
 					}
 					// If the PowerConsumer did not exist, then we looked away so we need to disconnect from our previous PowerConsumer
 				}
 				// If we get too far away, stop powering device
 				// TODO: Figure out why 2 * interactionRange is needed - we get a blinking effect without it.
-			}
+			} else if (Input.GetKey(KeyCode.Mouse0))
+            {
+                for (int i = 0; i < this.lightningScriptsGive.Length; i++)
+                {
+                    this.lightningScriptsGive[i].Trigger();
+                }
+            }
 
-			//If the right mouse button is being pressed, attempt to siphon power from the hit device.
-			if (Input.GetKey(KeyCode.Mouse1))
+            //If the right mouse button is being pressed, attempt to siphon power from the hit device.
+            if (Input.GetKey(KeyCode.Mouse1))
 			{
 				// If we have a power source from last tick, siphon some of its power.
 				if (this.currentSource != null)
 				{
 					bool result = PowerSource.transferPower(this.currentSource, this.internalBattery, this.powerSiphonRate);
-				}
+                    for (int i = 0; result && i < this.lightningScriptsTake.Length; i++)
+                    {
+                        this.lightningScriptsTake[i].Trigger();
+                    }
+                }
 				// Get the PowerConsumer of the object we're looking at, if any.
 				PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
 				// If there is a PowerConsumer on this object, check if its PowerSource is the same one from last tick.
@@ -202,7 +230,11 @@ public class PlayerCharacter : MonoBehaviour {
 					if (ps != this.currentSource)
 					{
 						this.currentSource = ps;
-					}
+                        for (int i = 0; i < this.lightningScriptsTake.Length; i++)
+                        {
+                            this.lightningScriptsTake[i].EndPosition = pc.gameObject.GetComponent<Collider>().bounds.center;
+                        }
+                    }
 					// If the PowerConsumer was null, then there is no source to siphon power from, so make sure we don't keep siphoning from the last PowerSource.
 				}
 				else

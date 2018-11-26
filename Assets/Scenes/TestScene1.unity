@@ -30672,6 +30672,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1533913212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1533913211}
+  m_Script: {fileID: 11500000, guid: 312a20650fcb2ac48a8ec84d3a6ec6ea, type: 3}
 --- !u!1 &1539871392
 GameObject:
   m_ObjectHideFlags: 0
@@ -33451,7 +33457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1533913212}
         m_MethodName: closePanel
         m_Mode: 1
         m_Arguments:

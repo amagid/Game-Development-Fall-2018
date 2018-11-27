@@ -8661,7 +8661,7 @@ GameObject:
   - component: {fileID: 469516489}
   m_Layer: 0
   m_Name: CheckDoorOpening
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9804,7 +9804,7 @@ GameObject:
   - component: {fileID: 519734740}
   m_Layer: 0
   m_Name: CheckNoteReading
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12263,7 +12263,7 @@ GameObject:
   - component: {fileID: 671026215}
   m_Layer: 0
   m_Name: CheckChargeFromBattery
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13498,7 +13498,7 @@ GameObject:
   - component: {fileID: 727623355}
   m_Layer: 0
   m_Name: CheckTurnOnLamp
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17985,7 +17985,7 @@ GameObject:
   - component: {fileID: 941517279}
   m_Layer: 0
   m_Name: CloseAll
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20607,7 +20607,7 @@ GameObject:
   - component: {fileID: 1070068575}
   m_Layer: 0
   m_Name: CheckMovement
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22613,7 +22613,7 @@ GameObject:
   - component: {fileID: 1140879278}
   m_Layer: 0
   m_Name: TutorialFinal
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24579,7 +24579,7 @@ GameObject:
   - component: {fileID: 1232064829}
   m_Layer: 0
   m_Name: CheckPickup
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27445,7 +27445,7 @@ GameObject:
   - component: {fileID: 1357557057}
   m_Layer: 0
   m_Name: CheckPersonalLight
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35498,7 +35498,7 @@ GameObject:
   - component: {fileID: 1782718894}
   m_Layer: 0
   m_Name: CheckCrouch
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36250,7 +36250,7 @@ GameObject:
   - component: {fileID: 1826933128}
   m_Layer: 0
   m_Name: CheckChargeFromFreezer
-  m_TagString: Untagged
+  m_TagString: check
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

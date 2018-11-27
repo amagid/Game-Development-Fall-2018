@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        dataTabOn = GameObject.Find("DataPanel");
+        dataTabOn = GameObject.Find("DataPanel") != null;
         updateOn = true;
         imgs = new List<Image>();
         powerLevels = new List<Image>();
@@ -57,7 +57,7 @@ public class InventoryUI : MonoBehaviour
     // TODO: Refactor so that updates are only done on events rather than every frame to improve performance
     void Update()
     {
-        dataTabOn = GameObject.Find("DataPanel");
+        dataTabOn = GameObject.Find("DataPanel") != null;
         if (updateOn)
         {
             for (int i = 0; i < playerInventory.inventorySize; i++)
@@ -201,5 +201,6 @@ public class InventoryUI : MonoBehaviour
     public void openNote(){
         playerInventory.getSelectedNote().GetComponent<NoteController>().openNote();
         GameObject.Find("DataPanel").SetActive(false);
+        dataTabOn = false;
     }
 }

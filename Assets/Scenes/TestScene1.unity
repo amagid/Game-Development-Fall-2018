@@ -1126,17 +1126,14 @@ MonoBehaviour:
   elevator_light: {fileID: 444234922}
   elevator_door: {fileID: 1006614528}
   level_one: {fileID: 1233943988}
-  level_two: {fileID: 594264816}
   level_final: {fileID: 1634738379}
   elevator_outside_lights: {fileID: 462186305}
-  lvl2_maze_controller: {fileID: 58623424}
   player: {fileID: 1248575531}
   camera: {fileID: 1681190364}
   button_light: {fileID: 0}
   isElevatorMoving: 0
   current_level_num: 0
   lvl1_complete: 0
-  lvl2_complete: 0
   game_complete: 0
   finished_tutorial: 0
 --- !u!4 &63089281
@@ -27992,6 +27989,12 @@ Prefab:
       propertyPath: displayContent
       value: 
       objectReference: {fileID: 1848685388}
+    - target: {fileID: 114136468461225992, guid: 3567e802ac7236d4f92163ce1a9ba74c,
+        type: 2}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 21300000, guid: d48a0ae34cd4f8f4792dcae795f0d344,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
   m_IsPrefabAsset: 0
@@ -29780,7 +29783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1493262320
 Transform:
   m_ObjectHideFlags: 0
@@ -32134,7 +32137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634738380}
-  - component: {fileID: 1639422546}
   m_Layer: 0
   m_Name: LevelFinal
   m_TagString: Untagged
@@ -32168,13 +32170,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1639422546
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1634738379}
-  m_Mesh: {fileID: 0}
 --- !u!1 &1641026636
 GameObject:
   m_ObjectHideFlags: 0
@@ -33375,7 +33370,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686605616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95534cabe4ddd604696791666819667f, type: 3}
   m_Name: 
@@ -37671,7 +37666,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1881722179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f2b4c426c27ec54c870255f122eb9f7, type: 3}
   m_Name: 

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33003065154257586}
   - component: {fileID: 23444230713024152}
   - component: {fileID: 114326302330653238}
-  - component: {fileID: 135877904332450582}
+  - component: {fileID: 136504552515465810}
   m_Layer: 0
   m_Name: battery 1
   m_TagString: battery
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1042943649446344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.7, y: 0.4, z: 9.27}
+  m_LocalPosition: {x: 3.58, y: -2.13, z: -0.12}
   m_LocalScale: {x: 30, y: 50, z: 30}
   m_Children:
   - {fileID: 4329253807660032}
@@ -231,18 +231,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b327725d71749e7bf4dacee0c90cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_power: 100
-  power_index: 100
+  max_power: 300
+  power_index: 300
   deviceBatteryIsAttachedTo: {fileID: 0}
---- !u!135 &135877904332450582
-SphereCollider:
+--- !u!136 &136504552515465810
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1042943649446344}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02
-  m_Center: {x: 0, y: -0, z: 0}
+  m_Radius: 0.0100000035
+  m_Height: 0.029136091
+  m_Direction: 1
+  m_Center: {x: 0.00000024074689, y: -0.0025272667, z: -0.0000000018626454}

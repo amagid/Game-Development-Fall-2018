@@ -13,11 +13,11 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_outside_lights;
     [SerializeField] private GameObject lvl2_maze_controller;
     private Vector3 elevator_outside_lights_initPos;
-	  // the player game object
-	  [SerializeField] private GameObject player;
-	  [SerializeField] private GameObject camera;
-	  private static GameObject staticPlayer;
-	  private static GameObject staticCamera;
+	// the player game object
+	[SerializeField] private GameObject player;
+	[SerializeField] private GameObject camera;
+	private static GameObject staticPlayer;
+	private static GameObject staticCamera;
     public GameObject button_light;
     private GameObject current_level;
     public bool isElevatorMoving;
@@ -26,6 +26,7 @@ public class SceneController : MonoBehaviour {
     public bool lvl1_complete;
     public bool lvl2_complete;
     public bool game_complete;
+    public bool finished_tutorial;
 
     // Use this for initialization
     void Start () {
@@ -38,8 +39,9 @@ public class SceneController : MonoBehaviour {
         lvl1_complete = false;
         lvl2_complete = false;
         game_complete = false;
-		    staticPlayer = player;
-		    staticCamera = camera;
+		staticPlayer = player;
+		staticCamera = camera;
+        finished_tutorial = false;
 	  }
 
 	// Update is called once per frame

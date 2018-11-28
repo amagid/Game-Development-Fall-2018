@@ -18,6 +18,8 @@ public class TutorialChecks : MonoBehaviour {
 
     private Inventory inventory;
 
+    private SceneController scene_controller;
+
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,7 @@ public class TutorialChecks : MonoBehaviour {
         this.dialogue_canvas = GameObject.Find("DialogueCanvas");
         this.allDialogues = GameObject.FindGameObjectsWithTag("dialogue");
         this.inventory = player.GetComponent<Inventory>();
+        this.scene_controller = GameObject.Find("Scene Controller").GetComponent<SceneController>();
     }
 	
 	// Update is called once per frame
@@ -71,7 +74,7 @@ public class TutorialChecks : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.name == "Player" && !scene_controller.finished_tutorial)
         {
             switch (this.name)
             {
@@ -127,6 +130,7 @@ public class TutorialChecks : MonoBehaviour {
                 case "CloseAll":
                     hideAllDialogues();
                     inventory.clearItems();
+                    scene_controller.finished_tutorial = true;
                     break;
                 default:
                     break;

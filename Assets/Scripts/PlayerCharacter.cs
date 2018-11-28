@@ -251,6 +251,8 @@ public class PlayerCharacter : MonoBehaviour {
 			//If the E key is being pressed, try to add a battery to the seen device.
 			if (Input.GetKeyDown(KeyCode.E))
 			{
+				MachinePartController mc = hit.collider.gameObject.GetComponent<MachinePartController> ();
+				MachinePartPosition mp = hit.collider.gameObject.GetComponent<MachinePartPosition> ();
 				// Get the PowerConsumer of the object we're looking at, if any.
 				PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
 
@@ -258,7 +260,22 @@ public class PlayerCharacter : MonoBehaviour {
 				Battery bat = hit.collider.gameObject.GetComponent<Battery>();
 
 				// If there is a PowerConsumer on this object, check if it has a PowerSource.
-				if (pc != null)
+
+				if (mc != null) {
+					mc.pickUpObject (inventory);
+				} else if (mp != null) {
+					GameObject selectedInventoryObject = this.inventory.getSelectedItem ();
+					MachinePartController InventoryObjectMC = selectedInventoryObject.GetComponent<MachinePartController> ();
+					if (InventoryObjectMC != null) {
+						if (InventoryObjectMC.getPartNumber () == mp.getPartNumber ()) {
+							mp.placePartInMachine (InventoryObjectMC.GetComponent<Renderer> ().material);
+						} else {
+							this.inventory.addItem (selectedInventoryObject);
+						}
+					} else {
+						this.inventory.addItem (selectedInventoryObject);
+					}
+				} else if (pc != null)
 				{
 					PowerSource ps = pc.getPowerSource();
 					// If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
@@ -266,18 +283,18 @@ public class PlayerCharacter : MonoBehaviour {
 					{
 						GameObject gameObjectPC = this.inventory.getSelectedItem();
 						Battery batteryPC = gameObjectPC != null ? gameObjectPC.GetComponent<Battery>() : null;
-						if (batteryPC != null && batteryPC.getPowerSource() != null)
-						{
-							if(pc.isOneTimeActivation()){
+						if (batteryPC != null && batteryPC.getPowerSource () != null) {
+							if (pc.isOneTimeActivation ()) {
 								inventory.addItem (gameObjectPC);
 							}
-							pc.attachPowerSource(batteryPC.getPowerSource());
+							pc.attachPowerSource (batteryPC.getPowerSource ());
 					
-							SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController>();
-							if (sc != null)
-							{
-								sc.setBattery(gameObjectPC);
+							SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController> ();
+							if (sc != null) {
+								sc.setBattery (gameObjectPC);
 							}
+						} else {
+							this.inventory.addItem (gameObjectPC);
 						}
 						// if the power consumer is one time use return the battery to the character
 

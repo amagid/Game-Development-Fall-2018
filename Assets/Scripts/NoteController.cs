@@ -47,6 +47,7 @@ public class NoteController : MonoBehaviour {
         sceneController.freezeGame();
         Image img = content.GetComponent<Image>();
         img.sprite = image;
+		displayContent.transform.SetAsLastSibling ();
         displayContent.SetActive(true);
         atNote = false;
         if (this.objective != null)

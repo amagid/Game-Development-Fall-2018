@@ -12,6 +12,7 @@ TagManager:
   - ceiling
   - crouch_only
   - dialogue
+  - check
   layers:
   - Default
   - TransparentFX

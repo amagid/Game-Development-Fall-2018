@@ -65,6 +65,10 @@ public class SceneController : MonoBehaviour {
         player.GetComponent<PlayerCharacter>().enabled = false;
         player.GetComponent<PowerConsumer>().enabled = false;
         camera.GetComponent<MouseLook>().enabled = false;
+		player.GetComponent<LowSanityEffects> ().enabled = false;
+		player.GetComponent<FPSInput> ().enabled = false;
+		player.GetComponent<Inventory> ().enabled = false;
+		player.GetComponent<AudioSource> ().enabled = false;
         Cursor.visible = true;
 	}
 
@@ -75,6 +79,10 @@ public class SceneController : MonoBehaviour {
         camera.GetComponent<MouseLook>().enabled = true;
         player.GetComponent<PowerConsumer>().enabled = true;
         player.GetComponent<PlayerCharacter>().enabled = true;
+		player.GetComponent<LowSanityEffects> ().enabled = true;
+		player.GetComponent<FPSInput> ().enabled = true;
+		player.GetComponent<Inventory> ().enabled = true;
+		player.GetComponent<AudioSource> ().enabled = true;
         Cursor.visible = false;
 	}
 

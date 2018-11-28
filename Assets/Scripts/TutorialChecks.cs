@@ -14,13 +14,15 @@ public class TutorialChecks : MonoBehaviour {
 
     private GameObject dialogue_canvas;
 
-    [SerializeField]private GameObject currentDialogue;
+    [SerializeField] private GameObject currentDialogue;
+
+    [SerializeField] private GameObject currentDialogue2;
 
     private Inventory inventory;
 
     private SceneController scene_controller;
 
-    private GameObject tutorial_note;
+    private NoteController note_controller;
 
     private GameObject tutorial_door;
 
@@ -32,13 +34,13 @@ public class TutorialChecks : MonoBehaviour {
         this.allDialogues = GameObject.FindGameObjectsWithTag("dialogue");
         this.inventory = player.GetComponent<Inventory>();
         this.scene_controller = GameObject.Find("Scene Controller").GetComponent<SceneController>();
-        this.tutorial_note = GameObject.Find("tutorial_note");
+        this.note_controller = GameObject.Find("tutorial_note").GetComponent<NoteController>();
         this.tutorial_door = GameObject.Find("tutorial_door");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(tutorial_note.activeSelf);
+        
 	}
 
     private void hideAllDialogues()
@@ -66,7 +68,6 @@ public class TutorialChecks : MonoBehaviour {
                     break;
                 case "CheckNoteReading":
                     player_character.gainSanity(0.1f);
-                    currentDialogue.SetActive(tutorial_note.activeSelf);
                     break;
                 case "CheckDoorOpening":
                     player_character.gainSanity(0.1f);

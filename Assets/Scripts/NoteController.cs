@@ -8,8 +8,11 @@ public class NoteController : MonoBehaviour {
 	// the Content child object of ScrollView
 	[SerializeField] GameObject content;
 	// the DisplayData object of OnGameGUI
-	[SerializeField] public GameObject displayContent;
+	[SerializeField] GameObject displayContent;
     [SerializeField] private Inventory inventory;
+    // for tutorial note only
+    [SerializeField] private GameObject dialogue1;
+    [SerializeField] private GameObject dialogue2;
 
 
 	private bool atNote = false;
@@ -37,6 +40,10 @@ public class NoteController : MonoBehaviour {
 
     public void openNote() {
         // display panel here w/ note
+        if (dialogue1 != null)
+        {
+            dialogue1.SetActive(false);
+        }
         sceneController.freezeGame();
         Image img = content.GetComponent<Image>();
         img.sprite = image;
@@ -52,8 +59,12 @@ public class NoteController : MonoBehaviour {
 	// Closes the content display panel
 	public void closePanel(){
 		displayContent.SetActive (false);
-		sceneController.unfreezeGame();
-	}
+        sceneController.unfreezeGame();
+        if (dialogue2 != null)
+        {
+            dialogue2.SetActive(true);
+        }
+    }
 
 	void OnTriggerStay (Collider other) {
 		if (other.name == "Player") {

@@ -253,6 +253,10 @@ public class PlayerCharacter : MonoBehaviour {
 			{
 				// Get the PowerConsumer of the object we're looking at, if any.
 				PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
+
+				// Get the Battery of the object we're looking at, if any.
+				Battery bat = hit.collider.gameObject.GetComponent<Battery>();
+
 				// If there is a PowerConsumer on this object, check if it has a PowerSource.
 				if (pc != null)
 				{
@@ -287,7 +291,17 @@ public class PlayerCharacter : MonoBehaviour {
 						battery.gameObject.SetActive(false);
 
 					}
-				}
+				// the object you hit e on is a battery
+				} else if (bat != null)
+				{
+						if (bat.deviceBatteryIsAttachedTo != null) {
+							bat.deviceBatteryIsAttachedTo.removePowerSource ();
+							bat.deviceBatteryIsAttachedTo = null;
+							Debug.Log ("Player took battery too early");
+						}
+					inventory.addItem(bat.gameObject); 
+					bat.gameObject.SetActive(false);
+				} 
 			}
 			// If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
 		}
@@ -301,22 +315,7 @@ public class PlayerCharacter : MonoBehaviour {
 	//test for picking up batteries and use them for Test Scene One
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("battery"))
-		{
-			if (other.gameObject.CompareTag("battery"))
-			{
-				Battery battery = other.gameObject.GetComponent<Battery> ();
-				if (battery.deviceBatteryIsAttachedTo != null) {
-					battery.deviceBatteryIsAttachedTo.removePowerSource ();
-					battery.deviceBatteryIsAttachedTo = null;
-					Debug.Log ("Player took battery too early");
-				}
-				inventory.addItem(other.gameObject); 
-				other.gameObject.SetActive(false);
-
-			} 
-		} 
-		else if (other.gameObject.CompareTag("note"))
+		if (other.gameObject.CompareTag("note"))
 		{
 			//TODO: add note to player's inventory??
 			//Debug.Log(other.gameObject.GetComponent<NoteController>().GetContent());

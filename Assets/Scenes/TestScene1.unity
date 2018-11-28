@@ -10811,6 +10811,10 @@ Prefab:
       propertyPath: doorAxisDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1786863202802748, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}
+      propertyPath: m_Name
+      value: tutorial_door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1628cbd685220544ba2ba7440c49b0fb, type: 2}
   m_IsPrefabAsset: 0
@@ -27995,6 +27999,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: d48a0ae34cd4f8f4792dcae795f0d344,
         type: 3}
+    - target: {fileID: 1309257534456042, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
+      propertyPath: m_Name
+      value: tutorial_note
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3567e802ac7236d4f92163ce1a9ba74c, type: 2}
   m_IsPrefabAsset: 0
@@ -36706,7 +36714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1853378882
 RectTransform:
   m_ObjectHideFlags: 0

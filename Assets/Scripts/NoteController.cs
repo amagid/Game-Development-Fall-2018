@@ -8,7 +8,7 @@ public class NoteController : MonoBehaviour {
 	// the Content child object of ScrollView
 	[SerializeField] GameObject content;
 	// the DisplayData object of OnGameGUI
-	[SerializeField] GameObject displayContent;
+	[SerializeField] public GameObject displayContent;
     [SerializeField] private Inventory inventory;
 
 

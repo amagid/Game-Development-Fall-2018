@@ -20,6 +20,9 @@ public class TutorialChecks : MonoBehaviour {
 
     private SceneController scene_controller;
 
+    private GameObject tutorial_note;
+
+    private GameObject tutorial_door;
 
     // Use this for initialization
     void Start () {
@@ -29,11 +32,13 @@ public class TutorialChecks : MonoBehaviour {
         this.allDialogues = GameObject.FindGameObjectsWithTag("dialogue");
         this.inventory = player.GetComponent<Inventory>();
         this.scene_controller = GameObject.Find("Scene Controller").GetComponent<SceneController>();
+        this.tutorial_note = GameObject.Find("tutorial_note");
+        this.tutorial_door = GameObject.Find("tutorial_door");
     }
 	
 	// Update is called once per frame
 	void Update () {
-
+        //Debug.Log(tutorial_note.activeSelf);
 	}
 
     private void hideAllDialogues()
@@ -51,19 +56,20 @@ public class TutorialChecks : MonoBehaviour {
             switch (this.name)
             {
                 case "CheckMovement":
-                    player_character.gainSanity(0.05f);
+                    player_character.gainSanity(0.1f);
                     break;
                 case "TutorialInstructions":
-                    player_character.gainSanity(0.05f);
+                    player_character.gainSanity(0.1f);
                     break;
                 case "CheckPickup":
-                    player_character.gainSanity(0.05f);
+                    player_character.gainSanity(0.1f);
                     break;
                 case "CheckNoteReading":
-                    player_character.gainSanity(0.05f);
+                    player_character.gainSanity(0.1f);
+                    currentDialogue.SetActive(tutorial_note.activeSelf);
                     break;
                 case "CheckDoorOpening":
-                    player_character.gainSanity(0.05f);
+                    player_character.gainSanity(0.1f);
                     break;
                 default:
                     player_character.resumeSanityLoss();
@@ -106,6 +112,8 @@ public class TutorialChecks : MonoBehaviour {
                     }
                     hideAllDialogues();
                     currentDialogue.SetActive(true);
+                    tutorial_door.SetActive(false);
+                    GameObject.Find("tutorial_switch").GetComponent<SwitchController>().enabled = false;
                     break;
                 case "CheckTurnOnLamp":
                     hideAllDialogues();

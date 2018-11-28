@@ -11,7 +11,6 @@ public class TutorialChecks : MonoBehaviour {
     private bool hasReducedSanity = false;
 
     private GameObject[] allDialogues;
-	private GameObject[] allChecks;
 
     private GameObject dialogue_canvas;
 
@@ -24,7 +23,6 @@ public class TutorialChecks : MonoBehaviour {
         this.player_character = this.player.GetComponent<PlayerCharacter>();
         this.dialogue_canvas = GameObject.Find("DialogueCanvas");
         this.allDialogues = GameObject.FindGameObjectsWithTag("dialogue");
-		this.allChecks = GameObject.FindGameObjectsWithTag ("check");
     }
 	
 	// Update is called once per frame
@@ -39,14 +37,6 @@ public class TutorialChecks : MonoBehaviour {
             dialogue.SetActive(false);
         }
     }
-
-	private void destroyAllDialogues()
-	{
-		foreach (GameObject check in allChecks) 
-		{
-			Destroy (check.GetComponent<TutorialChecks> ());
-		}
-	}
 
     private void OnTriggerStay(Collider other)
     {
@@ -157,8 +147,6 @@ public class TutorialChecks : MonoBehaviour {
                     break;
                 case "CloseAll":
                     hideAllDialogues();
-					// destroy all dialogues here
-					destroyAllDialogues();
                     break;
                 default:
                     break;

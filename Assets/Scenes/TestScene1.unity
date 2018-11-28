@@ -8661,7 +8661,7 @@ GameObject:
   - component: {fileID: 469516489}
   m_Layer: 0
   m_Name: CheckDoorOpening
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9804,7 +9804,7 @@ GameObject:
   - component: {fileID: 519734740}
   m_Layer: 0
   m_Name: CheckNoteReading
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12263,7 +12263,7 @@ GameObject:
   - component: {fileID: 671026215}
   m_Layer: 0
   m_Name: CheckChargeFromBattery
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13498,7 +13498,7 @@ GameObject:
   - component: {fileID: 727623355}
   m_Layer: 0
   m_Name: CheckTurnOnLamp
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15624,9 +15624,9 @@ RectTransform:
   m_Father: {fileID: 1848685389}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 406.37, y: -14.3}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -169.29999, y: -14.3}
   m_SizeDelta: {x: 20, y: 312.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &829901317
@@ -15668,7 +15668,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1579614783}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6486
+  m_Size: 0.6485999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17985,7 +17985,7 @@ GameObject:
   - component: {fileID: 941517279}
   m_Layer: 0
   m_Name: CloseAll
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18306,15 +18306,15 @@ RectTransform:
   m_GameObject: {fileID: 947635947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1698491252}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.16999817, y: 0.15999985}
+  m_SizeDelta: {x: 161.84, y: 57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947635949
 MonoBehaviour:
@@ -18336,12 +18336,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 9982a67fc5ba77b42bb93ebf918f6b83, type: 3}
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -20607,7 +20607,7 @@ GameObject:
   - component: {fileID: 1070068575}
   m_Layer: 0
   m_Name: CheckMovement
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22613,7 +22613,7 @@ GameObject:
   - component: {fileID: 1140879278}
   m_Layer: 0
   m_Name: TutorialFinal
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24579,7 +24579,7 @@ GameObject:
   - component: {fileID: 1232064829}
   m_Layer: 0
   m_Name: CheckPickup
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27445,7 +27445,7 @@ GameObject:
   - component: {fileID: 1357557057}
   m_Layer: 0
   m_Name: CheckPersonalLight
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33413,10 +33413,10 @@ RectTransform:
   m_Father: {fileID: 1848685389}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 373.9, y: 168.6}
-  m_SizeDelta: {x: 72.4, y: 29.6}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -169.29999, y: -99.100006}
+  m_SizeDelta: {x: 72.400024, y: 29.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698491253
 MonoBehaviour:
@@ -35498,7 +35498,7 @@ GameObject:
   - component: {fileID: 1782718894}
   m_Layer: 0
   m_Name: CheckCrouch
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36250,7 +36250,7 @@ GameObject:
   - component: {fileID: 1826933128}
   m_Layer: 0
   m_Name: CheckChargeFromFreezer
-  m_TagString: check
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

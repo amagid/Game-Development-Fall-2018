@@ -59,7 +59,7 @@ public class NoteController : MonoBehaviour {
 	// Closes the content display panel
 	public void closePanel(){
 		displayContent.SetActive (false);
-        sceneController.unfreezeGame();
+        	sceneController.unfreezeGame();
         if (dialogue2 != null)
         {
             dialogue2.SetActive(true);

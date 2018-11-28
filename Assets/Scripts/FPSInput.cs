@@ -31,6 +31,10 @@ public class FPSInput : MonoBehaviour {
 		movement *= Time.deltaTime;
 		movement = transform.TransformDirection(movement);
 		_charController.Move(movement);
+        if (deltaX == 0f && deltaZ == 0f)
+        {
+            footstep_source.Stop();
+        }
         if (deltaX != 0f || deltaZ != 0f)
         {
             if (!footstep_source.isPlaying)

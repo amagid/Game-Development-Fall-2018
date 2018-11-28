@@ -1138,6 +1138,7 @@ MonoBehaviour:
   lvl1_complete: 0
   lvl2_complete: 0
   game_complete: 0
+  finished_tutorial: 0
 --- !u!4 &63089281
 Transform:
   m_ObjectHideFlags: 0
@@ -21105,7 +21106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1094579645
 Transform:
   m_ObjectHideFlags: 0
@@ -25178,7 +25179,7 @@ MonoBehaviour:
   player: {fileID: 1248575531}
   speed: 6
   gravity: -9.8
-  footsteps: {fileID: 8300000, guid: 7c3154b93369ce54c99265d06b65399b, type: 3}
+  footsteps: {fileID: 8300000, guid: 44f61c7c54dc6104bb88c9d4f870ea7d, type: 3}
 --- !u!114 &1248575540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40536,7 +40537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1980470530
 Transform:
   m_ObjectHideFlags: 0

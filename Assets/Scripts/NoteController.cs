@@ -12,7 +12,7 @@ public class NoteController : MonoBehaviour {
     [SerializeField] private Inventory inventory;
     // for tutorial note only
     [SerializeField] private GameObject dialogue1;
-    [SerializeField] private GameObject dialogue2;
+    [SerializeField] public GameObject dialogue2;
 
 
 	private bool atNote = false;

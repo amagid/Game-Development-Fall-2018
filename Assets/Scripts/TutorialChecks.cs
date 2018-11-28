@@ -14,9 +14,7 @@ public class TutorialChecks : MonoBehaviour {
 
     private GameObject dialogue_canvas;
 
-    [SerializeField] private GameObject currentDialogue;
-
-    [SerializeField] private GameObject currentDialogue2;
+    [SerializeField]private GameObject currentDialogue;
 
     private Inventory inventory;
 
@@ -104,6 +102,7 @@ public class TutorialChecks : MonoBehaviour {
                 case "CheckDoorOpening":
                     hideAllDialogues();
                     currentDialogue.SetActive(true);
+                    note_controller.dialogue2 = null;
                     break;
                 case "CheckPersonalLight":
                     if (!hasReducedSanity)

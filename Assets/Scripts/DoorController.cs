@@ -11,7 +11,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	private enum DoorAxes {X, Y, Z};
 	[SerializeField] private DoorAxes doorAxisDirection;
-	[SerializeField] private bool isElevatorDoor = false;
+	public bool isElevatorDoor = false;
 	private bool active = false;
 	private float CLOSE_FACTOR = 6f;
 	private bool isSlowDoor = true;

@@ -7,6 +7,7 @@ public class IntroScenePlayer : MonoBehaviour {
     [SerializeField] private GameObject kickSound;
     [SerializeField] private GameObject shaftBottom;
     [SerializeField] private GameObject blackout;
+    [SerializeField] private GameObject fallingSound;
     [SerializeField] private float dragTime = 1.0f;
     [SerializeField] private float bagRemoveTime = 1.0f;
     [SerializeField] private float lookTime = 1.0f;
@@ -14,6 +15,7 @@ public class IntroScenePlayer : MonoBehaviour {
     [SerializeField] private float tipTime = 1.0f;
     [SerializeField] private float fallTime = 1.0f;
     [SerializeField] private float fallAcceleration = 4.9f;
+    [SerializeField] private float windDelay = 0.5f;
     [SerializeField] private float crashTime = 0.1f;
     [SerializeField] private float crashBlackoutTime = 3.0f;
     private float movementTimeLimit;
@@ -167,12 +169,24 @@ public class IntroScenePlayer : MonoBehaviour {
         this.endPosition = this.transform.position + new Vector3(0, this.shaftBottom.transform.position.y - this.transform.position.y + 2f, 0);
         this.falling = true;
         Invoke("crash", Mathf.Sqrt(this.fallTime / this.fallAcceleration) - this.crashTime);
+        Invoke("startWindSound", this.windDelay);
+    }
+
+    void startWindSound()
+    {
+        this.fallingSound.GetComponent<AudioSource>().Play();
     }
 
     void crash()
     {
         this.shaftBottom.GetComponent<AudioSource>().Play(0);
         Invoke("startBlackout", this.crashTime);
+        Invoke("stopWindSound", 0.17f);
+    }
+
+    void stopWindSound()
+    {
+        this.fallingSound.GetComponent<AudioSource>().Stop();
     }
 
     void startBlackout()

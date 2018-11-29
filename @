@@ -1,0 +1,13 @@
+<fix> Migrated icons UI,more obvious selection,click selection in tablet
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch lotsOfUiIssues
+# Changes to be committed:
+#	new file:   Assets/Prefabs/Batteryimage.2.PNG
+#	new file:   Assets/Prefabs/Batteryimage.2.PNG.meta
+#	new file:   Assets/Prefabs/Note 5 air vent.png
+#	new file:   Assets/Prefabs/Note 5 air vent.png.meta
+#	modified:   Assets/Scenes/TestScene1.unity
+#	modified:   Assets/Scripts/InventoryUI.cs
+#

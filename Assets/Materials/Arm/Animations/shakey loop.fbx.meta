@@ -1,45 +1,72 @@
 fileFormatVersion: 2
-guid: 0123ea81fb109fa4b948efcb5ce166dd
+guid: a84a7f4c066d68b4f880ff5b0e5efa2f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: aiAreaLight1
+    100002: Group1923
+    100004: ikHandle1
+    100006: IN
+    100008: IN2
+    100010: IN3
+    100012: IN4
+    100014: joint1
+    100016: joint2
+    100018: joint3
+    100020: MI
+    100022: MI2
+    100024: MI3
+    100026: MI4
+    100028: PI
+    100030: PI2
+    100032: PI3
+    100034: PI4
+    100036: RI
+    100038: RI2
+    100040: RI3
+    100042: RI4
+    100044: //RootNode
+    100046: TH
+    100048: TH2
+    100050: TH3
+    100052: wristctrl
+    400000: aiAreaLight1
+    400002: Group1923
+    400004: ikHandle1
+    400006: IN
+    400008: IN2
+    400010: IN3
+    400012: IN4
+    400014: joint1
+    400016: joint2
+    400018: joint3
+    400020: MI
+    400022: MI2
+    400024: MI3
+    400026: MI4
+    400028: PI
+    400030: PI2
+    400032: PI3
+    400034: PI4
+    400036: RI
+    400038: RI2
+    400040: RI3
+    400042: RI4
+    400044: //RootNode
+    400046: TH
+    400048: TH2
+    400050: TH3
+    400052: wristctrl
     2100000: ArmSkin
     2100002: Nails
     2100004: PDA_Base
     2100006: PDA_Screen
     2100008: PDA_Connectors
-    2300000: //RootNode
-    3300000: //RootNode
     4300000: Group1923
-    11100000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ArmSkin
-    second: {fileID: 2100000, guid: 010f3dda6e7f030499869395089ed1af, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nails
-    second: {fileID: 2100000, guid: 9fca3b163017b384c8122a647dd412e6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Base
-    second: {fileID: 2100000, guid: 00e503fa1aeb0b747a6230b22eaeb051, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Connectors
-    second: {fileID: 2100000, guid: a5ecbae14b35bcd4cb7ba9e1260fa6b0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Screen
-    second: {fileID: 2100000, guid: 73f20db09b7dd6c41825b0147f3ccc9b, type: 2}
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Group1923
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -66,7 +93,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -90,14 +145,14 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -116,7 +171,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

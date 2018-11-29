@@ -1,45 +1,83 @@
 fileFormatVersion: 2
-guid: 0123ea81fb109fa4b948efcb5ce166dd
+guid: 5c29962847419b041bbcc1e778896ef8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: aiAreaLight1
+    100002: //RootNode
+    100004: Group1923
+    100006: ikHandle1
+    100008: IN
+    100010: IN2
+    100012: IN3
+    100014: IN4
+    100016: joint1
+    100018: joint2
+    100020: joint3
+    100022: MI
+    100024: MI2
+    100026: MI3
+    100028: MI4
+    100030: PI
+    100032: PI2
+    100034: PI3
+    100036: PI4
+    100038: pPlane1
+    100040: pPlane2
+    100042: RI
+    100044: RI2
+    100046: RI3
+    100048: RI4
+    100050: TH
+    100052: TH2
+    100054: TH3
+    100056: wristctrl
+    400000: aiAreaLight1
+    400002: //RootNode
+    400004: Group1923
+    400006: ikHandle1
+    400008: IN
+    400010: IN2
+    400012: IN3
+    400014: IN4
+    400016: joint1
+    400018: joint2
+    400020: joint3
+    400022: MI
+    400024: MI2
+    400026: MI3
+    400028: MI4
+    400030: PI
+    400032: PI2
+    400034: PI3
+    400036: PI4
+    400038: pPlane1
+    400040: pPlane2
+    400042: RI
+    400044: RI2
+    400046: RI3
+    400048: RI4
+    400050: TH
+    400052: TH2
+    400054: TH3
+    400056: wristctrl
     2100000: ArmSkin
     2100002: Nails
     2100004: PDA_Base
     2100006: PDA_Screen
     2100008: PDA_Connectors
-    2300000: //RootNode
-    3300000: //RootNode
+    2100010: lambert1
+    2300000: pPlane1
+    2300002: pPlane2
+    3300000: pPlane1
+    3300002: pPlane2
     4300000: Group1923
-    11100000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ArmSkin
-    second: {fileID: 2100000, guid: 010f3dda6e7f030499869395089ed1af, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nails
-    second: {fileID: 2100000, guid: 9fca3b163017b384c8122a647dd412e6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Base
-    second: {fileID: 2100000, guid: 00e503fa1aeb0b747a6230b22eaeb051, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Connectors
-    second: {fileID: 2100000, guid: a5ecbae14b35bcd4cb7ba9e1260fa6b0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PDA_Screen
-    second: {fileID: 2100000, guid: 73f20db09b7dd6c41825b0147f3ccc9b, type: 2}
+    4300002: pPlane1
+    4300004: pPlane2
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Group1923
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -90,14 +128,14 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -116,7 +154,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

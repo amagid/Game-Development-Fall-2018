@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LowSanityEffects : MonoBehaviour {
 
+	[SerializeField] private float distanceCameraCanShakeFromOrigin; 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject cube_prefab;
     [SerializeField] private Light camera_light;
@@ -17,6 +18,8 @@ public class LowSanityEffects : MonoBehaviour {
     public AudioClip tinnitus;
     public AudioClip general_ambience;
 
+	private GameObject camera;
+	[SerializeField] private GameObject cameraReference;
     private List<GameObject> current_cubes;
     private float current_level = 50f;
     private float sanity;
@@ -27,6 +30,7 @@ public class LowSanityEffects : MonoBehaviour {
         current_cubes = new List<GameObject>();
         source = GetComponent<AudioSource>();
         ambience_source = player.AddComponent<AudioSource>();
+		camera = GameObject.Find("Camera");
 	}
 	
 	// Update is called once per frame
@@ -38,12 +42,18 @@ public class LowSanityEffects : MonoBehaviour {
             ambience_source.PlayOneShot(general_ambience, 1f);
         }
         if(sanity < 60f) {
-            StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.001f));
             if (!source.isPlaying)
             {
                 source.PlayOneShot(heavy_breathing, (1f- sanity/100f));
             }
+            StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.0005f));
         }
+
+		if (sanity > 60f && camera.transform.position != cameraReference.transform.position) {
+			camera.transform.position = Vector3.MoveTowards(camera.transform.position, cameraReference.transform.position, Time.deltaTime/20);	
+		}
+
+
 
         if(sanity < 40f) {
             float current_index = sanity / 40f;
@@ -82,11 +92,17 @@ public class LowSanityEffects : MonoBehaviour {
     //camera shaking when sanity is lower than 70
     public IEnumerator Shake(float duration, float magnitude)
     {
-        Vector3 orignalPosition = player.transform.position;
+        Vector3 orignalPosition = camera.transform.position;
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            player.transform.Translate(Random.insideUnitCircle * magnitude);
+			if (Mathf.Abs (camera.transform.position.x - cameraReference.transform.position.x) < distanceCameraCanShakeFromOrigin && Mathf.Abs (camera.transform.position.y - cameraReference.transform.position.y) < distanceCameraCanShakeFromOrigin && Mathf.Abs (camera.transform.position.z - cameraReference.transform.position.z) < distanceCameraCanShakeFromOrigin) {
+				camera.transform.Translate (Random.insideUnitCircle * magnitude);
+			} else {
+				camera.transform.position = Vector3.MoveTowards(camera.transform.position, cameraReference.transform.position, Time.deltaTime);
+			//	camera.transform.Translate (player.transform.position);
+			}
+
             elapsed += Time.deltaTime;
             yield return 0;
         }

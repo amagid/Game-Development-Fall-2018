@@ -7,9 +7,9 @@ public class InventoryUI : MonoBehaviour
 {
 
     private Inventory playerInventory;
-    List<Image> imgs;
+    List<GameObject> imgs;
     List<Image> powerLevels;
-    List<Image> noteImgs;
+    List<GameObject> noteImgs;
     int selectedIndex = 0;
     int noteSelectedIndex = 0;
     private bool updateOn;
@@ -24,14 +24,19 @@ public class InventoryUI : MonoBehaviour
         selectedIndex = index;
     }
 
+    public void highNoteLight(int index)
+    {
+        noteSelectedIndex = index;
+    }
+
     // Use this for initialization
     void Start()
     {
         dataTabOn = GameObject.Find("DataPanel") != null;
         updateOn = true;
-        imgs = new List<Image>();
+        imgs = new List<GameObject>();
         powerLevels = new List<Image>();
-        noteImgs = new List<Image>();
+        noteImgs = new List<GameObject>();
         GameObject player = GameObject.Find("Player"); 
         playerInventory = player.GetComponent<Inventory>();
         playerBattery = player.GetComponent<PowerConsumer>().getPowerSource();
@@ -42,10 +47,12 @@ public class InventoryUI : MonoBehaviour
             string noteTag = "Note" + (i + 1);
             if (!dataTabOn)
             {
-                imgs.Add(GameObject.Find(tag).GetComponent<Image>());
+                imgs.Add(GameObject.Find(tag));
+                imgs[i].GetComponent<Image>().color = UnityEngine.Color.gray;
                 powerLevels.Add(GameObject.Find(powerLevelTag).GetComponent<Image>());
             } else {
-                noteImgs.Add(GameObject.Find(noteTag).GetComponent<Image>());
+                noteImgs.Add(GameObject.Find(noteTag));
+                noteImgs[i].GetComponent<Image>().color = UnityEngine.Color.gray;
             }
 
         }
@@ -66,7 +73,7 @@ public class InventoryUI : MonoBehaviour
                 {
                     if (playerInventory.getItem(i) != null)
                     {
-                        imgs[i].color = UnityEngine.Color.green; // TODO: Set image to item icon once we have icons
+                        imgs[i].transform.Find("Battery").gameObject.SetActive(true);
                         powerLevels[i].color = UnityEngine.Color.green;
                         if (playerInventory.getItem(i).GetComponent<Battery>() != null)
                         {
@@ -86,7 +93,7 @@ public class InventoryUI : MonoBehaviour
                     }
                     else
                     {
-                        imgs[i].color = UnityEngine.Color.gray; // TODO: Revisit later to potentially improve look
+                        imgs[i].transform.Find("Battery").gameObject.SetActive(false); // TODO: Revisit later to potentially improve look
                         RectTransform rt = (RectTransform)powerLevels[i].gameObject.transform;
                         rt.sizeDelta = new Vector2(0, 0);
                     }
@@ -94,9 +101,9 @@ public class InventoryUI : MonoBehaviour
                     GameObject.Find("Slot" + (i + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
                 } else {
                     if (playerInventory.getNote(i) != null) {
-                        noteImgs[i].color = UnityEngine.Color.red;
+                        noteImgs[i].transform.Find("Image").gameObject.SetActive(true);
                     } else {
-                        noteImgs[i].color = UnityEngine.Color.gray;
+                        noteImgs[i].transform.Find("Image").gameObject.SetActive(false);
                     }
                     GameObject.Find("Note" + (i + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
                 }

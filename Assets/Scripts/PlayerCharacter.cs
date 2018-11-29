@@ -453,6 +453,28 @@ public class PlayerCharacter : MonoBehaviour {
 		if (obj != null)
 		{
 			this.cursorMessage = obj.name;
+            if (obj.GetComponent<Battery>() != null)
+            {
+                this.cursorMessage = "Battery";
+            } else if (obj.CompareTag("Switch"))
+            {
+                this.cursorMessage = "Switch";
+            } else if (obj.CompareTag("note"))
+            {
+                this.cursorMessage = "Data Drive";
+            } else if (obj.GetComponent<DoorController>() != null)
+            {
+                this.cursorMessage = "Door";
+            } else if (obj.GetComponent<ComputerController>() != null)
+            {
+                this.cursorMessage = "Computer";
+            } else if (obj.GetComponent<ElevatorControlUP>() != null)
+            {
+                this.cursorMessage = "Up Button";
+            } else if (obj.GetComponent<LightSourceController>() != null)
+            {
+                this.cursorMessage = "Lamp";
+            }
 			PowerConsumer pc = obj.GetComponent<PowerConsumer>();
 			if (pc != null && !obj.CompareTag("Switch"))
 			{

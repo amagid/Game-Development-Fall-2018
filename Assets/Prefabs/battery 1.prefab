@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23444230713024152}
   - component: {fileID: 114326302330653238}
   - component: {fileID: 136504552515465810}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: battery 1
   m_TagString: battery
   m_Icon: {fileID: 0}
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b327725d71749e7bf4dacee0c90cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_power: 300
-  power_index: 300
+  max_power: 100
+  power_index: 100
   deviceBatteryIsAttachedTo: {fileID: 0}
 --- !u!136 &136504552515465810
 CapsuleCollider:

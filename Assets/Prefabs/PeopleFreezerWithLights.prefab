@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4672431482272914}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PeopleFreezerWithLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,16 +1082,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1026294642280126}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 54.03, y: -4.2066016, z: -0.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.00096741575, z: -0, w: -0.9999996}
+  m_LocalPosition: {x: 14.059964, y: -4.2066016, z: 21.406485}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children:
   - {fileID: 4214091836747728}
   - {fileID: 4977353156348026}
   - {fileID: 4338134467443054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 360.111, z: 0}
 --- !u!4 &4751911334892866
 Transform:
   m_ObjectHideFlags: 1
@@ -1685,6 +1685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumptionRate: 0
   activationThreshold: 5
+  oneTimeActivation: 0
+  powerSourceExtractable: 1
 --- !u!114 &114824506119027154
 MonoBehaviour:
   m_ObjectHideFlags: 1

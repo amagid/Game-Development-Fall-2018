@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 65702387240146126}
   - component: {fileID: 114578267071315890}
   - component: {fileID: 114992887805707822}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Computer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,8 +440,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349537811901104}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -38.423, y: 2.759541, z: -17.219822}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -29.765308, y: -3.1804562, z: -40.564835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4382360894243432}
@@ -607,8 +607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumptionRate: 0.2
-  activationThreshold: 0
+  consumptionRate: 0
+  activationThreshold: 20
+  oneTimeActivation: 1
+  powerSourceExtractable: 1
 --- !u!114 &114992887805707822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -620,8 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3850da6066a5ed4c86b136490968eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 9c8aa38760800ba4c9ef7a689b2fa09b, type: 3}
+  image: {fileID: 21300000, guid: f9265e55fb3b1054eb5b499a0a0e3c6f, type: 3}
   content: {fileID: 0}
   displayContent: {fileID: 0}
   player: {fileID: 0}
-  secondaryCameraGO: {fileID: 0}

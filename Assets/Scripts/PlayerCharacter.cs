@@ -83,11 +83,7 @@ public class PlayerCharacter : MonoBehaviour {
 	//invoke repeat method for general dark area decrease, elevator increase and personal light increase
 	void sanityChange() {
 		if(this.personalLight.enabled && !inElevator) {
-            sanity += (SANITY_DECREASE_RATE / 6f);
-			if (sanity > MAX_SANITY)
-			{
-				sanity = MAX_SANITY;
-			}
+            sanity -= (SANITY_DECREASE_RATE / 4f);
 		}
 		else if (losingSanity && !inElevator)
 		{
@@ -177,7 +173,7 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 
 		// If our RayCast hits an object
-		if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, this.interactionRange))
+		if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, this.interactionRange, 1 << LayerMask.NameToLayer("Interactable")))
 		{
 			if (this.seenObject != hit.collider.gameObject)
 			{

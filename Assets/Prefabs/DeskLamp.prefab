@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 114406505173783736}
   - component: {fileID: 114153117311620480}
   - component: {fileID: 82126576902740810}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DeskLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

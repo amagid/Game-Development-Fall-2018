@@ -233,12 +233,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4476821692017988}
-  - component: {fileID: 65542560910570892}
   - component: {fileID: 65035525849848362}
   - component: {fileID: 114241771546031136}
   - component: {fileID: 114004511336695420}
   - component: {fileID: 82723318054257580}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BatterySocket
   m_TagString: Switch
   m_Icon: {fileID: 0}
@@ -1086,18 +1085,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.297382, y: 5.4375877, z: 1.6215571}
   m_Center: {x: -2.944431, y: 4.04255, z: 0.31077844}
---- !u!65 &65542560910570892
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1635716209084690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 6.6217327, y: 5.4375877, z: 5.4794407}
-  m_Center: {x: -3.15526, y: 4.04255, z: 2.2397203}
 --- !u!82 &82723318054257580
 AudioSource:
   m_ObjectHideFlags: 1

@@ -102,6 +102,7 @@ public class InventoryUI : MonoBehaviour
                 } else {
                     if (playerInventory.getNote(i) != null) {
                         noteImgs[i].transform.Find("Image").gameObject.SetActive(true);
+                        noteImgs[i].transform.Find("Image").GetComponent<Image>().sprite = playerInventory.getNote(i).GetComponent<NoteController>().image;
                     } else {
                         noteImgs[i].transform.Find("Image").gameObject.SetActive(false);
                     }

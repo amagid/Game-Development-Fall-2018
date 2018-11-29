@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteController : MonoBehaviour {
-	[SerializeField] Sprite image;
+	public Sprite image;
 	// the Content child object of ScrollView
 	[SerializeField] GameObject content;
 	// the DisplayData object of OnGameGUI

@@ -8,24 +8,22 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject elevator_light;
     [SerializeField] private GameObject elevator_door;
     [SerializeField] private GameObject level_one;
-    [SerializeField] private GameObject level_two;
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
-    [SerializeField] private GameObject lvl2_maze_controller;
     private Vector3 elevator_outside_lights_initPos;
-	  // the player game object
-	  [SerializeField] private GameObject player;
-	  [SerializeField] private GameObject camera;
-	  private static GameObject staticPlayer;
-	  private static GameObject staticCamera;
+	// the player game object
+	[SerializeField] private GameObject player;
+	[SerializeField] private GameObject camera;
+	private static GameObject staticPlayer;
+	private static GameObject staticCamera;
     public GameObject button_light;
     private GameObject current_level;
     public bool isElevatorMoving;
     public int current_level_num;
     private bool flickerOn;
     public bool lvl1_complete;
-    public bool lvl2_complete;
     public bool game_complete;
+    public bool finished_tutorial;
 
     // Use this for initialization
     void Start () {
@@ -36,10 +34,10 @@ public class SceneController : MonoBehaviour {
         current_level = level_one;
         isElevatorMoving = false;
         lvl1_complete = false;
-        lvl2_complete = false;
         game_complete = false;
-		    staticPlayer = player;
-		    staticCamera = camera;
+		staticPlayer = player;
+		staticCamera = camera;
+        finished_tutorial = false;
 	  }
 
 	// Update is called once per frame
@@ -53,7 +51,7 @@ public class SceneController : MonoBehaviour {
             elevator_light.SetActive(true);
         }
         //need a check for lvl1_complete
-        lvl2_complete = lvl2_maze_controller.GetComponent<MazeController>().isComplete;
+
         //need a check for game_complete
     }
 
@@ -111,13 +109,8 @@ public class SceneController : MonoBehaviour {
                 current_level = level_one;
                 break;
             case 2:
-                level_two.SetActive(true);
-                current_level_num = 2;
-                current_level = level_two;
-                break;
-            case 3:
                 level_final.SetActive(true);
-                current_level_num = 3;
+                current_level_num = 2;
                 current_level = level_final;
                 break;
             default:

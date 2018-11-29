@@ -24,22 +24,32 @@ public class TabletUI : MonoBehaviour {
     {
         if (isOn == false && Input.GetKeyDown(KeyCode.I))
         {
-            powerPanel.SetActive(true);
-            isOn = true;
-            inventoryBar.SetActive(false);
-            sceneController.freezeGame();
-            
+            this.openTablet();
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                powerPanel.SetActive(false);
-                notePanel.SetActive(false);
-                isOn = false;
-                inventoryBar.SetActive(true);
-                sceneController.unfreezeGame();
+                this.closeTablet();
             }
         }
     }
+
+    public void openTablet()
+    {
+        powerPanel.SetActive(true);
+        isOn = true;
+        inventoryBar.SetActive(false);
+        sceneController.freezeGame();
+    }
+
+    public void closeTablet()
+    {
+        powerPanel.SetActive(false);
+        notePanel.SetActive(false);
+        isOn = false;
+        inventoryBar.SetActive(true);
+        sceneController.unfreezeGame();
+    }
+    
 }

@@ -2166,10 +2166,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fce815218db778149aeee27f14f35864, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f4bc79e47dc9be540a253f58f3d3db8a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 0.79
+  m_Volume: 0.2
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2267,11 +2267,11 @@ MonoBehaviour:
   kickSound: {fileID: 1605713296}
   shaftBottom: {fileID: 1104958445}
   blackout: {fileID: 1553795515}
-  dragTime: 3
+  dragTime: 18
   bagRemoveTime: 0.3
   lookTime: 0.6
   kickTime: 0.1
-  tipTime: 0.7
+  tipTime: 0.4
   fallTime: 50
   fallAcceleration: 4.9
   crashTime: 0.2

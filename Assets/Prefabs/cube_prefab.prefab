@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33590007431170684}
   - component: {fileID: 23416461549202642}
   - component: {fileID: 114384806843344758}
+  - component: {fileID: 65882673624783324}
   m_Layer: 0
   m_Name: cube_prefab
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491104499548332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.35769, y: -3.978932, z: -3.7950115}
+  m_LocalPosition: {x: 9.01, y: 1.5, z: 19.85307}
   m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491104499548332}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65882673624783324
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1491104499548332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114384806843344758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,3 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe9f3c2c579a794f8bbdde9d54e4d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounds: {fileID: 0}
+  attackRange: 1
+  attackAmount: 5
+  moving: 1

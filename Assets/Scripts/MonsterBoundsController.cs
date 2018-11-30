@@ -19,12 +19,12 @@ public class MonsterBoundsController : MonoBehaviour {
         ShadowMonsterController monster = other.GetComponent<ShadowMonsterController>();
         if (monster != null && monster.bounds == this.gameObject)
         {
+            Debug.Log("Leaving Bounds");
             monster.movingTo = monster.transform.position + (this.GetComponent<Collider>().bounds.center - monster.transform.position) / 5f;
             monster.movingFrom = monster.transform.position;
             monster.resetMovementTimer();
             monster.movementTime = monster.interval;
             monster.inBounds = false;
-            Invoke("setMovementTarget", monster.interval);
         }
     }
 
@@ -34,6 +34,8 @@ public class MonsterBoundsController : MonoBehaviour {
         if (monster != null && monster.bounds == this.gameObject)
         {
             monster.inBounds = true;
+            monster.movingBackToBounds = false;
+            monster.setMovementTarget();
         }
     }
 }

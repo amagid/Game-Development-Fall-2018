@@ -125,14 +125,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds: {fileID: 0}
-  interval: 3
+  interval: 1
   rotatingTo: {x: 0, y: 0, z: 0, w: 0}
   movingTo: {x: 0, y: 0, z: 0}
   rotatingFrom: {x: 0, y: 0, z: 0, w: 0}
   movingFrom: {x: 0, y: 0, z: 0}
   rotationTime: 0
   movementTime: 1
+  scattering: 0
   inBounds: 1
   attackRange: 1
   attackAmount: 5
   moving: 1
+  movingBackToBounds: 0

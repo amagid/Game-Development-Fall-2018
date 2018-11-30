@@ -10,6 +10,7 @@ public class TabletUI : MonoBehaviour {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject camera;
     private SceneController sceneController;
+    public bool openedNoteFromInventory;
 
     private bool isOn;
     // Use this for initialization
@@ -50,6 +51,17 @@ public class TabletUI : MonoBehaviour {
         isOn = false;
         inventoryBar.SetActive(true);
         sceneController.unfreezeGame();
+    }
+
+    //Implement reopen datapanel if possible
+
+    public void resumeDataPanel()
+    {
+        openedNoteFromInventory = false;
+        notePanel.SetActive(true);
+        isOn = true;
+        inventoryBar.SetActive(false);
+        sceneController.freezeGame();
     }
     
 }

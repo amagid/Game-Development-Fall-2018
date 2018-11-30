@@ -13,7 +13,7 @@ public class NoteController : MonoBehaviour {
     // for tutorial note only
     [SerializeField] private GameObject dialogue1;
     [SerializeField] public GameObject dialogue2;
-
+    private TabletUI tablet;
 
 	private bool atNote = false;
     private NoteObjective objective = null;
@@ -27,6 +27,7 @@ public class NoteController : MonoBehaviour {
 		img.sprite = image;
         this.objective = this.GetComponent<NoteObjective>();
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        tablet = GameObject.Find("Tablet").GetComponent<TabletUI>();
 	}
 
 	void Update(){
@@ -60,10 +61,14 @@ public class NoteController : MonoBehaviour {
 	// Closes the content display panel
 	public void closePanel(){
 		displayContent.SetActive (false);
-        	sceneController.unfreezeGame();
+        sceneController.unfreezeGame();
         if (dialogue2 != null)
         {
             dialogue2.SetActive(true);
+        }
+        if (tablet.openedNoteFromInventory)
+        {
+            tablet.resumeDataPanel();
         }
     }
 

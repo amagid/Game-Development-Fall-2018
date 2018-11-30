@@ -13,6 +13,7 @@ TagManager:
   - crouch_only
   - dialogue
   - check
+  - monster_bounds
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - WallsFloor
   - WallItems
   - Interactable
-  - 
+  - Monsters
   - 
   - 
   - 

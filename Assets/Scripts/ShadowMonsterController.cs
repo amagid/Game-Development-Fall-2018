@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShadowMonsterController : MonoBehaviour {
-    [SerializeField] private GameObject bounds;
+    public GameObject bounds;
     private PlayerCharacter player;
     private bool wandering = true;
-    private float interval = 3.0f;
+    public float interval = 3.0f;
     private float distanceInterval = 1.0f;
-    private Quaternion rotatingTo;
-    private Vector3 movingTo;
-    private Quaternion rotatingFrom;
-    private Vector3 movingFrom;
-    private float rotationTime = 0f;
-    private float movementTime = 1.0f;
+    public Quaternion rotatingTo;
+    public Vector3 movingTo;
+    public Quaternion rotatingFrom;
+    public Vector3 movingFrom;
+    public float rotationTime = 0f;
+    public float movementTime = 1.0f;
     private float storedInterval;
     private bool stunned = false;
     private bool scattering = false;
-    private bool inBounds = true;
+    public bool inBounds = true;
     private float rotationTimeElapsed = 0.0f;
     private float movementTimeElapsed = 0.0f;
     private float distanceToPlayer;
@@ -52,23 +52,6 @@ public class ShadowMonsterController : MonoBehaviour {
 
         this.rotationTimeElapsed += Time.deltaTime;
         this.transform.rotation = Quaternion.Lerp(this.rotatingFrom, this.rotatingTo, this.getRotationProgress());
-
-        if (this.bounds != null) {
-            bool nowInBounds = this.bounds.GetComponent<Collider>().bounds.Contains(this.transform.position);
-            if (!inBounds && nowInBounds)
-            {
-                this.inBounds = true;
-            }
-            else if (inBounds && !nowInBounds)
-            {
-                this.movingTo = this.transform.position + (this.bounds.GetComponent<Collider>().bounds.center - this.transform.position) / 5f;
-                this.movingFrom = this.transform.position;
-                this.resetMovementTimer();
-                this.movementTime = this.interval;
-                this.inBounds = false;
-                Invoke("setMovementTarget", this.interval);
-            }
-        }
     }
 
     public void setPlayerCharacter(PlayerCharacter playerCharacter)
@@ -96,7 +79,7 @@ public class ShadowMonsterController : MonoBehaviour {
         return this.movementTimeElapsed / (this.movementTime * ((this.player.getSanity() + 50) / 150));
     }
 
-    private void setMovementTarget()
+    public void setMovementTarget()
     {
         this.moving = true;
         if (!scattering && !stunned)
@@ -195,7 +178,7 @@ public class ShadowMonsterController : MonoBehaviour {
         this.rotatingFrom = this.transform.rotation;
         this.resetRotationTimer();
         this.rotationTime = 0.2f;
-        float distance = 10f;
+        float distance = 100f;
         this.resetMovementTimer();
         this.movementTime = this.interval * 2.5f;
         this.movingTo = this.transform.position + this.rotatingTo * (this.transform.forward * distance);

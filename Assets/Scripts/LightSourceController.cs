@@ -119,4 +119,9 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
     		atLight = false;
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name + " Entered Collider");
+    }
+
 }

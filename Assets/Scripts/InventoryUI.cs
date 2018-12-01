@@ -17,6 +17,7 @@ public class InventoryUI : MonoBehaviour
     private bool discharging = false;
     private bool dataTabOn = false;
     private PowerSource playerBattery;
+    private TabletUI tablet;
 
 
     public void highLight(int index)
@@ -32,6 +33,7 @@ public class InventoryUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        tablet = GameObject.Find("Tablet").GetComponent<TabletUI>();
         dataTabOn = GameObject.Find("DataPanel") != null;
         updateOn = true;
         imgs = new List<GameObject>();
@@ -101,6 +103,8 @@ public class InventoryUI : MonoBehaviour
                     GameObject.Find("Slot" + (i + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.black;
                 } else {
                     if (playerInventory.getNote(i) != null) {
+                        Debug.Log(i);
+                        Debug.Log(noteImgs);
                         noteImgs[i].transform.Find("Image").gameObject.SetActive(true);
                         noteImgs[i].transform.Find("Image").GetComponent<Image>().sprite = playerInventory.getNote(i).GetComponent<NoteController>().image;
                     } else {
@@ -190,7 +194,7 @@ public class InventoryUI : MonoBehaviour
              && (PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), 20f)
                  || PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), selectedItem.GetComponent<Battery>().getPowerSource().getMaxPower() - selectedItem.GetComponent<Battery>().getPowerSource().getPowerLevel())))
         {
-            Invoke("chargeSelectedBattery", 1f);
+            ;
         }
     }
 
@@ -202,12 +206,17 @@ public class InventoryUI : MonoBehaviour
             && (PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, 20f)
                 || PowerSource.transferPower(selectedItem.GetComponent<Battery>().getPowerSource(), playerBattery, playerBattery.getMaxPower() - playerBattery.getPowerLevel())))
         {
-            Invoke("dischargeSelectedBattery", 1f);
+            ;
         }
     }
 
     public void openNote(){
-        playerInventory.getSelectedNote().GetComponent<NoteController>().openNote();
-        dataTabOn = false;
+        if (playerInventory.getSelectedNote() != null)
+        {
+            dataTabOn = false;
+            tablet.closeTablet();
+            tablet.openedNoteFromInventory = true;
+            playerInventory.getSelectedNote().GetComponent<NoteController>().openNote();
+        }
     }
 }

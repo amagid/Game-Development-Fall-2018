@@ -480,7 +480,7 @@ public class PlayerCharacter : MonoBehaviour {
 			{
 				if (pc.isOneTimeActivation())
 				{
-					this.cursorMessage += "\nRequires " + pc.getActivationThreshold() + " Power to Activate";
+					this.cursorMessage += pc.hasBeenActivated ? "\nAlready Activated" : "\nRequires " + pc.getActivationThreshold() + " Power to Activate";
 				} else if (pc.getConsumptionRate() > 0)
 				{
 					this.cursorMessage += "\nRequires " + (pc.getConsumptionRate() * 60f).ToString("F2") + " Power/Second";

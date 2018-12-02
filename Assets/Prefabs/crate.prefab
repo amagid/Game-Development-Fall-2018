@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4567041465349066}
   - component: {fileID: 33775309040530636}
   - component: {fileID: 23174613322607780}
+  - component: {fileID: 65471602776406546}
   m_Layer: 0
   m_Name: crate
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874101233588200}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.91, y: -0.42, z: 27.173}
+  m_LocalPosition: {x: -38.37, y: 2.55, z: 26.611118}
   m_LocalScale: {x: 152.2534, y: 136.90933, z: 136.06186}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874101233588200}
   m_Mesh: {fileID: 4300000, guid: 5f924768d7c671145aac89f26d84b1d3, type: 3}
+--- !u!65 &65471602776406546
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1874101233588200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0110311285, y: 0.01126316, z: 0.011271031}
+  m_Center: {x: 0.004938201, y: 0.002213, z: -0.004947605}

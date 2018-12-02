@@ -10,7 +10,7 @@ public class InventoryUI : MonoBehaviour
     List<GameObject> imgs;
     List<Image> powerLevels;
     List<GameObject> noteImgs;
-    int selectedIndex = 0;
+    static int selectedIndex = 0;
     int noteSelectedIndex = 0;
     private bool updateOn;
     private bool charging = false;
@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
     private TabletUI tablet;
 
 
-    public void highLight(int index)
+    public static void highLight(int index)
     {
         selectedIndex = index;
     }
@@ -116,6 +116,7 @@ public class InventoryUI : MonoBehaviour
 
             if (!dataTabOn)
             {
+				selectedIndex = playerInventory.getSelectedItemIndex ();
                 if (selectedIndex < 0 || selectedIndex > playerInventory.inventorySize)
                 {
                     selectedIndex = 0;

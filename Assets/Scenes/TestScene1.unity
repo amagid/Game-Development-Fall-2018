@@ -26905,6 +26905,7 @@ Transform:
   - {fileID: 1586510400}
   - {fileID: 1232392686}
   - {fileID: 1665006449}
+  - {fileID: 1268621701}
   - {fileID: 1305706300}
   - {fileID: 2099779027}
   - {fileID: 1704104915}
@@ -26922,7 +26923,6 @@ Transform:
   - {fileID: 2007758167}
   - {fileID: 1100408483}
   - {fileID: 1672685183}
-  - {fileID: 1268621701}
   - {fileID: 78077364}
   - {fileID: 1470955891}
   - {fileID: 1160270896}
@@ -27744,7 +27744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 6.4235196, z: 5.9298797}
   m_Children: []
   m_Father: {fileID: 1233943989}
-  m_RootOrder: 99
+  m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1268621702
 MonoBehaviour:
@@ -36135,7 +36135,7 @@ Prefab:
     - target: {fileID: 114241771546031136, guid: 1ae9cfb29742542449cca7d6f85009e3,
         type: 2}
       propertyPath: consumptionRate
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae9cfb29742542449cca7d6f85009e3, type: 2}

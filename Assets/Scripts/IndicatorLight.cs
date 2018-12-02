@@ -23,6 +23,10 @@ public class IndicatorLight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (this.indicator == null)
+        {
+            return;
+        }
         float power = this.powerConsumer.getPowerSource().getPowerLevel();
         if (power >= minPower && power <= maxPower)
         {

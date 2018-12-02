@@ -21,7 +21,11 @@ GameObject:
   - component: {fileID: 4657674811817498}
   - component: {fileID: 33737211911390796}
   - component: {fileID: 23127505084489144}
-  m_Layer: 0
+  - component: {fileID: 114463387767547290}
+  - component: {fileID: 114997962093270894}
+  - component: {fileID: 114573148529919572}
+  - component: {fileID: 65373693411615620}
+  m_Layer: 11
   m_Name: Monitor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,13 +38,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532917349497028}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 66.73391, y: 11.915762, z: 98.24213}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: 0.12278774, y: 0.6963643, z: 0.6963643, w: -0.12278774}
+  m_LocalPosition: {x: 147.17769, y: -1.5684562, z: 71.21499}
+  m_LocalScale: {x: 100.00006, y: 100.00004, z: 100.00006}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 200, z: -48.99}
 --- !u!23 &23127505084489144
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -84,3 +88,56 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532917349497028}
   m_Mesh: {fileID: 4300000, guid: 0fb3267bbad57b74893fbae915a9bbec, type: 3}
+--- !u!65 &65373693411615620
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532917349497028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010174695, y: 0.036278084, z: 0.027357033}
+  m_Center: {x: -0.00023865442, y: 5.645432e-10, z: -0.0024414852}
+--- !u!114 &114463387767547290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532917349497028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8525ceb13c5483a41b617c5acc26453e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extractable: 0
+  capacity: 20
+  initialPower: 20
+--- !u!114 &114573148529919572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532917349497028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumptionRate: 0
+  activationThreshold: 0
+  oneTimeActivation: 0
+  powerSourceExtractable: 0
+--- !u!114 &114997962093270894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532917349497028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f211590001729e4ca77ea29f878274b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoRegenRate: 0.01

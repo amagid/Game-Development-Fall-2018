@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1304058904017920
 GameObject:
   m_ObjectHideFlags: 1
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 114936288589045340}
   - component: {fileID: 114874960426283068}
   - component: {fileID: 65656076181561458}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PeopleFreezer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,8 +808,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490480862276238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.85, y: 0.5171894, z: 23.35}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -13.54832, y: 0.5, z: 14.741481}
   m_LocalScale: {x: 75, y: 75, z: 75}
   m_Children:
   - {fileID: 4264520632927394}
@@ -822,7 +822,7 @@ Transform:
   - {fileID: 4842675665270464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4376086325924328
 Transform:
   m_ObjectHideFlags: 1
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   consumptionRate: 0
   activationThreshold: 5
   oneTimeActivation: 0
-  powerSourceExtractable: 1
+  powerSourceExtractable: 0
 --- !u!114 &114874960426283068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1506,8 +1506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extractable: 0
-  capacity: 10
-  initialPower: 5
+  capacity: 20
+  initialPower: 15
 --- !u!114 &114936288589045340
 MonoBehaviour:
   m_ObjectHideFlags: 1

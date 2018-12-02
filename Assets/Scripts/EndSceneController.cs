@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class EndSceneController : MonoBehaviour {
 	[SerializeField] private GameObject endLights;
 	private bool atEndScene;
+	private MachineController theReactor;
 
 	void Start(){
 		endLights.SetActive (false);
+		theReactor = GameObject.Find ("Reactor").GetComponent<MachineController>();
 	}
 	
 	// Update is called once per frame
@@ -16,11 +18,11 @@ public class EndSceneController : MonoBehaviour {
 		if (Time.timeScale == 0)
 			return;
 
-		if (MachineController.activated) {
+		if (theReactor.getIsActivated()) {
 			endLights.SetActive (true);
 		}
 
-		if (atEndScene && MachineController.activated) {
+		if (atEndScene && theReactor.getIsActivated()) {
 			SceneManager.LoadScene ("EndGame");
 		}
 		

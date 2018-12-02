@@ -7,7 +7,7 @@ public class MachineController : MonoBehaviour {
 	[SerializeField] private Light light;
 	[SerializeField] private GameObject player;
 	private Inventory inventory;
-	public static bool activated = false;
+	private bool activated = false;
 	MachinePartPosition[] allMachinePartPositions;
 
 	// Use this for initialization
@@ -60,4 +60,10 @@ public class MachineController : MonoBehaviour {
 		StartCoroutine ("activate");
 		activated = true;
 	}
+
+	public bool getIsActivated(){
+		return this.activated;
+	}
+
+
 }

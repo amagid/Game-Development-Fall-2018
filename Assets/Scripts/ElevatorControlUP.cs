@@ -10,10 +10,12 @@ public class ElevatorControlUP : MonoBehaviour, DirectOperation {
     private int current_level_num;
     private bool isCurrentlyMoving;
     private int numBatteries = 0;
+	private MachineController theReactor;
 
     // Use this for initialization
     void Start()
     {
+		theReactor = GameObject.Find ("Reactor").GetComponent<MachineController>();
         this.powerConsumer = this.getPowerConsumer();
         current_level_num = scene_controller.GetComponent<SceneController>().current_level_num;
         isCurrentlyMoving = scene_controller.GetComponent<SceneController>().isElevatorMoving;
@@ -24,7 +26,7 @@ public class ElevatorControlUP : MonoBehaviour, DirectOperation {
     {
         current_level_num = scene_controller.GetComponent<SceneController>().current_level_num;
         isCurrentlyMoving = scene_controller.GetComponent<SceneController>().isElevatorMoving;
-        if (!isCurrentlyMoving && numBatteries == 3 && current_level_num < 3 && this.powerConsumer.powerDevice())
+		if (!isCurrentlyMoving && theReactor.getIsActivated() && current_level_num < 3 && this.powerConsumer.powerDevice()) // BOOLEAN IS HERE <----------------------------------------------------------------------
         {
             StartCoroutine("loadUpperLevel");
         }

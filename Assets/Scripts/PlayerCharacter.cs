@@ -24,7 +24,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private const float SANITY_DECREASE_RATE = 0.1f;
 	private const float ELEVATOR_SANITY_RATE = 0.1f;
 
-	private float sanity;
+    private float sanity;
 	private bool losingSanity;
 	private bool inElevator;
 	private bool isCrouching;
@@ -39,6 +39,8 @@ public class PlayerCharacter : MonoBehaviour {
     private bool personalLightOn = false;
 	private string typeOfDeath = null;
     private bool dying = false;
+    [SerializeField] private AudioClip electricity;
+    private AudioSource electricity_source;
 
 	void Start () {
 		style1.fontSize = 25;
@@ -78,6 +80,7 @@ public class PlayerCharacter : MonoBehaviour {
             this.lightningScriptsTake[i] = this.lightningEmittersTake[i].GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
         }
         InvokeRepeating("sanityChange", 1f, 0.1f);
+        this.electricity_source = this.gameObject.AddComponent<AudioSource>();
 	}
 
 	//invoke repeat method for general dark area decrease, elevator increase and personal light increase
@@ -207,6 +210,11 @@ public class PlayerCharacter : MonoBehaviour {
                 {
                     this.lightningScriptsGive[i].Trigger();
                 }
+                //audio effect
+                if (!electricity_source.isPlaying)
+                {
+                    electricity_source.PlayOneShot(electricity, 0.6f);
+                }
             }
 
             //If the right mouse button is being pressed, attempt to siphon power from the hit device.
@@ -219,6 +227,10 @@ public class PlayerCharacter : MonoBehaviour {
                     for (int i = 0; result && i < this.lightningScriptsTake.Length; i++)
                     {
                         this.lightningScriptsTake[i].Trigger();
+                    }
+                    //audio effect
+                    if (!electricity_source.isPlaying) {
+                        electricity_source.PlayOneShot(electricity, 0.6f);
                     }
                 }
 				// Get the PowerConsumer of the object we're looking at, if any.

@@ -25,6 +25,12 @@ public class ShadowMonsterController : MonoBehaviour {
     public float attackAmount = 5f;
     public bool moving = true;
     public bool movingBackToBounds = false;
+    [System.NonSerialized] public Vector3 initialPosition;
+    public bool dead = false;
+    public bool dyingOrSpawning = false;
+    private int boundsDeathTimer = 0;
+    public bool inFlashlight = false;
+    public float lifespan = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -40,12 +46,38 @@ public class ShadowMonsterController : MonoBehaviour {
         this.resetMovementTimer();
         //Get current distance to player
         this.distanceToPlayer = Vector3.Distance(this.player.transform.position, this.transform.position);
-        this.setMovementTarget();
+
+        Debug.Log(this.transform.position.x + ", " + this.transform.position.y + ", " + this.transform.position.z);
+        this.initialPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
+        this.spawn();
+        if (this.lifespan > 0f)
+        {
+            this.lifespan = this.lifespan * 0.75f + this.lifespan * Random.value;
+            Invoke("die", this.lifespan);
+        }
 	}
 
     private void Update()
     {
-        if (this.bounds == null || (inBounds && (this.bounds.GetComponent<Collider>().bounds.Contains(this.movingTo) || this.scattering)) || this.movingBackToBounds)
+        if (this.dead || (this.inFlashlight && !this.scattering && this.player.personalLight.enabled))
+        {
+            return;
+        }
+
+        if (!this.inBounds)
+        {
+            this.boundsDeathTimer++;
+            if (this.boundsDeathTimer > 300)
+            {
+                this.respawn();
+            }
+        } else
+        {
+            this.boundsDeathTimer = 0;
+        }
+
+        if (this.bounds == null || (inBounds && (this.bounds.GetComponent<Collider>().bounds.Contains(this.movingTo) || this.scattering)) || this.movingBackToBounds || this.dyingOrSpawning)
         {
             this.movementTimeElapsed += Time.deltaTime;
             this.transform.position = Vector3.Lerp(this.movingFrom, this.movingTo, this.getMovementProgress());
@@ -89,6 +121,10 @@ public class ShadowMonsterController : MonoBehaviour {
 
     public void setMovementTarget()
     {
+        if (this.dyingOrSpawning || this.dead)
+        {
+            return;
+        }
         this.moving = true;
         if (!scattering && !stunned)
         {
@@ -192,13 +228,67 @@ public class ShadowMonsterController : MonoBehaviour {
         this.movementTime = this.interval;
         this.movingTo = this.transform.position + (this.rotatingTo * this.transform.forward) * distance;
         this.movingFrom = this.transform.position;
-        Invoke("stopScatter", this.interval);
+        Invoke("die", this.interval);
     }
-    private void stopScatter() {
+
+    public void spawn()
+    {
+        this.GetComponent<Collider>().enabled = false;
+        this.dead = false;
+        this.dyingOrSpawning = true;
+        this.transform.position = new Vector3(this.initialPosition.x, this.player.transform.position.y - 10f, this.initialPosition.z);
+        this.rotatingFrom = this.transform.rotation;
+        this.rotatingTo = Quaternion.Euler(new Vector3(0, this.transform.rotation.eulerAngles.y, 0));
+        this.resetRotationTimer();
+        this.rotationTime = 0.1f;
+        this.movingFrom = new Vector3(this.initialPosition.x, this.player.transform.position.y - 10f, this.initialPosition.z);
+        this.resetMovementTimer();
+        this.movementTime = 5f;
+        this.movingTo = new Vector3(this.initialPosition.x, this.player.transform.position.y + Random.value - 0.5f, this.initialPosition.z);
+        Invoke("setMovementTarget", this.movementTime);
+        Invoke("finishSpawn", this.movementTime);
+    }
+
+    public void finishSpawn()
+    {
+        this.dyingOrSpawning = false;
+        this.GetComponent<Collider>().enabled = true;
+    }
+
+    public void die()
+    {
+        this.die(true);
+    }
+
+    public void die(bool respawn)
+    {
+        Debug.Log("Dying");
         this.scattering = false;
-        if (!this.movingBackToBounds)
+        this.GetComponent<Collider>().enabled = false;
+        this.dyingOrSpawning = true;
+        this.resetMovementTimer();
+        this.movementTime = 3f;
+        this.movingFrom = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.movingTo = new Vector3(this.transform.position.x, this.transform.position.y - 10, this.transform.position.z);
+        if (respawn)
         {
-            this.setMovementTarget();
+            Invoke("respawn", this.movementTime);
         }
+        else
+        {
+            Invoke("finishDeath", this.movementTime);
+        }
+    }
+
+    public void finishDeath()
+    {
+        this.dead = true;
+        this.dyingOrSpawning = false;
+        this.GetComponent<Collider>().enabled = true;
+    }
+
+    public void respawn()
+    {
+        this.spawn();
     }
 }

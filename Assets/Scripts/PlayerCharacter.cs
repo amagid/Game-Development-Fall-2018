@@ -12,6 +12,7 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private Camera camera;
 	[SerializeField] private float interactionRange = 2.5f;
     [SerializeField] private GameObject[] lightningEmittersGive;
+    [SerializeField] private GameObject flashlightBounds;
     private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsGive;
     [SerializeField] private GameObject[] lightningEmittersTake;
     private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsTake;
@@ -31,7 +32,7 @@ public class PlayerCharacter : MonoBehaviour {
 	private bool canStandUp;
 	private PowerSource internalBattery;
 	private PowerConsumer internalPowerConsumer;
-	private Light personalLight;
+	public Light personalLight;
 	private GameObject seenObject;
 	private PowerConsumer currentConsumer;
 	private PowerSource currentSource;
@@ -123,6 +124,7 @@ public class PlayerCharacter : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.F))
         {
             this.personalLight.enabled = !this.personalLight.enabled;
+            this.flashlightBounds.SetActive(!this.flashlightBounds.activeInHierarchy);
         }
         if (this.personalLight.enabled) {
 			this.internalBattery.takePower(personalLightPowerRate);

@@ -8,7 +8,7 @@ public class FlashlightBoundsController : MonoBehaviour {
         ShadowMonsterController monster = other.GetComponent<ShadowMonsterController>();
         if (monster != null)
         {
-            monster.inFlashlight = true;
+            monster.startStun();
         }
     }
 
@@ -17,7 +17,8 @@ public class FlashlightBoundsController : MonoBehaviour {
         ShadowMonsterController monster = other.GetComponent<ShadowMonsterController>();
         if (monster != null)
         {
-            monster.inFlashlight = false;
+            monster.endingStun = true;
+            monster.Invoke("endStun", 1f);
         }
     }
 }

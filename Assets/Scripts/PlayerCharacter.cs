@@ -53,7 +53,7 @@ public class PlayerCharacter : MonoBehaviour {
 		style3.alignment = TextAnchor.UpperCenter;
 
 		inventory = GetComponent<Inventory>();
-		sanity = 85f;
+		sanity = 15f;
 		losingSanity = true;
 		inElevator = false;
 		isCrouching = false;

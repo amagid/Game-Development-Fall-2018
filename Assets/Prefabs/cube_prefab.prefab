@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491104499548332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.01, y: 1.5, z: 19.89}
+  m_LocalPosition: {x: 13.59, y: 2.89, z: 21.080301}
   m_LocalScale: {x: 2, y: 2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,3 +138,7 @@ MonoBehaviour:
   attackAmount: 5
   moving: 1
   movingBackToBounds: 0
+  dead: 0
+  dyingOrSpawning: 0
+  inFlashlight: 0
+  lifespan: 30

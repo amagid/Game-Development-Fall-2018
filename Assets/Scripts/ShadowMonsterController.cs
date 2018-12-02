@@ -15,7 +15,7 @@ public class ShadowMonsterController : MonoBehaviour {
     public float rotationTime = 0f;
     public float movementTime = 1.0f;
     private float storedInterval;
-    private bool stunned = false;
+    public bool endingStun = false;
     public bool scattering = false;
     public bool inBounds = true;
     private float rotationTimeElapsed = 0.0f;
@@ -46,8 +46,6 @@ public class ShadowMonsterController : MonoBehaviour {
         this.resetMovementTimer();
         //Get current distance to player
         this.distanceToPlayer = Vector3.Distance(this.player.transform.position, this.transform.position);
-
-        Debug.Log(this.transform.position.x + ", " + this.transform.position.y + ", " + this.transform.position.z);
         this.initialPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 
         this.spawn();
@@ -60,6 +58,14 @@ public class ShadowMonsterController : MonoBehaviour {
 
     private void Update()
     {
+        if (this.player.getSanity() <= 0f && this.bounds != null)
+        {
+            this.bounds = null;
+            this.inBounds = true;
+            this.resetMovementTimer();
+            this.movementTime = 6f;
+            this.setMovementTarget();
+        }
         if (this.dead || (this.inFlashlight && !this.scattering && this.player.personalLight.enabled))
         {
             return;
@@ -111,12 +117,12 @@ public class ShadowMonsterController : MonoBehaviour {
 
     public float getRotationProgress()
     {
-        return this.rotationTimeElapsed / (this.rotationTime * ((this.player.getSanity() + 50) / 150));
+        return this.rotationTimeElapsed / (this.rotationTime * ((this.player.getSanity() + 200) / 300));
     }
 
     public float getMovementProgress()
     {
-        return this.movementTimeElapsed / (this.movementTime * ((this.player.getSanity() + 50) / 150));
+        return this.movementTimeElapsed / (this.movementTime * ((this.player.getSanity() + 200) / 300));
     }
 
     public void setMovementTarget()
@@ -126,13 +132,13 @@ public class ShadowMonsterController : MonoBehaviour {
             return;
         }
         this.moving = true;
-        if (!scattering && !stunned)
+        if (!scattering && !inFlashlight)
         {
             //Get current distance to player
             this.distanceToPlayer = Vector3.Distance(this.player.transform.position, this.transform.position);
 
             // If distance is less than our formula, stop and look at the player
-            if (this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2))
+            if (this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) || this.player.getSanity() <= 0f)
             {
                 this.resetRotationTimer();
                 this.rotationTime = 0.25f;
@@ -142,7 +148,7 @@ public class ShadowMonsterController : MonoBehaviour {
             }
 
             // If distance is less than our second formula, start moving toward the player
-            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) / 1.5)
+            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) / 3 || this.player.getSanity() <= 0f)
             {
                 this.resetMovementTimer();
                 this.movementTime = this.interval;
@@ -185,7 +191,7 @@ public class ShadowMonsterController : MonoBehaviour {
                 }
             }
 
-            if (this.distanceToPlayer < this.attackRange)
+            if (this.distanceToPlayer < this.attackRange && this.player.getSanity() > 0)
             {
                 this.player.getPowerSource().takePower(this.attackAmount);
                 this.scatter(this.player.transform.position);
@@ -193,7 +199,7 @@ public class ShadowMonsterController : MonoBehaviour {
             }
             Invoke("setMovementTarget", this.interval);
         }
-        else if (!scattering && stunned)
+        else if (!scattering && inFlashlight)
         {
             this.movingTo = this.transform.position;
             this.movingFrom = this.transform.position;
@@ -205,19 +211,20 @@ public class ShadowMonsterController : MonoBehaviour {
         }
     }
 
-    private void startStun()
+    public void startStun()
     {
-        this.stunned = true;
+        this.inFlashlight = true;
+        this.endingStun = false;
     }
 
-    private void endStun()
+    public void endStun()
     {
-        this.stunned = false;
+        if (this.endingStun)
+            this.inFlashlight = false;
     }
 
     public void scatter(Vector3 fromPosition)
     {
-        Debug.Log("Scattering");
         this.scattering = true;
         this.rotatingTo = Quaternion.LookRotation(this.transform.position - fromPosition, Vector3.up);
         this.rotatingFrom = this.transform.rotation;
@@ -245,7 +252,6 @@ public class ShadowMonsterController : MonoBehaviour {
         this.resetMovementTimer();
         this.movementTime = 5f;
         this.movingTo = new Vector3(this.initialPosition.x, this.player.transform.position.y + Random.value - 0.5f, this.initialPosition.z);
-        Invoke("setMovementTarget", this.movementTime);
         Invoke("finishSpawn", this.movementTime);
     }
 
@@ -253,6 +259,7 @@ public class ShadowMonsterController : MonoBehaviour {
     {
         this.dyingOrSpawning = false;
         this.GetComponent<Collider>().enabled = true;
+        this.setMovementTarget();
     }
 
     public void die()
@@ -262,7 +269,6 @@ public class ShadowMonsterController : MonoBehaviour {
 
     public void die(bool respawn)
     {
-        Debug.Log("Dying");
         this.scattering = false;
         this.GetComponent<Collider>().enabled = false;
         this.dyingOrSpawning = true;

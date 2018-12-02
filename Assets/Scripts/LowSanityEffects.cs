@@ -64,18 +64,17 @@ public class LowSanityEffects : MonoBehaviour {
 
         if (sanity < 50f)
         {
-            if (sanity < current_level)
+            if (sanity <= current_level)
             {
-                generateRandomCubes(Mathf.RoundToInt((1f - sanity / 50f) * 20f));
-                current_level -= 5f;
+                //generateRandomCubes(Mathf.RoundToInt(2f));
+                current_level -= 10f;
             }
             
         }
         else if (sanity >= 50f && current_cubes.Count >= 0)
         {
             foreach(GameObject cube in current_cubes) {
-                StartCoroutine(cubeTransform(cube, new Vector3(cube.transform.position.x, cube.transform.position.y - 3f, cube.transform.position.z), 0.5f));
-                StartCoroutine(cubeDestroy(cube));
+                cube.GetComponent<ShadowMonsterController>().die(false);
             }
             current_cubes = new List<GameObject>();
             current_level = 50f;
@@ -140,18 +139,40 @@ public class LowSanityEffects : MonoBehaviour {
 			float sphereRadius = 2f;
 			int layerMask = ~(1 << 9);
 			// check to see that there is no other object that collides with the where the cube will be placed
-			if (!Physics.CheckSphere(proposedCubePosition, sphereRadius, layerMask)) {
+			if (true && !Physics.CheckSphere(proposedCubePosition, sphereRadius, layerMask)) {
 				// create cube
-				GameObject cube = Instantiate(cube_prefab) as GameObject;
-                cube.GetComponent<ShadowMonsterController>().setPlayerCharacter(this.player.GetComponent<PlayerCharacter>());
+				GameObject cube = Instantiate(cube_prefab, proposedCubePosition, Quaternion.Euler(0, Random.value * 360, 0)) as GameObject;
 				current_cubes.Add(cube);
 				cube.transform.parent = level_one.transform;
-				cube.transform.position = proposedCubePosition;
-				cube.transform.eulerAngles = new Vector3(0f, Random.Range(0f, 360f), 0f);
-				//make the cube emerge from the ground
-				StartCoroutine (cubeTransform (cube, new Vector3 (x, y + 3f, z), 1f));
 				count++;
 			}
+        }
+    }
+
+    //generate the number of cubes appearing
+    public void generateRandomCubesByPlayer(int number)
+    {
+        int count = 0;
+        while (count < number)
+        {
+            //x ranges from -24 to 24 in Zone 1 and 2 (excluding elevator and Zone 3)
+            float x = Random.value * 4 - 2;
+            //-1f ensures the cube was invisible when instantiated
+            float y = -1f;
+            //z ranges from 24 to -24
+            float z = Random.value * 4 - 2;
+            Vector3 proposedCubePosition = new Vector3(this.player.transform.position.x + x, y, this.player.transform.position.z + z);
+            float sphereRadius = 2f;
+            int layerMask = ~(1 << 9);
+            // check to see that there is no other object that collides with the where the cube will be placed
+            if (true && !Physics.CheckSphere(proposedCubePosition, sphereRadius, layerMask))
+            {
+                // create cube
+                GameObject cube = Instantiate(cube_prefab, proposedCubePosition, Quaternion.Euler(0, Random.value * 360, 0)) as GameObject;
+                current_cubes.Add(cube);
+                cube.transform.parent = level_one.transform;
+                count++;
+            }
         }
     }
 

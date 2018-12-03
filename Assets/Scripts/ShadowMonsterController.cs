@@ -142,13 +142,13 @@ public class ShadowMonsterController : MonoBehaviour {
             {
                 this.resetRotationTimer();
                 this.rotationTime = 0.25f;
-                this.rotatingTo = Quaternion.LookRotation(this.player.transform.position - this.transform.position, Vector3.up);
+                this.rotatingTo = Quaternion.LookRotation(this.transform.position - this.player.transform.position, Vector3.up);
                 this.rotatingFrom = this.transform.rotation;
                 this.moving = false;
             }
 
             // If distance is less than our second formula, start moving toward the player
-            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) / 3 || this.player.getSanity() <= 0f)
+            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) / 1.5 || this.player.getSanity() <= 0f)
             {
                 this.resetMovementTimer();
                 this.movementTime = this.interval;
@@ -252,6 +252,7 @@ public class ShadowMonsterController : MonoBehaviour {
         this.resetMovementTimer();
         this.movementTime = 5f;
         this.movingTo = new Vector3(this.initialPosition.x, this.player.transform.position.y + Random.value - 0.5f, this.initialPosition.z);
+        this.inBounds = true;
         Invoke("finishSpawn", this.movementTime);
     }
 
@@ -278,7 +279,7 @@ public class ShadowMonsterController : MonoBehaviour {
         this.movingTo = new Vector3(this.transform.position.x, this.transform.position.y - 10, this.transform.position.z);
         if (respawn)
         {
-            Invoke("respawn", this.movementTime);
+            Invoke("respawn", this.movementTime + 5f);
         }
         else
         {
@@ -291,10 +292,14 @@ public class ShadowMonsterController : MonoBehaviour {
         this.dead = true;
         this.dyingOrSpawning = false;
         this.GetComponent<Collider>().enabled = true;
+        this.gameObject.SetActive(false);
+        Object.Destroy(this.gameObject);
     }
 
     public void respawn()
     {
-        this.spawn();
+        GameObject newMonster = GameObject.Instantiate(this.player.shadowMonsterPrefab, this.initialPosition, Quaternion.Euler(0, 0, 0), this.transform.parent) as GameObject;
+        newMonster.GetComponent<ShadowMonsterController>().bounds = this.bounds;
+        this.finishDeath();
     }
 }

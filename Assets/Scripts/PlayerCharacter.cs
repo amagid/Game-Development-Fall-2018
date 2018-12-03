@@ -13,6 +13,7 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private float interactionRange = 2.5f;
     [SerializeField] private GameObject[] lightningEmittersGive;
     [SerializeField] private GameObject flashlightBounds;
+    public GameObject shadowMonsterPrefab;
     private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsGive;
     [SerializeField] private GameObject[] lightningEmittersTake;
     private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsTake;
@@ -55,7 +56,7 @@ public class PlayerCharacter : MonoBehaviour {
 		style3.alignment = TextAnchor.UpperCenter;
 
 		inventory = GetComponent<Inventory>();
-		sanity = 15f;
+		sanity = 85f;
 		losingSanity = true;
 		inElevator = false;
 		isCrouching = false;

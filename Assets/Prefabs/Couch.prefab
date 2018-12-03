@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4188042398327376}
   - component: {fileID: 33798479669308174}
   - component: {fileID: 23917107734948266}
+  - component: {fileID: 65623874869319272}
   m_Layer: 0
   m_Name: Couch
   m_TagString: Untagged
@@ -34,9 +35,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490409659585942}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 2.6641324, y: 0.35363913, z: -2.1467137}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 158.21768, y: -4.8199973, z: 55.78499}
+  m_LocalScale: {x: 122.01552, y: 122.01549, z: 122.01549}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,3 +86,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490409659585942}
   m_Mesh: {fileID: 4300000, guid: 8b9f8b9d065af084c9ba5e8d545d4d19, type: 3}
+--- !u!65 &65623874869319272
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490409659585942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.028218424, y: 0.060687013, z: 0.026216721}
+  m_Center: {x: 0, y: -4.5466684e-17, z: 0.006398864}

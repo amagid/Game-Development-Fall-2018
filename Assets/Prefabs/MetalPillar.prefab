@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4137101010717894}
   - component: {fileID: 33425888031975790}
   - component: {fileID: 23878964387030376}
+  - component: {fileID: 65641408411798000}
   m_Layer: 0
   m_Name: MetalPillar
   m_TagString: Untagged
@@ -34,13 +35,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503774293596368}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 13.180463, y: 7.59, z: -0.2662307}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.6103912, y: 0.35696298, z: 0.35696298, w: 0.6103912}
+  m_LocalPosition: {x: 89.29, y: 3.55, z: 55.58}
+  m_LocalScale: {x: 150, y: 150, z: 30.7272}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 60.639004}
 --- !u!23 &23878964387030376
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503774293596368}
   m_Mesh: {fileID: 4300000, guid: 8c5e478b7dec4ba48867427a1ca5967b, type: 3}
+--- !u!65 &65641408411798000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503774293596368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013763465, y: 0.009023687, z: 0.1013399}
+  m_Center: {x: 0, y: 0, z: -0.050398212}

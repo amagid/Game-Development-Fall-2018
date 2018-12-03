@@ -21,7 +21,11 @@ GameObject:
   - component: {fileID: 4506704855133788}
   - component: {fileID: 33901533756699488}
   - component: {fileID: 23046669542526582}
-  m_Layer: 0
+  - component: {fileID: 114420904419541526}
+  - component: {fileID: 114798643140539460}
+  - component: {fileID: 114577369188350354}
+  - component: {fileID: 65063752129002812}
+  m_Layer: 11
   m_Name: DeskPhone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,13 +38,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905441908165830}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 65.67889, y: -12.727536, z: 8.006074}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.18543158, y: 0.68236, z: 0.68236, w: 0.18543158}
+  m_LocalPosition: {x: 147.51768, y: -3.1804562, z: 65.21499}
+  m_LocalScale: {x: 20.980007, y: 20.980001, z: 20.98}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 149.59401}
 --- !u!23 &23046669542526582
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -86,3 +90,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905441908165830}
   m_Mesh: {fileID: 4300000, guid: 38cb3a1f7641e4849b6af9e643aaf9dd, type: 3}
+--- !u!65 &65063752129002812
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0778178, y: 0.07956959, z: 0.019183744}
+  m_Center: {x: -0.0041102786, y: -0.010247041, z: 0.003520345}
+--- !u!114 &114420904419541526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f211590001729e4ca77ea29f878274b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoRegenRate: 0.001
+--- !u!114 &114577369188350354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumptionRate: 0
+  activationThreshold: 0
+  oneTimeActivation: 0
+  powerSourceExtractable: 0
+  hasBeenActivated: 0
+--- !u!114 &114798643140539460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8525ceb13c5483a41b617c5acc26453e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extractable: 0
+  capacity: 5
+  initialPower: 5

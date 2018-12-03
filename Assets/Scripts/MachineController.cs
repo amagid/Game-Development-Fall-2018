@@ -21,7 +21,7 @@ public class MachineController : MonoBehaviour {
 		{
 			if(light.range < 30f)
 			{
-				light.intensity += 0.8f;
+				light.intensity += 3f;
 				light.range += 0.2f;
 			}
 			else

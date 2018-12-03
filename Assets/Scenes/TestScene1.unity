@@ -12487,6 +12487,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1488401581}
   player: {fileID: 1248575531}
+--- !u!65 &357577262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 357577260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.022238106, y: 0.020664215, z: 0.036682963}
+  m_Center: {x: 0.0012851148, y: -0.0005203774, z: -0.0000000056520757}
 --- !u!1001 &358007264
 Prefab:
   m_ObjectHideFlags: 0

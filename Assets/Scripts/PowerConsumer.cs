@@ -11,6 +11,7 @@ public class PowerConsumer : MonoBehaviour {
 	[SerializeField] private float activationThreshold = 0; // Minimum Power to activate device
 	[SerializeField] private bool oneTimeActivation = false;
 	[SerializeField] private bool powerSourceExtractable = true;
+    public bool hasBeenActivated = false;
 
     /// <summary>
     /// Constructor 1. Sets consumption rate and initial power source
@@ -49,10 +50,17 @@ public class PowerConsumer : MonoBehaviour {
 	/// <returns>True if the PowerConsumer has enough Power to activate, False if not.</returns>
 	public bool powerDevice()
 	{
-        bool result;
+        bool result = false;
 		if (this.oneTimeActivation)
 		{
-			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold & this.currentPowerSource.takePower(this.activationThreshold) & this.removePowerSource() != null;
+            if (this.hasBeenActivated)
+                return false;
+
+			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.activationThreshold) && this.removePowerSource() != null;
+            if (result)
+            {
+                this.hasBeenActivated = true;
+            }
 		} else {
 			result = this.currentPowerSource != null && this.currentPowerSource.getPowerLevel() >= this.activationThreshold && this.currentPowerSource.takePower(this.consumptionRate);
 		}

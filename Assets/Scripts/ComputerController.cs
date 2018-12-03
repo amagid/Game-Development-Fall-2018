@@ -57,6 +57,7 @@ public class ComputerController : MonoBehaviour, PoweredOperation
         sceneController.freezeGame();
         Image img = content.GetComponent<Image>();
         img.sprite = image;
+        displayContent.transform.SetAsLastSibling();
         displayContent.SetActive(true);
     }
 		

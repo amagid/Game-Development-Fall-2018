@@ -7,7 +7,7 @@ public class MachineController : MonoBehaviour {
 	[SerializeField] private Light light;
 	[SerializeField] private GameObject player;
 	private Inventory inventory;
-	public static bool activated = false;
+	private bool activated = false;
 	MachinePartPosition[] allMachinePartPositions;
 
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class MachineController : MonoBehaviour {
 		{
 			if(light.range < 30f)
 			{
-				light.intensity += 0.8f;
+				light.intensity += 3f;
 				light.range += 0.2f;
 			}
 			else
@@ -60,4 +60,10 @@ public class MachineController : MonoBehaviour {
 		StartCoroutine ("activate");
 		activated = true;
 	}
+
+	public bool getIsActivated(){
+		return this.activated;
+	}
+
+
 }

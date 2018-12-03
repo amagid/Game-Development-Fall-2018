@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1905441908165830}
+  m_IsPrefabAsset: 1
+--- !u!1 &1905441908165830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4506704855133788}
+  - component: {fileID: 33901533756699488}
+  - component: {fileID: 23046669542526582}
+  - component: {fileID: 114420904419541526}
+  - component: {fileID: 114798643140539460}
+  - component: {fileID: 114577369188350354}
+  - component: {fileID: 65063752129002812}
+  m_Layer: 11
+  m_Name: DeskPhone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4506704855133788
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_LocalRotation: {x: -0.18543158, y: 0.68236, z: 0.68236, w: 0.18543158}
+  m_LocalPosition: {x: 147.51768, y: -3.1804562, z: 65.21499}
+  m_LocalScale: {x: 20.980007, y: 20.980001, z: 20.98}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 149.59401}
+--- !u!23 &23046669542526582
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: b8e276879a7504e4186c0a7ae82b5e46, type: 2}
+  - {fileID: 2100000, guid: 1ea843cb9c103cb418fbcbefd2cd446a, type: 2}
+  - {fileID: 2100000, guid: 6e70a1f294e256041b5ea35c6366e5af, type: 2}
+  - {fileID: 2100000, guid: 3516f76bfd5fff846894f35bb6c9276b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33901533756699488
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Mesh: {fileID: 4300000, guid: 38cb3a1f7641e4849b6af9e643aaf9dd, type: 3}
+--- !u!65 &65063752129002812
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0778178, y: 0.07956959, z: 0.019183744}
+  m_Center: {x: -0.0041102786, y: -0.010247041, z: 0.003520345}
+--- !u!114 &114420904419541526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f211590001729e4ca77ea29f878274b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoRegenRate: 0.001
+--- !u!114 &114577369188350354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578600572c19bfd4db0fe237d68fa4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  consumptionRate: 0
+  activationThreshold: 0
+  oneTimeActivation: 0
+  powerSourceExtractable: 0
+  hasBeenActivated: 0
+--- !u!114 &114798643140539460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905441908165830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8525ceb13c5483a41b617c5acc26453e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extractable: 0
+  capacity: 5
+  initialPower: 5

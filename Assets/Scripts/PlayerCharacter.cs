@@ -474,13 +474,30 @@ public class PlayerCharacter : MonoBehaviour {
             } else if (obj.GetComponent<LightSourceController>() != null)
             {
                 this.cursorMessage = "Lamp";
+            } else if (obj.GetComponent<MachinePartController>() != null)
+            {
+                this.cursorMessage = "Reactor Control Unit";
+            } else if (obj.GetComponent<MachinePartPosition>() != null)
+            {
+                this.cursorMessage = "Missing Part\nNeeds Reactor Control Unit\nE - Place Reactor Control Unit";
+            } else if (obj.GetComponent<MachineController>() != null)
+            {
+                this.cursorMessage = "Central Reactor";
+                if (obj.GetComponent<MachineController>().getIsActivated())
+                {
+                    this.cursorMessage += "\nPowered up!\nUse Elevator to leave facility";
+                } else
+                {
+                    this.cursorMessage += "\nMissing Parts\nInstall Reactor Control Units\nIn Marked Areas";
+                }
             }
-			PowerConsumer pc = obj.GetComponent<PowerConsumer>();
+
+            PowerConsumer pc = obj.GetComponent<PowerConsumer>();
 			if (pc != null && !obj.CompareTag("Switch"))
 			{
 				if (pc.isOneTimeActivation())
 				{
-					this.cursorMessage += "\nRequires " + pc.getActivationThreshold() + " Power to Activate";
+					this.cursorMessage += pc.hasBeenActivated ? "\nAlready Activated" : "\nRequires " + pc.getActivationThreshold() + " Power to Activate";
 				} else if (pc.getConsumptionRate() > 0)
 				{
 					this.cursorMessage += "\nRequires " + (pc.getConsumptionRate() * 60f).ToString("F2") + " Power/Second";
@@ -494,7 +511,7 @@ public class PlayerCharacter : MonoBehaviour {
 					this.cursorMessage += "\nRMB - Siphon Power";
 				}
 			}
-			if (obj.CompareTag("battery") || obj.CompareTag("note"))
+			if (obj.CompareTag("battery") || obj.CompareTag("note") || obj.GetComponent<MachinePartController>() != null)
 			{
 				this.cursorMessage += "\nE - Pick Up";
 			}

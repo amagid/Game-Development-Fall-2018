@@ -7,7 +7,7 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 	private GameObject Player;
 	private PlayerCharacter playersScript;
 	bool atLight;
-	GameObject pointLight;
+	[SerializeField] private GameObject pointLight;
     private bool deviceActive;
     private PowerConsumer powerConsumer;
     private AudioSource source;
@@ -16,10 +16,13 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 	void Start () {
 		Player = GameObject.Find ("Player");
 		playersScript = (PlayerCharacter) Player.GetComponent(typeof(PlayerCharacter));
-		pointLight = new GameObject("The Light");
-		Light lightComp = pointLight.AddComponent<Light>();
-		lightComp.intensity = 5;
-		pointLight.transform.position = gameObject.transform.position + new Vector3(0.8f, 0.8f);
+        if (this.pointLight == null)
+        {
+            pointLight = new GameObject("The Light");
+            Light lightComp = pointLight.AddComponent<Light>();
+            lightComp.intensity = 5;
+            pointLight.transform.position = gameObject.transform.position + new Vector3(0.8f, 0.8f);
+        }
 		pointLight.SetActive (false);
         deviceActive = false;
         this.powerConsumer = this.getPowerConsumer();

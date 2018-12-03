@@ -186,9 +186,9 @@ public class InventoryUI : MonoBehaviour
 
     private void chargeSelectedBattery()
     {
-        Debug.Log("playerBattery " + playerBattery != null);
+        Debug.Log("playerBattery " + (playerBattery != null));
         GameObject selectedItem = this.playerInventory.peekSelectedItem();
-        Debug.Log("playerBattery " + playerBattery != null);
+        Debug.Log("playerBattery " + (playerBattery != null));
         if (selectedItem != null
              && selectedItem.CompareTag("battery")
              && (PowerSource.transferPower(playerBattery, selectedItem.GetComponent<Battery>().getPowerSource(), 20f)

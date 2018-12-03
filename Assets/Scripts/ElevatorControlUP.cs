@@ -35,7 +35,7 @@ public class ElevatorControlUP : MonoBehaviour, DirectOperation {
     private IEnumerator loadUpperLevel()
     {
         scene_controller.GetComponent<SceneController>().button_light = this.button_light;
-        scene_controller.GetComponent<SceneController>().StartCoroutine("loadLevel", current_level_num + 1);
+        scene_controller.GetComponent<SceneController>().StartCoroutine("finishGame");
         yield return new WaitForSeconds(1f);
     }
     

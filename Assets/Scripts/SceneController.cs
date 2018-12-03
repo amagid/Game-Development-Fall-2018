@@ -10,6 +10,8 @@ public class SceneController : MonoBehaviour {
     [SerializeField] private GameObject level_one;
     [SerializeField] private GameObject level_final;
     [SerializeField] private GameObject elevator_outside_lights;
+    [SerializeField] private GameObject GameWinFader;
+
     private Vector3 elevator_outside_lights_initPos;
 	// the player game object
 	[SerializeField] private GameObject player;
@@ -84,7 +86,7 @@ public class SceneController : MonoBehaviour {
         Cursor.visible = false;
 	}
 
-    public IEnumerator loadLevel(int level)
+    public IEnumerator finishGame()
     {
         isElevatorMoving = true;
         button_light.SetActive(true);
@@ -92,37 +94,15 @@ public class SceneController : MonoBehaviour {
         elevator_door.GetComponent<DoorController>().StartCoroutine("closeDoor");
         yield return new WaitForSeconds(4f);
         current_level.SetActive(false);
-        string direction = "";
-        if(level > current_level_num)
-        {
-            direction = "UP";
-        }
-        else if (level < current_level_num)
-        {
-            direction = "DOWN";
-        }
-        switch (level)
-        {
-            case 1:
-                level_one.SetActive(true);
-                current_level_num = 1;
-                current_level = level_one;
-                break;
-            case 2:
-                level_final.SetActive(true);
-                current_level_num = 2;
-                current_level = level_final;
-                break;
-            default:
-                throw new Exception("No Such Level");
-                break;
-        }
-        StartCoroutine("elevatorMovingAnimation", direction);
-        yield return new WaitForSeconds(6f);
-        elevator_door.GetComponent<DoorController>().StartCoroutine("openDoor");
-        isElevatorMoving = false;
-        flickerOn = true;
-        button_light.SetActive(false);
+        StartCoroutine("elevatorMovingAnimation", "UP");
+        yield return new WaitForSeconds(2f);
+        this.GameWinFader.SetActive(true);
+        this.GameWinFader.GetComponent<CanvasRenderer>().SetAlpha(0f);
+        this.GameWinFader.GetComponent<UnityEngine.UI.Image>().CrossFadeAlpha(1.0f, 3.0f, false);
+        yield return new WaitForSeconds(3f);
+        PlayerPrefs.SetFloat("totalTime", Time.timeSinceLevelLoad);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndGame");
+
     }
 
     public IEnumerator elevatorMovingAnimation(string direction) {

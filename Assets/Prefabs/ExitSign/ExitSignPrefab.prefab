@@ -579,3 +579,4 @@ MonoBehaviour:
   activationThreshold: 0
   oneTimeActivation: 0
   powerSourceExtractable: 0
+  hasBeenActivated: 0

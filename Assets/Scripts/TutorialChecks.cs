@@ -131,6 +131,18 @@ public class TutorialChecks : MonoBehaviour {
                     hideAllDialogues();
                     currentDialogue.SetActive(true);
                     break;
+                case "WatchOut":
+                    hideAllDialogues();
+                    currentDialogue.SetActive(true);
+                    break;
+                case "ShadesEatPower":
+                    hideAllDialogues();
+                    currentDialogue.SetActive(true);
+                    break;
+                case "CheckLightCombat":
+                    hideAllDialogues();
+                    currentDialogue.SetActive(true);
+                    break;
                 case "TutorialFinal":
                     hideAllDialogues();
                     currentDialogue.SetActive(true);

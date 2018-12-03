@@ -181,10 +181,7 @@ public class PlayerCharacter : MonoBehaviour {
 		// If our RayCast hits an object
 		if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, this.interactionRange, 1 << LayerMask.NameToLayer("Interactable")))
 		{
-			if (this.seenObject != hit.collider.gameObject)
-			{
-				this.updateSeenObject(hit.collider.gameObject);
-			}
+			this.updateSeenObject(hit.collider.gameObject);
 
 			// If the left mouse button is being pressed, attempt to power the hit device
 			if (Input.GetKey(KeyCode.Mouse0) && this.currentConsumer == null)
@@ -519,11 +516,18 @@ public class PlayerCharacter : MonoBehaviour {
 				}
 				if (pc.getConsumptionRate() > 0 || (pc.isOneTimeActivation() && pc.getActivationThreshold() > 0))
 				{
-					this.cursorMessage += "\nLMB - Give Power ";
+                    this.cursorMessage += "\nLMB - Give Power";
+                    if (this.inventory.itemCount() > 0) {
+                        this.cursorMessage += "\nE - Attach Battery";
+                    }
 				}
 				if (pc.getPowerSource() != null && pc.getPowerSource() != this.internalBattery)
 				{
 					this.cursorMessage += "\nRMB - Siphon Power";
+                    if (pc.isPowerSourceExtractable())
+                    {
+                        this.cursorMessage += "\nE - Remove Battery";
+                    }
 				}
 			}
 			if (obj.CompareTag("battery") || obj.CompareTag("note") || obj.GetComponent<MachinePartController>() != null)
@@ -538,9 +542,17 @@ public class PlayerCharacter : MonoBehaviour {
 					if (this.inventory.itemCount() > 0) // TODO: Do this better (right now will break if we add items that aren't batteries to the game)
 					{
 						this.cursorMessage += "\nE - Attach Battery";
-					}
-				}
+                    }
+                    if (pc.getConsumptionRate() > 0)
+                    {
+                        this.cursorMessage += "\nRequires " + (pc.getConsumptionRate() * 60f).ToString("F2") + " Power/Second";
+                    }
+                }
 			}
+            if (pc != null && pc.getPowerSource() != null && pc.getPowerSource() != this.getPowerSource())
+            {
+                this.cursorMessage += "\nPower Level: " + Mathf.Floor(pc.getPowerSource().getPowerLevel()) + " / " + pc.getPowerSource().getMaxPower();
+            }
 		} else
 		{
 			this.cursorMessage = "";

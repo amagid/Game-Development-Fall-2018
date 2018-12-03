@@ -302,4 +302,14 @@ public class ShadowMonsterController : MonoBehaviour {
         newMonster.GetComponent<ShadowMonsterController>().bounds = this.bounds;
         this.finishDeath();
     }
+
+    public void startReactorKill(GameObject reactor)
+    {
+        this.movingFrom = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.movingTo = reactor.transform.position;
+        this.dyingOrSpawning = true;
+        this.movementTime = 5f + Random.value;
+        this.resetMovementTimer();
+        Invoke("finishDeath", this.movementTime);
+    }
 }

@@ -17,6 +17,11 @@ public class MachineController : MonoBehaviour {
 
 	public IEnumerator activate()
 	{
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag("monster");
+        foreach (GameObject monster in monsters)
+        {
+            monster.GetComponent<ShadowMonsterController>().startReactorKill(this.gameObject);
+        }
 		for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
 		{
 			if(light.range < 30f)
@@ -47,8 +52,13 @@ public class MachineController : MonoBehaviour {
 				break;
 			}
 			yield return new WaitForSeconds(0.01f);
-		}
-	}
+        }
+        monsters = GameObject.FindGameObjectsWithTag("monster");
+        foreach (GameObject monster in monsters)
+        {
+            monster.GetComponent<ShadowMonsterController>().startReactorKill(this.gameObject);
+        }
+    }
 
 	// checks if every machine part is placed in the machine, if it is it activates the machine
 	public void isMachineComplete(){

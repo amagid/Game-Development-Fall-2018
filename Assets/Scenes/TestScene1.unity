@@ -566,6 +566,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -613,6 +617,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 884508689}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -796,6 +804,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -1749,6 +1761,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -2642,6 +2658,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4084497815891146, guid: a34d559676e53bc468e9a0dc185e9b4a,
     type: 2}
   m_PrefabInternal: {fileID: 65641969}
+--- !u!1 &67282521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1391369439550412, guid: 9af6522995e8c7441aeb6664059f7ae5,
+    type: 2}
+  m_PrefabInternal: {fileID: 655860492}
+--- !u!65 &67282522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67282521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000069317255, y: 0.009999999, z: 0.021933693}
+  m_Center: {x: -0.000000014901161, y: 0.0053436686, z: -0.0059668534}
 --- !u!1 &68998764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,6 +2893,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -7106,18 +7143,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 65
       objectReference: {fileID: 0}
-    - target: {fileID: 4698866574766022, guid: 9c9f1c0e9c5035d4288f60598b076a48, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 23.881334
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698866574766022, guid: 9c9f1c0e9c5035d4288f60598b076a48, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 23.881334
-      objectReference: {fileID: 0}
-    - target: {fileID: 4698866574766022, guid: 9c9f1c0e9c5035d4288f60598b076a48, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 23.881334
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9f1c0e9c5035d4288f60598b076a48, type: 2}
   m_IsPrefabAsset: 0
@@ -7951,6 +7976,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -12010,6 +12039,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -13774,6 +13807,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 1300811385}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -14641,6 +14678,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -14772,6 +14813,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -15052,6 +15097,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -16236,6 +16285,23 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419900315}
   m_CullTransparentMesh: 0
+--- !u!1 &422038456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100022, guid: 178e9157efe27d04a92d9d3c82cb192d,
+    type: 3}
+  m_PrefabInternal: {fileID: 488327158}
+--- !u!65 &422038457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 422038456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &425687976
 Prefab:
   m_ObjectHideFlags: 0
@@ -17872,6 +17938,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -18236,6 +18306,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -18970,6 +19044,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4567041465349066, guid: 50b3f12790fee724b9703b2af45c7f89,
     type: 2}
   m_PrefabInternal: {fileID: 493241499}
+--- !u!1 &493857318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1450092513896462, guid: 9af6522995e8c7441aeb6664059f7ae5,
+    type: 2}
+  m_PrefabInternal: {fileID: 655860492}
+--- !u!65 &493857319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 493857318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021060281, y: 0.3728873, z: 0.08204234}
+  m_Center: {x: 0.00000011920929, y: 0.18837982, z: -0.16436587}
 --- !u!1 &496259224
 GameObject:
   m_ObjectHideFlags: 0
@@ -20636,6 +20727,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -21484,6 +21579,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.046501614, y: 0.027957525, z: 0.026720438}
   m_Center: {x: 0.012202712, y: 0.00000023656226, z: 0.002328041}
+--- !u!1 &558306763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a59f6f4e89412394fbb2ade67eb2905d,
+    type: 3}
+  m_PrefabInternal: {fileID: 1451320619}
+--- !u!65 &558306764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558306763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35971013, y: 0.3513873, z: 0.3033931}
+  m_Center: {x: 0.1798306, y: 0.17263046, z: -0.034779057}
 --- !u!1 &559111953
 GameObject:
   m_ObjectHideFlags: 0
@@ -21795,6 +21907,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4084497815891146, guid: a34d559676e53bc468e9a0dc185e9b4a,
     type: 2}
   m_PrefabInternal: {fileID: 567758402}
+--- !u!1 &568249239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100022, guid: 178e9157efe27d04a92d9d3c82cb192d,
+    type: 3}
+  m_PrefabInternal: {fileID: 1325252935}
+--- !u!65 &568249240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568249239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &568423050
 Prefab:
   m_ObjectHideFlags: 0
@@ -22347,6 +22476,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -22869,6 +23002,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -25782,6 +25919,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -30181,6 +30322,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -30287,6 +30432,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 737061675}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -31338,6 +31487,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -33991,6 +34144,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000001, y: 0.009999999, z: 0.010000003}
   m_Center: {x: 0, y: 4.656613e-10, z: -0.00000023841858}
+--- !u!1 &887038281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1397719158898656, guid: 9af6522995e8c7441aeb6664059f7ae5,
+    type: 2}
+  m_PrefabInternal: {fileID: 655860492}
+--- !u!65 &887038282
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887038281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021060281, y: 0.3728873, z: 0.082042314}
+  m_Center: {x: 0.00000011920929, y: 0.18837982, z: 0.081289224}
 --- !u!1 &887409204
 GameObject:
   m_ObjectHideFlags: 0
@@ -35316,6 +35486,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -36447,6 +36621,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -36590,6 +36768,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -37105,6 +37287,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -40499,6 +40685,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -40934,6 +41124,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -41240,6 +41434,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -41568,6 +41766,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 73426005}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -44184,6 +44386,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -45458,6 +45664,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -45565,6 +45775,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -47507,6 +47721,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4084497815891146, guid: a34d559676e53bc468e9a0dc185e9b4a,
     type: 2}
   m_PrefabInternal: {fileID: 1202853364}
+--- !u!1 &1206664585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1089465746505172, guid: 9af6522995e8c7441aeb6664059f7ae5,
+    type: 2}
+  m_PrefabInternal: {fileID: 655860492}
+--- !u!65 &1206664586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1206664585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0206391, y: 0.26733348, z: 0.16561764}
+  m_Center: {x: -0.00000047931815, y: 0, z: -0.08324833}
 --- !u!1001 &1207123730
 Prefab:
   m_ObjectHideFlags: 0
@@ -48500,6 +48731,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -48856,6 +49091,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -52822,6 +53061,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -53337,6 +53580,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -54289,6 +54536,26 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: f9265e55fb3b1054eb5b499a0a0e3c6f,
         type: 3}
+    - target: {fileID: 65691224924168044, guid: bb6a47b7b6edecc4c8acbe9a7d957677,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 0.04242752
+      objectReference: {fileID: 0}
+    - target: {fileID: 65691224924168044, guid: bb6a47b7b6edecc4c8acbe9a7d957677,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.00000011836721
+      objectReference: {fileID: 0}
+    - target: {fileID: 65691224924168044, guid: bb6a47b7b6edecc4c8acbe9a7d957677,
+        type: 2}
+      propertyPath: m_Center.y
+      value: -0.00045790727
+      objectReference: {fileID: 0}
+    - target: {fileID: 65691224924168044, guid: bb6a47b7b6edecc4c8acbe9a7d957677,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.011413596
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb6a47b7b6edecc4c8acbe9a7d957677, type: 2}
   m_IsPrefabAsset: 0
@@ -54663,6 +54930,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -56016,6 +56287,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -57924,6 +58199,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -57974,6 +58253,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -59793,6 +60076,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -63232,6 +63519,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -63959,6 +64250,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -64253,6 +64548,23 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1593652455}
   m_CullTransparentMesh: 0
+--- !u!1 &1593969237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a59f6f4e89412394fbb2ade67eb2905d,
+    type: 3}
+  m_PrefabInternal: {fileID: 300072186}
+--- !u!65 &1593969238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593969237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40000004, y: 0.5909646, z: 0.40000004}
+  m_Center: {x: 0.195, y: 0.09548244, z: 6.771624e-16}
 --- !u!1001 &1594013277
 Prefab:
   m_ObjectHideFlags: 0
@@ -66830,6 +67142,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -69265,6 +69581,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -70136,6 +70456,23 @@ Transform:
   m_Father: {fileID: 1844626659}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1711056194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1403646657927742, guid: 9af6522995e8c7441aeb6664059f7ae5,
+    type: 2}
+  m_PrefabInternal: {fileID: 655860492}
+--- !u!65 &1711056195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711056194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000069317255, y: 0.009999999, z: 0.021933693}
+  m_Center: {x: 0.000000014901161, y: 0.0053436686, z: -0.005966846}
 --- !u!1 &1711290788
 GameObject:
   m_ObjectHideFlags: 0
@@ -70252,6 +70589,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -70509,6 +70850,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -75841,6 +76186,23 @@ Transform:
   m_Father: {fileID: 1172336788}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1866118387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100022, guid: 178e9157efe27d04a92d9d3c82cb192d,
+    type: 3}
+  m_PrefabInternal: {fileID: 1535242888}
+--- !u!65 &1866118388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866118387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1867061607
 Prefab:
   m_ObjectHideFlags: 0
@@ -77896,6 +78258,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -78838,6 +79204,10 @@ Prefab:
     - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
       propertyPath: m_Name
       value: Monsta (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
@@ -80914,6 +81284,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -82423,6 +82797,10 @@ Prefab:
       propertyPath: m_Name
       value: Monsta (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -82885,6 +83263,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 1684810913}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0
@@ -89501,6 +89883,10 @@ Prefab:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 448051382}
+    - target: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
+      propertyPath: m_TagString
+      value: monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9fc9aaa7816384294033afd4b96e08, type: 2}
   m_IsPrefabAsset: 0

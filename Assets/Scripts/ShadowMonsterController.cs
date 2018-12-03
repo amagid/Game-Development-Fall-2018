@@ -21,7 +21,7 @@ public class ShadowMonsterController : MonoBehaviour {
     private float rotationTimeElapsed = 0.0f;
     private float movementTimeElapsed = 0.0f;
     private float distanceToPlayer;
-    public float attackRange = 1f;
+    public float attackRange = 2f;
     public float attackAmount = 5f;
     public bool moving = true;
     public bool movingBackToBounds = false;
@@ -138,7 +138,7 @@ public class ShadowMonsterController : MonoBehaviour {
             this.distanceToPlayer = Vector3.Distance(this.player.transform.position, this.transform.position);
 
             // If distance is less than our formula, stop and look at the player
-            if (this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) || this.player.getSanity() <= 0f)
+            if (this.distanceToPlayer < Mathf.Pow(7 - (this.player.getSanity() / 20), 2) || this.player.getSanity() <= 0f)
             {
                 this.resetRotationTimer();
                 this.rotationTime = 0.25f;
@@ -148,7 +148,7 @@ public class ShadowMonsterController : MonoBehaviour {
             }
 
             // If distance is less than our second formula, start moving toward the player
-            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(6 - (this.player.getSanity() / 20), 2) / 1.5 || this.player.getSanity() <= 0f)
+            if ((this.bounds == null || this.inBounds) && this.distanceToPlayer < Mathf.Pow(7 - (this.player.getSanity() / 20), 2) / 1.5 || this.player.getSanity() <= 0f)
             {
                 this.resetMovementTimer();
                 this.movementTime = this.interval;
@@ -158,7 +158,7 @@ public class ShadowMonsterController : MonoBehaviour {
             }
 
             // If neither, wander around aimlessly
-            if (this.distanceToPlayer >= Mathf.Pow(6 - (this.player.getSanity() / 20), 2))
+            if (this.distanceToPlayer >= Mathf.Pow(7 - (this.player.getSanity() / 20), 2))
             {
                 if (this.player.getSanity() > 20)
                 {
@@ -194,6 +194,7 @@ public class ShadowMonsterController : MonoBehaviour {
             if (this.distanceToPlayer < this.attackRange && this.player.getSanity() > 0)
             {
                 this.player.getPowerSource().takePower(this.attackAmount);
+                this.player.reduceSanity(this.attackAmount);
                 this.scatter(this.player.transform.position);
                 return;
             }

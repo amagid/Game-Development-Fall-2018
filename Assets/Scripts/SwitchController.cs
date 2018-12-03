@@ -11,9 +11,6 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 
 	[SerializeField] private GameObject switchDevice;
 	private DirectOperation deviceController; 
-	public double xOffset;
-	public double yOffset;
-	public double zOffset;
 	private GameObject GreenLights; // new
 	private GameObject RedLights; // new
 	private bool active = false;
@@ -68,7 +65,9 @@ public class SwitchController : MonoBehaviour, PoweredOperation {
 		//this.battery = battery;
 		// Sets in game battery object on to the switch
 		Debug.Log ("BATTERY NAME: " + battery.name);
-		battery.transform.position = transform.position + new Vector3((float)xOffset, (float)yOffset, (float)zOffset);
+        battery.transform.parent = this.transform;
+        battery.transform.rotation = Quaternion.Euler(new Vector3(0, this.transform.rotation.eulerAngles.y - 90f, 0));
+        battery.transform.position = this.transform.Find("pCylinder4").transform.position + new Vector3(0, 1.0f, 0);
 		battery.SetActive(true);
 		battery.GetComponent<Battery> ().deviceBatteryIsAttachedTo = this.powerConsumer;
 

@@ -46560,6 +46560,7 @@ MonoBehaviour:
   - {fileID: 268367408}
   lightningEmittersTake:
   - {fileID: 608295948}
+  electricity: {fileID: 8300000, guid: 950ba2fe146ca44f781bc0d0957e0eb9, type: 3}
 --- !u!114 &1248575541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46595,8 +46596,8 @@ MonoBehaviour:
   colorHaze: {fileID: 0}
   level_one: {fileID: 697750279}
   heavy_breathing: {fileID: 8300000, guid: 086453ce3b8819845b5e126159018bfb, type: 3}
-  whispers: {fileID: 0}
-  tinnitus: {fileID: 0}
+  whisper: {fileID: 8300000, guid: dcb348ea34bd444a1b3d0c3078c3bb66, type: 3}
+  tinnitus: {fileID: 8300000, guid: c41a29488c7194fbf9260f9e23450dbd, type: 3}
   general_ambience: {fileID: 8300000, guid: 915b8b7db1076ea448f1a8a17a2123a8, type: 3}
   cameraReference: {fileID: 1834485693}
 --- !u!82 &1248575543

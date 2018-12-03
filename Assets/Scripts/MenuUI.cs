@@ -21,4 +21,12 @@ public class MenuUI : MonoBehaviour {
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("TestScene1");
+        Time.timeScale = 1;
+    }
+
+
 }

@@ -43,6 +43,8 @@ public class Inventory : MonoBehaviour {
             if (this.itemList[i] == null)
             {
                 this.itemList[i] = item;
+				int maxBatteryIndex = getMaxBatteryIndex ();
+				setSelectedItemIndex (maxBatteryIndex);
                 return true;
             }
         }
@@ -70,6 +72,8 @@ public class Inventory : MonoBehaviour {
             if (this.itemList[i] == item)
             {
                 this.itemList[i] = null;
+				int maxBatteryIndex = getMaxBatteryIndex ();
+				setSelectedItemIndex (maxBatteryIndex);
                 return true;
             }
         }
@@ -107,6 +111,11 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	// retrieve the item list
+	public GameObject[] getItemList(){
+		return this.itemList;
 	}
 
     //retrieve the item in the itemList by name
@@ -193,4 +202,26 @@ public class Inventory : MonoBehaviour {
             this.itemList[i] = null;
         }
     }
+
+	private int getMaxBatteryIndex(){
+		int maxBatteryIndex = 0;
+		if (getItemList().Length == 0) {
+			return -1;
+		}
+		Debug.Log (getItemList().Length);
+		float maxPowerLevel = 0;
+		for (int i = 0; i < getItemList().Length; i++) {
+			GameObject item = getItemList() [i];
+			if (item == null || item.GetComponent<Battery> () == null) {
+				continue;
+			}
+			float currentPowerLevel = item.GetComponent<Battery> ().getPowerSource ().getPowerLevel ();
+			if (currentPowerLevel > maxPowerLevel) {
+				maxPowerLevel = currentPowerLevel;
+				maxBatteryIndex = i;
+			}
+		}
+
+		return maxBatteryIndex;
+	}
 }

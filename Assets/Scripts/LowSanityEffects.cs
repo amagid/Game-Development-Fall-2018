@@ -11,10 +11,12 @@ public class LowSanityEffects : MonoBehaviour {
 	[SerializeField] private GameObject colorHaze;
     [SerializeField] private GameObject level_one;
     //audio
-    private AudioSource source;
+    private AudioSource breathing_source;
+    private AudioSource whisper_source;
+    private AudioSource tinnitus_source;
     private AudioSource ambience_source;
     public AudioClip heavy_breathing;
-    public AudioClip whispers;
+    public AudioClip whisper;
     public AudioClip tinnitus;
     public AudioClip general_ambience;
 
@@ -28,7 +30,9 @@ public class LowSanityEffects : MonoBehaviour {
 	void Start () {
         sanity = player.GetComponent<PlayerCharacter>().getSanity();
         current_cubes = new List<GameObject>();
-        source = GetComponent<AudioSource>();
+        breathing_source = GetComponent<AudioSource>();
+        whisper_source = player.AddComponent<AudioSource>();
+        tinnitus_source = player.AddComponent<AudioSource>();
         ambience_source = player.AddComponent<AudioSource>();
 		camera = GameObject.Find("Camera");
 	}
@@ -42,9 +46,9 @@ public class LowSanityEffects : MonoBehaviour {
             ambience_source.PlayOneShot(general_ambience, 1f);
         }
         if(sanity < 60f) {
-            if (!source.isPlaying)
+            if (!breathing_source.isPlaying)
             {
-                source.PlayOneShot(heavy_breathing, (1f- sanity/100f));
+                breathing_source.PlayOneShot(heavy_breathing, (1f- sanity/100f));
             }
             StartCoroutine(Shake(0.1f, magnitude + (sanity - 60f) * 0.0005f));
         }
@@ -56,6 +60,10 @@ public class LowSanityEffects : MonoBehaviour {
 
 
         if(sanity < 40f) {
+            if (!whisper_source.isPlaying)
+            {
+                whisper_source.PlayOneShot(whisper, (1f-(sanity / 100f)) * 0.6f);
+            }
             float current_index = sanity / 40f;
             changeSightRange(current_index * 10f);
             changeSightIntensity(current_index * 3f);
@@ -79,6 +87,12 @@ public class LowSanityEffects : MonoBehaviour {
             }
             current_cubes = new List<GameObject>();
             current_level = 50f;
+        }
+        if (sanity < 20f) {
+            if (!tinnitus_source.isPlaying)
+            {
+                tinnitus_source.PlayOneShot(tinnitus, (1f-(sanity / 100f)) * 0.2f);
+            }
         }
         /*
         if (sanity < 10f) {

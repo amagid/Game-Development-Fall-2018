@@ -13,6 +13,7 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField] private float interactionRange = 2.5f;
     [SerializeField] private GameObject[] lightningEmittersGive;
     [SerializeField] private GameObject flashlightBounds;
+    [SerializeField] private GameObject arm;
     public GameObject shadowMonsterPrefab;
     private DigitalRuby.LightningBolt.LightningBoltScript[] lightningScriptsGive;
     [SerializeField] private GameObject[] lightningEmittersTake;
@@ -265,74 +266,8 @@ public class PlayerCharacter : MonoBehaviour {
 			//If the E key is being pressed, try to add a battery to the seen device.
 			if (Input.GetKeyDown(KeyCode.E))
 			{
-				MachinePartController mc = hit.collider.gameObject.GetComponent<MachinePartController> ();
-				MachinePartPosition mp = hit.collider.gameObject.GetComponent<MachinePartPosition> ();
-				// Get the PowerConsumer of the object we're looking at, if any.
-				PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
-
-				// Get the Battery of the object we're looking at, if any.
-				Battery bat = hit.collider.gameObject.GetComponent<Battery>();
-
-				// If there is a PowerConsumer on this object, check if it has a PowerSource.
-
-				if (mc != null) {
-					mc.pickUpObject (inventory);
-				} else if (mp != null) {
-					GameObject selectedInventoryObject = this.inventory.getSelectedItem ();
-					MachinePartController InventoryObjectMC = selectedInventoryObject.GetComponent<MachinePartController> ();
-					if (InventoryObjectMC != null) {
-						if (InventoryObjectMC.getPartNumber () == mp.getPartNumber ()) {
-							mp.placePartInMachine (InventoryObjectMC.GetComponent<Renderer> ().material);
-						} else {
-							this.inventory.addItem (selectedInventoryObject);
-						}
-					} else {
-						this.inventory.addItem (selectedInventoryObject);
-					}
-				} else if (pc != null)
-				{
-					PowerSource ps = pc.getPowerSource();
-					// If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
-					if (ps == null)
-					{
-						GameObject gameObjectPC = this.inventory.getSelectedItem();
-						Battery batteryPC = gameObjectPC != null ? gameObjectPC.GetComponent<Battery>() : null;
-						if (batteryPC != null && batteryPC.getPowerSource () != null) {
-							if (pc.isOneTimeActivation ()) {
-								inventory.addItem (gameObjectPC);
-							}
-							pc.attachPowerSource (batteryPC.getPowerSource ());
-					
-							SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController> ();
-							if (sc != null) {
-								sc.setBattery (gameObjectPC);
-							}
-						} else {
-							this.inventory.addItem (gameObjectPC);
-						}
-						// if the power consumer is one time use return the battery to the character
-
-						// If the PowerConsumer did have a PowerSource, check if it's extractable & take it if it is
-					} else if (pc.isPowerSourceExtractable() && !pc.isOneTimeActivation())
-					{
-						PowerSource oldPC = pc.removePowerSource();
-						Battery battery = oldPC.theBattery;
-
-						inventory.addItem(battery.gameObject); 
-						battery.gameObject.SetActive(false);
-
-					}
-				// the object you hit e on is a battery
-				} else if (bat != null)
-				{
-						if (bat.deviceBatteryIsAttachedTo != null) {
-							bat.deviceBatteryIsAttachedTo.removePowerSource ();
-							bat.deviceBatteryIsAttachedTo = null;
-							Debug.Log ("Player took battery too early");
-						}
-					inventory.addItem(bat.gameObject); 
-					bat.gameObject.SetActive(false);
-				} 
+                this.arm.GetComponent<ArmController>().startPoke();
+                StartCoroutine(EInteract(hit));
 			}
 			// If our RayCast did not hit any objects, then we're not looking at anything, so stop siphoning / giving Power to things.
 		}
@@ -342,6 +277,97 @@ public class PlayerCharacter : MonoBehaviour {
 			this.currentSource = null;
 		}
 	}
+
+    private IEnumerator EInteract(RaycastHit hit)
+    {
+        yield return new WaitForSeconds(0.3f);
+        MachinePartController mc = hit.collider.gameObject.GetComponent<MachinePartController>();
+        MachinePartPosition mp = hit.collider.gameObject.GetComponent<MachinePartPosition>();
+        // Get the PowerConsumer of the object we're looking at, if any.
+        PowerConsumer pc = hit.collider.gameObject.GetComponent<PowerConsumer>();
+
+        // Get the Battery of the object we're looking at, if any.
+        Battery bat = hit.collider.gameObject.GetComponent<Battery>();
+
+        // If there is a PowerConsumer on this object, check if it has a PowerSource.
+
+        if (mc != null)
+        {
+            mc.pickUpObject(inventory);
+        }
+        else if (mp != null)
+        {
+            GameObject selectedInventoryObject = this.inventory.getSelectedItem();
+            MachinePartController InventoryObjectMC = selectedInventoryObject.GetComponent<MachinePartController>();
+            if (InventoryObjectMC != null)
+            {
+                if (InventoryObjectMC.getPartNumber() == mp.getPartNumber())
+                {
+                    mp.placePartInMachine(InventoryObjectMC.GetComponent<Renderer>().material);
+                }
+                else
+                {
+                    this.inventory.addItem(selectedInventoryObject);
+                }
+            }
+            else
+            {
+                this.inventory.addItem(selectedInventoryObject);
+            }
+        }
+        else if (pc != null)
+        {
+            PowerSource ps = pc.getPowerSource();
+            // If the PowerConsumer did not have a PowerSource, attach the first battery in our inventory.
+            if (ps == null)
+            {
+                GameObject gameObjectPC = this.inventory.getSelectedItem();
+                Battery batteryPC = gameObjectPC != null ? gameObjectPC.GetComponent<Battery>() : null;
+                if (batteryPC != null && batteryPC.getPowerSource() != null)
+                {
+                    if (pc.isOneTimeActivation())
+                    {
+                        inventory.addItem(gameObjectPC);
+                    }
+                    pc.attachPowerSource(batteryPC.getPowerSource());
+
+                    SwitchController sc = hit.collider.gameObject.GetComponent<SwitchController>();
+                    if (sc != null)
+                    {
+                        sc.setBattery(gameObjectPC);
+                    }
+                }
+                else
+                {
+                    this.inventory.addItem(gameObjectPC);
+                }
+                // if the power consumer is one time use return the battery to the character
+
+                // If the PowerConsumer did have a PowerSource, check if it's extractable & take it if it is
+            }
+            else if (pc.isPowerSourceExtractable() && !pc.isOneTimeActivation())
+            {
+                PowerSource oldPC = pc.removePowerSource();
+                Battery battery = oldPC.theBattery;
+
+                inventory.addItem(battery.gameObject);
+                battery.gameObject.SetActive(false);
+
+            }
+            // the object you hit e on is a battery
+        }
+        else if (bat != null)
+        {
+            if (bat.deviceBatteryIsAttachedTo != null)
+            {
+                bat.deviceBatteryIsAttachedTo.removePowerSource();
+                bat.deviceBatteryIsAttachedTo = null;
+                Debug.Log("Player took battery too early");
+            }
+            inventory.addItem(bat.gameObject);
+            bat.gameObject.SetActive(false);
+        }
+    }
 		
 	//test for picking up batteries and use them for Test Scene One
 	void OnTriggerEnter(Collider other)

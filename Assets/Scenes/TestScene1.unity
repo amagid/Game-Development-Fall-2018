@@ -30906,7 +30906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1681190364}
   visionMarker: {fileID: 1082406613}
-  movementTime: 0.5
+  movementTime: 0.3
 --- !u!1 &812794618
 GameObject:
   m_ObjectHideFlags: 0
@@ -50178,6 +50178,7 @@ MonoBehaviour:
   - {fileID: 344008596}
   - {fileID: 268367408}
   flashlightBounds: {fileID: 485915876}
+  arm: {fileID: 812345907}
   shadowMonsterPrefab: {fileID: 1491104499548332, guid: de9fc9aaa7816384294033afd4b96e08,
     type: 2}
   lightningEmittersTake:

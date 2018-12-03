@@ -5,16 +5,19 @@ using UnityEngine;
 public class ArmController : MonoBehaviour {
     [SerializeField] private GameObject camera;
     [SerializeField] private GameObject visionMarker;
+    private Animator animator;
     public float movementTime = 0.5f;
     private Vector3 initialPosition;
     private bool extending = false;
     private bool retracting = false;
     private float movementTimeElapsed = 0f;
     private float movementTimeLimit = 0f;
+    private bool poking = false;
 
 	// Use this for initialization
 	void Start () {
         this.initialPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z);
+        this.animator = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -28,14 +31,6 @@ public class ArmController : MonoBehaviour {
         } else if (retracting)
         {
             this.transform.localPosition = Vector3.Lerp(this.transform.localPosition, this.initialPosition, this.getMovementTime());
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            this.extend();
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            this.retract();
         }
     }
 
@@ -52,7 +47,6 @@ public class ArmController : MonoBehaviour {
 
     public bool extend()
     {
-        Debug.Log("Extending");
         if (retracting || extending)
         {
             return false;
@@ -66,14 +60,12 @@ public class ArmController : MonoBehaviour {
 
     private void finishExtend()
     {
-        Debug.Log("Finished Extending");
         this.extending = false;
         this.retract();
     }
 
     public bool retract()
     {
-        Debug.Log("Retracting");
         if (retracting || extending)
         {
             return false;
@@ -87,7 +79,25 @@ public class ArmController : MonoBehaviour {
 
     private void finishRetract()
     {
-        Debug.Log("Finished Retracting");
         this.retracting = false;
+    }
+
+    public void startPoke()
+    {
+        if (poking)
+        {
+            return;
+        }
+        this.poking = true;
+        this.animator.SetBool("pushbutton", true);
+        this.extend();
+        Invoke("finishPoke", this.movementTime);
+    }
+
+    public void finishPoke()
+    {
+        this.poking = false;
+        this.retract();
+        this.animator.SetBool("pushbutton", false);
     }
 }

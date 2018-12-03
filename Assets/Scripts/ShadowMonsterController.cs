@@ -21,7 +21,7 @@ public class ShadowMonsterController : MonoBehaviour {
     private float rotationTimeElapsed = 0.0f;
     private float movementTimeElapsed = 0.0f;
     private float distanceToPlayer;
-    public float attackRange = 2f;
+    public float attackRange = 4f;
     public float attackAmount = 5f;
     public bool moving = true;
     public bool movingBackToBounds = false;
@@ -35,7 +35,7 @@ public class ShadowMonsterController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         this.setPlayerCharacter(GameObject.Find("Player").GetComponent<PlayerCharacter>());
-        this.interval += Random.value * 5;
+        this.interval += Random.value * 2;
         this.rotatingFrom = this.transform.rotation;
         this.movingFrom = this.transform.position;
         this.rotatingTo = this.transform.rotation;

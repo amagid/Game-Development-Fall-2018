@@ -161,7 +161,7 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 
         //added a check if the central lighting in ON, player would not lose sanity
-        if (central_lighting.activeSelf)
+        if (central_lighting != null && central_lighting.activeSelf)
 		{
 			losingSanity = false;
 		}

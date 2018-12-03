@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-
+    [SerializeField] private Sprite batteryIcon;
+    [SerializeField] private Sprite machinePartIcon;
     private Inventory playerInventory;
     List<GameObject> imgs;
     List<Image> powerLevels;
@@ -75,10 +76,11 @@ public class InventoryUI : MonoBehaviour
                 {
                     if (playerInventory.getItem(i) != null)
                     {
-                        imgs[i].transform.Find("Battery").gameObject.SetActive(true);
                         powerLevels[i].color = UnityEngine.Color.green;
                         if (playerInventory.getItem(i).GetComponent<Battery>() != null)
                         {
+                            imgs[i].transform.Find("Battery").GetComponent<Image>().sprite = this.batteryIcon;
+                            imgs[i].transform.Find("Battery").gameObject.SetActive(true);
                             float width;
                             if (playerInventory.getItem(i).GetComponent<Battery>().getPowerSource().getPowerLevel() >= 100)
                             {
@@ -91,6 +93,11 @@ public class InventoryUI : MonoBehaviour
                             }
                             RectTransform rt = (RectTransform)powerLevels[i].gameObject.transform;
                             rt.sizeDelta = new Vector2(width, 5);
+                        }
+                        else if (playerInventory.getItem(i).GetComponent<MachinePartController>() != null)
+                        {
+                            imgs[i].transform.Find("Battery").GetComponent<Image>().sprite = this.machinePartIcon;
+                            imgs[i].transform.Find("Battery").gameObject.SetActive(true);
                         }
                     }
                     else

@@ -30,8 +30,9 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (Time.timeScale == 0)
+	void Update ()
+    {
+        if (Time.timeScale == 0)
 			return;
         // Activate/Operate/Deactivate device based on powerConsumer state
         bool deviceIsPowered = this.powerConsumer.powerDevice();
@@ -115,11 +116,18 @@ public class LightSourceController : MonoBehaviour, PoweredOperation {
 	void OnTriggerStay (Collider other) {
 		if (other.name == "Player")
 			atLight = true;
-	}
+
+        ShadowMonsterController monster = other.GetComponent<ShadowMonsterController>();
+        if (monster != null && !monster.scattering && this.isActive())
+        {
+            monster.scatter(this.transform.position);
+        }
+
+    }
 
 	void OnTriggerExit(Collider other) {
         if (other.name == "Player")
     		atLight = false;
-	}
+    }
 
 }

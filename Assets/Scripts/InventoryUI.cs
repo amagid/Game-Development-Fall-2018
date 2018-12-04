@@ -21,13 +21,16 @@ public class InventoryUI : MonoBehaviour
     private TabletUI tablet;
 
 
-    public static void highLight(int index)
+    public void highLight(int index)
     {
+        playerInventory.setSelectedItemIndex(index);
         selectedIndex = index;
     }
 
     public void highNoteLight(int index)
     {
+        playerInventory.setSelectedNoteIndex(index);
+        Debug.Log(noteSelectedIndex);
         noteSelectedIndex = index;
     }
 
@@ -130,6 +133,7 @@ public class InventoryUI : MonoBehaviour
                 }
                 GameObject.Find("Slot" + (selectedIndex + 1)).GetComponent<Outline>().effectColor = UnityEngine.Color.white;
             } else {
+                noteSelectedIndex = playerInventory.getSelectedNoteIndex();
                 if (noteSelectedIndex < 0 || noteSelectedIndex > playerInventory.inventorySize)
                 {
                     noteSelectedIndex = 0;

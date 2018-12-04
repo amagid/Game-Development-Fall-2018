@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,46 +54,39 @@ public class DoorController : MonoBehaviour, DirectOperation {
 
 	private IEnumerator openDoor()
 	{
-        if (!isClosing)
+    	source.PlayOneShot(doorOpen, 0.15f);
+        isOpening = true;
+        if (!isElevatorDoor)
         {
-            source.PlayOneShot(doorOpen, 0.15f);
-            isOpening = true;
-            if (!isElevatorDoor)
-            {
-                yield return new WaitForSeconds(1f);
-            }
-            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
-            {
-                transform.position = Vector3.Lerp(closePos, openPos, t);
-                yield return null;
-            }
-            isOpening = false;
+            yield return new WaitForSeconds(1f);
         }
+        for (float t = 0f; t < 1; t += Time.deltaTime / 20f)
+        {
+			transform.position = Vector3.Lerp(gameObject.transform.position, openPos, t);
+            yield return null;
+        }
+        isOpening = false;
 	}
 
 
 	private IEnumerator closeDoor()
 	{
-        if (!isOpening)
-        {
-            source.PlayOneShot(doorOpen, 0.15f);
-            isClosing = true;
-            if (!isElevatorDoor)
-            {
-                yield return new WaitForSeconds(1f);
-            }
-            for (float t = 0f; t < 1; t += Time.deltaTime / 2f)
-            {
-                transform.position = Vector3.Lerp(openPos, closePos, t);
-                yield return null;
-            }
-            isClosing = false;
-        }
+			source.PlayOneShot (doorOpen, 0.15f);
+			isClosing = true;
+			if (!isElevatorDoor) {
+				yield return new WaitForSeconds (0f);
+			}
+			for (float t = 0f; t < 1; t += Time.deltaTime / 6f) {
+			transform.position = Vector3.Lerp (gameObject.transform.position, closePos, t);
+				yield return null;
+			}
+			isClosing = false;
 	}
 
 	public void activate()
 	{
 		this.active = true;
+		StopAllCoroutines ();
 		StartCoroutine(this.openDoor());
         
 	}
@@ -103,7 +96,7 @@ public class DoorController : MonoBehaviour, DirectOperation {
 	public void deactivate()
 	{
 		this.active = false;
-        StopAllCoroutines();
+		StopAllCoroutines ();
         StartCoroutine(this.closeDoor());
         
     }

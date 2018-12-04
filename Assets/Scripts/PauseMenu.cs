@@ -10,6 +10,9 @@ public class PauseMenu : MonoBehaviour {
     private GameObject OnGameUI;
     private GameObject DialogueCanvas;
     private GameObject Tablet;
+    private GameObject PowerPanel;
+    private GameObject DataPanel;
+    private GameObject DisplayData;
 
     // Use this for initialization
     void Start()
@@ -19,6 +22,9 @@ public class PauseMenu : MonoBehaviour {
         this.OnGameUI = GameObject.Find("OnGameUI");
         this.DialogueCanvas = GameObject.Find("DialogueCanvas");
         this.Tablet = GameObject.Find("Tablet");
+        this.PowerPanel = GameObject.Find("PowerPanel");
+        this.DataPanel = GameObject.Find("DataPanel");
+        this.DisplayData = GameObject.Find("DisplayData");
     }
 
     // Update is called once per frame
@@ -34,7 +40,13 @@ public class PauseMenu : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 resume();
+                if (PowerPanel.activeInHierarchy == false || DataPanel.activeInHierarchy == false || DisplayData.activeInHierarchy == false)
+            {
+                sceneController.unfreezeGame();
             }
+            }
+
+
         }
         
     }
@@ -51,7 +63,6 @@ public class PauseMenu : MonoBehaviour {
 
     public void resume() {
         isPaused = false;
-        sceneController.unfreezeGame();
         pauseMenu.SetActive(false);
         OnGameUI.SetActive(true);
         DialogueCanvas.SetActive(true);
